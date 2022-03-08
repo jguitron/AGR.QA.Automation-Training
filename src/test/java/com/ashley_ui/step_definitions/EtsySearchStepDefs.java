@@ -1,13 +1,14 @@
 package com.ashley_ui.step_definitions;
 
 import com.ashley_ui.pages.EtsyPage;
+import com.ashley_ui.utilities.BrowserUtils;
 import com.ashley_ui.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
-public class EtsySearch {
+public class EtsySearchStepDefs {
 
     EtsyPage etsyPage = new EtsyPage();
 
@@ -33,6 +34,7 @@ public class EtsySearch {
 
     @Then("User should be able to see {string} in results page")
     public void user_should_be_able_to_see_in_results_page(String value1) {
+        BrowserUtils.sleep(3);
         Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(value1));
     }
 

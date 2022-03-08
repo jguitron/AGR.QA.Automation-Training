@@ -99,8 +99,8 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.CukesRunner (1)">
-    <configuration name="GoogleSearch" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ashley_ui.step_definitions.GoogleSearch" />
+    <configuration name="GoogleSearchStepDefs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ashley_ui.step_definitions.GoogleSearchStepDefs" />
       <module name="AGR.QA.Demo" />
       <extension name="coverage">
         <pattern>
@@ -118,6 +118,25 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.ashley_ui.step_definitions.HomePageStepDefs" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Feature: amazonSearch" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/amazonSearch.Feature" />
+      <option name="GLUE" value="com.ashley_ui.step_definitions" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="AGR.QA.Demo" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
+      <option name="SUGGESTED_NAME" value="Feature: amazonSearch" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -144,15 +163,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: User randomly searches for available products and clicks on them." type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: User enters value in Amazon search bar and checks search bar works correctly" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/searchItems.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/amazonSearch.Feature" />
       <option name="GLUE" value="com.ashley_ui.step_definitions" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="AGR.QA.Demo" />
-      <option name="NAME_FILTER" value="^User randomly searches for available products and clicks on them\.$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^User randomly searches for available products and clicks on them\.$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: User randomly searches for available products and clicks on them." />
+      <option name="NAME_FILTER" value="^User enters value in Amazon search bar and checks search bar works correctly$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^User enters value in Amazon search bar and checks search bar works correctly$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: User enters value in Amazon search bar and checks search bar works correctly" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -174,21 +193,6 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.ashley_ui.runners" />
       <option name="MAIN_CLASS_NAME" value="com.ashley_ui.runners.CukesRunner" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CukesRunner" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AGR.TestAutomation.UI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.sfcc.runners.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.apollo.runners" />
-      <option name="MAIN_CLASS_NAME" value="com.sfcc.runners.CukesRunner" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -239,26 +243,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="AGR.QA.Demo" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="AGR.QA.Demo" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.CukesRunner (1)" />
+        <item itemvalue="Cucumber Java.Scenario: User enters value in Amazon search bar and checks search bar works correctly" />
+        <item itemvalue="Cucumber Java.Feature: amazonSearch" />
         <item itemvalue="Cucumber Java.Scenario: User enters value and checks search bar works correctly" />
-        <item itemvalue="Application.GoogleSearch" />
-        <item itemvalue="Cucumber Java.Scenario: User randomly searches for available products and clicks on them." />
-        <item itemvalue="JUnit.CukesRunner" />
+        <item itemvalue="Application.GoogleSearchStepDefs" />
       </list>
     </recent_temporary>
   </component>
@@ -302,7 +293,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646061194604</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Etsy class added">
+      <created>1646753687014</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1646753687014</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -320,23 +318,11 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Update from 02.28" />
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value="Etsy class added" />
+    <MESSAGE value="Parallelism added in pom.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Parallelism added in pom.xml" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/ashley_ui/utilities/Driver.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/ashley_ui/utilities/Driver.java</url>
-          <line>116</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="com.apollo.pages.AshleyMPLinksPage" memberName="allLinks" />

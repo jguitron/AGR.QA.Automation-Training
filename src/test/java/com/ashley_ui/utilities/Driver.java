@@ -27,7 +27,7 @@ public class Driver {
         if (driverPool.get() == null) {
             synchronized (Driver.class) {
 
-            String browserType = ConfigurationReader.getProperty("browser");
+            String browserType = ConfigurationReader.getProperty("browser-safari");
 
                 switch (browserType) {
                     case "chrome":
@@ -40,12 +40,12 @@ public class Driver {
                         break;
 
                     case "chrome-remote":
-                        try {
-                            String ipAddress = "localhost";
-                            URL url = new URL("http://" + ipAddress + ":4444");
                             DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-                            desiredCapabilities.setBrowserName("chrome");
                             ChromeOptions remoteOptions = new ChromeOptions();
+                        try {
+                            String ipAddress = "172.26.3.130";
+                            URL url = new URL("http://" + ipAddress + ":4444/wd/hub");
+                            desiredCapabilities.setBrowserName("chrome");
                             remoteOptions.addArguments("--disable-notifications");
                             driverPool.set(new RemoteWebDriver(url, desiredCapabilities));
                             driverPool.get().manage().window().maximize();
@@ -76,14 +76,14 @@ public class Driver {
                         break;
 
                     case "firefox-remote":
+                            FirefoxOptions remoteOptions1 = new FirefoxOptions();
+                            DesiredCapabilities desiredCapabilities1 = new DesiredCapabilities();
                         try {
-                            String ipAddress = "localhost";
-                            URL url = new URL("http://" + ipAddress + ":4444");
-                            DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-                            desiredCapabilities.setBrowserName("firefox");
-                            FirefoxOptions remoteOptions = new FirefoxOptions();
-                            remoteOptions.addArguments("--disable-notifications");
-                            driverPool.set(new RemoteWebDriver(url, desiredCapabilities));
+                            String ipAddress = "172.26.3.130";
+                            URL url = new URL("http://" + ipAddress + ":4444/wd/hub");
+                            desiredCapabilities1.setBrowserName("firefox");
+                            remoteOptions1.addArguments("--disable-notifications");
+                            driverPool.set(new RemoteWebDriver(url, desiredCapabilities1));
                             driverPool.get().manage().window().maximize();
                             driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                         } catch (Exception e) {
@@ -104,9 +104,9 @@ public class Driver {
                         try {
                             String ipAddress = "localhost";
                             URL url = new URL("http://" + ipAddress + ":4444");
-                            DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-                            desiredCapabilities.setBrowserName("safari");
-                            driverPool.set(new RemoteWebDriver(url, desiredCapabilities));
+                            DesiredCapabilities desiredCapabilities2 = new DesiredCapabilities();
+                            desiredCapabilities2.setBrowserName("safari");
+                            driverPool.set(new RemoteWebDriver(url, desiredCapabilities2));
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

@@ -1,15 +1,13 @@
 package com.ashley_ui.step_definitions;
 
 import com.ashley_ui.pages.GooglePage;
-import com.ashley_ui.utilities.ConfigurationReader;
+import com.ashley_ui.utilities.BrowserUtils;
 import com.ashley_ui.utilities.Driver;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 
-
-public class GoogleSearch {
+public class GoogleSearchStepDefs {
 
     GooglePage googlePage = new GooglePage();
 
@@ -32,6 +30,7 @@ public class GoogleSearch {
 
     @Then("User should see {string} in results page")
     public void user_should_see_in_results_page(String value) {
+        BrowserUtils.sleep(3);
         Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(value));
     }
 
