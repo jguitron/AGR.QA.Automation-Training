@@ -11,14 +11,13 @@ import org.openqa.selenium.WebDriver;
 
 public class GoogleSearch {
 
-    WebDriver driver = Driver.getDriver();
     GooglePage googlePage = new GooglePage();
 
     @Given("User is on google home page")
     public void user_is_on_google_home_page() {
-//        driver.get(ConfigurationReader.getProperty("googleUrl"));
-        System.out.println(driver.getCurrentUrl());
-        Assert.assertTrue(driver.getCurrentUrl().equals("https://www.google.com/"));
+        Driver.getDriver().get("https://google.com");
+        System.out.println(Driver.getDriver().getCurrentUrl());
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().equals("https://www.google.com/"));
     }
 
     @When("User clicks on search bar")
@@ -33,7 +32,7 @@ public class GoogleSearch {
 
     @Then("User should see {string} in results page")
     public void user_should_see_in_results_page(String value) {
-        Assert.assertTrue(driver.getCurrentUrl().contains(value));
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(value));
     }
 
 }

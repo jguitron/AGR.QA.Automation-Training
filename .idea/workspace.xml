@@ -73,6 +73,7 @@
     <property name="GitStage.ChangesTree.GroupingKeys" value="directory&#10;module&#10;repository" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="SDKs" />
@@ -82,6 +83,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\MKayumov\PROJECTS\IdeaFiles\AGR.QA.DEMO1" />
       <recent name="C:\Users\MKayumov\PROJECTS\IdeaFiles\AGR.QA.Demo" />
       <recent name="C:\Users\MKayumov\PROJECTS\IdeaFiles\AGR.QA.Demo\src\test\resources" />
       <recent name="C:\Users\MKayumov\PROJECTS\IdeaFiles\AGR.QA.Demo\src\test\java" />
@@ -99,7 +101,7 @@
   <component name="RunManager" selected="JUnit.CukesRunner (1)">
     <configuration name="GoogleSearch" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ashley_ui.step_definitions.GoogleSearch" />
-      <module name="AGR.Automation.Demo" />
+      <module name="AGR.QA.Demo" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.ashley_ui.step_definitions.*" />
@@ -112,7 +114,7 @@
     </configuration>
     <configuration name="test" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ashley_ui.step_definitions.test" />
-      <module name="AGR.Automation.Demo" />
+      <module name="AGR.QA.Demo" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.ashley_ui.step_definitions.HomePageStepDefs" />
@@ -127,7 +129,7 @@
       <option name="CUCUMBER_CORE_VERSION" value="5" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/googleSearch.feature" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
-      <module name="AGR.Automation.Demo" />
+      <module name="AGR.QA.Demo" />
       <option name="NAME_FILTER" value="^User enters value and checks search bar works correctly$" />
       <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^User enters value and checks search bar works correctly$&quot;" />
       <option name="SUGGESTED_NAME" value="Scenario: User enters value and checks search bar works correctly" />
@@ -147,7 +149,7 @@
       <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/searchItems.feature" />
       <option name="GLUE" value="com.ashley_ui.step_definitions" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
-      <module name="AGR.Automation.Demo" />
+      <module name="AGR.QA.Demo" />
       <option name="NAME_FILTER" value="^User randomly searches for available products and clicks on them\.$" />
       <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^User randomly searches for available products and clicks on them\.$&quot;" />
       <option name="SUGGESTED_NAME" value="Scenario: User randomly searches for available products and clicks on them." />
@@ -163,7 +165,7 @@
       </method>
     </configuration>
     <configuration name="CukesRunner (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AGR.Automation.Demo" />
+      <module name="AGR.QA.Demo" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.ashley_ui.runners.*" />
@@ -233,6 +235,19 @@
       <option name="PACKAGE_NAME" value="com.Practice.runners" />
       <option name="MAIN_CLASS_NAME" value="com.Apollo.runners.CukesRunner" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="AGR.QA.Demo" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="AGR.QA.Demo" />
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

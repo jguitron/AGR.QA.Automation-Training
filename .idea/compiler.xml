@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="AGR.Automation.Demo" />
+        <module name="AGR.QA.Demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="AGR.Automation.Demo" target="8" />
+      <module name="AGR.QA.Demo" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/AGR.Automation.Demo.iml" filepath="$PROJECT_DIR$/.idea/AGR.Automation.Demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/AGR.QA.Demo.iml" filepath="$PROJECT_DIR$/.idea/AGR.QA.Demo.iml" />
     </modules>
   </component>
 </project>

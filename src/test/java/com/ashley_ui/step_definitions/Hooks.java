@@ -10,7 +10,6 @@ public class Hooks {
 
     @Before()
     public static void setupScenario(){
-        Driver.getDriver().get(ConfigurationReader.getProperty("googleUrl"));
         System.out.println("=================TestScenario execution Started!=================");
 
     }
