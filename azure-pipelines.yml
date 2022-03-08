@@ -22,11 +22,11 @@ steps:
           goals: 'package'
 
       - task: CopyFiles@2
-          inputs:
-            SourceFolder: '$(system.defaultworkingdirectory)'
-            Contents: 'AGR.QA.Automation\**'
-            TargetFolder: '$(build.artifactstagingdirectory)'
-            CleanTargetFolder: true
+        inputs:
+          SourceFolder: '$(system.defaultworkingdirectory)'
+          Contents: 'AGR.QA.Automation\**'
+          TargetFolder: '$(build.artifactstagingdirectory)'
+          CleanTargetFolder: true
 
       - task: PublishBuildArtifacts@1
         inputs:
