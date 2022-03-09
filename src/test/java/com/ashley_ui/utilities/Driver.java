@@ -27,7 +27,7 @@ public class Driver {
         if (driverPool.get() == null) {
             synchronized (Driver.class) {
 
-            String browserType = ConfigurationReader.getProperty("browser-safari");
+            String browserType = ConfigurationReader.getProperty("browser-chrome");
 
                 switch (browserType) {
                     case "chrome":
