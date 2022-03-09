@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: User enters value in Amazon search bar and checks search bar works correctly
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 46.927 s - in User enters value in Amazon search bar and checks search bar works correctly
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 28.133 s - in User enters value in Amazon search bar and checks search bar works correctly
