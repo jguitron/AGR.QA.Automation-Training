@@ -1,6 +1,9 @@
 # Maven
 # Build, test, and deploy with Apache Maven
 
+trigger:
+- main
+
 pool:
   name: DevOps
   demands: maven
@@ -11,8 +14,10 @@ steps:
   inputs:
     mavenPomFile: 'pom.xml'
     goals: 'clean package'
+    publishJUnitResults: true
     testResultsFiles: target
     jdkVersionOption: 1.8
+    mavenOptions: '-Xmx1024m'
 
 - task: CopyFiles@2
   displayName: 'Copy Files'
