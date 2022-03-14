@@ -1,6 +1,6 @@
 package com.ashley_ui.step_definitions;
 
-import com.ashley_ui.utilities.ConfigurationReader;
+
 import com.ashley_ui.utilities.Driver;
 import io.cucumber.java.*;
 import org.openqa.selenium.OutputType;
@@ -21,7 +21,7 @@ public class Hooks {
             scenario.attach(screenshot, "image/png", scenario.getName());
         }
         System.out.println("=================TestScenario execution Finished!=================");
-        Driver.closeDriver();
+//        Driver.closeDriver();
     }
 
 }

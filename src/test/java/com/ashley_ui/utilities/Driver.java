@@ -1,7 +1,6 @@
 package com.ashley_ui.utilities;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.github.bonigarcia.wdm.managers.SafariDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,7 +9,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.safari.SafariOptions;
 
 import java.net.URL;
@@ -68,7 +66,6 @@ public class Driver {
                     case "firefox":
                         WebDriverManager.firefoxdriver().setup();
                         FirefoxOptions firefoxOptions = new FirefoxOptions();
-                        firefoxOptions.addArguments(("window-size=1920,1080"));
                         firefoxOptions.addArguments("--disable-notifications");
                         driverPool.set(new FirefoxDriver(firefoxOptions));
                         driverPool.get().manage().window().maximize();

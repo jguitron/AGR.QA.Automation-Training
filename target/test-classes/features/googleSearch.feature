@@ -2,7 +2,7 @@
   Feature: Google search
     Search argument and verify search functionality behavior.
 
-    @wip
+    @smoke
     Scenario: User enters value and checks search bar works correctly
       Given User is on google home page
       When User clicks on search bar
