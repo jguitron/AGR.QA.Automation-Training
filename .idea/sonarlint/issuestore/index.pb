@@ -15,5 +15,3 @@ g
 7src/test/java/com/ashley_ui/utilities/BrowserUtils.java,d\3\d3810398d771b247c5071aebc244fd769e72d6a3
 I
 .vs/VSWorkspaceState.json,e\f\ef34d826281576e3e7c9439d0c0f9796ef27eac7
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
