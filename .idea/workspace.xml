@@ -23,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="DemoBranchOne" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -343,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647229146965</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Fixed etsy.com feature mistyped error">
+      <created>1647273508106</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1647273508106</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -365,7 +372,8 @@
     <MESSAGE value="Parallelism added in pom.xml" />
     <MESSAGE value="Driver class updated" />
     <MESSAGE value="Updated jenkins file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated jenkins file" />
+    <MESSAGE value="Fixed etsy.com feature mistyped error" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed etsy.com feature mistyped error" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
