@@ -1,43 +1,43 @@
-# Maven
-# Build, test, and deploy with Apache Maven
+# # Maven
+# # Build, test, and deploy with Apache Maven
 
-trigger:
-- main
+# trigger:
+# - main
 
-pool:
-  name: DevOps
-  demands: maven
+# pool:
+#   name: DevOps
+#   demands: maven
 
-steps:
-- task: Maven@3
-  displayName: 'Maven pom.xml'
-  inputs:
-    mavenPomFile: 'pom.xml'
-    goals: 'clean package'
-    publishJUnitResults: true
-    testResultsFiles: '**\surefire-reports\TEST-*.xml'
-    jdkVersionOption: 1.8
-    mavenOptions: '-Xmx1024m'
+# steps:
+# - task: Maven@3
+#   displayName: 'Maven pom.xml'
+#   inputs:
+#     mavenPomFile: 'pom.xml'
+#     goals: 'clean package'
+#     publishJUnitResults: true
+#     testResultsFiles: '**\surefire-reports\TEST-*.xml'
+#     jdkVersionOption: 1.8
+#     mavenOptions: '-Xmx1024m'
 
-- task: CopyFiles@2
-  displayName: 'Copy Files'
-  inputs:
-    SourceFolder: '$(system.defaultworkingdirectory)'
-    Contents: '\**\*.jar'
-    TargetFolder: '$(build.artifactstagingdirectory)'
-  condition: succeededOrFailed()
-  timeoutInMinutes: 2
-  retryCountOnTaskFailure: 2
+# - task: CopyFiles@2
+#   displayName: 'Copy Files'
+#   inputs:
+#     SourceFolder: '$(system.defaultworkingdirectory)'
+#     Contents: '\**\*.jar'
+#     TargetFolder: '$(build.artifactstagingdirectory)'
+#   condition: succeededOrFailed()
+#   timeoutInMinutes: 2
+#   retryCountOnTaskFailure: 2
 
-- task: PublishPipelineArtifact@1
-  displayName: 'Publish Pipeline Artifact'
-  inputs:
-    targetPath: target
-    artifact: drop
+# - task: PublishPipelineArtifact@1
+#   displayName: 'Publish Pipeline Artifact'
+#   inputs:
+#     targetPath: target
+#     artifact: drop
 
-- task: PublishTestResults@2
-  displayName: 'Publish Test Results'
-  inputs:
-    testResultsFiles: '**/TEST-*.xml' 
-    mergeTestResults: true
-    publishRunAttachments: true
+# - task: PublishTestResults@2
+#   displayName: 'Publish Test Results'
+#   inputs:
+#     testResultsFiles: '**/TEST-*.xml' 
+#     mergeTestResults: true
+#     publishRunAttachments: true
