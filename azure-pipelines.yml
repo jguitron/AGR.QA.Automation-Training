@@ -5,7 +5,7 @@ trigger:
 - main
 
 pool:
-  vmImage: DevOps
+  name: DevOps
   demands: maven
 
 variables:
