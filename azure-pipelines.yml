@@ -49,41 +49,40 @@ steps:
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
 
-- task: Maven@3
-  displayName: Deploy
+# - task: Maven@3
+#   displayName: Deploy
+#   inputs:
+#     mavenPomFile: 'pom.xml'
+#     mavenOptions: '-Xmx3072m $(MAVEN_OPTS)'
+#     goals: 'deploy'
+#     options: '-DskipTests'
+#     publishJUnitResults: false
+#     javaHomeOption: 'JDKVersion'
+#     mavenVersionOption: 'Default'
+#     mavenAuthenticateFeed: false
+#     effectivePomSkip: false
+#     sonarQubeRunAnalysis: false
+
+
+- task: CopyFiles@2
+  displayName: 'Copy Files'
   inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m $(MAVEN_OPTS)'
-    goals: 'deploy'
-    options: '-DskipTests'
-    publishJUnitResults: false
-    javaHomeOption: 'JDKVersion'
-    mavenVersionOption: 'Default'
-    mavenAuthenticateFeed: false
-    effectivePomSkip: false
-    sonarQubeRunAnalysis: false
+    SourceFolder: '$(system.defaultworkingdirectory)'
+    Contents: '\**\*.jar'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+  condition: succeededOrFailed()
+  timeoutInMinutes: 2
+  retryCountOnTaskFailure: 2
 
+- task: PublishPipelineArtifact@1
+  displayName: 'Publish Pipeline Artifact'
+  inputs:
+    targetPath: target
+    artifact: drop
 
-
-# - task: CopyFiles@2
-#   displayName: 'Copy Files'
-#   inputs:
-#     SourceFolder: '$(system.defaultworkingdirectory)'
-#     Contents: '\**\*.jar'
-#     TargetFolder: '$(build.artifactstagingdirectory)'
-#   condition: succeededOrFailed()
-#   timeoutInMinutes: 2
-#   retryCountOnTaskFailure: 2
-
-# - task: PublishPipelineArtifact@1
-#   displayName: 'Publish Pipeline Artifact'
-#   inputs:
-#     targetPath: target
-#     artifact: drop
-
-# - task: PublishTestResults@2
-#   displayName: 'Publish Test Results'
-#   inputs:
-#     testResultsFiles: '**/TEST-*.xml' 
-#     mergeTestResults: true
-#     publishRunAttachments: true
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results'
+  inputs:
+    testResultsFiles: '**/TEST-*.xml' 
+    mergeTestResults: true
+    publishRunAttachments: true
