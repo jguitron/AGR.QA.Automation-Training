@@ -75,7 +75,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TrainingProjects/TampaTeamTraining" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TrainingProjects/stackmerge-pipeline" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -99,13 +99,13 @@
       <recent name="com.Practice.step_definitions.base" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CukesRunner (1)">
-    <configuration name="GoogleSearchStepDefs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.ashley_ui.step_definitions.GoogleSearchStepDefs" />
+  <component name="RunManager" selected="Application.CreatingPropertiesFile">
+    <configuration name="CreatingPropertiesFile" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.ashley_ui.testsData.CreatingPropertiesFile" />
       <module name="AGR.QA.Demo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.ashley_ui.step_definitions.*" />
+          <option name="PATTERN" value="com.ashley_ui.testsData.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -200,21 +200,6 @@
       </method>
     </configuration>
     <configuration name="CukesRunner" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ApolloQADemo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.sfcc.runners.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.apollo.runners" />
-      <option name="MAIN_CLASS_NAME" value="com.sfcc.runners.CukesRunner" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CukesRunner" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Cucumber-junit-main" />
       <extension name="coverage">
         <pattern>
@@ -246,11 +231,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CreatingPropertiesFile" />
         <item itemvalue="JUnit.CukesRunner (1)" />
         <item itemvalue="Cucumber Java.Scenario: User enters value in Amazon search bar and checks search bar works correctly" />
         <item itemvalue="Cucumber Java.Feature: amazonSearch" />
         <item itemvalue="Cucumber Java.Scenario: User enters value and checks search bar works correctly" />
-        <item itemvalue="Application.GoogleSearchStepDefs" />
       </list>
     </recent_temporary>
   </component>
@@ -350,7 +335,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647273508106</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Checking Main Trigger">
+      <created>1647365269807</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1647365269807</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -373,7 +365,8 @@
     <MESSAGE value="Driver class updated" />
     <MESSAGE value="Updated jenkins file" />
     <MESSAGE value="Fixed etsy.com feature mistyped error" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed etsy.com feature mistyped error" />
+    <MESSAGE value="Checking Main Trigger" />
+    <option name="LAST_COMMIT_MESSAGE" value="Checking Main Trigger" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
