@@ -6,6 +6,10 @@ import com.ashley_ui.utilities.Driver;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.devtools.DevTools;
+import org.openqa.selenium.devtools.idealized.Domains;
+
+import java.util.function.Function;
 
 public class GoogleSearchStepDefs {
 
@@ -16,6 +20,7 @@ public class GoogleSearchStepDefs {
         Driver.getDriver().get("https://google.com");
         System.out.println(Driver.getDriver().getCurrentUrl());
         Assert.assertTrue(Driver.getDriver().getCurrentUrl().equals("https://www.google.com/"));
+
     }
 
     @When("User clicks on search bar")
