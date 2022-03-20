@@ -90,6 +90,7 @@
       <recent name="C:\Users\MKayumov\IdeaFiles\SFCCDemo" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\MKayumov\PROJECTS\IdeaFiles\AGR.QA.DEMO\src\test\java\com\ashley_ui\step_definitions" />
       <recent name="C:\Users\MKayumov\PROJECTS\IdeaFiles\AGR.QA.Demo\src\test\java\com\ashley_ui\testsData\excelData" />
       <recent name="C:\Users\MKayumov\PROJECTS\IdeaFiles\SFCCDemo" />
       <recent name="C:\Users\MKayumov\IdeaFiles\SFCCDemo" />
@@ -342,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647365269807</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="agr.demo-ci build">
+      <created>1647817850701</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1647817850701</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -366,7 +374,8 @@
     <MESSAGE value="Updated jenkins file" />
     <MESSAGE value="Fixed etsy.com feature mistyped error" />
     <MESSAGE value="Checking Main Trigger" />
-    <option name="LAST_COMMIT_MESSAGE" value="Checking Main Trigger" />
+    <MESSAGE value="agr.demo-ci build" />
+    <option name="LAST_COMMIT_MESSAGE" value="agr.demo-ci build" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
