@@ -6,11 +6,9 @@ com\ashley_ui\step_definitions\GoogleSearchStepDefs.class
 com\ashley_ui\runners\CukesRunner.class
 com\ashley_ui\utilities\BrowserUtils.class
 com\ashley_ui\utilities\ConfigurationReader.class
-com\ashley_ui\step_definitions\AmazonSearchStepDefs.class
 com\ashley_ui\testsData\ExcelRead.class
 com\ashley_ui\utilities\BrowserUtils$1.class
 com\ashley_ui\runners\FailedTestRunner.class
 com\ashley_ui\pages\EtsyPage.class
-com\ashley_ui\pages\AmazonPage.class
 com\ashley_ui\utilities\BrowserUtils$2.class
 com\ashley_ui\pages\GooglePage.class

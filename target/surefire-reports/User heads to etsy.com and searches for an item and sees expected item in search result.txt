@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: User heads to etsy.com and searches for an item and sees expected item in search result
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.251 s - in User heads to etsy.com and searches for an item and sees expected item in search result
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.711 s - in User heads to etsy.com and searches for an item and sees expected item in search result

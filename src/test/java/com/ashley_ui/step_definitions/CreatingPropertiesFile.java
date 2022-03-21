@@ -1,10 +1,10 @@
-//package com.ashley_ui.testsData;
-//
-//import java.io.FileOutputStream;
-//import java.io.IOException;
-//import java.util.HashMap;
-//import java.util.Properties;
-//
+////package com.ashley_ui.testsData;
+////
+////import java.io.FileOutputStream;
+////import java.io.IOException;
+////import java.util.HashMap;
+////import java.util.Properties;
+////
 //
 //public class CreatingPropertiesFile extends HashMap {
 //
