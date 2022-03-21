@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="User heads to etsy.com and searches for an item and sees expected item in search result" time="15.711" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="User enters value and checks search bar works correctly" time="6.743" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -61,30 +61,16 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="" classname="User heads to etsy.com and searches for an item and sees expected item in search result" time="0">
+  <testcase name="" classname="User enters value and checks search bar works correctly" time="0">
     <system-out><![CDATA[=================TestScenario execution Finished!=================
 =================TestScenario execution Started!=================
 ]]></system-out>
   </testcase>
-  <testcase name="User is on Etsy home page" classname="User heads to etsy.com and searches for an item and sees expected item in search result" time="9.321">
-    <system-err><![CDATA[SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
-SLF4J: Defaulting to no-operation (NOP) logger implementation
-SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-ERROR StatusLogger Log4j2 could not find a logging implementation. Please add log4j-core to the classpath. Using SimpleLogger to log to the console...
-Starting ChromeDriver 99.0.4844.51 (d537ec02474b5afe23684e7963d538896c63ac77-refs/branch-heads/4844@{#875}) on port 54532
-Only local connections are allowed.
-Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
-ChromeDriver was started successfully.
-Mar 21, 2022 3:14:04 PM org.openqa.selenium.remote.ProtocolHandshake createSession
-INFO: Detected dialect: W3C
-Mar 21, 2022 3:14:05 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
-WARNING: Unable to find an exact match for CDP version 99, so returning the closest version found: 97
-Mar 21, 2022 3:14:05 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
-INFO: Found CDP implementation for version 99 of 97
-]]></system-err>
+  <testcase name="User is on google home page" classname="User enters value and checks search bar works correctly" time="0.878">
+    <system-out><![CDATA[https://www.google.com/
+]]></system-out>
   </testcase>
-  <testcase name="User clicks on main search bar" classname="User heads to etsy.com and searches for an item and sees expected item in search result" time="0.095"/>
-  <testcase name="User types &quot;decor&quot; in search bar" classname="User heads to etsy.com and searches for an item and sees expected item in search result" time="0.181"/>
-  <testcase name="User clicks on search icon" classname="User heads to etsy.com and searches for an item and sees expected item in search result" time="2.992"/>
-  <testcase name="User should be able to see &quot;decor&quot; in results page" classname="User heads to etsy.com and searches for an item and sees expected item in search result" time="3.005"/>
+  <testcase name="User clicks on search bar" classname="User enters value and checks search bar works correctly" time="0.095"/>
+  <testcase name="User types &quot;Tesla&quot; in search bar and clicks enter" classname="User enters value and checks search bar works correctly" time="2.713"/>
+  <testcase name="User should see &quot;Tesla&quot; in results page" classname="User enters value and checks search bar works correctly" time="3.008"/>
 </testsuite>
