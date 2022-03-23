@@ -12,6 +12,9 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -75,19 +78,19 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TrainingProjects/stackmerge-pipeline" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TrainingProjects/SGridProject" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.DirectoryMappings" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\MKayumov\PROJECTS\IdeaFiles\AGR.QA.DEMO\src\test\java\com" />
       <recent name="C:\Users\MKayumov\PROJECTS\IdeaFiles\AGR.QA.DEMO1" />
       <recent name="C:\Users\MKayumov\PROJECTS\IdeaFiles\AGR.QA.Demo" />
       <recent name="C:\Users\MKayumov\PROJECTS\IdeaFiles\AGR.QA.Demo\src\test\resources" />
       <recent name="C:\Users\MKayumov\PROJECTS\IdeaFiles\AGR.QA.Demo\src\test\java" />
-      <recent name="C:\Users\MKayumov\IdeaFiles\SFCCDemo" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\MKayumov\PROJECTS\IdeaFiles\AGR.QA.DEMO\src\test\java\com\ashley_ui\step_definitions" />
@@ -100,13 +103,26 @@
       <recent name="com.Practice.step_definitions.base" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CreatingPropertiesFile">
+  <component name="RunManager" selected="JUnit.CukesRunner (1)">
     <configuration name="CreatingPropertiesFile" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ashley_ui.testsData.CreatingPropertiesFile" />
       <module name="AGR.QA.Demo" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.ashley_ui.testsData.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreatingPropertiesFile" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="CreatingPropertiesFile" />
+      <module name="CrossBrowserTest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value=".*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -135,25 +151,6 @@
       <module name="AGR.QA.Demo" />
       <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
       <option name="SUGGESTED_NAME" value="Feature: amazonSearch" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="io.cucumber.core.cli.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Scenario: User enters value and checks search bar works correctly" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/googleSearch.feature" />
-      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
-      <module name="AGR.QA.Demo" />
-      <option name="NAME_FILTER" value="^User enters value and checks search bar works correctly$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^User enters value and checks search bar works correctly$&quot;" />
-      <option name="SUGGESTED_NAME" value="Scenario: User enters value and checks search bar works correctly" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -201,21 +198,6 @@
       </method>
     </configuration>
     <configuration name="CukesRunner" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Cucumber-junit-main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.Practice.runners.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.Practice.runners" />
-      <option name="MAIN_CLASS_NAME" value="com.Practice.runners.CukesRunner" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CukesRunner" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SFCCDemo" />
       <extension name="coverage">
         <pattern>
@@ -232,11 +214,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.CreatingPropertiesFile" />
         <item itemvalue="JUnit.CukesRunner (1)" />
+        <item itemvalue="Application.CreatingPropertiesFile (1)" />
+        <item itemvalue="Application.CreatingPropertiesFile" />
         <item itemvalue="Cucumber Java.Scenario: User enters value in Amazon search bar and checks search bar works correctly" />
         <item itemvalue="Cucumber Java.Feature: amazonSearch" />
-        <item itemvalue="Cucumber Java.Scenario: User enters value and checks search bar works correctly" />
       </list>
     </recent_temporary>
   </component>
@@ -364,7 +346,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647818982049</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="deleted amazon search">
+      <created>1647890191505</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1647890191505</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -389,7 +378,8 @@
     <MESSAGE value="Fixed etsy.com feature mistyped error" />
     <MESSAGE value="Checking Main Trigger" />
     <MESSAGE value="agr.demo-ci build" />
-    <option name="LAST_COMMIT_MESSAGE" value="agr.demo-ci build" />
+    <MESSAGE value="deleted amazon search" />
+    <option name="LAST_COMMIT_MESSAGE" value="deleted amazon search" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="2" time="22.645">
-<testcase classname="Etsy search" name="User heads to etsy.com and searches for an item and sees expected item in search result" time="15.626">
-<system-out><![CDATA[Given User is on Etsy home page.............................................passed
-When User clicks on main search bar.........................................passed
-And User types "decor" in search bar........................................passed
-And User clicks on search icon..............................................passed
-Then User should be able to see "decor" in results page.....................passed
-]]></system-out>
-</testcase>
-<testcase classname="Google search" name="User enters value and checks search bar works correctly" time="6.696">
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="13.659">
+<testcase classname="Google search" name="User enters value and checks search bar works correctly" time="13.507">
 <system-out><![CDATA[Given User is on google home page...........................................passed
 When User clicks on search bar..............................................passed
 And User types "Tesla" in search bar and clicks enter.......................passed
