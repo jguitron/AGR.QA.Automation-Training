@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="AGR.QA.Demo" target="8" />
+      <module name="AGR.QA.Demo" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

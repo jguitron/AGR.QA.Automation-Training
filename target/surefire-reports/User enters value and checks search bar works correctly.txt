@@ -1,4 +1,29 @@
 -------------------------------------------------------------------------------
 Test set: User enters value and checks search bar works correctly
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.8 s - in User enters value and checks search bar works correctly
+Tests run: 7, Failures: 0, Errors: 3, Skipped: 3, Time elapsed: 0.227 s <<< FAILURE! - in User enters value and checks search bar works correctly
+User enters value and checks search bar works correctly.User is on google home page  Time elapsed: 0.009 s  <<< ERROR!
+io.cucumber.core.exception.CucumberException: Failed to instantiate class com.ashley_ui.step_definitions.GoogleSearchStepDefs
+Caused by: java.lang.reflect.InvocationTargetException
+Caused by: org.openqa.selenium.WebDriverException: 
+Your OS does not support Safari
+Build info: version: '4.1.2', revision: '9a5a329c5a'
+System info: host: 'AYBOFLLT0025765', ip: '10.11.8.21', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_321'
+Driver info: driver.version: Driver
+
+User enters value and checks search bar works correctly  Time elapsed: 0 s  <<< ERROR!
+io.cucumber.core.exception.CucumberException: Failed to instantiate class com.ashley_ui.step_definitions.GoogleSearchStepDefs
+Caused by: java.lang.reflect.InvocationTargetException
+Caused by: org.openqa.selenium.WebDriverException: 
+Your OS does not support Safari
+Build info: version: '4.1.2', revision: '9a5a329c5a'
+System info: host: 'AYBOFLLT0025765', ip: '10.11.8.21', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_321'
+Driver info: driver.version: Driver
+
+User enters value and checks search bar works correctly  Time elapsed: 0 s  <<< ERROR!
+org.openqa.selenium.WebDriverException: 
+Your OS does not support Safari
+Build info: version: '4.1.2', revision: '9a5a329c5a'
+System info: host: 'AYBOFLLT0025765', ip: '10.11.8.21', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_321'
+Driver info: driver.version: Driver
+

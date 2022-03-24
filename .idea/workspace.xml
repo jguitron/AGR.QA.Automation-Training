@@ -78,7 +78,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TrainingProjects/SGridProject" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TrainingProjects/ThreeLayersTest" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -103,7 +103,7 @@
       <recent name="com.Practice.step_definitions.base" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CukesRunner (1)">
+  <component name="RunManager" selected="JUnit.CukesRunner">
     <configuration name="CreatingPropertiesFile" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.ashley_ui.testsData.CreatingPropertiesFile" />
       <module name="AGR.QA.Demo" />
@@ -182,7 +182,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CukesRunner (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CukesRunner" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AGR.QA.Demo" />
       <extension name="coverage">
         <pattern>
@@ -192,30 +192,43 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.ashley_ui.runners" />
       <option name="MAIN_CLASS_NAME" value="com.ashley_ui.runners.CukesRunner" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
+      <envs>
+        <env name="browser" value="firefox" />
+        <env name="cucumber.options" value="&quot;--tags @smoke&quot;" />
+      </envs>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CukesRunner" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SFCCDemo" />
+    <configuration name="TestBrowsers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AGR.QA.Demo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.Apollo.runners.*" />
+          <option name="PATTERN" value="com.browser_tests.crossbrowser_test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.Practice.runners" />
-      <option name="MAIN_CLASS_NAME" value="com.Apollo.runners.CukesRunner" />
+      <option name="PACKAGE_NAME" value="com.browser_tests.crossbrowser_test" />
+      <option name="MAIN_CLASS_NAME" value="com.browser_tests.crossbrowser_test.TestBrowsers" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.test" />
+      <item itemvalue="Application.CreatingPropertiesFile" />
+      <item itemvalue="Cucumber Java.Feature: amazonSearch" />
+      <item itemvalue="Cucumber Java.Scenario: User enters value in Amazon search bar and checks search bar works correctly" />
+      <item itemvalue="JUnit.CukesRunner" />
+      <item itemvalue="JUnit.TestBrowsers" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CukesRunner (1)" />
-        <item itemvalue="Application.CreatingPropertiesFile (1)" />
+        <item itemvalue="JUnit.CukesRunner" />
+        <item itemvalue="JUnit.TestBrowsers" />
         <item itemvalue="Application.CreatingPropertiesFile" />
         <item itemvalue="Cucumber Java.Scenario: User enters value in Amazon search bar and checks search bar works correctly" />
         <item itemvalue="Cucumber Java.Feature: amazonSearch" />
@@ -353,7 +366,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647890191505</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="deleted amazon search">
+      <created>1648043911409</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1648043911409</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -379,7 +399,8 @@
     <MESSAGE value="Checking Main Trigger" />
     <MESSAGE value="agr.demo-ci build" />
     <MESSAGE value="deleted amazon search" />
-    <option name="LAST_COMMIT_MESSAGE" value="deleted amazon search" />
+    <MESSAGE value="Updated driver class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated driver class" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
