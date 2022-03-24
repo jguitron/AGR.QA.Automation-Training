@@ -78,11 +78,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TrainingProjects/ThreeLayersTest" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TrainingProjects/TampaTeamTraining" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.DirectoryMappings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -91,6 +91,7 @@
       <recent name="C:\Users\MKayumov\PROJECTS\IdeaFiles\AGR.QA.Demo" />
       <recent name="C:\Users\MKayumov\PROJECTS\IdeaFiles\AGR.QA.Demo\src\test\resources" />
       <recent name="C:\Users\MKayumov\PROJECTS\IdeaFiles\AGR.QA.Demo\src\test\java" />
+      <recent name="C:\Users\MKayumov\IdeaFiles\SFCCDemo" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\MKayumov\PROJECTS\IdeaFiles\AGR.QA.DEMO\src\test\java\com\ashley_ui\step_definitions" />
@@ -400,7 +401,8 @@
     <MESSAGE value="agr.demo-ci build" />
     <MESSAGE value="deleted amazon search" />
     <MESSAGE value="Updated driver class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated driver class" />
+    <MESSAGE value="Changed manual error back to PASS" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed manual error back to PASS" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

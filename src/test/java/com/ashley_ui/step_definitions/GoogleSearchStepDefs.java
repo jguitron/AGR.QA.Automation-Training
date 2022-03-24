@@ -3,13 +3,11 @@ package com.ashley_ui.step_definitions;
 import com.ashley_ui.pages.GooglePage;
 import com.ashley_ui.utilities.BrowserUtils;
 import com.ashley_ui.utilities.Driver;
-import io.cucumber.java.en.*;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.idealized.Domains;
-
-import java.util.function.Function;
 
 public class GoogleSearchStepDefs {
 
@@ -19,7 +17,7 @@ public class GoogleSearchStepDefs {
     public void user_is_on_google_home_page() {
         Driver.getDriver().get("https://google.com");
         System.out.println(Driver.getDriver().getCurrentUrl());
-        Assert.assertTrue(Driver.getDriver().getCurrentUrl().equals("https://www.google.com/"));
+        Assert.assertEquals(Driver.getDriver().getCurrentUrl(),"https://www.google.com/");
 
     }
 
@@ -36,7 +34,7 @@ public class GoogleSearchStepDefs {
     @Then("User should see {string} in results page")
     public void user_should_see_in_results_page(String value) {
         BrowserUtils.sleep(3);
-        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains("manual error.replace with: value"));
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(value));
     }
 
 }
