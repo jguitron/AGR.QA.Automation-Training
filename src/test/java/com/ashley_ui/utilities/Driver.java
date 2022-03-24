@@ -9,25 +9,24 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.safari.SafariOptions;
 
 import java.net.URL;
 import java.time.Duration;
 
 public class Driver {
-
     private Driver() {
     }
 
-    private static ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
-
+    private static InheritableThreadLocal<WebDriver> driverPool = new InheritableThreadLocal<>();
     public static WebDriver getDriver() {
         if (driverPool.get() == null) {
             synchronized (Driver.class) {
 
-            String browserType = ConfigurationReader.getProperty("browser");
+//          if we pass the driver from terminal then uses that one
+//          if we do not pass the driver from terminal then uses from properties file
+            String browser = System.getProperty("browser") != null ? browser = System.getProperty("browser") : ConfigurationReader.getProperty("browser");
 
-                switch (browserType) {
+                switch (browser) {
                     case "chrome":
                         WebDriverManager.chromedriver().setup();
                         ChromeOptions chromeOptions = new ChromeOptions();
@@ -56,7 +55,6 @@ public class Driver {
                     case "chrome-headless":
                         WebDriverManager.chromedriver().setup();
                         ChromeOptions chromeOption = new ChromeOptions();
-                        chromeOption.addArguments(("window-size=1920,1080"));
                         chromeOption.addArguments("--disable-notifications");
                         driverPool.set(new ChromeDriver(chromeOption.setHeadless(true)));
                         driverPool.get().manage().window().maximize();
@@ -89,11 +87,10 @@ public class Driver {
                         break;
 
                     case "safari":
-                        if (System.getProperty("os.name").toLowerCase().contains("windows")) {
-                            throw new WebDriverException("Your operating system does not support the requested browser");
+                        if (!System.getProperty("os.name").toLowerCase().contains("mac")) {
+                            throw new WebDriverException("Your OS does not support Safari");
                         }
                         WebDriver driver = WebDriverManager.safaridriver().browserInDocker().create();
-                        SafariOptions safariOptions = new SafariOptions();
                         driverPool.set(driver);
                         break;
 
