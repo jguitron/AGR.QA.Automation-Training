@@ -36,7 +36,7 @@ public class GoogleSearchStepDefs {
     @Then("User should see {string} in results page")
     public void user_should_see_in_results_page(String value) {
         BrowserUtils.sleep(3);
-        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(value));
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains("manual error.replace with: value"));
     }
 
 }
