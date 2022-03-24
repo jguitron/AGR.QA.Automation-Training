@@ -1,88 +1,88 @@
-# Maven
-# Build, test, and deploy with Apache Maven
+# # Maven
+# # Build, test, and deploy with Apache Maven
 
-trigger:
-- main
+# trigger:
+# - main
 
-pool:
-  name: DevOps
-  demands: maven
+# pool:
+#   name: DevOps
+#   demands: maven
 
-variables:
-  MAVEN_CACHE_FOLDER: $(Pipeline.Workspace)/.m2/repository
-  MAVEN_OPTS: '-Dmaven.repo.local=$(MAVEN_CACHE_FOLDER)'
+# variables:
+#   MAVEN_CACHE_FOLDER: $(Pipeline.Workspace)/.m2/repository
+#   MAVEN_OPTS: '-Dmaven.repo.local=$(MAVEN_CACHE_FOLDER)'
 
-steps:
-- task: Cache@2
-  displayName: Cache Maven local repo
-  inputs:
-    key: 'maven | "$(Agent.OS)" | **/pom.xml'
-    restoreKeys: |
-      maven | "$(Agent.OS)"
-      maven
-    path: $(MAVEN_CACHE_FOLDER)
-- script: mvn install -B -e
-
-- task: Maven@3
-  displayName: Build
-  inputs:
-    options: '-DskipTests'
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m $(MAVEN_OPTS)'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    goals: 'package'
-
-- task: Maven@3
-  displayName: Test
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m $(MAVEN_OPTS)'
-    goals: 'test'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    testRunTitle: 'AzDo Test Report'
-    javaHomeOption: 'JDKVersion'
-    mavenVersionOption: 'Default'
-    mavenAuthenticateFeed: false
-    effectivePomSkip: false
-    sonarQubeRunAnalysis: false
+# steps:
+# - task: Cache@2
+#   displayName: Cache Maven local repo
+#   inputs:
+#     key: 'maven | "$(Agent.OS)" | **/pom.xml'
+#     restoreKeys: |
+#       maven | "$(Agent.OS)"
+#       maven
+#     path: $(MAVEN_CACHE_FOLDER)
+# - script: mvn install -B -e
 
 # - task: Maven@3
-#   displayName: Deploy
+#   displayName: Build
+#   inputs:
+#     options: '-DskipTests'
+#     mavenPomFile: 'pom.xml'
+#     mavenOptions: '-Xmx3072m $(MAVEN_OPTS)'
+#     javaHomeOption: 'JDKVersion'
+#     jdkVersionOption: '1.8'
+#     jdkArchitectureOption: 'x64'
+#     goals: 'package'
+
+# - task: Maven@3
+#   displayName: Test
 #   inputs:
 #     mavenPomFile: 'pom.xml'
 #     mavenOptions: '-Xmx3072m $(MAVEN_OPTS)'
-#     goals: 'deploy'
-#     options: '-DskipTests'
-#     publishJUnitResults: false
+#     goals: 'test'
+#     publishJUnitResults: true
+#     testResultsFiles: '**/surefire-reports/TEST-*.xml'
+#     testRunTitle: 'AzDo Test Report'
 #     javaHomeOption: 'JDKVersion'
 #     mavenVersionOption: 'Default'
 #     mavenAuthenticateFeed: false
 #     effectivePomSkip: false
 #     sonarQubeRunAnalysis: false
 
+# # - task: Maven@3
+# #   displayName: Deploy
+# #   inputs:
+# #     mavenPomFile: 'pom.xml'
+# #     mavenOptions: '-Xmx3072m $(MAVEN_OPTS)'
+# #     goals: 'deploy'
+# #     options: '-DskipTests'
+# #     publishJUnitResults: false
+# #     javaHomeOption: 'JDKVersion'
+# #     mavenVersionOption: 'Default'
+# #     mavenAuthenticateFeed: false
+# #     effectivePomSkip: false
+# #     sonarQubeRunAnalysis: false
 
-- task: CopyFiles@2
-  displayName: 'Copy Files'
-  inputs:
-    SourceFolder: '$(system.defaultworkingdirectory)'
-    Contents: '\**\*.jar'
-    TargetFolder: '$(build.artifactstagingdirectory)'
-  condition: succeededOrFailed()
-  timeoutInMinutes: 2
-  retryCountOnTaskFailure: 2
 
-- task: PublishPipelineArtifact@1
-  displayName: 'Publish Pipeline Artifact'
-  inputs:
-    targetPath: target
-    artifact: drop
+# - task: CopyFiles@2
+#   displayName: 'Copy Files'
+#   inputs:
+#     SourceFolder: '$(system.defaultworkingdirectory)'
+#     Contents: '\**\*.jar'
+#     TargetFolder: '$(build.artifactstagingdirectory)'
+#   condition: succeededOrFailed()
+#   timeoutInMinutes: 2
+#   retryCountOnTaskFailure: 2
 
-- task: PublishTestResults@2
-  displayName: 'Publish Test Results'
-  inputs:
-    testResultsFiles: '**/TEST-*.xml' 
-    mergeTestResults: true
-    publishRunAttachments: true
+# - task: PublishPipelineArtifact@1
+#   displayName: 'Publish Pipeline Artifact'
+#   inputs:
+#     targetPath: target
+#     artifact: drop
+
+# - task: PublishTestResults@2
+#   displayName: 'Publish Test Results'
+#   inputs:
+#     testResultsFiles: '**/TEST-*.xml' 
+#     mergeTestResults: true
+#     publishRunAttachments: true
