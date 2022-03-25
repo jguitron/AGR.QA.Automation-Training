@@ -12,6 +12,34 @@
 #   MAVEN_CACHE_FOLDER: $(Pipeline.Workspace)/.m2/repository
 #   MAVEN_OPTS: '-Dmaven.repo.local=$(MAVEN_CACHE_FOLDER)'
 
+# ====================================================================================================================
+    # Below: for multi-configuration parallelism:
+
+#  stages:
+#  - stage: MyStage
+#    jobs:
+#    - job: MyJob
+#      strategy:
+#      maxparallel: 0
+#      matrix:
+#         JOB1:
+#           Version: 1.0
+#           AppName: chrome  
+#         JOB2:
+#           Version: 2.0
+#           AppName: safari
+#         JOB3:
+#           Version: 3.0
+#           AppName: firefox
+
+#     steps:
+#     - script: 
+#         echo "$(Version)"
+#         echo "$(AppName)"
+#       displayName: "Echo Variables"          
+
+# ======================================================================================================================
+# 
 # steps:
 # - task: Cache@2
 #   displayName: Cache Maven local repo
