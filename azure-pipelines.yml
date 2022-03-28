@@ -5,15 +5,11 @@ trigger:
 strategy:
   matrix:
     linux:
-      name: "devops"
-    mac:
-      name: "macOS-latest"
-    # windows:
-    #   imageName: "windows-latest"
-  maxParallel: 2
+      serverName: "devops"
+  maxParallel: 1
 
 pool:
-  vmImage: $(name)
+  name: $(serverName)
 
 steps:
 - task: Maven@3
@@ -30,6 +26,29 @@ steps:
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
 
+- task: CopyFiles@2
+  displayName: 'Copy Files'
+  inputs:
+    SourceFolder: '$(system.defaultworkingdirectory)'
+    Contents: '\**\*.jar'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+  condition: succeededOrFailed()
+  timeoutInMinutes: 20
+  retryCountOnTaskFailure: 2
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
+
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results'
+  inputs:
+    testResultsFiles: '**/TEST-*.xml' 
+    mergeTestResults: true
+    publishRunAttachments: true
+
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: "JaCoCo"
@@ -38,7 +57,6 @@ steps:
     failIfCoverageEmpty: true
 
 # ====================================================================================================================
-    # Below: for multi-configuration parallelism:
 
 #  stages:
 #  - stage: MyStage
@@ -116,26 +134,3 @@ steps:
 # #     effectivePomSkip: false
 # #     sonarQubeRunAnalysis: false
 
-
-# - task: CopyFiles@2
-#   displayName: 'Copy Files'
-#   inputs:
-#     SourceFolder: '$(system.defaultworkingdirectory)'
-#     Contents: '\**\*.jar'
-#     TargetFolder: '$(build.artifactstagingdirectory)'
-#   condition: succeededOrFailed()
-#   timeoutInMinutes: 2
-#   retryCountOnTaskFailure: 2
-
-# - task: PublishPipelineArtifact@1
-#   displayName: 'Publish Pipeline Artifact'
-#   inputs:
-#     targetPath: target
-#     artifact: drop
-
-# - task: PublishTestResults@2
-#   displayName: 'Publish Test Results'
-#   inputs:
-#     testResultsFiles: '**/TEST-*.xml' 
-#     mergeTestResults: true
-#     publishRunAttachments: true
