@@ -374,7 +374,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648043911409</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="assertTrues replaced with assertEqual..">
+      <created>1648164290399</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1648164290399</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -402,7 +409,8 @@
     <MESSAGE value="deleted amazon search" />
     <MESSAGE value="Updated driver class" />
     <MESSAGE value="Changed manual error back to PASS" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed manual error back to PASS" />
+    <MESSAGE value="assertTrues replaced with assertEqual.." />
+    <option name="LAST_COMMIT_MESSAGE" value="assertTrues replaced with assertEqual.." />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

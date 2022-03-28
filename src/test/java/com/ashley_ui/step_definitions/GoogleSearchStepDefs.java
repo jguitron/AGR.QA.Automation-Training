@@ -7,7 +7,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class GoogleSearchStepDefs {
 
@@ -35,6 +37,13 @@ public class GoogleSearchStepDefs {
     public void user_should_see_in_results_page(String value) {
         BrowserUtils.sleep(3);
         Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(value));
+
+        Capabilities cap = ((RemoteWebDriver)Driver.getDriver()).getCapabilities();
+        System.out.println("Browser name: " + cap.getBrowserName());
+        System.out.println("Browser version" + cap.getBrowserVersion());
+        System.out.println("Platform name: " + cap.getPlatformName());
+
+
     }
 
 }
