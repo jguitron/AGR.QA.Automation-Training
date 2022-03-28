@@ -27,7 +27,7 @@ public class Driver {
             String browser = System.getProperty("browser") != null ? browser = System.getProperty("browser") : ConfigurationReader.getProperty("browser");
 
                 switch (browser) {
-                    case "chrome":
+                    case "chrome-local":
                         WebDriverManager.chromedriver().setup();
                         ChromeOptions chromeOptions = new ChromeOptions();
                         chromeOptions.addArguments("--disable-notifications");
@@ -61,7 +61,7 @@ public class Driver {
                         driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                         break;
 
-                    case "firefox":
+                    case "firefox-local":
                         WebDriverManager.firefoxdriver().setup();
                         FirefoxOptions firefoxOptions = new FirefoxOptions();
                         firefoxOptions.addArguments("--disable-notifications");
