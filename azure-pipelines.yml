@@ -6,7 +6,7 @@ strategy:
   matrix:
     linux:
       serverName: "devops"
-  maxParallel: 1
+
 
 pool:
   name: $(serverName)
@@ -18,7 +18,6 @@ steps:
     goals: 'clean test'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    codeCoverageToolOption: 'JaCoCo'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.8'
     mavenVersionOption: 'Default'
