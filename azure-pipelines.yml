@@ -1,16 +1,41 @@
-# # Maven
-# # Build, test, and deploy with Apache Maven
 
-# trigger:
-# - main
+trigger:
+-   main
 
-# pool:
-#   name: DevOps
-#   demands: maven
+strategy:
+  matrix:
+    linux:
+      imageName: "devops"
+    mac:
+      imageName: "macOS-latest"
+    # windows:
+    #   imageName: "windows-latest"
+  maxParallel: 2
 
-# variables:
-#   MAVEN_CACHE_FOLDER: $(Pipeline.Workspace)/.m2/repository
-#   MAVEN_OPTS: '-Dmaven.repo.local=$(MAVEN_CACHE_FOLDER)'
+pool:
+  vmImage: $(imageName)
+
+steps:
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'clean test'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    codeCoverageToolOption: 'JaCoCo'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.8'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
+
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: "JaCoCo"
+    summaryFileLocation: "$(System.DefaultWorkingDirectory)/**/site/jacoco/jacoco.xml"
+    reportDirectory: "$(System.DefaultWorkingDirectory)/**/site/jacoco"
+    failIfCoverageEmpty: true
 
 # ====================================================================================================================
     # Below: for multi-configuration parallelism:
