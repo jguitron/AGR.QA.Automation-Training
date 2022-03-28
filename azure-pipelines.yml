@@ -5,15 +5,15 @@ trigger:
 strategy:
   matrix:
     linux:
-      imageName: "devops"
+      name: "devops"
     mac:
-      imageName: "macOS-latest"
+      name: "macOS-latest"
     # windows:
     #   imageName: "windows-latest"
   maxParallel: 2
 
 pool:
-  vmImage: $(imageName)
+  vmImage: $(name)
 
 steps:
 - task: Maven@3
