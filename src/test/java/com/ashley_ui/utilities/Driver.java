@@ -22,8 +22,6 @@ public class Driver {
         if (driverPool.get() == null) {
             synchronized (Driver.class) {
 
-//          if we pass the driver from terminal then uses that one
-//          if we do not pass the driver from terminal then uses from properties file
             String browser = System.getProperty("browser") != null ? browser = System.getProperty("browser") : ConfigurationReader.getProperty("browser");
 
                 switch (browser) {
