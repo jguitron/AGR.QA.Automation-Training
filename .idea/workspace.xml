@@ -230,9 +230,9 @@
       <list>
         <item itemvalue="JUnit.CukesRunner" />
         <item itemvalue="JUnit.TestBrowsers" />
-        <item itemvalue="Application.CreatingPropertiesFile" />
         <item itemvalue="Cucumber Java.Scenario: User enters value in Amazon search bar and checks search bar works correctly" />
         <item itemvalue="Cucumber Java.Feature: amazonSearch" />
+        <item itemvalue="Application.CreatingPropertiesFile" />
       </list>
     </recent_temporary>
   </component>
