@@ -1,17 +1,17 @@
 
 trigger:
--   main
-
-strategy:
-  matrix:
-    linux:
-      serverName: "devops"
-
+-  main
 
 pool:
-  name: $(serverName)
+  name: 'devops'
 
 steps:
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: export browser=$(browser)
+
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
