@@ -39,9 +39,9 @@ public class GoogleSearchStepDefs {
         Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains(value));
 
         Capabilities cap = ((RemoteWebDriver)Driver.getDriver()).getCapabilities();
-        System.out.println("Browser name: " + cap.getBrowserName());
-        System.out.println("Browser version" + cap.getBrowserVersion());
-        System.out.println("Platform name: " + cap.getPlatformName());
+        System.out.println("-------------->Browser name:----------------> " + cap.getBrowserName());
+        System.out.println("---------------->Browser version ----------------> " + cap.getBrowserVersion());
+        System.out.println("---------------->Platform name:----------------> " + cap.getPlatformName());
 
 
     }

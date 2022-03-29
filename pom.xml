@@ -14,19 +14,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <repositories>
-    <repository>
-        <id>Maven_Feed</id>
-        <url>https://pkgs.dev.azure.com/ashleyfurniture/5ccb404e-0330-40fa-959f-e790abba4418/_packaging/Maven_Feed/maven/v1</url>
-        <releases>
-            <enabled>true</enabled>
-        </releases>
-        <snapshots>
-            <enabled>true</enabled>
-        </snapshots>
-    </repository>
-    </repositories>
-
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
@@ -151,7 +138,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>AGR.QA.Automation</projectName>
+                            <projectName>agr.qa.demo</projectName>
                             <outputDirectory>${project.build.directory}</outputDirectory>
 <!--                            <checkBuildResult>false</checkBuildResult>-->
                             <inputDirectory>${project.build.directory}</inputDirectory>
@@ -162,6 +149,7 @@
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
     </build>
 </project>
