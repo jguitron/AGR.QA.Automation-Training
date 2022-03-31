@@ -68,6 +68,13 @@
             <version>7.2.3</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-core -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-core</artifactId>
+            <version>7.2.3</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
         <dependency>
             <groupId>com.github.javafaker</groupId>
@@ -96,7 +103,6 @@
             <artifactId>poi-ooxml</artifactId>
             <version>5.1.0</version>
         </dependency>
-
     </dependencies>
 
     <!-- PLUGINS  -->
@@ -118,7 +124,7 @@
                 <version>3.0.0-M5</version>
                 <configuration>
                     <parallel>methods</parallel>
-                    <threadCount>1</threadCount>
+                    <threadCount>2</threadCount>
                     <perCoreThreadCount>false</perCoreThreadCount>
                     <testFailureIgnore>true</testFailureIgnore>
                     <includes>
@@ -140,16 +146,24 @@
                         <configuration>
                             <projectName>agr.qa.demo</projectName>
                             <outputDirectory>${project.build.directory}</outputDirectory>
-<!--                            <checkBuildResult>false</checkBuildResult>-->
-                            <inputDirectory>${project.build.directory}</inputDirectory>
+                            <inputDirectory>${project.build.directory}/jsonReports/</inputDirectory>
                             <jsonFiles>
                                 <param>**/cucumber*.json</param>
                             </jsonFiles>
+
+                            <classificationDirectory>${project.build.directory}/classifications</classificationDirectory>
+                            <classificationFiles>
+                                <param>sample.properties</param>
+                                <param>other.properties</param>
+                            </classificationFiles>
+                            <mergeFeaturesById>false</mergeFeaturesById>
+                            <mergeFeaturesWithRetest>false</mergeFeaturesWithRetest>
+                            <checkBuildResult>false</checkBuildResult>
                         </configuration>
+
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
 </project>
