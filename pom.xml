@@ -103,6 +103,16 @@
             <artifactId>poi-ooxml</artifactId>
             <version>5.1.0</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.36</version>
+            <scope>test</scope>
+        </dependency>
+
+
     </dependencies>
 
     <!-- PLUGINS  -->
@@ -129,6 +139,8 @@
                     <testFailureIgnore>true</testFailureIgnore>
                     <includes>
                         <include>**/CukesRunner*.java</include>
+<!--                        <include>**/MobileRunner*.java</include>-->
+<!--                        <include>**/TabletRunner*.java</include>-->
                     </includes>
                 </configuration>
             </plugin>
@@ -146,21 +158,10 @@
                         <configuration>
                             <projectName>agr.qa.demo</projectName>
                             <outputDirectory>${project.build.directory}</outputDirectory>
-                            <inputDirectory>${project.build.directory}/jsonReports/</inputDirectory>
                             <jsonFiles>
                                 <param>**/cucumber*.json</param>
                             </jsonFiles>
-
-                            <classificationDirectory>${project.build.directory}/classifications</classificationDirectory>
-                            <classificationFiles>
-                                <param>sample.properties</param>
-                                <param>other.properties</param>
-                            </classificationFiles>
-                            <mergeFeaturesById>false</mergeFeaturesById>
-                            <mergeFeaturesWithRetest>false</mergeFeaturesWithRetest>
-                            <checkBuildResult>false</checkBuildResult>
                         </configuration>
-
                     </execution>
                 </executions>
             </plugin>

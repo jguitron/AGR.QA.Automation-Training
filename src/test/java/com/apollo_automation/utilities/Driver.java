@@ -1,4 +1,4 @@
-package com.apollo_project.utilities;
+package com.apollo_automation.utilities;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +9,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-
 import java.net.URL;
 import java.time.Duration;
 
@@ -21,16 +20,13 @@ public class Driver {
     public static WebDriver getDriver() {
         if (driverPool.get() == null) {
             synchronized (Driver.class) {
-
             String browser = System.getProperty("browser") != null ? browser = System.getProperty("browser") : ConfigurationReader.getProperty("browser");
-
                 switch (browser) {
                     case "chrome":
                         WebDriverManager.chromedriver().setup();
                         ChromeOptions chromeOptions = new ChromeOptions();
                         chromeOptions.addArguments("--disable-notifications");
                         driverPool.set(new ChromeDriver(chromeOptions));
-                        driverPool.get().manage().window().maximize();
                         driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                         break;
 
@@ -43,7 +39,6 @@ public class Driver {
                             desiredCapabilities.setBrowserName("chrome");
                             remoteOptions.addArguments("--disable-notifications");
                             driverPool.set(new RemoteWebDriver(url, desiredCapabilities));
-                            driverPool.get().manage().window().maximize();
                             driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -55,7 +50,6 @@ public class Driver {
                         ChromeOptions chromeOption = new ChromeOptions();
                         chromeOption.addArguments("--disable-notifications");
                         driverPool.set(new ChromeDriver(chromeOption.setHeadless(true)));
-                        driverPool.get().manage().window().maximize();
                         driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                         break;
 
@@ -64,7 +58,6 @@ public class Driver {
                         FirefoxOptions firefoxOptions = new FirefoxOptions();
                         firefoxOptions.addArguments("--disable-notifications");
                         driverPool.set(new FirefoxDriver(firefoxOptions));
-                        driverPool.get().manage().window().maximize();
                         driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                         break;
 
@@ -77,7 +70,6 @@ public class Driver {
                             desiredCapabilities1.setBrowserName("firefox");
                             remoteOptions1.addArguments("--disable-notifications");
                             driverPool.set(new RemoteWebDriver(url, desiredCapabilities1));
-                            driverPool.get().manage().window().maximize();
                             driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
                         } catch (Exception e) {
                             e.printStackTrace();
