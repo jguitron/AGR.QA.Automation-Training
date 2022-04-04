@@ -1,4 +1,4 @@
-package com.apollo_project.utilities;
+package com.apollo_automation.utilities;
 
 import org.junit.Assert;
 import org.openqa.selenium.*;
@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
-
 import static org.junit.Assert.assertTrue;
 
 public class BrowserUtils {

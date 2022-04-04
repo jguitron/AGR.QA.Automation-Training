@@ -11,20 +11,13 @@ Testing tool:           "JUnit",            Version - 4.13.2;
 
 This Automation Framework is capable to Automate, Execute and Generate Reports on local as well as on the Server.
 General idea of current framework using Cucumber BDD to make steps clear, easy to read and understand for non-technical
-people including Management team. We can add DB and API test caeses accordingly within other packages.
+people including Management team. We can add DB and API test cases accordingly within other packages.
 Page Object Model is implemented as well within the framework to achieve easy access and maintenance of previously located WebElements.
 There are examples of Commands given below how to trigger the Runner class.
 
 # Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
-
-# Build and Test
+# Build and Test - MAVEN
 ## cucumber-project
-Cucumber framework used for running automation tests on Azure Pipelines
 
 ## Running locally
 To run locally and generate HTML reports, use this maven goal *verify*. HTML reports should be generated under
@@ -34,9 +27,9 @@ mvn verify
 mvn clean verify  --> to clean Target folder 
 ```
 
-## Azure Pipeline (Jenkins)
-Install [Cucumber HTML report plugin] (https://plugins.jenkins.io/cucumber-reports). Create a job and use this
-repository in the repository url field. In the post build actions, select option Cucumber reports and point to the
+## Azure Pipeline
+Install [Cucumber HTML report plugin]. Create a job and use this repository in the repository url field.
+In the post build actions, select option Cucumber reports and point to the
 location of the cucumber json report. Run the project as a maven goal *verify*.
 ```
 mvn clean verify
@@ -46,6 +39,13 @@ mvn clean verify
 We can pass a custom tag using terminal. Example tags are **@smoke**, **@regression**...
 ```
 mvn verify -Dcucumber.options="--tags '@smoke'"
+```
+
+Tags can be placed above the following Gherkin elements:
+``` Feature
+    Scenario
+    Scenario Outline
+    Examples
 ```
 
 We can pass multiple Tags with "OR", "AND" tags:
@@ -60,12 +60,14 @@ We can ignore/skip specific Tags with "~" before tag:
 ```
 
 ## Browsers:
-You can pass change using command line argument BROWSER
+You can change BROWSER value using command line argument:
 ```
 mvn verify -DBROWSER=firefox
 ```
 
-## Clone directly specific branch:
+##Running: 
+
+## Cloning directly specific branch:
 ```
 git clone -b <branchName> --single-branch <repourl>
 ```
