@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
         features="src/test/resources/features",
         glue= "com/apollo_automation/step_definitions",
         dryRun=false,
-        tags="@mobile"
+        tags="@desktop"
 )
 
 public class CukesRunner {
