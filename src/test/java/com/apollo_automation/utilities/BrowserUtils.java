@@ -4,11 +4,13 @@ import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
+
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
+
 import static org.junit.Assert.assertTrue;
 
 public class BrowserUtils {
@@ -30,10 +32,11 @@ public class BrowserUtils {
     }
 
     /**
-     This method accepts String expected title
-     @param expectedTitle
+     * This method accepts String expected title
+     *
+     * @param expectedTitle
      */
-    public static void assertTitle(String expectedTitle){
+    public static void assertTitle(String expectedTitle) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.titleIs(expectedTitle));
         String actualTitle = Driver.getDriver().getTitle();
@@ -41,11 +44,11 @@ public class BrowserUtils {
     }
 
     /**
-     This method accepts a List<WebElements> and returns List<String>
-     @param webElementList
+     * This method accepts a List<WebElements> and returns List<String>
+     *
+     * @param webElementList
      */
-    public static List<String> getElementsText(List<WebElement> webElementList){
-
+    public static List<String> getElementsText(List<WebElement> webElementList) {
         //Create placeholder List<String>
         List<String> actualAsString = new ArrayList<>();
         for (WebElement each : webElementList) {
@@ -244,17 +247,17 @@ public class BrowserUtils {
     }
 
     /**
-     Method that will accept int  arg
-     Wait for given second duration
-     //1sec = 1000 milliseconds
-     //1 * 1000 = 1000
-     Thread.sleep(1000);
-     Thread.sleep(2000);
-     Thread.sleep(3000);
-     BrowserUtils.sleep(1); --> 1 second
+     * Method that will accept int  arg
+     * Wait for given second duration
+     * //1sec = 1000 milliseconds
+     * //1 * 1000 = 1000
+     * Thread.sleep(1000);
+     * Thread.sleep(2000);
+     * Thread.sleep(3000);
+     * BrowserUtils.sleep(1); --> 1 second
      */
     public static void sleep(int second) {
-        second*=1000;
+        second *= 1000;
         try {
             Thread.sleep(second);
         } catch (InterruptedException e) {

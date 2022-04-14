@@ -2,14 +2,12 @@ package com.apollo_automation.testsData;
 
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.junit.Test;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 
 public class ExcelRead {
 
-    @Test
+//    @Test
     public void read_from_excel_file() throws IOException {
 
         String path = "Mock_Data.xlsx";

@@ -4,13 +4,26 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ashleyfurnitures</groupId>
-    <artifactId>agr.qa.demo</artifactId>
+    <groupId>com.ashleyfurniture</groupId>
+    <artifactId>apollo-qa-automation-V2</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <repositories>
+        <repository>
+            <id>Maven_Feed</id>
+            <url>https://pkgs.dev.azure.com/ashleyfurniture/5ccb404e-0330-40fa-959f-e790abba4418/_packaging/Maven_Feed/maven/v1</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -22,7 +35,7 @@
             <version>4.1.2</version>
         </dependency>
 
-        <!--&lt;!&ndash; https://mvnrepository.com/artifact/junit/junit &ndash;&gt;-->
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -42,15 +55,6 @@
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>7.2.3</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-picocontainer -->
-        <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-picocontainer</artifactId>
-            <version>1.2.6</version>
-            <type>pom</type>
-            <scope>test</scope>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
@@ -82,11 +86,12 @@
             <version>1.0.2</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-junit4 -->
+        <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-picocontainer -->
         <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-junit4</artifactId>
-            <version>2.17.3</version>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>1.2.6</version>
+            <type>pom</type>
             <scope>test</scope>
         </dependency>
 
@@ -111,11 +116,8 @@
             <version>1.7.36</version>
             <scope>test</scope>
         </dependency>
-
-
     </dependencies>
 
-    <!-- PLUGINS  -->
     <build>
         <plugins>
             <plugin>
@@ -125,7 +127,6 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
-                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <plugin>
@@ -139,8 +140,6 @@
                     <testFailureIgnore>true</testFailureIgnore>
                     <includes>
                         <include>**/CukesRunner*.java</include>
-<!--                        <include>**/MobileRunner*.java</include>-->
-<!--                        <include>**/TabletRunner*.java</include>-->
                     </includes>
                 </configuration>
             </plugin>
@@ -156,8 +155,10 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>agr.qa.demo</projectName>
+                            <projectName>AGR.QA.Automation</projectName>
                             <outputDirectory>${project.build.directory}</outputDirectory>
+                            <!--                            <checkBuildResult>false</checkBuildResult>-->
+                            <inputDirectory>${project.build.directory}</inputDirectory>
                             <jsonFiles>
                                 <param>**/cucumber*.json</param>
                             </jsonFiles>

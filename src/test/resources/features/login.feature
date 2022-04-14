@@ -1,21 +1,18 @@
-
+@regression
 Feature: Login verification
 
-  Scenario Outline: Login functionality verification
-    Given user is on landing page
-      | https://www.ashleyfurniture.com |
-    And user clicks on login link on "<value>" page
+  @smoke
+  Scenario: Login functionality verification
+    Given user navigates to "sfccURL"
+    And user clicks on login link on platform
     When user enters username and password as below
-      | username  | maxjon.kayumov@gmail.com  |
-      | password  | TestingPassword123$       |
+      | username | maxjon.kayumov@gmail.com |
+      | password | TestingPassword123$      |
     Then user should see user dashboard
 
-    @desktop
-    Examples:
-      | value   |
-      | desktop |
 
-    @mobile @tablet
-    Examples:
-      | value  |
-      | mobile |
+
+
+
+
+
