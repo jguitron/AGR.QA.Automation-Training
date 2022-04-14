@@ -1,5 +1,5 @@
 ![img.png](img.png)
-# Introduction
+### Introduction
 Project name:           "AGR.QA.Automation".
 Programming Language:   "Java",             Version - 1.8;
 Build tool:             "Maven",            Version - 4.0;
@@ -8,66 +8,74 @@ WebDriver:              "WebDriverManager", Version - 5.1.0;
 BDD implemented:        "Cucumber",         Version - 7.2.3;
 Testing tool:           "JUnit",            Version - 4.13.2;
 
-
-This Automation Framework is capable to Automate, Execute and Generate Reports on local as well as on the Server.
-General idea of current framework using Cucumber BDD to make steps clear, easy to read and understand for non-technical
+### Getting Started
+This Selenium Automation Framework is capable to Automate, Execute and Generate Reports on local as well as on Server.
+General idea of current framework using Cucumber BDD (Behavior Driven Development) to make steps clear, easy to read and understand for non-technical
 people including Management team. We can add DB and API test cases accordingly within other packages.
 Page Object Model is implemented as well within the framework to achieve easy access and maintenance of previously located WebElements.
-There are examples of Commands given below how to trigger the Runner class.
+There are examples of Commands given below how to trigger the Runner class locally or on server.
 
-# Getting Started
-# Build and Test - MAVEN
-## cucumber-project
+### Build and Test
+Cucumber-Selenium-Maven-JUnit-4 framework is used for as BDD testing automation.
 
-## Running locally
-To run locally and generate HTML reports, use this maven goal *verify*. HTML reports should be generated under
-target/cucumber-html-reports
-```
-mvn verify
-mvn clean verify  --> to clean Target folder 
-```
+### Test Execution
+To run locally and generate Cucumber-HTML reports: use this maven goal *mvn verify* command in terminal. HTML reports will be generated under:
+Target/cucumber-html-reports/**.html
 
-## Azure Pipeline
-Install [Cucumber HTML report plugin]. Create a job and use this repository in the repository url field.
-In the post build actions, select option Cucumber reports and point to the
-location of the cucumber json report. Run the project as a maven goal *verify*.
+Additional running commands/options in terminal:
 ```
-mvn clean verify
+ mvn verify          --> initialization of test execution with Maven lifecycle! 
+ mvn clean           --> command to clean Target folder 
+ mvn clean verify    --> command to clean Target folder and Build. To get Updated Reports use this command!
 ```
 
-## Tags
+### Running on Server (Azure Pipeline)
+Run the project as a maven goal *verify*.
+```
+ clean verify        ---> set this as "Maven goal" within Agnet Pool Job in Azdo 
+```
+
+### Overriding Environment Variables and Tags:
 We can pass a custom tag using terminal. Example tags are **@smoke**, **@regression**...
 ```
-mvn verify -Dcucumber.options="--tags '@smoke'"
+ mvn clean verify -Dcucumber.filter.tags="@smoke and not @regression"
 ```
 
-Tags can be placed above the following Gherkin elements:
-``` Feature
-    Scenario
-    Scenario Outline
-    Examples
+We can pass multiple Tags as well with "OR", "AND" tags:
 ```
-
-We can pass multiple Tags with "OR", "AND" tags:
-```
-{"@smoke,regression"}  ---> if seperated with COMMA = OR
-{"@smoke","@regression"} ---> if passed in seperate QUOTES = AND 
+ "@smoke,regression"             --->  OR  = if seperated with COMMA
+ "@smoke","@regression"          --->  AND = if passed in seperate QUOTES  
 ```
 
 We can ignore/skip specific Tags with "~" before tag:
 ```
-{"@smoke","~@regression"}
+ "@smoke","~@regression"
 ```
 
-## Browsers:
-You can change BROWSER value using command line argument:
+### Overriding Browsers:
+We can change browser value using command line argument "BROWSER":
 ```
-mvn verify -DBROWSER=firefox
+ mvn verify -Dbrowser=safari
 ```
 
-##Running: 
+We can Override Platform (desktop, tablet, mobile) with below command:
+```
+ mvn clean verify -Dplatform=mobile
+```
 
-## Cloning directly specific branch:
+We can Override Browser, Platform and Tags all same time as well:
+```
+ mvn clean verify -Dbrowser=chrome -Dplatform=mobile -Dcucumber.filter.tags="@wip"
+```
+
+### GIT commands:
+Clone repository:
+```
+git clone URL
+```
+
+Clone directly specific branch:
 ```
 git clone -b <branchName> --single-branch <repourl>
 ```
+

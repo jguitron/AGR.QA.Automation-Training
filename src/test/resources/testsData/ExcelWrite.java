@@ -4,7 +4,6 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.junit.Test;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -16,7 +15,7 @@ public class ExcelWrite {
     XSSFRow row;
     XSSFCell cell;
 
-    @Test
+//    @Test
     public void excel_writing_test() throws IOException {
 
         String path = "SampleData.xlsx";
