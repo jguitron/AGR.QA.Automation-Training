@@ -32,7 +32,7 @@ Additional running commands/options in terminal:
 ### Running on Server (Azure Pipeline)
 Run the project as a maven goal *verify*.
 ```
- clean verify        ---> set this as "Maven goal" within Agnet Pool Job in Azdo 
+ clean verify        ---> set this as "Maven goal" within Agent Pool Job in Azdo 
 ```
 
 ### Overriding Environment Variables and Tags:
