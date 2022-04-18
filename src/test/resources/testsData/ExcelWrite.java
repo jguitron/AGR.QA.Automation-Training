@@ -1,4 +1,4 @@
-package com.apollo_automation.testsData;
+package com.sfcc_smoke.testsData;
 
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;

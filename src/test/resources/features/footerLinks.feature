@@ -3,7 +3,7 @@ Feature: Footer links verification
   Checking if all clickable "links" functioning as expected
 
   Background:
-    Given user navigates to "devURL"
+    Given user navigates to "url"
     When user scrolls down to footer
 
   @smoke

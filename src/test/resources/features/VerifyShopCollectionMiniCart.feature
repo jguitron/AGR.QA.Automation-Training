@@ -1,3 +1,4 @@
+
 Feature: Verification of Mini Cart Changes Qty After Adding From Shop The Collection
   Scenario: User Adds Items To Cart From Shop The Collection
     Given User is on AshleyFurniture's main home page
