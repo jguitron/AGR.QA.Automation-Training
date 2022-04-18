@@ -4,7 +4,7 @@ Feature: Broken links capture
 
   @smoke
   Scenario:  Verify if all URLs in page are valid
-    Given user navigates to "devURL"
+    Given user navigates to "url"
     Then user clicks on each link on page to verify
 
 
