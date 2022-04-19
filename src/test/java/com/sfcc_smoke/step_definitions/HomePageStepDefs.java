@@ -10,7 +10,6 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,28 +18,6 @@ public class HomePageStepDefs {
 
     WebDriver driver = Driver.getDriver();
     HomePage homePage = new HomePage();
-
-    @Given("User is on AshleyFurniture's main home page")
-    public void goToLandingPage() {
-        String url = ConfigReader.getProperty("mainUrl");
-        driver.get((url));
-        BrowserUtils.waitForPageToLoad(2);
-        String expectedTitle = "Ashley HomeStore | Home Furniture & Decor";
-        String actualTitle = driver.getTitle();
-        Assert.assertEquals(expectedTitle, actualTitle);
-    }
-
-    @When("User clicks on X-close button to close iframe popup")
-    public void closeiFrame() {
-        try {
-            BrowserUtils.waitForVisibility(homePage.frameOne, Duration.ofSeconds(4));
-            driver.switchTo().frame(homePage.frameOne);
-            homePage.closeFrame.click();
-            driver.switchTo().defaultContent();
-        } catch (Throwable t) {
-            t.printStackTrace();
-        }
-    }
 
     @When("User gets each available link from main page")
     public void getAllUrls() {

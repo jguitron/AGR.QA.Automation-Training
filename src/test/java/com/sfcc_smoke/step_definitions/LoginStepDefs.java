@@ -11,7 +11,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
-
+import java.time.Duration;
 import java.util.Map;
 
 public class LoginStepDefs {
@@ -21,13 +21,23 @@ public class LoginStepDefs {
     LandingPageLG landingPageLG = new LandingPageLG();
     LandingPageMed landingPageMed = new LandingPageMed();
 
-    @Given("user navigates to {string}")
-    public void navigateToURL(String url) {
-        driver.get(ConfigReader.getProperty(url));
-        BrowserUtils.waitForPageToLoad(5);
+    @Given("User navigates to {string}")
+    public void navigateToURL(String urlValue) {
+        if (!urlValue.equals("url")){
+            driver.get(urlValue);
+        } else {
+            String url = System.getProperty("url", ConfigReader.getProperty("url"));
+            driver.get(url);
+        }
+        try {
+            BrowserUtils.waitForVisibility(landingPageLG.iframe, Duration.ofSeconds(5));
+            landingPageLG.closeIframe();
+        }catch (Throwable error){
+            error.printStackTrace();
+        }
     }
 
-    @And("user clicks on login link on platform")
+    @And("user clicks on login link on expected platform")
     public void clickOnLogin() {
         String platform = ConfigReader.getProperty("platform");
         if (platform.equals("desktop")) {

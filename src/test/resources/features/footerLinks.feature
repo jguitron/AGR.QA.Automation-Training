@@ -1,12 +1,12 @@
-@regression
+
+@smoke @wip
 Feature: Footer links verification
   Checking if all clickable "links" functioning as expected
 
   Background:
-    Given user navigates to "url"
+    Given User navigates to "url"
     When user scrolls down to footer
 
-  @smoke
   Scenario Outline: Verifying "Get To Know Us" sub-link "<subLinkOne>"
     And user clicks on "Get To Know Us"
     Then user verifies "<subLinkOne>" opens "<expected>" page

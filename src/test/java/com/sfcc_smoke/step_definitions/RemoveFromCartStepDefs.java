@@ -64,5 +64,6 @@ public class RemoveFromCartStepDefs {
     public void user_validates_cart_is_qty(Integer int1) {
         driver.findElement(By.xpath("//div[@class='cart-empty']")).getText();
         System.out.println(driver.findElement(By.xpath("//div[@class='cart-empty']")).getText());
+
     }
 }

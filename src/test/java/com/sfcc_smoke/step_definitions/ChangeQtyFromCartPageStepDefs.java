@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
+
 public class ChangeQtyFromCartPageStepDefs {
 
     WebDriver driver = Driver.getDriver();
@@ -25,11 +26,9 @@ public class ChangeQtyFromCartPageStepDefs {
     }
 
     @Then("User changes Qty from {int} to {int}")
-    public void user_changes_qty_from_to(Integer int1, Integer int2) throws InterruptedException {
-        Thread.sleep(3000);
+    public void user_changes_qty_from_to(Integer int1, Integer int2) {
         JavascriptExecutor Js1 = (JavascriptExecutor) driver;
         Js1.executeScript("window.scrollBy(0,400)");
-        Thread.sleep(3000);
         String Total = driver.findElement(By.xpath("//option[@value='1']")).getText();
         System.out.println("1st Qty check is " + Total);
     }
@@ -39,11 +38,11 @@ public class ChangeQtyFromCartPageStepDefs {
         JavascriptExecutor Js1 = (JavascriptExecutor) driver;
         Js1.executeScript("window.scrollBy(0,400)");
         driver.findElement(By.xpath("//option[@value='2']")).click();
-        Thread.sleep(3000);
         String Total2 = driver.findElement(By.xpath("//option[@value='2']")).getText();
         System.out.println("2nd Qty check is " + Total2);
         String MyCart = driver.findElement(By.xpath("//h1[@class='cart-title']")).getText();
         String expectedQty = "My Cart (2 items)";
         Assert.assertEquals(expectedQty, MyCart);
+
     }
 }

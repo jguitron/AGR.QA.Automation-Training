@@ -1,9 +1,8 @@
-
+@smoke
 Feature: Add Whitesburg Dining Table to cart and remove, validating cart reflects removal
 
   Scenario: User adds Whitesburg table to cart
-    Given User is on AshleyFurniture's main home page
-    When User clicks on X-close button to close iframe popup
+    Given User navigates to "url"
     And  User clicks on the search bar
     Then User search's Whitesburg Dining Table in search bar
     And  User clicks search icon

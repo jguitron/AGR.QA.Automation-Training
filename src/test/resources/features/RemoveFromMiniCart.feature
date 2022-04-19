@@ -1,8 +1,7 @@
-@wip
+@smoke
 Feature: Verification of Item removed from cart
   Scenario: User Adds item to cart and removes from mini cart
-    Given User is on AshleyFurniture's main home page
-    When  User clicks on X-close button to close iframe popup
+    Given User navigates to "url"
     And   User clicks on the search bar
     Then  User search's Boise 24" Single Bathroom Vanity Set in search bar
     Then  user clicks on search icon

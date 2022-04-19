@@ -2,25 +2,22 @@ package com.sfcc_smoke.step_definitions;
 
 import com.sfcc_smoke.pages.ProductDetailPage;
 import com.sfcc_smoke.utilities.BrowserUtils;
-import com.sfcc_smoke.utilities.Driver;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
 
 public class PDPStepDefs {
 
-    WebDriver driver = Driver.getDriver();
     ProductDetailPage productDetailPage = new ProductDetailPage();
-    BrowserUtils browserUtils = new BrowserUtils();
+
 
     @When("User adds items to cart")
-    public void additemtocart() {
-        browserUtils.scrollToElement(productDetailPage.addtocart);
+    public void addItemToCart() {
+        BrowserUtils.scrollToElement(productDetailPage.addtocart);
         productDetailPage.addtocart.click();
     }
 
     @When("User Select King bed size")
-    public void selectbedsize() {
+    public void selectBedSize() {
         productDetailPage.iconkingsize.click();
         BrowserUtils.sleep(3);
     }

@@ -1,10 +1,10 @@
-@regression
+
+@smoke
 Feature: Broken links capture
   Check all available "links" and verify if all functional
 
-  @smoke
   Scenario:  Verify if all URLs in page are valid
-    Given user navigates to "url"
+    Given User navigates to "url"
     Then user clicks on each link on page to verify
 
 

@@ -2,14 +2,11 @@ package com.sfcc_smoke.step_definitions;
 
 import com.sfcc_smoke.pages.SecureCheckoutBilling;
 import com.sfcc_smoke.utilities.BrowserUtils;
-import com.sfcc_smoke.utilities.Driver;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
 
 public class SecureCheckoutBillingStepDefs {
 
-    WebDriver driver = Driver.getDriver();
     SecureCheckoutBilling checkoutBilling = new SecureCheckoutBilling();
 
     @Given("User is on Billing and Payment Page")

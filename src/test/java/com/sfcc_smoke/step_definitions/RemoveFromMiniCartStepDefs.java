@@ -1,6 +1,5 @@
 package com.sfcc_smoke.step_definitions;
 
-import com.sfcc_smoke.pages.ProductDetailPage;
 import com.sfcc_smoke.pages.SearchPage;
 import com.sfcc_smoke.utilities.BrowserUtils;
 import com.sfcc_smoke.utilities.Driver;

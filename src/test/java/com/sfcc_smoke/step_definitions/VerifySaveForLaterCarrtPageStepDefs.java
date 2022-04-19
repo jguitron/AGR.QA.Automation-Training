@@ -32,33 +32,34 @@ public class VerifySaveForLaterCarrtPageStepDefs {
     }
 
     @Then("User clicks save for later button")
-    public void user_clicks_save_for_later_button() throws InterruptedException {
+    public void user_clicks_save_for_later_button() {
         JavascriptExecutor Js1 = (JavascriptExecutor) driver;
         Js1.executeScript("window.scrollBy(0,700)");
         productDetailPage.SaveItem.click();
     }
 
     @And("User Logs in")
-    public void userLogsIn() throws InterruptedException {
-        Thread.sleep(3000);
+    public void userLogsIn() {
+        BrowserUtils.sleep(3);
         productDetailPage.EmailAddressLogin.click();
         productDetailPage.EmailAddressLogin.sendKeys("jguitron@ashleyfurniture.com");
         productDetailPage.PassWordLogin.click();
         productDetailPage.PassWordLogin.sendKeys("Tester123!");
-        BrowserUtils.sleep(5);
+        BrowserUtils.sleep(3);
         Actions action = new Actions(driver);
         action.moveToElement(driver.findElement(By.xpath("//span[@style='font-weight:bold;']")));
         driver.findElement(By.name("dwfrm_login_login")).click();
     }
 
     @Then("User asserts total items in cart after save for later")
-    public void user_asserts_total_items_in_cart_after_save_for_later() throws InterruptedException {
-        Thread.sleep(3000);
+    public void user_asserts_total_items_in_cart_after_save_for_later() {
+        BrowserUtils.sleep(3);
         String itemSaved = driver.findElement(By.cssSelector("h2 a[tabindex='0']")).getText();
         String itemExpected = "Honey-Can-Do 4 Piece Jar Storage Set";
         Assert.assertEquals(itemExpected, itemSaved);
         if (itemExpected.equals(itemSaved)) {
             System.out.println("Pass");
+
         }
     }
 }
