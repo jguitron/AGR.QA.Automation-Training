@@ -19,13 +19,6 @@ public class SignUpStepDefs {
     HomePage homePage = new HomePage();
     SignUpPage signUpPage = new SignUpPage();
     Actions actions = new Actions(driver);
-    HomePageStepDefs mainPageStepDefs = new HomePageStepDefs();
-
-    @Given("user is on Ashley home page")
-    public void user_is_on_ashley_home_page() {
-        mainPageStepDefs.goToLandingPage();
-        mainPageStepDefs.closeiFrame();
-    }
 
     @When("user clicks on login button")
     public void userClicksOnLoginLink() {
@@ -75,5 +68,6 @@ public class SignUpStepDefs {
         signUpPage.submitForm.click();
         BrowserUtils.sleep(1);
 
+        /**Hello from me*/
     }
 }

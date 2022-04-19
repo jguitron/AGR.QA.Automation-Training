@@ -79,3 +79,18 @@ Clone directly specific branch:
 git clone -b <branchName> --single-branch <repourl>
 ```
 
+### ShortCuts:
+  
+# To fix pipes order:
+```
+    # Windows: Ctrl + Alt + L
+    # Mac: Command + Option + L
+```
+# To multiply same row:
+```
+    # Windows: Ctrl + D
+```
+# To move whole line up or down:
+```
+    #Windows: Shift + Alt + up/dpwn keys
+```

@@ -37,10 +37,10 @@ public class Driver {
                         ChromeOptions remoteOptions = new ChromeOptions();
                         try {
                             String ipAddress = "172.26.3.130";
-                            URL url = new URL("http://" + ipAddress + ":4444/wd/hub");
+                            URL urlPage = new URL("http://" + ipAddress + ":4444/wd/hub");
                             desiredCapabilities.setBrowserName("chrome");
                             remoteOptions.addArguments("--disable-notifications");
-                            driverPool.set(new RemoteWebDriver(url, desiredCapabilities));
+                            driverPool.set(new RemoteWebDriver(urlPage, desiredCapabilities));
                             driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -68,10 +68,10 @@ public class Driver {
                         DesiredCapabilities firefoxCapabilities = new DesiredCapabilities();
                         try {
                             String ipAddress = "172.26.3.130";
-                            URL url = new URL("http://" + ipAddress + ":4444/wd/hub");
+                            URL urlPage1 = new URL("http://" + ipAddress + ":4444/wd/hub");
                             firefoxCapabilities.setBrowserName("firefox");
                             remoteOptions1.addArguments("--disable-notifications");
-                            driverPool.set(new RemoteWebDriver(url, firefoxCapabilities));
+                            driverPool.set(new RemoteWebDriver(urlPage1, firefoxCapabilities));
                             driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -89,10 +89,10 @@ public class Driver {
                     case "safari-remote":
                         try {
                             String ipAddress = "172.26.3.130";
-                            URL url = new URL("http://" + ipAddress + ":4444/wd/hub");
+                            URL urlPage2 = new URL("http://" + ipAddress + ":4444/wd/hub");
                             DesiredCapabilities safariCapability = new DesiredCapabilities();
                             safariCapability.setBrowserName("safari");
-                            driverPool.set(new RemoteWebDriver(url, safariCapability));
+                            driverPool.set(new RemoteWebDriver(urlPage2, safariCapability));
                             driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -111,3 +111,4 @@ public class Driver {
         }
     }
 }
+

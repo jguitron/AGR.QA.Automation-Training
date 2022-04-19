@@ -11,25 +11,21 @@ public class Hooks {
 
     @Before
     public void setUpBrowser() {
-        String url = System.getProperty("url") != null ? url = System.getProperty("url") : ConfigReader.getProperty("url");
         String platform = System.getProperty("platform") != null ? platform = System.getProperty("platform") : ConfigReader.getProperty("platform");
         Dimension dimension;
         switch (platform) {
             case "desktop":
                 Driver.getDriver().manage().window().maximize();
-                Driver.getDriver().get(url);
                 System.out.println("============Desktop Test Started!=============");
                 break;
             case "tablet":
                 dimension = new Dimension(1023, 850);
                 Driver.getDriver().manage().window().setSize(dimension);
-                Driver.getDriver().get(url);
                 System.out.println("============Tablet Test Started!=============");
                 break;
             case "mobile":
                 dimension = new Dimension(765, 750);
                 Driver.getDriver().manage().window().setSize(dimension);
-                Driver.getDriver().get(url);
                 System.out.println("============Mobile Test Started!=============");
                 break;
             default:

@@ -8,6 +8,7 @@
     <artifactId>agr.qa.automation-training</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+
     <repositories>
         <repository>
             <id>Maven_Feed</id>
@@ -157,7 +158,6 @@
                         <configuration>
                             <projectName>AGR.QA.Automation</projectName>
                             <outputDirectory>${project.build.directory}</outputDirectory>
-                            <!--                            <checkBuildResult>false</checkBuildResult>-->
                             <inputDirectory>${project.build.directory}</inputDirectory>
                             <jsonFiles>
                                 <param>**/cucumber*.json</param>

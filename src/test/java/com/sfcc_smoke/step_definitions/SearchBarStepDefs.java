@@ -12,13 +12,6 @@ public class SearchBarStepDefs {
 
     WebDriver driver = Driver.getDriver();
     SearchPage search = new SearchPage();
-    HomePageStepDefs landingPageStepDefs = new HomePageStepDefs();
-
-    @Given("user is at ashley landing page")
-    public void userIsAtAshleyLandingPage() {
-        landingPageStepDefs.goToLandingPage();
-        landingPageStepDefs.closeiFrame();
-    }
 
     @Then("user sends {string} in search bar")
     public void sendValue(String searchValue) {

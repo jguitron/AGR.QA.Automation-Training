@@ -1,11 +1,11 @@
 
-@regression  @smoke
+@smoke
 Feature: New user signup and shopping feature.
          As a user I should be able to sign up for a new account
          and search for furniture and add them to my cart
 
   Scenario: User creates new user account and verifies if new account created.
-    Given user is on Ashley home page
+    Given User navigates to "url"
     When  user clicks on login button
     Then  user then clicks on Login link
     And   user clicks Create account link
@@ -23,7 +23,7 @@ Feature: New user signup and shopping feature.
     And   user adds 2 products to his cart
     Then  user checks his cart with total amount
 
-  @lastStep
+
   Scenario Outline: User randomly searches for available products and clicks on them.
                     User heavily uses Search bar with many different product items
     Given user sends "<searchValue>" in search bar
@@ -39,9 +39,3 @@ Feature: New user signup and shopping feature.
       | loveseat    | LoveSeat       |
       | recliner    | Recliner       |
       | bed         | Bed            |
-
-
-   # To fix pipes order:
-    # Windows: Ctrl + Alt + L
-    # Mac: Command + Option + L
-

@@ -1,10 +1,11 @@
-@regression
+
+@smoke
 Feature: Login verification
 
-  @smoke
+  @login
   Scenario: Login functionality verification
-    Given user navigates to "url"
-    And user clicks on login link on platform
+    Given User navigates to "url"
+    And user clicks on login link on expected platform
     When user enters username and password as below
       | username | maxjon.kayumov@gmail.com |
       | password | TestingPassword123$      |

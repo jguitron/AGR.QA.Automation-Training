@@ -9,18 +9,18 @@ public class SecureCheckoutDeliveryCustInfoStepDefs {
 
     SecureCheckoutDeliveryCustInfo custInfo = new SecureCheckoutDeliveryCustInfo();
 
-    @When("User enters customer info {string} , {string} ,{string}, {string}, {string}, {string}, {string}, {string}, {string} on Secure Checkout Delivery Page")
-    public void user_enters_customer_info_on_secure_checkout_delivery_page(String Fname, String Lname, String Address1, String Address2, String City, String State, String Zip, String Phone, String Email) {
-        custInfo.fname.sendKeys(Fname);
-        custInfo.lname.sendKeys(Lname);
-        custInfo.address1.sendKeys(Address1);
-        custInfo.address2.sendKeys(Address2);
-        custInfo.city.sendKeys(City);
-        custInfo.state.sendKeys(State);
-        custInfo.zip.clear();
-        custInfo.zip.sendKeys(Zip);
-        custInfo.customerphone.sendKeys(Phone);
-        custInfo.customeremail.sendKeys(Email);
+    @When("User enters customer info on Secure Checkout Delivery Page")
+    public void enterCustomerInfoOnSecureCheckoutDeliveryPage(String firstName, String lastName, String address1, String address2,
+                                                              String city, String state, String zip, String customerPhone, String customerEmail) {
+            custInfo.fname.sendKeys(firstName);
+            custInfo.lname.sendKeys(lastName);
+            custInfo.address1.sendKeys(address1);
+            custInfo.address2.sendKeys(address2);
+            custInfo.city.sendKeys(city);
+            custInfo.state.sendKeys(state);
+            custInfo.zip.sendKeys(zip);
+            custInfo.customerphone.sendKeys(customerPhone);
+            custInfo.customeremail.sendKeys(customerEmail);
     }
 
     @When("User clicks on Continue as Guest button")
@@ -41,10 +41,7 @@ public class SecureCheckoutDeliveryCustInfoStepDefs {
 
     @Then("User verifies that {string} available on PDP htht")
     public void userVerifiesThatAvailableOnPDPHtht(String arg0) {
-    }
-
-    @Then("user clicks on {string}")
-    public void userClicksOn(String arg0) {
 
     }
+
 }

@@ -5,7 +5,7 @@ Feature: Stages stability verification
 
   @smoke
   Scenario Outline: verify all apollo stages up and running
-    When user navigates to "<url>"
+    When User navigates to "<url>"
     When user scrolls down to footer
     Then user scrolls to header
     Examples:

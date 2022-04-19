@@ -1,6 +1,5 @@
 package com.sfcc_smoke.step_definitions;
 
-import com.sfcc_smoke.pages.ProductDetailPage;
 import com.sfcc_smoke.pages.SearchPage;
 import com.sfcc_smoke.utilities.Driver;
 import io.cucumber.java.en.Then;
@@ -10,12 +9,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
-
 public class VerifySaveForLaterMiniCartStepDefs {
 
     WebDriver driver = Driver.getDriver();
     SearchPage searchPage = new SearchPage();
-    ProductDetailPage productDetailPage = new ProductDetailPage();
 
     @When("User search's B600008392 in search bar")
     public void user_search_s_b600008392_in_search_bar() {
