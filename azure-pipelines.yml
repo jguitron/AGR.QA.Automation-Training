@@ -10,12 +10,12 @@ steps:
 - task: Bash@3
   inputs:
     targetType: 'inline'
-    script: export BROWSER=$(BROWSER)
+    script: export BROWSER=$(browser)
 
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
-    goals: 'clean verify -Dbrowser=$(BROWSER)'
+    goals: 'clean verify -Dbrowser=$(browser)'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     javaHomeOption: 'JDKVersion'
