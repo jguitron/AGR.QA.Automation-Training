@@ -1,4 +1,4 @@
-@glitterglamegarrett
+@smoke
 Feature: When Item is Added to Cart, Qty can be changed in Cart Page
 
   Scenario: User Adds 8 Chime Inch Innerspring Twin Mattress to Cart
