@@ -96,6 +96,9 @@ public class CartPage {
     @FindBy(xpath = "//button[@class='remove']")
     public WebElement removeitem_YesBtn;
 
+    @FindBy(css = "div[class='cart-product-option-mobile'] a[class='remove-cart-item']")
+    public WebElement removeItem_BtnMobileTablet;
+
     //Order Summary table webelements
     @FindBy(xpath = "//table[@class='order-totals-table']/tbody/tr[@id='order-state-recycling-fee']/td")
     public WebElement recycleFee_cart;
