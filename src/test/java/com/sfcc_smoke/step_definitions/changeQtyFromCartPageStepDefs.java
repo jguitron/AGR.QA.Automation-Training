@@ -12,7 +12,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 
-public class ChangeQtyFromCartPageStepDefs {
+public class changeQtyFromCartPageStepDefs {
     WebDriver driver = Driver.getDriver();
     SearchPage searchPage = new SearchPage();
     ProductDetailPage productDetailPage = new ProductDetailPage();
@@ -41,14 +41,14 @@ public class ChangeQtyFromCartPageStepDefs {
     public void user_clicks_on_add_item_to_cart() {
         String currentHandle = driver.getWindowHandle();
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
-             productDetailPage.addtocart.isDisplayed();
-                productDetailPage.addtocart.click(); }
-                /**mobile has different webelement for add to cart*/
-            else if (productDetailPage.AddToCart_mob.isDisplayed()) {
-                BrowserUtils.scrollToElement(productDetailPage.AddToCart_mob);
-                productDetailPage.AddToCart_mob.click();
-            }
+            productDetailPage.addtocart.isDisplayed();
+            productDetailPage.addtocart.click(); }
+        /**mobile has different webelement for add to cart*/
+        else if (productDetailPage.AddToCart_mob.isDisplayed()) {
+            BrowserUtils.scrollToElement(productDetailPage.AddToCart_mob);
+            productDetailPage.AddToCart_mob.click();
         }
+    }
 
 
     @Then("User changes Qty from 1 to 2 in cart")
