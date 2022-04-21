@@ -1,4 +1,4 @@
-@glitterglamegarrett
+@smoke
 Feature: Add Whitesburg Dining Table to cart and remove, validating cart reflects removal
 
   Scenario: User adds Whitesburg table to cart
