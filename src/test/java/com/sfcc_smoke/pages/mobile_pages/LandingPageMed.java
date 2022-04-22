@@ -30,7 +30,8 @@ public class LandingPageMed {
     public WebElement termsAndPolicy;
     @FindBy(xpath = "(//span[@class='font-bold underline'])[4]")
     public WebElement countryFlag;
-
+    @FindBy(xpath = "(//div[@class='local-pricing-zip-code'])[2]")
+    public WebElement StoreLocator_mobile;
 
     public void mobileMenuClick() {
         if (mobileMenu.isDisplayed()) {
