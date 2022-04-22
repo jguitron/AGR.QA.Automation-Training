@@ -103,5 +103,6 @@ public class CartPage {
     @FindBy(xpath = "//table[@class='order-totals-table']/tbody/tr[@id='order-state-recycling-fee']/td")
     public WebElement recycleFee_cart;
 
-
+    @FindBy(xpath = "//button[@class='save-item']")
+    public WebElement saveItem;
 }

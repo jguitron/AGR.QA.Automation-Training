@@ -1,4 +1,4 @@
-@smoke
+
 Feature: When Item is Added to Cart, Qty can be changed in Cart Page
 
   Scenario: User Adds 8 Chime Inch Innerspring Twin Mattress to Cart
@@ -11,3 +11,4 @@ Feature: When Item is Added to Cart, Qty can be changed in Cart Page
     Then  User clicks on cart
     Then  User changes Qty from 1 to 2 in cart
     Then  Assert total number of items in cart is 2
+
