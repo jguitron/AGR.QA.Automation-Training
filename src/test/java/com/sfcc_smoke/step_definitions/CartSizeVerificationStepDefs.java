@@ -35,13 +35,13 @@ public class CartSizeVerificationStepDefs {
         driver.findElement(By.cssSelector("img[alt='Soletren Sofa, Stone, large']")).click();
     }
 
-    @When("User clicks on Add Item to Cart")
+   /* @When("User clicks on Add Item to Cart")
     public void user_clicks_on_add_item_to_cart() {
         driver.findElement(By.xpath("//button[@id='add-to-cart-sticky']")).click();
         String Soletren = driver.findElement(By.cssSelector("div[id='ui-id-3'] a[title='Go to Product: Soletren Sofa']")).getText();
         System.out.println("Item added to cart is, " + Soletren);
         driver.findElement(By.cssSelector("div[id='ui-id-3'] a[title=' Continue Shopping']")).click();
-    }
+    }*/
 
     @When("User clicks on Calion Sofa")
     public void user_clicks_on_calion_sofa() {

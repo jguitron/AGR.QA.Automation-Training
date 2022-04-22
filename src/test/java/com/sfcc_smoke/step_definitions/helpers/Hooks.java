@@ -20,11 +20,13 @@ public class Hooks {
                 break;
             case "tablet":
                 dimension = new Dimension(1023, 850);
+                //dimension = new Dimension(820, 1180);
                 Driver.getDriver().manage().window().setSize(dimension);
                 System.out.println("============Tablet Test Started!=============");
                 break;
             case "mobile":
                 dimension = new Dimension(765, 750);
+                //dimension = new Dimension(390, 844);
                 Driver.getDriver().manage().window().setSize(dimension);
                 System.out.println("============Mobile Test Started!=============");
                 break;
