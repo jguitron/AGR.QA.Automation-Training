@@ -15,14 +15,8 @@ import org.openqa.selenium.WebDriver;
 public class removeFromCartStepDefs {
 
     WebDriver driver = Driver.getDriver();
-    SearchPage searchPage = new SearchPage();
-    ProductDetailPage productDetailPage = new ProductDetailPage();
     CartPage cartPage = new CartPage();
 
-    @Then("User clicks search icon")
-    public void user_clicks_search_icon() {
-        searchPage.searchIcon.click();
-    }
 
 
     @Then("User clicks on cart")
