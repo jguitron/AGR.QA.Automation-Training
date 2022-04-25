@@ -1,12 +1,15 @@
 package com.sfcc_smoke.step_definitions;
 
 import com.sfcc_smoke.pages.BasePage;
+import com.sfcc_smoke.pages.ProductDetailPage;
+import com.sfcc_smoke.pages.ProductListPage;
 import com.sfcc_smoke.pages.SearchPage;
 import com.sfcc_smoke.utilities.BrowserUtils;
 import com.sfcc_smoke.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import java.time.Duration;
@@ -58,6 +61,14 @@ public class BaseStepDefs {
     @Then("User clicks search icon")
     public void user_clicks_search_icon() {
         searchPage.searchIcon.click();
+    }
+
+
+    @Then("User clicks on Heart Icon in plp")
+    public void user_clicks_on_heart_icon_in_plp() {
+        BrowserUtils.hover(driver.findElement(By.xpath("//a[@aria-label='Add to Wishlist']")));
+        driver.findElement(By.xpath("//a[@aria-label='Add to Wishlist']")).click();
+
     }
 
 }
