@@ -28,7 +28,7 @@ public class ProductDetailPage {
     public WebElement PassWordLogin;
 
     @FindBy(css = "div[id='ui-id-3'] a[title=' Continue Shopping']")
-    public WebElement ContinueShopping;
+    public WebElement continueShopping;
 
     //Webelement - '+' Qty sign
     @FindBy(xpath = "//div[@id='sticky-pdp-addtocart']/div/div/div/label[@class='plus']/input[@value='+']")

@@ -18,19 +18,18 @@ public class changeQtyFromCartPageStepDefs {
     ProductDetailPage productDetailPage = new ProductDetailPage();
 
 
-    @When("User clicks on the search bar")
-    public void user_clicks_on_the_search_bar() {
-        searchPage.searchBar.click();
-    }
+
 
 
     @When("User search's {string} in search bar")
     public void user_search_s_in_search_bar(String item) {
         searchPage.searchBar.sendKeys(item);
-    }
+        }
 
-    @When("User clicks on {string} in pdp")
-    public void user_clicks_on_in_pdp(String itemName) {
+
+
+    @When("User chooses {string} in plp")
+    public void user_chooses_on_in_pdp(String itemName) {
         /**all items contain same anchor and tag. img and @alt are same for all items, just add element for alt for item needed
          * ex:8//img[@alt='8 Inch Chime Innerspring Twin Mattress in a Box, White, large']  */
 
