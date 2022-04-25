@@ -1,4 +1,4 @@
-@smoke
+@smokenc
 Feature: Verification protection plan availability for Florida, Alaska, Hawaii
   As a user, I should be able to see protection plan details and cost on cart page
 

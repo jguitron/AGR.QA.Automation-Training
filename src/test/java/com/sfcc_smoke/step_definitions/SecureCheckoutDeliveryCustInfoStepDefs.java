@@ -5,22 +5,36 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SecureCheckoutDeliveryCustInfoStepDefs {
 
     SecureCheckoutDeliveryCustInfo custInfo = new SecureCheckoutDeliveryCustInfo();
 
     @When("User enters customer info on Secure Checkout Delivery Page")
-    public void enterCustomerInfoOnSecureCheckoutDeliveryPage(String firstName, String lastName, String address1, String address2,
-                                                              String city, String state, String zip, String customerPhone, String customerEmail) {
-            custInfo.fname.sendKeys(firstName);
-            custInfo.lname.sendKeys(lastName);
-            custInfo.address1.sendKeys(address1);
-            custInfo.address2.sendKeys(address2);
-            custInfo.city.sendKeys(city);
-            custInfo.state.sendKeys(state);
-            custInfo.zip.sendKeys(zip);
-            custInfo.customerphone.sendKeys(customerPhone);
-            custInfo.customeremail.sendKeys(customerEmail);
+    public void enterCustomerInfoOnSecureCheckoutDeliveryPage(List<String> info) {
+        String customerInfo = "";
+        List<String> mylist = info;
+        for (int i=0; i< mylist.size(); i++){
+            customerInfo = mylist.get(i);
+
+            if (i==0) {custInfo.fname.sendKeys(customerInfo);}
+            if (i==1) {custInfo.lname.sendKeys(customerInfo);}
+            if (i==2) {custInfo.address1.sendKeys(customerInfo);}
+            if (i==3) {custInfo.address2.sendKeys(customerInfo);}
+            if (i==4) {custInfo.city.sendKeys(customerInfo);}
+            if (i==5) {custInfo.state.sendKeys(customerInfo);}
+            if (i==6) {
+                custInfo.zip.clear();
+                custInfo.zip.sendKeys(customerInfo);
+            }
+            if (i==7) {custInfo.customerphone.sendKeys(customerInfo);}
+            if (i==8) {custInfo.customeremail.sendKeys(customerInfo);}
+
+        }
+
+
     }
 
     @When("User clicks on Continue as Guest button")

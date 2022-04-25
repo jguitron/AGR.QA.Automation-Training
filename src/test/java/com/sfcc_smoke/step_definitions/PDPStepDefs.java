@@ -5,6 +5,8 @@ import com.sfcc_smoke.utilities.BrowserUtils;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 
+import java.time.Duration;
+
 public class PDPStepDefs {
 
     ProductDetailPage productDetailPage = new ProductDetailPage();
@@ -12,7 +14,9 @@ public class PDPStepDefs {
 
     @When("User adds items to cart")
     public void addItemToCart() {
+        BrowserUtils.waitForPageToLoad(5);
         BrowserUtils.scrollToElement(productDetailPage.addtocart);
+        //BrowserUtils.waitForClickability(productDetailPage.addtocart, Duration.ofSeconds(10));
         productDetailPage.addtocart.click();
     }
 
