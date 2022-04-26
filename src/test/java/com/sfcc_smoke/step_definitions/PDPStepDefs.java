@@ -2,14 +2,18 @@ package com.sfcc_smoke.step_definitions;
 
 import com.sfcc_smoke.pages.ProductDetailPage;
 import com.sfcc_smoke.utilities.BrowserUtils;
+import com.sfcc_smoke.utilities.ConfigReader;
+import com.sfcc_smoke.utilities.Driver;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
 
 import java.time.Duration;
 
 public class PDPStepDefs {
 
     ProductDetailPage productDetailPage = new ProductDetailPage();
+    WebDriver driver = Driver.getDriver();
 
 
     @When("User adds items to cart")
@@ -53,5 +57,19 @@ public class PDPStepDefs {
         Assert.assertEquals("10 Year King Adjustable Base Protection Plan (add plan in cart)", productDetailPage.pdp_KADJPRO.getText());
         System.out.println("Verified: " + productDetailPage.pdp_KADJPRO.getText());
 
+    }
+
+    @When("User clicks on Add Item to Cart")
+    public void user_clicks_on_add_item_to_cart() {
+        String currentHandle = driver.getWindowHandle();
+        if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
+            productDetailPage.addtocart.isDisplayed();
+            productDetailPage.addtocart.click();
+        }
+        /**mobile has different webelement for add to cart*/
+        else if (productDetailPage.AddToCart_mob.isDisplayed()) {
+            BrowserUtils.scrollToElement(productDetailPage.AddToCart_mob);
+            productDetailPage.AddToCart_mob.click();
+        }
     }
 }
