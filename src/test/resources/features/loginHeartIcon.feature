@@ -1,4 +1,4 @@
-@glitterglamgarrett
+@smoke
 
 Feature: Verification of login functionality via heart icon on pdp
 
