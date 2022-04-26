@@ -4,7 +4,9 @@ import com.sfcc_smoke.pages.BasePage;
 import com.sfcc_smoke.pages.ProductDetailPage;
 import com.sfcc_smoke.pages.ProductListPage;
 import com.sfcc_smoke.pages.SearchPage;
+import com.sfcc_smoke.pages.mobile_pages.LandingPageMed;
 import com.sfcc_smoke.utilities.BrowserUtils;
+import com.sfcc_smoke.utilities.ConfigReader;
 import com.sfcc_smoke.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -19,16 +21,27 @@ public class BaseStepDefs {
     WebDriver driver = Driver.getDriver();
     BasePage basePage = new BasePage();
     SearchPage searchPage = new SearchPage();
+    LandingPageMed landingPageMed = new LandingPageMed();
 
     @When("user finds closest store by {string}")
     public void user_set_the_closet_store_by(String zipcode) {
-        BrowserUtils.waitForVisibility(basePage.Storedownarrow, Duration.ofSeconds(5));
-        basePage.HomeStoreZipcodeBox.sendKeys(zipcode + Keys.ENTER);
+        String platform = ConfigReader.getProperty("platform");
+        if (platform.equals("desktop")) {
+            BrowserUtils.waitForVisibility(basePage.Storedownarrow, Duration.ofSeconds(5));
+            basePage.Storedownarrow.click();
+            basePage.HomeStoreZipcodeBox.sendKeys(zipcode + Keys.ENTER);
+        }
+        else if (platform.equals("mobile") || (platform.equals("tablet"))) {
+            landingPageMed.mobileMenu.click();
+            basePage.Mob_Storelink.click();
+            basePage.HomeStoreZipcodeBox.sendKeys(zipcode + Keys.ENTER);
+        }
     }
 
     @When("User searches for SKU {string} and clicks on it")
     public void serachitem(String Item) {
-        BrowserUtils.waitForVisibility(basePage.searchbar, Duration.ofSeconds(5));
+        //BrowserUtils.waitForPageToLoad(5);
+        BrowserUtils.sleep(3);
         basePage.searchbar.sendKeys(Item + Keys.ENTER);
     }
 

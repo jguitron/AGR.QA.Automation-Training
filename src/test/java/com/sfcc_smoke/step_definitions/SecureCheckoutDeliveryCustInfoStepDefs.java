@@ -16,21 +16,37 @@ public class SecureCheckoutDeliveryCustInfoStepDefs {
     public void enterCustomerInfoOnSecureCheckoutDeliveryPage(List<String> info) {
         String customerInfo = "";
         List<String> mylist = info;
-        for (int i=0; i< mylist.size(); i++){
+        for (int i = 0; i < mylist.size(); i++) {
             customerInfo = mylist.get(i);
 
-            if (i==0) {custInfo.fname.sendKeys(customerInfo);}
-            if (i==1) {custInfo.lname.sendKeys(customerInfo);}
-            if (i==2) {custInfo.address1.sendKeys(customerInfo);}
-            if (i==3) {custInfo.address2.sendKeys(customerInfo);}
-            if (i==4) {custInfo.city.sendKeys(customerInfo);}
-            if (i==5) {custInfo.state.sendKeys(customerInfo);}
-            if (i==6) {
+            if (i == 0) {
+                custInfo.fname.sendKeys(customerInfo);
+            }
+            if (i == 1) {
+                custInfo.lname.sendKeys(customerInfo);
+            }
+            if (i == 2) {
+                custInfo.address1.sendKeys(customerInfo);
+            }
+            if (i == 3) {
+                custInfo.address2.sendKeys(customerInfo);
+            }
+            if (i == 4) {
+                custInfo.city.sendKeys(customerInfo);
+            }
+            if (i == 5) {
+                custInfo.state.sendKeys(customerInfo);
+            }
+            if (i == 6) {
                 custInfo.zip.clear();
                 custInfo.zip.sendKeys(customerInfo);
             }
-            if (i==7) {custInfo.customerphone.sendKeys(customerInfo);}
-            if (i==8) {custInfo.customeremail.sendKeys(customerInfo);}
+            if (i == 7) {
+                custInfo.customerphone.sendKeys(customerInfo);
+            }
+            if (i == 8) {
+                custInfo.customeremail.sendKeys(customerInfo);
+            }
 
         }
 
