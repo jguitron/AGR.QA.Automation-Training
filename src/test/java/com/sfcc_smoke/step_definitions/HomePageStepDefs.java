@@ -1,13 +1,16 @@
 package com.sfcc_smoke.step_definitions;
 
 import com.sfcc_smoke.pages.HomePage;
+import com.sfcc_smoke.pages.SearchPage;
 import com.sfcc_smoke.utilities.BrowserUtils;
 import com.sfcc_smoke.utilities.ConfigReader;
 import com.sfcc_smoke.utilities.Driver;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import java.time.Duration;
@@ -18,6 +21,7 @@ public class HomePageStepDefs {
 
     WebDriver driver = Driver.getDriver();
     HomePage homePage = new HomePage();
+    SearchPage searchPage = new SearchPage();
 
     @When("User gets each available link from main page")
     public void getAllUrls() {
@@ -49,4 +53,17 @@ public class HomePageStepDefs {
         Assert.assertTrue(driver.getCurrentUrl().endsWith(furniture + "/"));
 
     }
+
+    @Then("User clicks on cart")
+    public void user_clicks_on_cart() {
+
+        driver.findElement(By.xpath("//a[@class='mini-cart-link']")).click();
+    }
+    @Then("User clicks on cart icon")
+    public void user_clicks_on_cart_icon() {
+        driver.findElement(By.xpath("//a[@class='mini-cart-link mini-cart-empty']")).click();
+        JavascriptExecutor Js1 = (JavascriptExecutor) driver;
+        Js1.executeScript("window.scrollBy(0,650)");
+    }
+
 }

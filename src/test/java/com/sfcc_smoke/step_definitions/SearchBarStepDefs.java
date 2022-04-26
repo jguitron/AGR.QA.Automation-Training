@@ -12,6 +12,7 @@ public class SearchBarStepDefs {
 
     WebDriver driver = Driver.getDriver();
     SearchPage search = new SearchPage();
+    SearchPage searchPage = new SearchPage();
 
     @Then("user sends {string} in search bar")
     public void sendValue(String searchValue) {
@@ -35,6 +36,16 @@ public class SearchBarStepDefs {
         String totalItemsFound = search.productCount.getText().substring(10, 14);
         System.out.println("Total items found: " + totalItemsFound);
 
+    }
+
+    @When("User search's {string} in search bar")
+    public void user_search_s_in_search_bar(String item) {
+        searchPage.searchBar.sendKeys(item);
+    }
+
+    @When("User clicks on search bar")
+    public void user_clicks_on_search_bar() {
+        searchPage.searchBar.click();
     }
 
 }
