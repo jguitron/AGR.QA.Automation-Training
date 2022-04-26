@@ -1,6 +1,6 @@
-@test
+@smoke
 Feature: Verification of 3 Items added to cart is reflected in "mini cart logo" as 3 total items
-  @glitterglamgarrett
+
   Scenario: User adds items to cart
     Given User navigates to "url"
     When  User clicks on search bar

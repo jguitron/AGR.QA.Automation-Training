@@ -7,9 +7,9 @@ import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-public class loginHeartIconStepDefs {
+public class HeaderStepDefs {
+
     WebDriver driver = Driver.getDriver();
 
     @Then("Assert user is logged in via name displays in header")
@@ -20,8 +20,8 @@ public class loginHeartIconStepDefs {
             System.out.println(account);
             String expectedName = "Hi, Jaime";
             Assert.assertEquals(expectedName, account);
-        } if ((ConfigReader.getProperty("platform").equals("mobile")) || (ConfigReader.getProperty("platform").equals("tablet"))) {
-            System.out.println("Does not apply to tablet and desktop");
+        } else {
+            System.out.println("Does not apply to tablet and Mobile");
 
         }
 
