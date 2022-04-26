@@ -26,6 +26,9 @@ public class BasePage {
     @FindBy(xpath = "//a[@id='js-local-pricing-link']")
     public WebElement Storedownarrow;
 
+    @FindBy(xpath = "(//div[@class='local-pricing-zip-code'])[2]")
+    public WebElement Mob_Storelink;
+
     //WebElement - Homestore zip code box
     @FindBy(xpath = "//input[@class='input-text numbers-hypen-only postal required']")
     public WebElement HomeStoreZipcodeBox;

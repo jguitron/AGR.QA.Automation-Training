@@ -17,6 +17,8 @@ public class SecureCheckoutBillingStepDefs {
 
     @Then("Credit card Payment option is available")
     public void credit_card_payment_option_is_available() {
+        BrowserUtils.scrollToElement(checkoutBilling.cclogoimg1);
+        BrowserUtils.sleep(1);
         Assert.assertTrue(checkoutBilling.cclogoimg1.isDisplayed());
         System.out.println("CC logo image1 is displayed: " + checkoutBilling.cclogoimg1.isDisplayed());
         Assert.assertTrue(checkoutBilling.cclogoimg2.isDisplayed());
@@ -42,6 +44,8 @@ public class SecureCheckoutBillingStepDefs {
 
     @Then("Ashley Advantage Payment option is available")
     public void ashley_advantage_payment_option_is_available() {
+        BrowserUtils.scrollToElement(checkoutBilling.aalogoimg);
+        BrowserUtils.sleep(1);
         Assert.assertTrue(checkoutBilling.aalogoimg.isDisplayed());
         System.out.println("CC logo image1 is displayed: " + checkoutBilling.aalogoimg.isDisplayed());
     }
@@ -67,6 +71,8 @@ public class SecureCheckoutBillingStepDefs {
 
     @Then("Progressive leasing Payment option is available")
     public void pl_payment_option_is_available() {
+        BrowserUtils.scrollToElement(checkoutBilling.pllogoimg);
+        BrowserUtils.sleep(1);
         Assert.assertTrue(checkoutBilling.pllogoimg.isDisplayed());
         System.out.println("PL logo image is displayed: " + checkoutBilling.pllogoimg.isDisplayed());
     }
@@ -91,6 +97,8 @@ public class SecureCheckoutBillingStepDefs {
 
     @Then("Paypal Payment option is available")
     public void Paypal_payment_option_is_available() {
+        BrowserUtils.scrollToElement(checkoutBilling.pplogoimg);
+        BrowserUtils.sleep(1);
         Assert.assertTrue(checkoutBilling.pplogoimg.isDisplayed());
         System.out.println("PL logo image is displayed: " + checkoutBilling.pllogoimg.isDisplayed());
     }
