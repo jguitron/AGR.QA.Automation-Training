@@ -75,7 +75,7 @@ public class CartPageDefs {
         System.out.println("Verified: " + cartPage.nofpp.getText());
     }
 
-    @When("user verifies that protection plan is available on cart")
+    @When("User verifies that protection plan is available on cart")
     public void user_verifies_that_protection_plan_is_available_on_cart() {
         Assert.assertEquals("Protect your items from the unexpected", cartPage.PPlabel1.getText());
         Assert.assertEquals("Protect your items from the unexpected", cartPage.PPlabel2.getText());
@@ -83,13 +83,13 @@ public class CartPageDefs {
         Assert.assertEquals("Protect your items from the unexpected", cartPage.PPlabel4.getText());
     }
 
-    @When("user verifies that protection plan is selected")
+    @When("User verifies that protection plan is selected")
     public void user_verifies_PP_selected() {
         Assert.assertTrue(cartPage.ppckbx1.isSelected());
         System.out.println("Verified checkbox: " + cartPage.ppckbx1.isSelected());
     }
 
-    @When("user verifies that protection plan is unselected")
+    @When("User verifies that protection plan is unselected")
     public void user_verifies_PP_unselected() {
         Assert.assertFalse(cartPage.ppckbx1.isSelected());
         Assert.assertFalse(cartPage.ppckbx2.isSelected());
@@ -101,7 +101,6 @@ public class CartPageDefs {
     @When("User Verifies Recycle Fee is displayed")
     public void user_verifies_recycleFee_displayed() {
         System.out.println(cartPage.recycleFee_cart.getText());
-        ;
         BrowserUtils.sleep(2);
     }
 
@@ -134,14 +133,14 @@ public class CartPageDefs {
         }
     }
 
-        @Then("Assert total number of items in cart is {int}")
-        public void assert_total_number_of_items_in_cart_is (Integer int1)
-        {
-            String MyCart = driver.findElement(By.xpath("//h1[@class='cart-title']")).getText();
-            System.out.println(MyCart);
-            String expectedQty = "My Cart (2 items)";
-            Assert.assertEquals(expectedQty, MyCart);
-        }
+    @Then("Assert total number of items in cart is {int}")
+    public void assert_total_number_of_items_in_cart_is(Integer int1) {
+        String MyCart = driver.findElement(By.xpath("//h1[@class='cart-title']")).getText();
+        System.out.println(MyCart);
+        String expectedQty = "My Cart (2 items)";
+        Assert.assertEquals(expectedQty, MyCart);
+    }
+
     @When("User Removes item from cart")
     public void user_removes_item_from_cart() {
         if (ConfigReader.getProperty("platform").equals("desktop")) {
@@ -150,9 +149,7 @@ public class CartPageDefs {
         } else if (ConfigReader.getProperty("platform").equals("tablet")) {
             cartPage.removeItem_BtnMobileTablet.click();
             cartPage.removeitem_YesBtn.click();
-        } else if(ConfigReader.getProperty("platform").equals("mobile")) {
-            /**must scroll to add expert services tag above remove item to reach remove item button,
-             * cannot scroll too remove button because will be out of screen*/
+        } else if (ConfigReader.getProperty("platform").equals("mobile")) {
             BrowserUtils.scrollToElement(driver.findElement(By.className("handy-head")));
             cartPage.removeItem_BtnMobileTablet.click();
             cartPage.removeitem_YesBtn.click();
@@ -160,7 +157,7 @@ public class CartPageDefs {
     }
 
     @Then("User Validates cart is {int} qty")
-    public void user_validates_cart_is_qty (Integer int1){
+    public void user_validates_cart_is_qty(Integer int1) {
         String actualQty = driver.findElement(By.xpath("//div[@class='cart-empty']")).getText();
         String expectedQty = "Your Shopping Cart is Empty";
         Assert.assertTrue(expectedQty, actualQty.contains("Your Shopping Cart is Empty"));
@@ -179,6 +176,7 @@ public class CartPageDefs {
         action.moveToElement(driver.findElement(By.xpath("//span[@style='font-weight:bold;']")));
         driver.findElement(By.name("dwfrm_login_login")).click();
     }
+
     @Then("User asserts total items in cart after save for later")
     public void user_asserts_total_items_in_cart_after_save_for_later() {
         BrowserUtils.sleep(3);
@@ -187,9 +185,9 @@ public class CartPageDefs {
         Assert.assertEquals(itemExpected, itemSaved);
         if (itemExpected.equals(itemSaved)) {
             System.out.println("Pass");
-
         }
     }
+
     @Then("User clicks save for later button")
     public void user_clicks_save_for_later_button() {
         JavascriptExecutor Js1 = (JavascriptExecutor) driver;
@@ -204,5 +202,5 @@ public class CartPageDefs {
         Assert.assertEquals(expectedItem, SavedItem);
     }
 
-    }
+}
 

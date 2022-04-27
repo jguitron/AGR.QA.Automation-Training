@@ -1,16 +1,16 @@
 package com.sfcc_smoke.pages;
 
+import com.sfcc_smoke.utilities.ConfigReader;
 import com.sfcc_smoke.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class SignUpPage {
+public class AccountPage {
 
-    public SignUpPage(){
-        PageFactory.initElements(Driver.getDriver(),this);
+    public AccountPage() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
-
     @FindBy(xpath = "(//button[@name='dwfrm_login_register'])[2]")
     public WebElement createAccount;
 
@@ -50,7 +50,19 @@ public class SignUpPage {
     @FindBy(xpath = "//div[@class='start-shopping']")
     public WebElement startShop;
 
+    @FindBy(name = "dwfrm_login_login")
+    public WebElement loginBtn;
 
 
+    public void login(String username, String password) {
+        if (!username.equalsIgnoreCase("username") && !password.equalsIgnoreCase("password")) {
+            this.email.sendKeys(username);
+            this.password.sendKeys(password);
+        } else {
+            this.email.sendKeys(ConfigReader.getProperty("username"));
+            this.password.sendKeys(ConfigReader.getProperty("password"));
+        }
+        loginBtn.click();
+    }
 
 }

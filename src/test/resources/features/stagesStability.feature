@@ -6,8 +6,8 @@ Feature: Stages stability verification
   @smoke
   Scenario Outline: verify all apollo stages up and running
     When User navigates to "<url>"
-    When user scrolls down to footer
-    Then user scrolls to header
+    When User scrolls down to footer
+    Then User scrolls to header
     Examples:
       | url                                          |
       | https://ecomm-mozart.dev.ashleyretail.com/   |

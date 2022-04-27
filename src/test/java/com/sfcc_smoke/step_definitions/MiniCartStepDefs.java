@@ -14,7 +14,6 @@ public class MiniCartStepDefs {
     CartPage cartPage = new CartPage();
     ProductDetailPage productDetailPage = new ProductDetailPage();
 
-
     @Then("User Removes item from mini cart")
     public void user_removes_item_from_mini_cart() {
         driver.findElement(By.xpath("//button[@class='remove-cart-item']")).click();
@@ -27,22 +26,17 @@ public class MiniCartStepDefs {
         System.out.println(CartQty);
         int ExpectedQty = 0;
         Assert.assertEquals(CartQty, ExpectedQty);
-
     }
+
     @Then("User clicks on save for later")
     public void user_clicks_on_save_for_later() {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
             cartPage.saveItem.isDisplayed();
             cartPage.saveItem.click();
-        }
-        /**mobile has different webelement for save for later*/
-        else if (ConfigReader.getProperty("platform").equals("mobile")) {
+        } else if (ConfigReader.getProperty("platform").equals("mobile")) {
             cartPage.saveItem.isDisplayed();
             cartPage.saveItem.click();
             productDetailPage.continueShopping.click();
         }
-
-
-
     }
 }

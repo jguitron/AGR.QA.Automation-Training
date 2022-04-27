@@ -4,7 +4,7 @@ Feature: Verification of Save for Later button in cart page
     Given User navigates to "url"
     And   User clicks on search bar
     Then  User search's "Honey-Can-Do 4 Piece Jar Storage Set" in search bar
-    And   user clicks on search icon
+    And   User clicks on search icon
     Then  User chooses "Honey-Can-Do 4-Piece Glass Jar Storage Set with Bamboo Lids, , large" in plp
     And   User clicks on Add Item to Cart
     And   User clicks on cart

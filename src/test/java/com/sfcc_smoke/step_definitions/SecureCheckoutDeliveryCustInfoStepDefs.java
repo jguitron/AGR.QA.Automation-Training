@@ -4,12 +4,9 @@ import com.sfcc_smoke.pages.SecureCheckoutDeliveryCustInfo;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebElement;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class SecureCheckoutDeliveryCustInfoStepDefs {
-
     SecureCheckoutDeliveryCustInfo custInfo = new SecureCheckoutDeliveryCustInfo();
 
     @When("User enters customer info on Secure Checkout Delivery Page")
@@ -18,7 +15,6 @@ public class SecureCheckoutDeliveryCustInfoStepDefs {
         List<String> mylist = info;
         for (int i = 0; i < mylist.size(); i++) {
             customerInfo = mylist.get(i);
-
             if (i == 0) {
                 custInfo.fname.sendKeys(customerInfo);
             }
@@ -47,10 +43,7 @@ public class SecureCheckoutDeliveryCustInfoStepDefs {
             if (i == 8) {
                 custInfo.customeremail.sendKeys(customerInfo);
             }
-
         }
-
-
     }
 
     @When("User clicks on Continue as Guest button")
