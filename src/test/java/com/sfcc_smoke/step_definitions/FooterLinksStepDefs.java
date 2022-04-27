@@ -24,63 +24,35 @@ public class FooterLinksStepDefs {
 
     @When("user scrolls down to footer")
     public void scrollToFooter() {
-        BrowserUtils.waitForVisibility(landingPageLG.footer, Duration.ofSeconds(10));
         BrowserUtils.scrollToElement(landingPageLG.footer);
+        BrowserUtils.sleep(1);
     }
 
-    @And("user clicks on {string}")
-    public void clickOnCategory(String footerCategory) {
+    @And("if platform is mobile user clicks on category")
+    public void clickOnCategory(List<String> category) {
         if (ConfigReader.getProperty("platform").equals("mobile")) {
-            if (footerCategory.equalsIgnoreCase(landingPageMed.getToKnowUs.getText())) {
-                landingPageLG.clickOnFooterCategoryLink(footerCategory);
-            } else if (footerCategory.equalsIgnoreCase(landingPageMed.customerCare.getText())) {
-                landingPageLG.clickOnFooterCategoryLink(footerCategory);
-            } else if (footerCategory.equalsIgnoreCase(landingPageMed.getInspired.getText())) {
-                landingPageLG.clickOnFooterCategoryLink(footerCategory);
-            } else if (footerCategory.equalsIgnoreCase(landingPageMed.termsAndPolicy.getText())) {
-                landingPageLG.clickOnFooterCategoryLink(footerCategory);
+            for (String each : category) {
+                landingPageMed.footerCategoryClick(each);
             }
         }
     }
 
     @Then("user verifies {string} opens {string} page")
-    public void verifyFooterSubLink(String subLink, String expected) {
-        String currentHandle = driver.getWindowHandle();
-        if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
-            if (driver.findElement(By.xpath("//a[.='" + subLink + "']")).isDisplayed()) {
-                WebElement currentLink = driver.findElement(By.xpath("//a[.='" + subLink + "']"));
-                BrowserUtils.waitForClickability(currentLink, Duration.ofSeconds(5)).click();
-            } else if (driver.findElement(By.xpath("(//a[.='" + subLink + "'])[2]")).isDisplayed()) {
-                WebElement lgLinkElem = driver.findElement(By.xpath("(//a[.='" + subLink + "'])[2]"));
-                BrowserUtils.waitForClickability(lgLinkElem, Duration.ofSeconds(5));
-                lgLinkElem.click();
+    public void verifyFooterSubLinks(String subLink, String expected) {
+        WebElement tempMed = null;
+        List<WebElement> allSubCategoriesMed = driver.findElements(By.xpath("(//div[@class='mdc-layout-grid'])[3]//li/a"));
+        for (WebElement eachSubCategoryMed : allSubCategoriesMed) {
+            if (eachSubCategoryMed.getText().equalsIgnoreCase(subLink)) {
+                tempMed = eachSubCategoryMed;
             }
         }
-        if (ConfigReader.getProperty("platform").equals("mobile")) {
-            WebElement smLinkElem = driver.findElement(By.xpath("(//a[.='" + subLink + "'])[1]"));
-            BrowserUtils.waitForClickability(smLinkElem, Duration.ofSeconds(10));
-            if (smLinkElem.isDisplayed()) {
-                BrowserUtils.waitForClickability(smLinkElem, Duration.ofSeconds(10)).click();
-            }
-        }
-        Set<String> windowHandles = driver.getWindowHandles();
-        if (windowHandles.size() > 1) {
-            for (String actualHandle : windowHandles) {
-                if (!actualHandle.equals(currentHandle)) {
-                    driver.switchTo().window(actualHandle);
-                }
-            }
-            String newTabUrl = driver.getCurrentUrl();
-            String newTabTitle = driver.getTitle();
-            if (newTabUrl.contains(expected) || newTabTitle.contains(expected)) {
-                Assert.assertTrue(newTabUrl.contains(expected) || newTabTitle.equals(expected));
-            } else {
-                System.out.println("Actual is not matching with Expected!");
-            }
+        BrowserUtils.clickWithJS(tempMed);
+        String newTabUrl = driver.getCurrentUrl();
+        String newTabTitle = driver.getTitle();
+        if (newTabUrl.contains(expected) || newTabTitle.contains(expected)) {
+            Assert.assertTrue(newTabUrl.contains(expected) || newTabTitle.equals(expected));
         } else {
-            String actualUrl = driver.getCurrentUrl();
-            String actualTitle = driver.getTitle();
-            Assert.assertTrue(actualUrl.contains(expected) || actualTitle.contains(expected));
+            System.out.println("Actual is not matching with Expected!");
         }
     }
 }

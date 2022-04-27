@@ -21,9 +21,14 @@ public class LoginPageLG {
     public WebElement loginBtn;
 
 
-    public void login() {
-        this.email.sendKeys();
-        this.password.sendKeys();
+   public void login(String username, String password) {
+        if (!username.equalsIgnoreCase("username") && !password.equalsIgnoreCase("password")) {
+            this.email.sendKeys(username);
+            this.password.sendKeys(password);
+        } else {
+            this.email.sendKeys(ConfigReader.getProperty("username"));
+            this.password.sendKeys(ConfigReader.getProperty("password"));
+        }
         loginBtn.click();
     }
 
