@@ -1,10 +1,6 @@
 package com.sfcc_smoke.step_definitions;
 
-import com.sfcc_smoke.pages.BasePage;
-import com.sfcc_smoke.pages.ProductDetailPage;
-import com.sfcc_smoke.pages.ProductListPage;
-import com.sfcc_smoke.pages.SearchPage;
-import com.sfcc_smoke.pages.mobile_pages.LandingPageMed;
+import com.sfcc_smoke.pages.*;
 import com.sfcc_smoke.utilities.BrowserUtils;
 import com.sfcc_smoke.utilities.ConfigReader;
 import com.sfcc_smoke.utilities.Driver;
@@ -23,45 +19,44 @@ public class BaseStepDefs {
     SearchPage searchPage = new SearchPage();
     LandingPageMed landingPageMed = new LandingPageMed();
 
-    @When("user finds closest store by {string}")
+    @When("User finds closest store by {string}")
     public void user_set_the_closet_store_by(String zipcode) {
         String platform = ConfigReader.getProperty("platform");
         if (platform.equals("desktop")) {
-            BrowserUtils.waitForVisibility(basePage.Storedownarrow, Duration.ofSeconds(5));
-            basePage.Storedownarrow.click();
-            basePage.HomeStoreZipcodeBox.sendKeys(zipcode + Keys.ENTER);
+            BrowserUtils.waitForVisibility(basePage.chooseLocalStore, Duration.ofSeconds(5));
+            basePage.chooseLocalStore.click();
+            basePage.zipCodeBox.sendKeys(zipcode + Keys.ENTER);
         }
         else if (platform.equals("mobile") || (platform.equals("tablet"))) {
             landingPageMed.mobileMenu.click();
             basePage.Mob_Storelink.click();
-            basePage.HomeStoreZipcodeBox.sendKeys(zipcode + Keys.ENTER);
+            basePage.zipCodeBox.sendKeys(zipcode + Keys.ENTER);
         }
     }
 
     @When("User searches for SKU {string} and clicks on it")
     public void serachitem(String Item) {
-        //BrowserUtils.waitForPageToLoad(5);
         BrowserUtils.sleep(3);
-        basePage.searchbar.sendKeys(Item + Keys.ENTER);
+        basePage.searchBar.sendKeys(Item + Keys.ENTER);
     }
 
     @When("User search for a SKU {string} and clicks on item 1 in result set")
     public void serachitem_result1(String Item) {
-        BrowserUtils.waitForVisibility(basePage.searchbar, Duration.ofSeconds(5));
-        basePage.searchbar.sendKeys(Item);
-        basePage.searchbar_result1.click();
+        BrowserUtils.waitForVisibility(basePage.searchBar, Duration.ofSeconds(5));
+        basePage.searchBar.sendKeys(Item);
+        basePage.searchBarResult1.click();
     }
 
     @When("User navigate to cart page")
     public void clickonminicart() {
-        BrowserUtils.waitForVisibility(basePage.minicarticon, Duration.ofSeconds(5));
-        basePage.minicarticon.click();
+        BrowserUtils.waitForVisibility(basePage.miniCartIcon, Duration.ofSeconds(5));
+        basePage.miniCartIcon.click();
     }
 
     @When("User navigate back to cart page")
     public void clickonbacktocart() {
-        BrowserUtils.waitForVisibility(basePage.bacttoCartIcon, Duration.ofSeconds(5));
-        basePage.bacttoCartIcon.click();
+        BrowserUtils.waitForVisibility(basePage.backToCartIcon, Duration.ofSeconds(5));
+        basePage.backToCartIcon.click();
     }
 
     @When("User verifies that Paypal login page is launched")

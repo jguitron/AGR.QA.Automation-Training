@@ -5,6 +5,6 @@ Feature: Broken links capture
 
   Scenario:  Verify if all URLs in page are valid
     Given User navigates to "url"
-    Then user clicks on each link on page to verify
+    Then User clicks on each link on page to verify
 
 

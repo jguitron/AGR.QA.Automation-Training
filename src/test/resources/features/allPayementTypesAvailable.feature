@@ -1,10 +1,11 @@
-@smoke @testme
+
+@smoke  @paymenttype
 Feature: Verification of available payment types in cart page
   As a user, I should be able to choose desired payment method; CC, AA, PL or PP
 
   Scenario: User sets store as Florida store, search for an item, add item to cart and navigate to Cart Page
     Given User navigates to "url"
-    Then user finds closest store by "33544"
+    Then User finds closest store by "33544"
     Then User searches for SKU "K600002651" and clicks on it
     Then User adds items to cart
     Then User navigate to cart page

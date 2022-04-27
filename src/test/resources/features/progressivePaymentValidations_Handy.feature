@@ -3,7 +3,7 @@ Feature: Verify Pop up message is displayed if Progressive payment is selected w
 
   Scenario: User sets store as Florida store
     Given User navigates to "url"
-    Then user finds closest store by "33606"
+    Then User finds closest store by "33606"
 
   Scenario: User adds Handy item to cart and navigate to billing page
     Then  User searches for SKU "D631-01" and clicks on it
