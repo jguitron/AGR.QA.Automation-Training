@@ -1,10 +1,8 @@
 package com.sfcc_smoke.step_definitions;
 
 import com.sfcc_smoke.pages.BasePage;
-import com.sfcc_smoke.pages.ProductDetailPage;
-import com.sfcc_smoke.pages.ProductListPage;
+import com.sfcc_smoke.pages.LandingPageMed;
 import com.sfcc_smoke.pages.SearchPage;
-import com.sfcc_smoke.pages.mobile_pages.LandingPageMed;
 import com.sfcc_smoke.utilities.BrowserUtils;
 import com.sfcc_smoke.utilities.ConfigReader;
 import com.sfcc_smoke.utilities.Driver;
@@ -14,6 +12,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+
 import java.time.Duration;
 
 public class BaseStepDefs {
@@ -33,7 +32,7 @@ public class BaseStepDefs {
         }
         else if (platform.equals("mobile") || (platform.equals("tablet"))) {
             landingPageMed.mobileMenu.click();
-            basePage.Mob_Storelink.click();
+            basePage.mobStoreLink.click();
             basePage.zipCodeBox.sendKeys(zipcode + Keys.ENTER);
         }
     }
@@ -48,7 +47,7 @@ public class BaseStepDefs {
     public void serachitem_result1(String Item) {
         BrowserUtils.waitForVisibility(basePage.searchBar, Duration.ofSeconds(5));
         basePage.searchBar.sendKeys(Item);
-        basePage.searchBarResult1.click();
+        basePage.searchBarResultOne.click();
     }
 
     @When("User navigate to cart page")
@@ -66,7 +65,6 @@ public class BaseStepDefs {
     @When("User verifies that Paypal login page is launched")
     public void getpagetitle() {
         Assert.assertEquals("Log in to your PayPal account", driver.getTitle());
-        System.out.println(driver.getTitle());
 
     }
 
