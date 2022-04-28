@@ -3,9 +3,7 @@ package com.sfcc_smoke.step_definitions;
 import com.sfcc_smoke.pages.HomePage;
 import com.sfcc_smoke.pages.SearchPage;
 import com.sfcc_smoke.utilities.BrowserUtils;
-import com.sfcc_smoke.utilities.ConfigReader;
 import com.sfcc_smoke.utilities.Driver;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -13,6 +11,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +50,6 @@ public class HomePageStepDefs {
         homePage.furniture.click();
         homePage.furniture.getText();
         Assert.assertTrue(driver.getCurrentUrl().endsWith(furniture + "/"));
-
     }
 
     @Then("User clicks on cart")
@@ -65,5 +63,4 @@ public class HomePageStepDefs {
         JavascriptExecutor Js1 = (JavascriptExecutor) driver;
         Js1.executeScript("window.scrollBy(0,650)");
     }
-
 }

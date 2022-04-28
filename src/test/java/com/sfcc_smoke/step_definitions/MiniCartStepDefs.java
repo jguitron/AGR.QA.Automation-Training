@@ -20,14 +20,6 @@ public class MiniCartStepDefs {
         driver.findElement(By.xpath("//button[@class='remove']")).click();
     }
 
-    @Then("User asserts items removed from mini cart and is {int} qty")
-    public void user_asserts_items_removed_from_mini_cart_and_is_qty(Integer int1) {
-        int CartQty = Integer.parseInt(driver.findElement(By.xpath("//span[@class='minicart-quantity']")).getText());
-        System.out.println(CartQty);
-        int ExpectedQty = 0;
-        Assert.assertEquals(CartQty, ExpectedQty);
-    }
-
     @Then("User clicks on save for later")
     public void user_clicks_on_save_for_later() {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
@@ -38,5 +30,12 @@ public class MiniCartStepDefs {
             cartPage.saveItem.click();
             productDetailPage.continueShopping.click();
         }
+    }
+    @Then("User asserts items in mini cart is {string} qty")
+    public void user_asserts_items_in_mini_cart_is_qty(String Item) {
+        int CartQty = Integer.parseInt(driver.findElement(By.xpath("//span[@class='minicart-quantity']")).getText());
+        System.out.println(CartQty);
+        int ExpectedQty = Integer.parseInt(Item);
+        Assert.assertEquals(CartQty, ExpectedQty);
     }
 }

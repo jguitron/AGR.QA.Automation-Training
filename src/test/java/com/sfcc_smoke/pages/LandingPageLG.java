@@ -13,7 +13,6 @@ public class LandingPageLG {
     public LandingPageLG() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
-
     WebDriver driver = Driver.getDriver();
 
     @FindBy(xpath = "//iframe[contains(@id,'fcopt-offer')]")
@@ -39,9 +38,7 @@ public class LandingPageLG {
         driver.switchTo().frame(iframe);
         BrowserUtils.clickWithJS(closeFrame);
         driver.switchTo().defaultContent();
-
     }
-
     public void verifyBrokenLinks(String linkUrl) {
         try {
             URL url = new URL(linkUrl);

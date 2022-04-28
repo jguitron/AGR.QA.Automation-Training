@@ -22,8 +22,6 @@ public class HeaderStepDefs {
             Assert.assertEquals(expectedName, account);
         } else {
             System.out.println("Does not apply to tablet and Mobile");
-
         }
-
     }
 }
