@@ -12,6 +12,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+
 import java.time.Duration;
 
 public class BaseStepDefs {
@@ -64,7 +65,6 @@ public class BaseStepDefs {
     @When("User verifies that Paypal login page is launched")
     public void getpagetitle() {
         Assert.assertEquals("Log in to your PayPal account", driver.getTitle());
-        System.out.println(driver.getTitle());
 
     }
 

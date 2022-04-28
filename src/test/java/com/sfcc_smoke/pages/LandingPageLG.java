@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -36,7 +37,8 @@ public class LandingPageLG {
 
     public void closeIframe() {
         driver.switchTo().frame(iframe);
-        BrowserUtils.clickWithJS(closeFrame);
+        BrowserUtils.scrollToElement(closeFrame);
+        closeFrame.click();
         driver.switchTo().defaultContent();
     }
     public void verifyBrokenLinks(String linkUrl) {
