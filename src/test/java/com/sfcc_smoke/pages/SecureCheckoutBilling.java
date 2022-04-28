@@ -33,7 +33,7 @@ public class SecureCheckoutBilling {
 
 
     //Webelements - Ashley Advantage
-    @FindBy(xpath = "//img[@alt='Ashley Advantage']")
+    @FindBy(xpath = "(//img[@alt='Ashley Advantage'])[1]")
     public WebElement aalogoimg;
     @FindBy(xpath = "(//h1[@class='payment-method-title'])[2]")
     public  WebElement aatitle;
