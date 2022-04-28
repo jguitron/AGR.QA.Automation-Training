@@ -1,4 +1,4 @@
-@smoke
+@garrett
 Feature: Verification of Item removed from cart
   Scenario: User Adds item to cart and removes from mini cart
     Given User navigates to "url"
@@ -8,4 +8,4 @@ Feature: Verification of Item removed from cart
     Then  User chooses "Ultra Luxury ET with Memory Foam Queen Mattress, White, large" in plp
     Then  User clicks on Add Item to Cart
     Then  User Removes item from mini cart
-    Then  User asserts items removed from mini cart and is 0 qty
+    Then  User asserts qty in mini cart is "0"

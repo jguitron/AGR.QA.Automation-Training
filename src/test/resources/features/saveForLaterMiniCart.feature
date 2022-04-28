@@ -11,4 +11,4 @@ Feature: Verification of Save for Later button in mini cart
     And   User clicks on save for later
     And   User logs in with "username" and "password"
     Then  User clicks on cart icon
-    Then  User asserts "8 Inch Chime Innerspring Queen Mattress in a Box, White, large" saved items in cart
+    Then  User asserts "Chime Innerspring Queen Mattress" saved items in cart

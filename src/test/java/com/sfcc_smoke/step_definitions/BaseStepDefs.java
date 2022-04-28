@@ -1,6 +1,10 @@
 package com.sfcc_smoke.step_definitions;
 
-import com.sfcc_smoke.pages.*;
+import com.sfcc_smoke.pages.BasePage;
+import com.sfcc_smoke.pages.ProductDetailPage;
+import com.sfcc_smoke.pages.ProductListPage;
+import com.sfcc_smoke.pages.SearchPage;
+import com.sfcc_smoke.pages.mobile_pages.LandingPageMed;
 import com.sfcc_smoke.utilities.BrowserUtils;
 import com.sfcc_smoke.utilities.ConfigReader;
 import com.sfcc_smoke.utilities.Driver;
@@ -76,7 +80,5 @@ public class BaseStepDefs {
     public void user_clicks_on_heart_icon_in_plp() {
         BrowserUtils.hover(driver.findElement(By.xpath("//a[@aria-label='Add to Wishlist']")));
         driver.findElement(By.xpath("//a[@aria-label='Add to Wishlist']")).click();
-
     }
-
 }
