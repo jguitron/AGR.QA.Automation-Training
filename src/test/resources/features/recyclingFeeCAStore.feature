@@ -3,7 +3,7 @@ Feature: Verify State Recycling fee is displayed in Cart, Shipping and billing p
 
   Scenario: User sets store as Florida store
     Given User navigates to "url"
-    Then user finds closest store by "90011"
+    Then User finds closest store by "90011"
 
   Scenario: User adds Mattress to cart and validate recycling fee for CA store
     Then  User searches for SKU "M69511" and clicks on it

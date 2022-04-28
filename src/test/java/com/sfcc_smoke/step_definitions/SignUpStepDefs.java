@@ -1,42 +1,39 @@
 package com.sfcc_smoke.step_definitions;
 
-
+import com.sfcc_smoke.pages.AccountPage;
 import com.sfcc_smoke.pages.HomePage;
-import com.sfcc_smoke.pages.SignUpPage;
 import com.sfcc_smoke.utilities.BrowserUtils;
 import com.sfcc_smoke.utilities.Driver;
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class SignUpStepDefs {
-
     WebDriver driver = Driver.getDriver();
     HomePage homePage = new HomePage();
-    SignUpPage signUpPage = new SignUpPage();
+    AccountPage signUp = new AccountPage();
     Actions actions = new Actions(driver);
 
-    @When("user clicks on login button")
+    @When("User clicks on login button")
     public void userClicksOnLoginLink() {
         homePage.loginButton.click();
     }
 
-    @Then("user then clicks on Login link")
+    @Then("User then clicks on Login link")
     public void userThenClicksOnLogInLink() {
         homePage.loginLink.click();
     }
 
-    @And("user clicks Create account link")
+    @And("User clicks Create account link")
     public void userClicksCreateAccountLink() {
-        actions.moveToElement(signUpPage.createAccount).build().perform();
-        signUpPage.createAccount.click();
+        actions.moveToElement(signUp.createAccount).build().perform();
+        signUp.createAccount.click();
     }
 
-    @Then("user enters personal information")
+    @Then("User enters personal information")
     public void user_enter_personal_information_with_following_data() {
         Faker faker = new Faker();
         String firstName = faker.name().firstName();
@@ -44,30 +41,27 @@ public class SignUpStepDefs {
         String email = faker.name().username() + "@gmail.com";
         String phone = "4126010000";
         String password = "M1" + faker.name().nameWithMiddle() + "#";
-
-        actions.moveToElement(signUpPage.password).build().perform();
-        signUpPage.firstName.sendKeys(firstName);
-        signUpPage.lastName.sendKeys(lastName);
-        signUpPage.email.sendKeys(email);
-        signUpPage.confEmail.sendKeys(email);
-        signUpPage.phone.sendKeys(phone);
-        signUpPage.altPhone.sendKeys(phone);
-        signUpPage.password.sendKeys(password);
-        signUpPage.confPassword.sendKeys(password);
+        actions.moveToElement(signUp.password).build().perform();
+        signUp.firstName.sendKeys(firstName);
+        signUp.lastName.sendKeys(lastName);
+        signUp.email.sendKeys(email);
+        signUp.confEmail.sendKeys(email);
+        signUp.phone.sendKeys(phone);
+        signUp.altPhone.sendKeys(phone);
+        signUp.password.sendKeys(password);
+        signUp.confPassword.sendKeys(password);
         BrowserUtils.sleep(1);
     }
 
-    @Then("user confirms age")
+    @Then("User confirms age")
     public void user_confirms_age() {
-        signUpPage.verifyAge.click();
+        signUp.verifyAge.click();
         BrowserUtils.sleep(1);
     }
 
-    @Then("user clicks on Submit button")
+    @Then("User clicks on Submit button")
     public void user_clicks_on_submit_button() {
-        signUpPage.submitForm.click();
+        signUp.submitForm.click();
         BrowserUtils.sleep(1);
-
-        /**Hello from me*/
     }
 }

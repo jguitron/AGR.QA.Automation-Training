@@ -11,33 +11,27 @@ public class BasePage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    //Webelement - Search bar on all pages
     @FindBy(xpath = "(//input[@id='q'])[1]")
-    public WebElement searchbar;
+    public WebElement searchBar;
 
     @FindBy(xpath = "//div[@class='unbxd-as-popular-product-image-container']")
-    public WebElement searchbar_result1;
+    public WebElement searchBarResultOne;
 
-    //WebElement - Mini cart Icon on Header.
     @FindBy(xpath = "//a[@class='mini-cart-link']")
-    public WebElement minicarticon;
+    public WebElement miniCartIcon;
 
-    //WebElement - find closest home store down arrow
-    @FindBy(xpath = "//a[@id='js-local-pricing-link']")
-    public WebElement Storedownarrow;
+    @FindBy(xpath = "(//div[@id='header-closest-store'])[1]")
+    public WebElement chooseLocalStore;
 
     @FindBy(xpath = "(//div[@class='local-pricing-zip-code'])[2]")
-    public WebElement Mob_Storelink;
+    public WebElement mobStoreLink;
 
-    //WebElement - Homestore zip code box
-    @FindBy(xpath = "//input[@class='input-text numbers-hypen-only postal required']")
-    public WebElement HomeStoreZipcodeBox;
+    @FindBy(xpath = "//input[@id='dwfrm_zipcodeentry_postal']")
+    public WebElement zipCodeBox;
 
-    //External webpage element
     @FindBy(xpath = "//h1[@id='headerText']")
-    public WebElement paypalheader;
+    public WebElement paypalHeader;
 
-    //Back to cart icon from Delivery, billing, shipping pages
     @FindBy(xpath = "//a[@class='back-to-cart']")
-    public WebElement bacttoCartIcon;
+    public WebElement backToCartIcon;
 }

@@ -5,7 +5,7 @@ Feature: When Item is Added to Cart, Qty can be changed in Cart Page
     Given User navigates to "url"
     When  User clicks on search bar
     And   User search's "Chime 8 Inch Innerspring Twin Mattress" in search bar
-    And   user clicks on search icon
+    And   User clicks on search icon
     And   User chooses "8 Inch Chime Innerspring Twin Mattress in a Box, White, large" in plp
     And   User clicks on Add Item to Cart
     Then  User clicks on cart
