@@ -1,6 +1,8 @@
 package com.sfcc_smoke.step_definitions;
 
-import com.sfcc_smoke.pages.*;
+import com.sfcc_smoke.pages.BasePage;
+import com.sfcc_smoke.pages.LandingPageMed;
+import com.sfcc_smoke.pages.SearchPage;
 import com.sfcc_smoke.utilities.BrowserUtils;
 import com.sfcc_smoke.utilities.ConfigReader;
 import com.sfcc_smoke.utilities.Driver;
@@ -29,7 +31,7 @@ public class BaseStepDefs {
         }
         else if (platform.equals("mobile") || (platform.equals("tablet"))) {
             landingPageMed.mobileMenu.click();
-            basePage.Mob_Storelink.click();
+            basePage.mobStoreLink.click();
             basePage.zipCodeBox.sendKeys(zipcode + Keys.ENTER);
         }
     }
@@ -44,7 +46,7 @@ public class BaseStepDefs {
     public void serachitem_result1(String Item) {
         BrowserUtils.waitForVisibility(basePage.searchBar, Duration.ofSeconds(5));
         basePage.searchBar.sendKeys(Item);
-        basePage.searchBarResult1.click();
+        basePage.searchBarResultOne.click();
     }
 
     @When("User navigate to cart page")
@@ -76,7 +78,5 @@ public class BaseStepDefs {
     public void user_clicks_on_heart_icon_in_plp() {
         BrowserUtils.hover(driver.findElement(By.xpath("//a[@aria-label='Add to Wishlist']")));
         driver.findElement(By.xpath("//a[@aria-label='Add to Wishlist']")).click();
-
     }
-
 }

@@ -46,5 +46,4 @@ public class SearchPage {
 
     @FindBy(css = "div[id='product-results']")
     public WebElement productCount;
-
 }

@@ -9,9 +9,10 @@ Feature: Verification of Mini Cart after adding 1 item and items from "shop the 
     Then  User chooses "Macleary Sofa, Moss, large" in plp
     And   User clicks search icon
     And   User Clicks plus button for "8900620" in shop the collection
-    And   User Clicks Add to Cart in Shop the Collection
+    And   User Clicks Add to Cart in Shop the Collection for "8900620"
     Then  User clicks on Add Item to Cart
-    Then  User asserts items removed from mini cart and is "2" qty
+    Then  User asserts items in mini cart is "2" qty
+
 
 
 

@@ -161,7 +161,6 @@ public class CartPageDefs {
         String actualQty = driver.findElement(By.xpath("//div[@class='cart-empty']")).getText();
         String expectedQty = "Your Shopping Cart is Empty";
         Assert.assertTrue(expectedQty, actualQty.contains("Your Shopping Cart is Empty"));
-
     }
 
     @And("User Logs in")

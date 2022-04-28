@@ -64,5 +64,4 @@ public class AccountPage {
         }
         loginBtn.click();
     }
-
 }

@@ -33,5 +33,4 @@ public class HomePage {
 
     @FindBy(xpath = "//div[@class='closeBtn']")
     public WebElement closeOffer;
-
 }
