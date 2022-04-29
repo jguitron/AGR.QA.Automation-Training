@@ -15,7 +15,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class CartPageDefs {
-
     CartPage cartPage = new CartPage();
     WebDriver driver = Driver.getDriver();
     ProductDetailPage productDetailPage = new ProductDetailPage();
@@ -34,8 +33,7 @@ public class CartPageDefs {
     public void user_check_PP_checkbox() {
         if (cartPage.pp_checkbox.isSelected()) {
             System.out.println("do nothing");
-        } else
-            cartPage.pp_checkbox.click();
+        } else cartPage.pp_checkbox.click();
         BrowserUtils.waitForPageToLoad(5);
     }
 
@@ -51,28 +49,22 @@ public class CartPageDefs {
     public void user_check_handy_checkbox() {
         if (cartPage.handy_checkbox.isSelected()) {
             System.out.println("do nothing");
-        } else
-            System.out.println("try to click-checkbox handy");
-        cartPage.handy_checkbox.click();
+        } else cartPage.handy_checkbox.click();
         BrowserUtils.waitForPageToLoad(5);
     }
 
     @When("User verifies that {string} is added to cart")
     public void user_verifies_that_FPP_added_cart(String ProtectionPlan) {
         Assert.assertEquals("Furniture $49.99", cartPage.pplink1.getText());
-        System.out.println("Verified: " + cartPage.pplink1.getText());
-        Assert.assertEquals("Outdoor $179.99", cartPage.pplink2.getText());
-        System.out.println("Verified: " + cartPage.pplink2.getText());
+        Assert.assertEquals("Outdoor $149.99", cartPage.pplink2.getText());
         Assert.assertEquals("Adjustable Base $149.99", cartPage.pplink3.getText());
-        System.out.println("Verified: " + cartPage.pplink3.getText());
         Assert.assertEquals("King Adjustable Base $199.99", cartPage.pplink4.getText());
-        System.out.println("Verified: " + cartPage.pplink4.getText());
     }
 
     @When("User verifies that Protection Plan is not available")
     public void user_verifies_that_FPP_unavailable() {
         Assert.assertEquals("OUR APOLOGIES: Protection plans are currently unavailable", cartPage.nofpp.getText());
-        System.out.println("Verified: " + cartPage.nofpp.getText());
+        BrowserUtils.sleep(1);
     }
 
     @When("User verifies that protection plan is available on cart")
@@ -86,7 +78,6 @@ public class CartPageDefs {
     @When("User verifies that protection plan is selected")
     public void user_verifies_PP_selected() {
         Assert.assertTrue(cartPage.ppckbx1.isSelected());
-        System.out.println("Verified checkbox: " + cartPage.ppckbx1.isSelected());
     }
 
     @When("User verifies that protection plan is unselected")
@@ -95,7 +86,6 @@ public class CartPageDefs {
         Assert.assertFalse(cartPage.ppckbx2.isSelected());
         Assert.assertFalse(cartPage.ppckbx3.isSelected());
         Assert.assertFalse(cartPage.ppckbx4.isSelected());
-        System.out.println("Verified checkbox: " + cartPage.ppckbx4.isSelected());
     }
 
     @When("User Verifies Recycle Fee is displayed")
@@ -200,6 +190,5 @@ public class CartPageDefs {
         String expectedItem = item;
         Assert.assertEquals(expectedItem, SavedItem);
     }
-
 }
 

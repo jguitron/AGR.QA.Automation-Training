@@ -76,4 +76,9 @@ public class CartPage {
 
     @FindBy(xpath = "//button[@class='save-item']")
     public WebElement saveItem;
+
+    @FindBy(xpath = "(//span[@class='ui-button-icon ui-icon ui-icon-closethick'])[2]")
+    public WebElement mobAddedToCartPopUpCloseX;
+    @FindBy(xpath = "(//a[@class='button continue-shopping'])[3]")
+    public WebElement mobAddedToCartPopUpContShoppingBtn;
 }
