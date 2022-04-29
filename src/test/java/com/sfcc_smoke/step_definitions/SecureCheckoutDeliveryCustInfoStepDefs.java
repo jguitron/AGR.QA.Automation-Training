@@ -64,7 +64,5 @@ public class SecureCheckoutDeliveryCustInfoStepDefs {
 
     @Then("User verifies that {string} available on PDP htht")
     public void userVerifiesThatAvailableOnPDPHtht(String arg0) {
-
     }
-
 }

@@ -38,12 +38,15 @@ public class ProductDetailPage {
     @FindBy(xpath = "(//a[@class='swatchanchor king'])[1]")
     public WebElement iconkingsize;
 
+
     @FindBy(xpath = "//label[@for='pp-FURNPRO']")
     public WebElement pdp_FURNPRO;
     @FindBy(xpath = "//label[@for='pp-OUTDRF']")
     public  WebElement pdp_OUTDRF;
     @FindBy(xpath = "//label[@for='pp-ADJPRO']")
     public  WebElement pp_ADJPRO;
-    @FindBy(xpath = "//label[@for='pp-KADJPRO']")
-    public  WebElement pdp_KADJPRO;
+    @FindBy(xpath = "//div[@class='protection-plan-input-wrapper']/div/label")
+    public  WebElement pp_KADJPRO;
+    @FindBy(xpath = "//div[@class='protection-plan-input-wrapper']")
+    public WebElement ppLableContainer;
 }
