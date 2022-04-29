@@ -110,13 +110,6 @@ public class CartPageDefs {
         BrowserUtils.sleep(2);
     }
 
-    @When("User remove item from cart")
-    public void user_remove_item_from_cart() {
-        cartPage.removeitem.click();
-        cartPage.removeitem_YesBtn.click();
-        BrowserUtils.sleep(2);
-    }
-
     @Then("User changes Qty from 1 to 2 in cart")
     public void user_changes_qty_from_to_in_cart() {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
@@ -176,15 +169,11 @@ public class CartPageDefs {
         driver.findElement(By.name("dwfrm_login_login")).click();
     }
 
-    @Then("User asserts total items in cart after save for later")
-    public void user_asserts_total_items_in_cart_after_save_for_later() {
-        BrowserUtils.sleep(3);
-        String itemSaved = driver.findElement(By.cssSelector("h2 a[tabindex='0']")).getText();
-        String itemExpected = "Honey-Can-Do 4 Piece Jar Storage Set";
-        Assert.assertEquals(itemExpected, itemSaved);
-        if (itemExpected.equals(itemSaved)) {
-            System.out.println("Pass");
-        }
+    @Then("User asserts {string} saved items in cart")
+    public void user_asserts_saved_items_in_cart(String item) {
+        String SavedItem = driver.findElement(By.cssSelector("h2 a[tabindex='0']")).getText();
+        String expectedItem = item;
+        Assert.assertEquals(expectedItem, SavedItem);
     }
 
     @Then("User clicks save for later button")

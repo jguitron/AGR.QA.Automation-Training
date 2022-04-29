@@ -31,4 +31,4 @@ Feature: Verify Pop up messages (2) are displayed if Progressive payment is sele
     Then User verifies that Progressive Popup for Handy Item is displayed
     Then User click on Continue with Progressive Leasing button in Progressive popup msg
     Then User navigate back to cart page
-    Then User remove item from cart
+    Then User Removes item from cart
