@@ -25,6 +25,7 @@ public class LoginStepDefs {
     public void navigateToURL(String urlValue) {
         if (!urlValue.equals("url")){
             driver.get(urlValue);
+
         } else {
             String url = System.getProperty("url", ConfigReader.getProperty("url"));
             driver.get(url);

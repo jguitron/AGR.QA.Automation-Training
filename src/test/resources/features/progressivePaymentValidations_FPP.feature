@@ -30,7 +30,7 @@ Feature: Verify Pop up message is displayed if Progressive payment is selected w
 
   Scenario: User Navigate back to cart and remove existing item
     Then User navigate back to cart page
-    Then User remove item from cart
+    Then User Removes item from cart
 
 
 
