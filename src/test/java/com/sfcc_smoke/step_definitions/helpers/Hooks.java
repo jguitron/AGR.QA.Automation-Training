@@ -24,7 +24,8 @@ public class Hooks {
                 System.out.println("============Tablet Test Started!=============");
                 break;
             case "mobile":
-                dimension = new Dimension(428, 926);
+                //dimension = new Dimension(428, 926);
+                dimension = new Dimension(760, 926);
                 Driver.getDriver().manage().window().setSize(dimension);
                 System.out.println("============Mobile Test Started!=============");
                 break;

@@ -6,7 +6,6 @@ import io.cucumber.java.en.*;
 import org.junit.Assert;
 
 public class SecureCheckoutBillingStepDefs {
-
     SecureCheckoutBilling checkoutBilling = new SecureCheckoutBilling();
 
     @Given("User is on Billing and Payment Page")
@@ -45,11 +44,12 @@ public class SecureCheckoutBillingStepDefs {
     @Then("User clicks on Ashley Advantage Payment option")
     public void user_clicks_on_aaLogo() {
         BrowserUtils.scrollToElement(checkoutBilling.aalogoimg);
-        checkoutBilling.aalogoimg.click();
+        BrowserUtils.clickWithJS(checkoutBilling.aalogoimg);
     }
 
     @Then("Ashley Advantage Payment option logos and fields are displayed")
     public void ashley_advantage_payment_option_logo_fields_are_displayed() {
+        BrowserUtils.sleep(2);
         Assert.assertTrue(checkoutBilling.aatitle.isDisplayed());
         Assert.assertEquals("Ashley Advantage™", checkoutBilling.aatitle.getText());
         Assert.assertTrue(checkoutBilling.synchronylogo.isDisplayed());
@@ -66,7 +66,8 @@ public class SecureCheckoutBillingStepDefs {
 
     @Then("User clicks on Progressive leasing Payment option")
     public void user_clicks_on_PL_Logo() {
-        checkoutBilling.pllogoimg.click();
+        BrowserUtils.clickWithJS(checkoutBilling.pllogoimg);
+        BrowserUtils.sleep(2);
     }
 
     @Then("Progressive leasing Payment option logos and fields are displayed")
@@ -87,7 +88,7 @@ public class SecureCheckoutBillingStepDefs {
 
     @Then("User clicks on Paypal Payment option")
     public void user_clicks_on_Paypal_Logo() {
-        checkoutBilling.pplogoimg.click();
+        BrowserUtils.clickWithJS(checkoutBilling.pplogoimg);
     }
 
     @Then("User verifies that Progressive Popup for ProtectionPlan is displayed")
