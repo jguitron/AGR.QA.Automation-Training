@@ -183,12 +183,6 @@ public class CartPageDefs {
         productDetailPage.SaveItem.click();
     }
 
-    @Then("User asserts {string} saved items in cart")
-    public void user_asserts_saved_items_in_cart(String item) {
-        String SavedItem = driver.findElement(By.cssSelector("h2 a[tabindex='0']")).getText();
-        String expectedItem = item;
-        Assert.assertEquals(expectedItem, SavedItem);
-    }
 
 }
 
