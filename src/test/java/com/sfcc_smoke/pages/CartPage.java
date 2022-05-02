@@ -76,4 +76,7 @@ public class CartPage {
 
     @FindBy(xpath = "//button[@class='save-item']")
     public WebElement saveItem;
+
+    @FindBy(xpath = "(//div[@class='mini-cart-pricing'] /span[@class='value'])[3]")
+    public WebElement popUpQty;
 }
