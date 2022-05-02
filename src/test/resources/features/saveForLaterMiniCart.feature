@@ -1,6 +1,6 @@
 Feature: Verification of Save for Later button in mini cart
 
-  @glittergarrett
+  @glitterglamgarrett
   Scenario: User saves for later in Mini Cart
     Given User navigates to "url"
     And   User clicks on search bar
@@ -11,4 +11,4 @@ Feature: Verification of Save for Later button in mini cart
     And   User clicks on save for later
     And   User logs in with "username" and "password"
     Then  User clicks on cart icon
-    Then  User asserts "Chime Innerspring Queen Mattress" saved items in cart
+    Then  User asserts "Chime 8 Inch Innerspring Queen Mattress" saved items in cart

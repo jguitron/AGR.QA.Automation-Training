@@ -25,13 +25,14 @@ public class LoginStepDefs {
     public void navigateToURL(String urlValue) {
         if (!urlValue.equals("url")){
             driver.get(urlValue);
+
         } else {
             String url = System.getProperty("url", ConfigReader.getProperty("url"));
             driver.get(url);
         }
         try {
             BrowserUtils.waitForVisibility(landingPageLG.iframe, Duration.ofSeconds(5));
-            landingPageLG.closeIframe();
+            landingPageLG.closeIframenew();
         }catch (Throwable error){
             error.printStackTrace();
             System.out.println("Iframe was not shown!");

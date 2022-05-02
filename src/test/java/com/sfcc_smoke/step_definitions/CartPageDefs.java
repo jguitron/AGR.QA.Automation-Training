@@ -15,6 +15,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class CartPageDefs {
+
     CartPage cartPage = new CartPage();
     WebDriver driver = Driver.getDriver();
     ProductDetailPage productDetailPage = new ProductDetailPage();
@@ -33,7 +34,8 @@ public class CartPageDefs {
     public void user_check_PP_checkbox() {
         if (cartPage.pp_checkbox.isSelected()) {
             System.out.println("do nothing");
-        } else cartPage.pp_checkbox.click();
+        } else
+            cartPage.pp_checkbox.click();
         BrowserUtils.waitForPageToLoad(5);
     }
 
@@ -49,22 +51,28 @@ public class CartPageDefs {
     public void user_check_handy_checkbox() {
         if (cartPage.handy_checkbox.isSelected()) {
             System.out.println("do nothing");
-        } else cartPage.handy_checkbox.click();
+        } else
+            System.out.println("try to click-checkbox handy");
+        cartPage.handy_checkbox.click();
         BrowserUtils.waitForPageToLoad(5);
     }
 
     @When("User verifies that {string} is added to cart")
     public void user_verifies_that_FPP_added_cart(String ProtectionPlan) {
         Assert.assertEquals("Furniture $49.99", cartPage.pplink1.getText());
-        Assert.assertEquals("Outdoor $149.99", cartPage.pplink2.getText());
+        System.out.println("Verified: " + cartPage.pplink1.getText());
+        Assert.assertEquals("Outdoor $179.99", cartPage.pplink2.getText());
+        System.out.println("Verified: " + cartPage.pplink2.getText());
         Assert.assertEquals("Adjustable Base $149.99", cartPage.pplink3.getText());
+        System.out.println("Verified: " + cartPage.pplink3.getText());
         Assert.assertEquals("King Adjustable Base $199.99", cartPage.pplink4.getText());
+        System.out.println("Verified: " + cartPage.pplink4.getText());
     }
 
     @When("User verifies that Protection Plan is not available")
     public void user_verifies_that_FPP_unavailable() {
         Assert.assertEquals("OUR APOLOGIES: Protection plans are currently unavailable", cartPage.nofpp.getText());
-        BrowserUtils.sleep(1);
+        System.out.println("Verified: " + cartPage.nofpp.getText());
     }
 
     @When("User verifies that protection plan is available on cart")
@@ -78,6 +86,7 @@ public class CartPageDefs {
     @When("User verifies that protection plan is selected")
     public void user_verifies_PP_selected() {
         Assert.assertTrue(cartPage.ppckbx1.isSelected());
+        System.out.println("Verified checkbox: " + cartPage.ppckbx1.isSelected());
     }
 
     @When("User verifies that protection plan is unselected")
@@ -86,6 +95,7 @@ public class CartPageDefs {
         Assert.assertFalse(cartPage.ppckbx2.isSelected());
         Assert.assertFalse(cartPage.ppckbx3.isSelected());
         Assert.assertFalse(cartPage.ppckbx4.isSelected());
+        System.out.println("Verified checkbox: " + cartPage.ppckbx4.isSelected());
     }
 
     @When("User Verifies Recycle Fee is displayed")
@@ -97,13 +107,6 @@ public class CartPageDefs {
     @When("User clicks on Secure Check out button")
     public void user_clicks_secure_checkout_button() {
         cartPage.secureckoutbtn.click();
-        BrowserUtils.sleep(2);
-    }
-
-    @When("User remove item from cart")
-    public void user_remove_item_from_cart() {
-        cartPage.removeitem.click();
-        cartPage.removeitem_YesBtn.click();
         BrowserUtils.sleep(2);
     }
 
@@ -166,15 +169,11 @@ public class CartPageDefs {
         driver.findElement(By.name("dwfrm_login_login")).click();
     }
 
-    @Then("User asserts total items in cart after save for later")
-    public void user_asserts_total_items_in_cart_after_save_for_later() {
-        BrowserUtils.sleep(3);
-        String itemSaved = driver.findElement(By.cssSelector("h2 a[tabindex='0']")).getText();
-        String itemExpected = "Honey-Can-Do 4 Piece Jar Storage Set";
-        Assert.assertEquals(itemExpected, itemSaved);
-        if (itemExpected.equals(itemSaved)) {
-            System.out.println("Pass");
-        }
+    @Then("User asserts {string} saved items in cart")
+    public void user_asserts_saved_items_in_cart(String item) {
+        String SavedItem = driver.findElement(By.cssSelector("h2 a[tabindex='0']")).getText();
+        String expectedItem = item;
+        Assert.assertEquals(expectedItem, SavedItem);
     }
 
     @Then("User clicks save for later button")
@@ -184,11 +183,6 @@ public class CartPageDefs {
         productDetailPage.SaveItem.click();
     }
 
-    @Then("User asserts {string} saved items in cart")
-    public void user_asserts_saved_items_in_cart(String item) {
-        String SavedItem = driver.findElement(By.cssSelector("h2 a[tabindex='0']")).getText();
-        String expectedItem = item;
-        Assert.assertEquals(expectedItem, SavedItem);
-    }
+
 }
 

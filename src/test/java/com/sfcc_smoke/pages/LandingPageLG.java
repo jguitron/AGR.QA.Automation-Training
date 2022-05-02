@@ -22,6 +22,11 @@ public class LandingPageLG {
     @FindBy(css = "div[id='Close2-Item23']")
     public WebElement closeFrame;
 
+    @FindBy(css = "button[class='offer-control close '] span")
+    public WebElement closeFrameNew;
+
+
+
     @FindBy(css = "li[id='header-user-info']")
     public WebElement mainLoginLink;
 
@@ -41,6 +46,17 @@ public class LandingPageLG {
         closeFrame.click();
         driver.switchTo().defaultContent();
     }
+
+    public void closeIframenew() {
+        BrowserUtils.sleep(1);
+        driver.navigate().refresh();
+        driver.switchTo().frame(iframe);
+        BrowserUtils.scrollToElement(closeFrame);
+        closeFrame.click();
+        driver.switchTo().defaultContent();
+        BrowserUtils.waitForPageToLoad(1);
+    }
+
     public void verifyBrokenLinks(String linkUrl) {
         try {
             URL url = new URL(linkUrl);

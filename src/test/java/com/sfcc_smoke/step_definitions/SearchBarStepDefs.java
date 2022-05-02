@@ -46,5 +46,4 @@ public class SearchBarStepDefs {
     public void user_clicks_on_search_bar() {
         searchPage.searchBar.click();
     }
-
 }

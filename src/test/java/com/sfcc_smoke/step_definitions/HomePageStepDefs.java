@@ -54,7 +54,6 @@ public class HomePageStepDefs {
 
     @Then("User clicks on cart")
     public void user_clicks_on_cart() {
-
         driver.findElement(By.xpath("//a[@class='mini-cart-link']")).click();
     }
     @Then("User clicks on cart icon")

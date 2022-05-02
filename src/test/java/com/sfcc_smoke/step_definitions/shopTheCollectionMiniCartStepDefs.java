@@ -46,6 +46,7 @@ public class shopTheCollectionMiniCartStepDefs {
             BrowserUtils.scrollToElement(productDetailPage.addtocart);
         }
         if (ConfigReader.getProperty("platform").equals("mobile")) {
+            BrowserUtils.scrollToElement(driver.findElement(By.xpath("//div[@class='bundle-cards']")));
             driver.findElement(By.xpath("//label[@for='bundle-anchor-atc-" + sku + "']")).click();
             BrowserUtils.scrollToElement(productDetailPage.AddToCart_mob);
         }
