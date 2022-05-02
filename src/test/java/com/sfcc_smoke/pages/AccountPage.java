@@ -32,9 +32,6 @@ public class AccountPage {
     @FindBy(css = "input[id='dwfrm_profile_customer_phoneHome']")
     public WebElement altPhone;
 
-    @FindBy(xpath = "//input[@id='dwfrm_profile_login_password']")
-    public WebElement password;
-
     @FindBy(xpath = "//input[@id='dwfrm_profile_login_passwordconfirm']")
     public WebElement confPassword;
 
@@ -53,14 +50,20 @@ public class AccountPage {
     @FindBy(name = "dwfrm_login_login")
     public WebElement loginBtn;
 
+    @FindBy(xpath = "//input[@id='dwfrm_login_username']")
+    public WebElement emailCart;
+
+    @FindBy(xpath = "//input[@id='dwfrm_login_password']")
+    public WebElement passwordNew;
+
 
     public void login(String username, String password) {
         if (!username.equalsIgnoreCase("username") && !password.equalsIgnoreCase("password")) {
-            this.email.sendKeys(username);
-            this.password.sendKeys(password);
+            this.emailCart.sendKeys(username);
+            this.passwordNew.sendKeys(password);
         } else {
-            this.email.sendKeys(ConfigReader.getProperty("username"));
-            this.password.sendKeys(ConfigReader.getProperty("password"));
+            this.emailCart.sendKeys(ConfigReader.getProperty("username"));
+            this.passwordNew.sendKeys(ConfigReader.getProperty("password"));
         }
         loginBtn.click();
     }

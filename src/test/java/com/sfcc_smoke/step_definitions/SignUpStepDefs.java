@@ -41,14 +41,14 @@ public class SignUpStepDefs {
         String email = faker.name().username() + "@gmail.com";
         String phone = "4126010000";
         String password = "M1" + faker.name().nameWithMiddle() + "#";
-        actions.moveToElement(signUp.password).build().perform();
+        actions.moveToElement(signUp.passwordNew).build().perform();
         signUp.firstName.sendKeys(firstName);
         signUp.lastName.sendKeys(lastName);
         signUp.email.sendKeys(email);
         signUp.confEmail.sendKeys(email);
         signUp.phone.sendKeys(phone);
         signUp.altPhone.sendKeys(phone);
-        signUp.password.sendKeys(password);
+        signUp.passwordNew.sendKeys(password);
         signUp.confPassword.sendKeys(password);
         BrowserUtils.sleep(1);
     }
