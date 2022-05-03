@@ -15,8 +15,7 @@ public class Hooks {
         Dimension dimension;
         switch (platform) {
             case "desktop":
-                dimension = new Dimension(1920, 1080);
-                Driver.getDriver().manage().window().setSize(dimension);
+                Driver.getDriver().manage().window().maximize();
                 System.out.println("============Desktop Test Started!=============");
                 break;
             case "tablet":
