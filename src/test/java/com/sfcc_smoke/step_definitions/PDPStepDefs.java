@@ -16,6 +16,7 @@ public class PDPStepDefs {
     ProductDetailPage productDetailPage = new ProductDetailPage();
     WebDriver driver = Driver.getDriver();
     CartPage cartPage = new CartPage();
+    String platform = ConfigReader.getProperty("platform");
 
     @When("User Select King bed size")
     public void selectBedSize() {
@@ -46,9 +47,13 @@ public class PDPStepDefs {
 
     @When("User verifies that KingAdjustable available on PDP")
     public void user_verifies_KAdjust_PP_available_in_PDP() {
-        BrowserUtils.scrollToElement(productDetailPage.pdp_KADJPRO);
-        Assert.assertEquals("10 Year King Adjustable Base Protection Plan (add plan in cart)", productDetailPage.pdp_KADJPRO.getText());
-        System.out.println("Verified: " + productDetailPage.pdp_KADJPRO.getText());
+        BrowserUtils.scrollToElement(productDetailPage.ppLableContainer);
+        if (platform.equals("desktop")) {
+            Assert.assertEquals("10 Year Adjustable Base Protection Plan (add plan in cart)", productDetailPage.pp_KADJPRO.getText());
+        }
+        else if (platform.equals("mobile") || (platform.equals("tablet"))){
+            Assert.assertEquals("10 Year Adjustable Base Protection Plan", productDetailPage.pp_KADJPRO.getText());
+        }
     }
 
     @When("User clicks on Add Item to Cart")
@@ -78,5 +83,26 @@ public class PDPStepDefs {
     @Then("User change qty from {int} to {int} in PDP")
     public void user_change_qty_from_to_in_pdp(Integer qty1, Integer qty2) {
         driver.findElement(By.xpath("(//input[@name='plus'])[1]")).click();
+    }
+
+
+    @When("User asserts {string} bed size displayed on PDP")
+    public void user_asserts_bed_size_displayed_on_pdp(String mattressSize) {
+        String mattressSelected = driver.findElement(By.xpath("//li[@class='selectable selected'] /a[@class='swatchanchor "+ mattressSize +"']")).getText();
+        String mattressOnPage = driver.findElement(By.cssSelector("h1[itemprop]")).getText();
+        Assert.assertTrue(mattressOnPage.contains(mattressSelected));
+    }
+
+    @Then("User changes bed size in PDP to ones not currently displayed by {string} mattress and asserts change")
+    public void user_changes_bed_size_in_pdp_to_ones_not_currently_displayed_by_mattress_and_asserts_change(String size) {
+        int size1 = Integer.parseInt(size);
+        for (int i = 0; i < size1; i++ ) {
+            driver.findElement(By.xpath("//ul[@class='buttons bedsize-variations clearfix size2'] /li[@class='selectable']")).click();
+            BrowserUtils.sleep(2);
+            driver.findElement(By.xpath("(//button[@class='toggle-attribute-values'])[1]")).click();
+            String mattressSelection = driver.findElement(By.xpath("//ul[@class='buttons bedsize-variations clearfix size2'] /li[@class='selectable selected']")).getText();
+            String mattressOnPage = driver.findElement(By.cssSelector("h1[itemprop]")).getText();
+            Assert.assertTrue(mattressOnPage.contains(mattressSelection));
+        }
     }
 }
