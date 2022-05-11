@@ -9,6 +9,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 public class PDPStepDefs {
@@ -88,14 +89,23 @@ public class PDPStepDefs {
 
     @When("User asserts {string} bed size displayed on PDP")
     public void user_asserts_bed_size_displayed_on_pdp(String mattressSize) {
+        if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
         String mattressSelected = driver.findElement(By.xpath("//li[@class='selectable selected'] /a[@class='swatchanchor "+ mattressSize +"']")).getText();
         String mattressOnPage = driver.findElement(By.cssSelector("h1[itemprop]")).getText();
         Assert.assertTrue(mattressOnPage.contains(mattressSelected));
+        } else if (ConfigReader.getProperty("platform").equals("mobile")) {
+            JavascriptExecutor Js1 = (JavascriptExecutor) driver;
+            Js1.executeScript("window.scrollBy(0,700)");
+            String mattressSelected = driver.findElement(By.xpath("//li[@class='selectable selected'] /a[@class='swatchanchor "+ mattressSize +"']")).getText();
+            String mattressOnPage = driver.findElement(By.cssSelector("h1[itemprop]")).getText();
+            Assert.assertTrue(mattressOnPage.contains(mattressSelected));
+        }
     }
 
     @Then("User changes bed size in PDP to ones not currently displayed by {string} mattress and asserts change")
     public void user_changes_bed_size_in_pdp_to_ones_not_currently_displayed_by_mattress_and_asserts_change(String size) {
-        int size1 = Integer.parseInt(size);
+        if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
+            int size1 = Integer.parseInt(size);
         for (int i = 0; i < size1; i++ ) {
             driver.findElement(By.xpath("//ul[@class='buttons bedsize-variations clearfix size2'] /li[@class='selectable']")).click();
             BrowserUtils.sleep(2);
@@ -103,6 +113,19 @@ public class PDPStepDefs {
             String mattressSelection = driver.findElement(By.xpath("//ul[@class='buttons bedsize-variations clearfix size2'] /li[@class='selectable selected']")).getText();
             String mattressOnPage = driver.findElement(By.cssSelector("h1[itemprop]")).getText();
             Assert.assertTrue(mattressOnPage.contains(mattressSelection));
+        }
+            }  else if (ConfigReader.getProperty("platform").equals("mobile")) {
+                int size1 = Integer.parseInt(size);
+            for (int i = 0; i < size1; i++ ) {
+                driver.findElement(By.xpath("//ul[@class='buttons bedsize-variations clearfix size2'] /li[@class='selectable']")).click();
+                BrowserUtils.sleep(2);
+                JavascriptExecutor Js1 = (JavascriptExecutor) driver;
+                Js1.executeScript("window.scrollBy(0,700)");
+                driver.findElement(By.xpath("(//button[@class='toggle-attribute-values'])[1]")).click();
+                String mattressSelection = driver.findElement(By.xpath("//ul[@class='buttons bedsize-variations clearfix size2'] /li[@class='selectable selected']")).getText();
+                String mattressOnPage = driver.findElement(By.cssSelector("h1[itemprop]")).getText();
+                Assert.assertTrue(mattressOnPage.contains(mattressSelection));
+            }
         }
     }
 }
