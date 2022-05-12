@@ -12,6 +12,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
+import java.util.List;
+
 public class PDPStepDefs {
 
     ProductDetailPage productDetailPage = new ProductDetailPage();
@@ -97,7 +99,7 @@ public class PDPStepDefs {
             JavascriptExecutor Js1 = (JavascriptExecutor) driver;
             Js1.executeScript("window.scrollBy(0,700)");
             String mattressSelected = driver.findElement(By.xpath("//li[@class='selectable selected'] /a[@class='swatchanchor "+ mattressSize +"']")).getText();
-            String mattressOnPage = driver.findElement(By.cssSelector("h1[itemprop]")).getText();
+            String mattressOnPage = driver.findElement(By.cssSelector("div[class='product-bundle-tile has-variations'] img[alt='Darcy Loveseat, "+mattressSize+", large']")).getText();
             Assert.assertTrue(mattressOnPage.contains(mattressSelected));
         }
     }
@@ -125,6 +127,52 @@ public class PDPStepDefs {
                 String mattressSelection = driver.findElement(By.xpath("//ul[@class='buttons bedsize-variations clearfix size2'] /li[@class='selectable selected']")).getText();
                 String mattressOnPage = driver.findElement(By.cssSelector("h1[itemprop]")).getText();
                 Assert.assertTrue(mattressOnPage.contains(mattressSelection));
+            }
+        }
+    }
+    @When("User asserts {string} color displayed on PDP")
+    public void user_asserts_color_displayed_on_pdp(String color) {
+        if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
+            String colorSelected = driver.findElement(By.xpath("//li[@class='selectable selected'] /a[@title='Select Color: "+color+"']")).getText();
+            String colorOnPage = driver.findElement(By.xpath("//div[@class='dimension-image']/img[@alt='Darcy Loveseat, "+ color +", large']")).getText();
+            Assert.assertTrue(colorOnPage.contains(colorSelected));
+        } else if (ConfigReader.getProperty("platform").equals("mobile")) {
+            JavascriptExecutor Js1 = (JavascriptExecutor) driver;
+            Js1.executeScript("window.scrollBy(0,800)");
+            String colorSelected = driver.findElement(By.xpath("//li[@class='selectable selected'] /a[@title='Select Color: "+color+"']")).getText();
+            String colorOnPage = driver.findElement(By.xpath("(//img[@alt='Darcy Loveseat, "+color+", large'])[2]")).getText();
+            Assert.assertTrue(colorOnPage.contains(colorSelected));
+
+        }
+    }
+
+    @Then("User changes color scheme in PDP to ones not currently displayed by colors different colors and asserts change")
+    public void user_changes_color_scheme_in_pdp_to_ones_not_currently_displayed_by_different_colors_and_asserts_change(List <String> colors) {
+        if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
+            for (String eachColor : colors) {
+                driver.findElement(By.xpath("//ul[@class='swatches clearfix color'] /li /a[@title='Select Color: " +eachColor+"']")).click();
+                BrowserUtils.sleep(2);
+                JavascriptExecutor Js1 = (JavascriptExecutor) driver;
+                Js1.executeScript("window.scrollBy(0,400)");
+                BrowserUtils.sleep(2);
+                driver.findElement(By.xpath("//button[@class='toggle-attribute-values']")).click();
+                BrowserUtils.sleep(2);
+                String colorOnPage = driver.findElement(By.xpath("//div[@class='label'] /span[@class='selected-variant']")).getText();
+                String colorSelected = driver.findElement(By.xpath("//li[@class='selectable selected'] /a[@title='Select Color: "+eachColor+"']")).getText();
+                Assert.assertTrue(colorOnPage.contains(colorSelected));
+            }
+        }
+        else if (ConfigReader.getProperty("platform").equals("mobile")) {
+                for (String eachColor : colors) {
+                driver.findElement(By.xpath("//ul[@class='swatches clearfix color'] /li /a[@title='Select Color: " +eachColor+"']")).click();
+                BrowserUtils.sleep(2);
+                JavascriptExecutor Js1 = (JavascriptExecutor) driver;
+                Js1.executeScript("window.scrollBy(0,700)");
+                driver.findElement(By.xpath("//button[@class='toggle-attribute-values']")).click();
+                BrowserUtils.sleep(2);
+                String colorOnPage = driver.findElement(By.xpath("//div[@class='label'] /span[@class='selected-variant']")).getText();
+                String colorSelected = driver.findElement(By.xpath("//li[@class='selectable selected'] /a[@title='Select Color: "+eachColor+"']")).getText();
+                Assert.assertTrue(colorOnPage.contains(colorSelected));
             }
         }
     }
