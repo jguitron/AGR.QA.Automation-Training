@@ -1,5 +1,4 @@
 @smoke
-
 Feature: Verification of login functionality via heart icon on pdp
 
   Scenario: User adds item to wish list via heart icon
