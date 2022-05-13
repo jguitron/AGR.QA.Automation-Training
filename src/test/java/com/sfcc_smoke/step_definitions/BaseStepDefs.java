@@ -1,7 +1,7 @@
 package com.sfcc_smoke.step_definitions;
 
 import com.sfcc_smoke.pages.BasePage;
-import com.sfcc_smoke.pages.LandingPageMed;
+import com.sfcc_smoke.pages.LandingPage;
 import com.sfcc_smoke.pages.SearchPage;
 import com.sfcc_smoke.utilities.BrowserUtils;
 import com.sfcc_smoke.utilities.ConfigReader;
@@ -20,7 +20,7 @@ public class BaseStepDefs {
     WebDriver driver = Driver.getDriver();
     BasePage basePage = new BasePage();
     SearchPage searchPage = new SearchPage();
-    LandingPageMed landingPageMed = new LandingPageMed();
+    LandingPage landingPage = new LandingPage();
 
     @When("User finds closest store by {string}")
     public void user_set_the_closet_store_by(String zipcode) {
@@ -31,7 +31,7 @@ public class BaseStepDefs {
             basePage.zipCodeBox.sendKeys(zipcode + Keys.ENTER);
         }
         else if (platform.equals("mobile") || (platform.equals("tablet"))) {
-            landingPageMed.mobileMenu.click();
+            landingPage.mobileMenu.click();
             basePage.mobStoreLink.click();
             basePage.zipCodeBox.sendKeys(zipcode + Keys.ENTER);
         }

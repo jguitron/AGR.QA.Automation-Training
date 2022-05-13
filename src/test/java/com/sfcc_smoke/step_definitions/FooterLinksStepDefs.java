@@ -1,7 +1,6 @@
 package com.sfcc_smoke.step_definitions;
 
-import com.sfcc_smoke.pages.LandingPageLG;
-import com.sfcc_smoke.pages.LandingPageMed;
+import com.sfcc_smoke.pages.LandingPage;
 import com.sfcc_smoke.utilities.BrowserUtils;
 import com.sfcc_smoke.utilities.ConfigReader;
 import com.sfcc_smoke.utilities.Driver;
@@ -12,6 +11,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
 import java.time.Duration;
 import java.util.List;
 
@@ -19,12 +19,11 @@ import java.util.List;
 public class FooterLinksStepDefs {
 
     WebDriver driver = Driver.getDriver();
-    LandingPageMed landingPageMed = new LandingPageMed();
-    LandingPageLG landingPageLG = new LandingPageLG();
+    LandingPage landingPage = new LandingPage();
 
     @When("User scrolls down to footer")
     public void scrollToFooter() {
-        BrowserUtils.scrollToElement(landingPageLG.footer);
+        BrowserUtils.scrollToElement(landingPage.footer);
         BrowserUtils.sleep(1);
     }
 
@@ -32,7 +31,7 @@ public class FooterLinksStepDefs {
     public void clickOnCategory(List<String> category) {
         if (ConfigReader.getProperty("platform").equals("mobile")) {
             for (String each : category) {
-                landingPageMed.footerCategoryClick(each);
+                landingPage.footerCategoryClick(each);
                 BrowserUtils.sleep(1);
             }
         }
