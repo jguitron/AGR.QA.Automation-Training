@@ -2,43 +2,41 @@ package com.sfcc_smoke.pages;
 
 import com.sfcc_smoke.utilities.BrowserUtils;
 import com.sfcc_smoke.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
+import java.util.NoSuchElementException;
 
-public class LandingPageLG {
-    public LandingPageLG() {
+public class LandingPage {
+    public LandingPage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
     WebDriver driver = Driver.getDriver();
 
     @FindBy(xpath = "//iframe[contains(@id,'fcopt-offer')]")
     public WebElement iframe;
-
     @FindBy(css = "div[id='Close2-Item23']")
     public WebElement closeFrame;
-
     @FindBy(css = "button[class='offer-control close '] span")
     public WebElement closeFrameNew;
-
-
-
     @FindBy(css = "li[id='header-user-info']")
     public WebElement mainLoginLink;
-
     @FindBy(css = "a[class='redesign-button']")
     public WebElement mainLoginBtn;
-
     @FindBy(tagName = "header")
     public WebElement header;
-
     @FindBy(tagName = "footer")
     public WebElement footer;
-
+    @FindBy(css = "span[class='hamburger-box']")
+    public WebElement mobileMenu;
+    @FindBy(xpath = "(//a[@class='user-account'])[2]")
+    public WebElement mobileLoginBtn;
+    public WebElement countryFlag;
 
     public void closeIframe() {
         driver.switchTo().frame(iframe);
@@ -71,4 +69,25 @@ public class LandingPageLG {
         } catch (Exception ex) {
         }
     }
+
+    public void footerCategoryClick(String expectedCategory) {
+        List<WebElement> categoryName = driver.findElements(By.xpath("//p[@class='flex-auto']"));
+        for (WebElement each : categoryName) {
+            if (each.getText().equalsIgnoreCase(expectedCategory)) {
+                BrowserUtils.clickWithJS(each);
+            }
+        }
+    }
+
+    public void mobileMenuClick() {
+        if (mobileMenu.isDisplayed()) {
+            System.out.println("Mobile or Tablet view is open");
+            try {
+                mobileMenu.click();
+            } catch (NoSuchElementException ex) {
+                System.out.println("Mobile view is displayed, but couldn't click on Menu btn");
+            }
+        }
+    }
+
 }

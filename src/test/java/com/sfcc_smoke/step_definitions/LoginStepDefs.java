@@ -1,8 +1,7 @@
 package com.sfcc_smoke.step_definitions;
 
-import com.sfcc_smoke.pages.LandingPageLG;
 import com.sfcc_smoke.pages.AccountPage;
-import com.sfcc_smoke.pages.LandingPageMed;
+import com.sfcc_smoke.pages.LandingPage;
 import com.sfcc_smoke.utilities.BrowserUtils;
 import com.sfcc_smoke.utilities.ConfigReader;
 import com.sfcc_smoke.utilities.Driver;
@@ -12,14 +11,14 @@ import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 import java.time.Duration;
 
 public class LoginStepDefs {
 
     WebDriver driver = Driver.getDriver();
     AccountPage accountPage = new AccountPage();
-    LandingPageLG landingPageLG = new LandingPageLG();
-    LandingPageMed landingPageMed = new LandingPageMed();
+    LandingPage landingPage = new LandingPage();
 
     @Given("User navigates to {string}")
     public void navigateToURL(String urlValue) {
@@ -31,8 +30,8 @@ public class LoginStepDefs {
             driver.get(url);
         }
         try {
-            BrowserUtils.waitForVisibility(landingPageLG.iframe, Duration.ofSeconds(5));
-            landingPageLG.closeIframenew();
+            BrowserUtils.waitForVisibility(landingPage.iframe, Duration.ofSeconds(5));
+            landingPage.closeIframenew();
         }catch (Throwable error){
             error.printStackTrace();
             System.out.println("Iframe was not shown!");
@@ -44,14 +43,14 @@ public class LoginStepDefs {
             driver.findElement(By.xpath("content-asset ca-online-only")).click();
         String platform = ConfigReader.getProperty("platform");
         if (platform.equals("desktop")) {
-            BrowserUtils.waitForClickability(landingPageLG.mainLoginLink, Duration.ofSeconds(10));
-            landingPageLG.mainLoginBtn.click();
+            BrowserUtils.waitForClickability(landingPage.mainLoginLink, Duration.ofSeconds(10));
+            landingPage.mainLoginBtn.click();
         } else if (platform.equals("mobile") || (platform.equals("tablet"))) {
-            landingPageMed.mobileMenu.click();
-            landingPageMed.mobileLoginBtn.click();
+            landingPage.mobileMenu.click();
+            landingPage.mobileLoginBtn.click();
         } else {
-            landingPageLG.mainLoginLink.click();
-            landingPageLG.mainLoginBtn.click();
+            landingPage.mainLoginLink.click();
+            landingPage.mainLoginBtn.click();
         }
     }
 
