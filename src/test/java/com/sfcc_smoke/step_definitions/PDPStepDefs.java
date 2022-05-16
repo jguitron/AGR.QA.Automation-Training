@@ -30,22 +30,34 @@ public class PDPStepDefs {
     @When("User verifies that FPP available on PDP")
     public void user_verifies_FPP_available_in_PDP() {
         BrowserUtils.scrollToElement(productDetailPage.pdp_FURNPRO);
-        Assert.assertEquals("5 Year Furniture Protection Plan (add plan in cart)", productDetailPage.pdp_FURNPRO.getText());
-        System.out.println("Verified: " + productDetailPage.pdp_FURNPRO.getText());
+        if (platform.equals("desktop")) {
+            Assert.assertEquals("5 Year Furniture Protection Plan (add plan in cart)", productDetailPage.pdp_FURNPRO.getText());
+        }
+        else if (platform.equals("mobile") || (platform.equals("tablet"))){
+            Assert.assertEquals("5 Year Furniture Protection Plan", productDetailPage.pdp_FURNPRO.getText());
+        }
     }
 
     @When("User verifies that OUTDoorPP available on PDP")
     public void user_verifies_Out_PP_available_in_PDP() {
         BrowserUtils.scrollToElement(productDetailPage.pdp_OUTDRF);
-        Assert.assertEquals("5 Year Outdoor Protection Plan (add plan in cart)", productDetailPage.pdp_OUTDRF.getText());
-        System.out.println("Verified: " + productDetailPage.pdp_OUTDRF.getText());
+        if (platform.equals("desktop")) {
+            Assert.assertEquals("5 Year Outdoor Protection Plan (add plan in cart)", productDetailPage.pdp_OUTDRF.getText());
+        }
+        else if (platform.equals("mobile") || (platform.equals("tablet"))){
+            Assert.assertEquals("5 Year Outdoor Protection Plan", productDetailPage.pdp_OUTDRF.getText());
+        }
     }
 
     @When("User verifies that Adjustable PP available on PDP")
     public void user_verifies_Adjst_PP_available_in_PDP() {
         BrowserUtils.scrollToElement(productDetailPage.pp_ADJPRO);
-        Assert.assertEquals("10 Year Adjustable Base Protection Plan (add plan in cart)", productDetailPage.pp_ADJPRO.getText());
-        System.out.println("Verified: " + productDetailPage.pp_ADJPRO.getText());
+        if (platform.equals("desktop")) {
+            Assert.assertEquals("10 Year Adjustable Base Protection Plan (add plan in cart)", productDetailPage.pp_ADJPRO.getText());
+        }
+        else if (platform.equals("mobile") || (platform.equals("tablet"))){
+            Assert.assertEquals("10 Year Adjustable Base Protection Plan", productDetailPage.pp_ADJPRO.getText());
+        }
     }
 
     @When("User verifies that KingAdjustable available on PDP")
@@ -92,9 +104,9 @@ public class PDPStepDefs {
     @When("User asserts {string} bed size displayed on PDP")
     public void user_asserts_bed_size_displayed_on_pdp(String mattressSize) {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
-        String mattressSelected = driver.findElement(By.xpath("//li[@class='selectable selected'] /a[@class='swatchanchor "+ mattressSize +"']")).getText();
-        String mattressOnPage = driver.findElement(By.cssSelector("h1[itemprop]")).getText();
-        Assert.assertTrue(mattressOnPage.contains(mattressSelected));
+            String mattressSelected = driver.findElement(By.xpath("//li[@class='selectable selected'] /a[@class='swatchanchor "+ mattressSize +"']")).getText();
+            String mattressOnPage = driver.findElement(By.cssSelector("h1[itemprop]")).getText();
+            Assert.assertTrue(mattressOnPage.contains(mattressSelected));
         } else if (ConfigReader.getProperty("platform").equals("mobile")) {
             JavascriptExecutor Js1 = (JavascriptExecutor) driver;
             Js1.executeScript("window.scrollBy(0,700)");
@@ -108,16 +120,16 @@ public class PDPStepDefs {
     public void user_changes_bed_size_in_pdp_to_ones_not_currently_displayed_by_mattress_and_asserts_change(String size) {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
             int size1 = Integer.parseInt(size);
-        for (int i = 0; i < size1; i++ ) {
-            driver.findElement(By.xpath("//ul[@class='buttons bedsize-variations clearfix size2'] /li[@class='selectable']")).click();
-            BrowserUtils.sleep(2);
-            driver.findElement(By.xpath("(//button[@class='toggle-attribute-values'])[1]")).click();
-            String mattressSelection = driver.findElement(By.xpath("//ul[@class='buttons bedsize-variations clearfix size2'] /li[@class='selectable selected']")).getText();
-            String mattressOnPage = driver.findElement(By.cssSelector("h1[itemprop]")).getText();
-            Assert.assertTrue(mattressOnPage.contains(mattressSelection));
-        }
-            }  else if (ConfigReader.getProperty("platform").equals("mobile")) {
-                int size1 = Integer.parseInt(size);
+            for (int i = 0; i < size1; i++ ) {
+                driver.findElement(By.xpath("//ul[@class='buttons bedsize-variations clearfix size2'] /li[@class='selectable']")).click();
+                BrowserUtils.sleep(2);
+                driver.findElement(By.xpath("(//button[@class='toggle-attribute-values'])[1]")).click();
+                String mattressSelection = driver.findElement(By.xpath("//ul[@class='buttons bedsize-variations clearfix size2'] /li[@class='selectable selected']")).getText();
+                String mattressOnPage = driver.findElement(By.cssSelector("h1[itemprop]")).getText();
+                Assert.assertTrue(mattressOnPage.contains(mattressSelection));
+            }
+        }  else if (ConfigReader.getProperty("platform").equals("mobile")) {
+            int size1 = Integer.parseInt(size);
             for (int i = 0; i < size1; i++ ) {
                 driver.findElement(By.xpath("//ul[@class='buttons bedsize-variations clearfix size2'] /li[@class='selectable']")).click();
                 BrowserUtils.sleep(2);
@@ -163,7 +175,7 @@ public class PDPStepDefs {
             }
         }
         else if (ConfigReader.getProperty("platform").equals("mobile")) {
-                for (String eachColor : colors) {
+            for (String eachColor : colors) {
                 driver.findElement(By.xpath("//ul[@class='swatches clearfix color'] /li /a[@title='Select Color: " +eachColor+"']")).click();
                 BrowserUtils.sleep(2);
                 JavascriptExecutor Js1 = (JavascriptExecutor) driver;
