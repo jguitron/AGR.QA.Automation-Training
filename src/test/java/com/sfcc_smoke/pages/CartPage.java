@@ -22,8 +22,10 @@ public class CartPage {
     @FindBy(xpath = "//tr[@class='protection-plan'][4]")
     public WebElement pplink4;
 
-    @FindBy(className = "js-local-pricing-link")
+    @FindBy(xpath = "(//a[@class='js-local-pricing-link'])[2]")
     public WebElement cartzipcodelink;
+    @FindBy(xpath = "(//a[@class='js-local-pricing-link'])[1]")
+    public WebElement cartzipcodelinkMob;
 
     @FindBy(xpath = "//div[@class='field-wrapper']/input[@class='input-text numbers-hypen-only postal required']")
     public WebElement popupzipcode;
@@ -74,9 +76,18 @@ public class CartPage {
     @FindBy(xpath = "//table[@class='order-totals-table']/tbody/tr[@id='order-state-recycling-fee']/td")
     public WebElement recycleFee_cart;
 
+    @FindBy(xpath = "//tr[@class='order-sales-tax ']")
+    public WebElement taxesCart;
+
+    @FindBy(xpath = "//td[@class='order-sales-tax-value']")
+    public WebElement taxValueCart;
+
     @FindBy(xpath = "//button[@class='save-item']")
     public WebElement saveItem;
 
     @FindBy(xpath = "(//div[@class='mini-cart-pricing'] /span[@class='value'])[3]")
     public WebElement popUpQty;
+
+    @FindBy(xpath = "//input[@class='input-text numbers-hypen-only postal required']")
+    public WebElement changeLocationZipCodePopUpTextBox;
 }

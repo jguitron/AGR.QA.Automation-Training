@@ -11,6 +11,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
@@ -19,6 +20,7 @@ public class CartPageDefs {
     CartPage cartPage = new CartPage();
     WebDriver driver = Driver.getDriver();
     ProductDetailPage productDetailPage = new ProductDetailPage();
+    String platform = ConfigReader.getProperty("platform");
 
     @When("User uncheck Protection Plan check box")
     public void user_uncheck_PP_checkbox() {
@@ -183,6 +185,52 @@ public class CartPageDefs {
         productDetailPage.SaveItem.click();
     }
 
+    @Then("User validates the tax amount on CartPage")
+    public void user_validate_tax_on_cart() {
+        BrowserUtils.sleep(2);
+        if (platform.equals("desktop")) {
+            String zipcode = cartPage.cartzipcodelink.getText();
+            String taxvalue = cartPage.taxValueCart.getText();
+            taxvalue = taxvalue.replace("$", "");
+            double finaltaxvalue = Double.parseDouble(taxvalue);
+            BrowserUtils.scrollToElement(cartPage.taxesCart);
+            if (zipcode.startsWith("97") || zipcode.startsWith("99") || zipcode.startsWith("19") || zipcode.startsWith("59") || zipcode.startsWith("03")) {
+                Assert.assertTrue(finaltaxvalue == 0.00);
+            } else {
+                Assert.assertTrue(finaltaxvalue > 0);
+            }
+        }
 
+        if (platform.equals("mobile") || (platform.equals("tablet"))) {
+            String zipcode = cartPage.cartzipcodelinkMob.getText();
+            String taxvalue = cartPage.taxValueCart.getText();
+            taxvalue = taxvalue.replace("$", "");
+            double finaltaxvalue = Double.parseDouble(taxvalue);
+            BrowserUtils.scrollToElement(cartPage.taxesCart);
+            if (zipcode.startsWith("97") || zipcode.startsWith("99") || zipcode.startsWith("19") || zipcode.startsWith("59") || zipcode.startsWith("03")) {
+                Assert.assertTrue(finaltaxvalue == 0.00);
+            } else {
+                Assert.assertTrue(finaltaxvalue > 0);
+            }
+        }
+
+    }
+
+    @Then("User changes the delivery {string} by clicking on zipcode link from Cart Page")
+    public void user_change_the_zipcode_in_cart(String zipcode) {
+
+        if (platform.equals("desktop")) {
+            BrowserUtils.scrollToElement(cartPage.cartzipcodelink);
+            cartPage.cartzipcodelink.click();
+            cartPage.changeLocationZipCodePopUpTextBox.sendKeys(zipcode + Keys.ENTER);
+            BrowserUtils.sleep(1);
+        }
+        if (platform.equals("mobile") || (platform.equals("tablet"))) {
+            BrowserUtils.scrollToElement(cartPage.cartzipcodelinkMob);
+            BrowserUtils.clickWithJS(cartPage.cartzipcodelinkMob);
+            cartPage.changeLocationZipCodePopUpTextBox.sendKeys(zipcode + Keys.ENTER);
+            BrowserUtils.sleep(1);
+        }
+    }
 }
 

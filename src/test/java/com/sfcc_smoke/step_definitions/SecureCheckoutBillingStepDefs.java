@@ -116,4 +116,20 @@ public class SecureCheckoutBillingStepDefs {
         checkoutBilling.PrgsvPopupContinueBtn.click();
         BrowserUtils.waitForPageToLoad(4);
     }
+
+    @Then("User validates the tax amount on SecureCheckout Billing Page")
+    public void user_validate_tax_on_SecureCheckout_Billing() {
+        BrowserUtils.sleep(2);
+        BrowserUtils.scrollToElement(checkoutBilling.TaxLabelSecureCheckOutBilling);
+        Assert.assertTrue(checkoutBilling.TaxLabelSecureCheckOutBilling.isDisplayed());
+        String zipcode = checkoutBilling.zipcodevalueBilling.getAttribute("value");
+        String taxvalue = checkoutBilling.taxValueSecureCheckoutBilling.getText();
+        taxvalue = taxvalue.replace("$", "");
+        double finaltaxvalue = Double.parseDouble(taxvalue);
+        if (zipcode.startsWith("97") || zipcode.startsWith("99") || zipcode.startsWith("19") || zipcode.startsWith("59") || zipcode.startsWith("03")) {
+            Assert.assertTrue(finaltaxvalue == 0.00);
+        } else {
+            Assert.assertTrue(finaltaxvalue > 0);
+        }
+    }
 }

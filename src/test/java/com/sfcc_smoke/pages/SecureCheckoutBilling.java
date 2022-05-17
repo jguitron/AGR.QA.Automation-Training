@@ -7,8 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class SecureCheckoutBilling {
 
-    public SecureCheckoutBilling(){
-        PageFactory.initElements(Driver.getDriver(),this);
+    public SecureCheckoutBilling() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
     @FindBy(xpath = "(//div[@class='checkout-menu-title'])[2]")
@@ -30,7 +30,7 @@ public class SecureCheckoutBilling {
     @FindBy(xpath = "(//img[@alt='Ashley Advantage'])[1]")
     public WebElement aalogoimg;
     @FindBy(xpath = "(//h1[@class='payment-method-title'])[2]")
-    public  WebElement aatitle;
+    public WebElement aatitle;
     @FindBy(xpath = "//div[@class='cc-logos synchrony-logo']")
     public WebElement synchronylogo;
     @FindBy(xpath = "//div[@class='cc-logos genesis-logo']")
@@ -57,6 +57,12 @@ public class SecureCheckoutBilling {
     public WebElement PrgsvPopupMsg_handy;
     @FindBy(xpath = "((//div[@class='button-wrap-modal'])[3]/button/div)[1]")
     public WebElement PrgsvPopupContinueBtn;
+    @FindBy(xpath = "//div[@class='font-bold']")
+    public WebElement TaxLabelSecureCheckOutBilling;
+    @FindBy(xpath = "//td[@class='order-sales-tax-value']")
+    public WebElement taxValueSecureCheckoutBilling;
+    @FindBy(xpath = "//input[@name='warehouse-zip']")
+    public WebElement zipcodevalueBilling;
     @FindBy(xpath = "((//div[@class='button-wrap-modal'])[3]/button/div)[2]")
     public WebElement PrgsvPopupDiffPayMethodBtn;
     @FindBy(xpath = "//span[@class='ui-button-icon ui-icon ui-icon-closethick']")
