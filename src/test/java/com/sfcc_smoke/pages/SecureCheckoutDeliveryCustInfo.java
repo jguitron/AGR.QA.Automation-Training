@@ -6,11 +6,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class SecureCheckoutDeliveryCustInfo {
-    public SecureCheckoutDeliveryCustInfo(){
-        PageFactory.initElements(Driver.getDriver(),this);
+    public SecureCheckoutDeliveryCustInfo() {
+        PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    /** Webelements - Customer info fields */
+
     @FindBy(xpath = "//input[@id='dwfrm_singleshipping_shippingAddress_addressFields_firstName']")
     public WebElement fname;
     @FindBy(xpath = "//input[@id='dwfrm_singleshipping_shippingAddress_addressFields_lastName']")
@@ -29,12 +29,12 @@ public class SecureCheckoutDeliveryCustInfo {
     public WebElement customerphone;
     @FindBy(xpath = "//input[@id='dwfrm_singleshipping_email_emailAddress']")
     public WebElement customeremail;
-
-    /** Webelement Continue as Guest button */
     @FindBy(xpath = "//button[@class='continue']")
     public WebElement contAsGuest;
-
-    /** Webelement : Popup | Use Original button */
     @FindBy(xpath = "//div[@class='oldAddress']/form/button[@class='submit-button']")
-    public  WebElement useoriginal;
+    public WebElement useoriginal;
+    @FindBy(xpath = "//div[@class='font-bold']")
+    public WebElement taxLableSecureChkoutCustInfo;
+    @FindBy(xpath = "//td[@class='order-sales-tax-value']")
+    public WebElement taxValueSecureChkoutCustInfo;
 }

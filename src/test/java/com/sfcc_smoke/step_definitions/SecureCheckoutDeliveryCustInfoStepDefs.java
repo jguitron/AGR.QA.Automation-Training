@@ -1,8 +1,10 @@
 package com.sfcc_smoke.step_definitions;
 
 import com.sfcc_smoke.pages.SecureCheckoutDeliveryCustInfo;
+import com.sfcc_smoke.utilities.BrowserUtils;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import java.util.List;
 
@@ -56,13 +58,19 @@ public class SecureCheckoutDeliveryCustInfoStepDefs {
         custInfo.useoriginal.click();
     }
 
-    @When("User clicks on {string} button")
-    public void click_on_Cont_as_guest(WebElement guestBtn) {
-        guestBtn = custInfo.contAsGuest;
-        guestBtn.click();
-    }
-
-    @Then("User verifies that {string} available on PDP htht")
-    public void userVerifiesThatAvailableOnPDPHtht(String arg0) {
+    @Then("User validates the tax amount on SecureCheckout CustomerInfo Page")
+    public void user_validate_tax_on_SecureCheckout_CustInfo() {
+        BrowserUtils.sleep(2);
+        String zipcode = custInfo.zip.getAttribute("value");
+        BrowserUtils.scrollToElement(custInfo.taxLableSecureChkoutCustInfo);
+        String taxvalue = custInfo.taxValueSecureChkoutCustInfo.getText();
+        taxvalue = taxvalue.replace("$","");
+        double finaltaxvalue = Double.parseDouble(taxvalue);
+         if (zipcode.startsWith("97") || zipcode.startsWith("99") || zipcode.startsWith("19") || zipcode.startsWith("59") || zipcode.startsWith("03")){
+            Assert.assertTrue(finaltaxvalue == 0.00);
+        }
+        else {
+            Assert.assertTrue(finaltaxvalue>0);
+        }
     }
 }
