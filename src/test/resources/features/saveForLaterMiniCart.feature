@@ -1,3 +1,4 @@
+@smoke
 Feature: Verification of Save for Later button in mini cart
 
   Scenario: User saves for later in Mini Cart

@@ -1,4 +1,4 @@
-@smoke  @regression
+@smoke @regression
 Feature: Verification of available payment types in cart page
   As a user, I should be able to choose desired payment method; CC, AA, PL or PP
 

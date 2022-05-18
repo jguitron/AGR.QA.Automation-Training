@@ -32,8 +32,7 @@ public class PDPStepDefs {
         BrowserUtils.scrollToElement(productDetailPage.pdp_FURNPRO);
         if (platform.equals("desktop")) {
             Assert.assertEquals("5 Year Furniture Protection Plan (add plan in cart)", productDetailPage.pdp_FURNPRO.getText());
-        }
-        else if (platform.equals("mobile") || (platform.equals("tablet"))){
+        } else if (platform.equals("mobile") || (platform.equals("tablet"))) {
             Assert.assertEquals("5 Year Furniture Protection Plan", productDetailPage.pdp_FURNPRO.getText());
         }
     }
@@ -43,8 +42,7 @@ public class PDPStepDefs {
         BrowserUtils.scrollToElement(productDetailPage.pdp_OUTDRF);
         if (platform.equals("desktop")) {
             Assert.assertEquals("5 Year Outdoor Protection Plan (add plan in cart)", productDetailPage.pdp_OUTDRF.getText());
-        }
-        else if (platform.equals("mobile") || (platform.equals("tablet"))){
+        } else if (platform.equals("mobile") || (platform.equals("tablet"))) {
             Assert.assertEquals("5 Year Outdoor Protection Plan", productDetailPage.pdp_OUTDRF.getText());
         }
     }
@@ -54,8 +52,7 @@ public class PDPStepDefs {
         BrowserUtils.scrollToElement(productDetailPage.pp_ADJPRO);
         if (platform.equals("desktop")) {
             Assert.assertEquals("10 Year Adjustable Base Protection Plan (add plan in cart)", productDetailPage.pp_ADJPRO.getText());
-        }
-        else if (platform.equals("mobile") || (platform.equals("tablet"))){
+        } else if (platform.equals("mobile") || (platform.equals("tablet"))) {
             Assert.assertEquals("10 Year Adjustable Base Protection Plan", productDetailPage.pp_ADJPRO.getText());
         }
     }
@@ -65,8 +62,7 @@ public class PDPStepDefs {
         BrowserUtils.scrollToElement(productDetailPage.ppLableContainer);
         if (platform.equals("desktop")) {
             Assert.assertEquals("10 Year Adjustable Base Protection Plan (add plan in cart)", productDetailPage.pp_KADJPRO.getText());
-        }
-        else if (platform.equals("mobile") || (platform.equals("tablet"))){
+        } else if (platform.equals("mobile") || (platform.equals("tablet"))) {
             Assert.assertEquals("10 Year Adjustable Base Protection Plan", productDetailPage.pp_KADJPRO.getText());
         }
     }
@@ -74,10 +70,10 @@ public class PDPStepDefs {
     @When("User clicks on Add Item to Cart")
     public void user_clicks_on_add_item_to_cart() {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
+            BrowserUtils.scrollToElement(productDetailPage.addtocart);
             productDetailPage.addtocart.isDisplayed();
-            productDetailPage.addtocart.click();
-        }
-        else if (productDetailPage.AddToCart_mob.isDisplayed()) {
+            BrowserUtils.clickWithJS(productDetailPage.addtocart);
+        } else if (productDetailPage.AddToCart_mob.isDisplayed()) {
             BrowserUtils.scrollToElement(productDetailPage.AddToCart_mob);
             productDetailPage.AddToCart_mob.click();
         }
@@ -88,8 +84,7 @@ public class PDPStepDefs {
         if (ConfigReader.getProperty("platform").equals("mobile")) {
             String ItemName = driver.findElement(By.xpath("(//a[@title='Go to Product: " + inputAssert + "'])[3]")).getText();
             Assert.assertEquals(inputAssert, ItemName);
-        }
-        else if (cartPage.popUpQty.isDisplayed()) {
+        } else if (cartPage.popUpQty.isDisplayed()) {
             String Qty = cartPage.popUpQty.getText();
             Assert.assertEquals(inputAssert, Qty);
         } else System.out.println("Mobile Only");
@@ -104,14 +99,14 @@ public class PDPStepDefs {
     @When("User asserts {string} bed size displayed on PDP")
     public void user_asserts_bed_size_displayed_on_pdp(String mattressSize) {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
-            String mattressSelected = driver.findElement(By.xpath("//li[@class='selectable selected'] /a[@class='swatchanchor "+ mattressSize +"']")).getText();
+            String mattressSelected = driver.findElement(By.xpath("//li[@class='selectable selected'] /a[@class='swatchanchor " + mattressSize + "']")).getText();
             String mattressOnPage = driver.findElement(By.cssSelector("h1[itemprop]")).getText();
             Assert.assertTrue(mattressOnPage.contains(mattressSelected));
         } else if (ConfigReader.getProperty("platform").equals("mobile")) {
             JavascriptExecutor Js1 = (JavascriptExecutor) driver;
             Js1.executeScript("window.scrollBy(0,700)");
-            String mattressSelected = driver.findElement(By.xpath("//li[@class='selectable selected'] /a[@class='swatchanchor "+ mattressSize +"']")).getText();
-            String mattressOnPage = driver.findElement(By.cssSelector("div[class='product-bundle-tile has-variations'] img[alt='Darcy Loveseat, "+mattressSize+", large']")).getText();
+            String mattressSelected = driver.findElement(By.xpath("//li[@class='selectable selected'] /a[@class='swatchanchor " + mattressSize + "']")).getText();
+            String mattressOnPage = driver.findElement(By.cssSelector("div[class='product-bundle-tile has-variations'] img[alt='Darcy Loveseat, " + mattressSize + ", large']")).getText();
             Assert.assertTrue(mattressOnPage.contains(mattressSelected));
         }
     }
@@ -120,7 +115,7 @@ public class PDPStepDefs {
     public void user_changes_bed_size_in_pdp_to_ones_not_currently_displayed_by_mattress_and_asserts_change(String size) {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
             int size1 = Integer.parseInt(size);
-            for (int i = 0; i < size1; i++ ) {
+            for (int i = 0; i < size1; i++) {
                 driver.findElement(By.xpath("//ul[@class='buttons bedsize-variations clearfix size2'] /li[@class='selectable']")).click();
                 BrowserUtils.sleep(2);
                 driver.findElement(By.xpath("(//button[@class='toggle-attribute-values'])[1]")).click();
@@ -128,9 +123,9 @@ public class PDPStepDefs {
                 String mattressOnPage = driver.findElement(By.cssSelector("h1[itemprop]")).getText();
                 Assert.assertTrue(mattressOnPage.contains(mattressSelection));
             }
-        }  else if (ConfigReader.getProperty("platform").equals("mobile")) {
+        } else if (ConfigReader.getProperty("platform").equals("mobile")) {
             int size1 = Integer.parseInt(size);
-            for (int i = 0; i < size1; i++ ) {
+            for (int i = 0; i < size1; i++) {
                 driver.findElement(By.xpath("//ul[@class='buttons bedsize-variations clearfix size2'] /li[@class='selectable']")).click();
                 BrowserUtils.sleep(2);
                 JavascriptExecutor Js1 = (JavascriptExecutor) driver;
@@ -142,27 +137,28 @@ public class PDPStepDefs {
             }
         }
     }
+
     @When("User asserts {string} color displayed on PDP")
     public void user_asserts_color_displayed_on_pdp(String color) {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
-            String colorSelected = driver.findElement(By.xpath("//li[@class='selectable selected'] /a[@title='Select Color: "+color+"']")).getText();
-            String colorOnPage = driver.findElement(By.xpath("//div[@class='dimension-image']/img[@alt='Darcy Loveseat, "+ color +", large']")).getText();
+            String colorSelected = driver.findElement(By.xpath("//li[@class='selectable selected'] /a[@title='Select Color: " + color + "']")).getText();
+            String colorOnPage = driver.findElement(By.xpath("//div[@class='dimension-image']/img[@alt='Darcy Loveseat, " + color + ", large']")).getText();
             Assert.assertTrue(colorOnPage.contains(colorSelected));
         } else if (ConfigReader.getProperty("platform").equals("mobile")) {
             JavascriptExecutor Js1 = (JavascriptExecutor) driver;
             Js1.executeScript("window.scrollBy(0,800)");
-            String colorSelected = driver.findElement(By.xpath("//li[@class='selectable selected'] /a[@title='Select Color: "+color+"']")).getText();
-            String colorOnPage = driver.findElement(By.xpath("(//img[@alt='Darcy Loveseat, "+color+", large'])[2]")).getText();
+            String colorSelected = driver.findElement(By.xpath("//li[@class='selectable selected'] /a[@title='Select Color: " + color + "']")).getText();
+            String colorOnPage = driver.findElement(By.xpath("(//img[@alt='Darcy Loveseat, " + color + ", large'])[2]")).getText();
             Assert.assertTrue(colorOnPage.contains(colorSelected));
 
         }
     }
 
     @Then("User changes color scheme in PDP to ones not currently displayed by colors different colors and asserts change")
-    public void user_changes_color_scheme_in_pdp_to_ones_not_currently_displayed_by_different_colors_and_asserts_change(List <String> colors) {
+    public void user_changes_color_scheme_in_pdp_to_ones_not_currently_displayed_by_different_colors_and_asserts_change(List<String> colors) {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
             for (String eachColor : colors) {
-                driver.findElement(By.xpath("//ul[@class='swatches clearfix color'] /li /a[@title='Select Color: " +eachColor+"']")).click();
+                driver.findElement(By.xpath("//ul[@class='swatches clearfix color'] /li /a[@title='Select Color: " + eachColor + "']")).click();
                 BrowserUtils.sleep(2);
                 JavascriptExecutor Js1 = (JavascriptExecutor) driver;
                 Js1.executeScript("window.scrollBy(0,400)");
@@ -170,20 +166,19 @@ public class PDPStepDefs {
                 driver.findElement(By.xpath("//button[@class='toggle-attribute-values']")).click();
                 BrowserUtils.sleep(2);
                 String colorOnPage = driver.findElement(By.xpath("//div[@class='label'] /span[@class='selected-variant']")).getText();
-                String colorSelected = driver.findElement(By.xpath("//li[@class='selectable selected'] /a[@title='Select Color: "+eachColor+"']")).getText();
+                String colorSelected = driver.findElement(By.xpath("//li[@class='selectable selected'] /a[@title='Select Color: " + eachColor + "']")).getText();
                 Assert.assertTrue(colorOnPage.contains(colorSelected));
             }
-        }
-        else if (ConfigReader.getProperty("platform").equals("mobile")) {
+        } else if (ConfigReader.getProperty("platform").equals("mobile")) {
             for (String eachColor : colors) {
-                driver.findElement(By.xpath("//ul[@class='swatches clearfix color'] /li /a[@title='Select Color: " +eachColor+"']")).click();
+                driver.findElement(By.xpath("//ul[@class='swatches clearfix color'] /li /a[@title='Select Color: " + eachColor + "']")).click();
                 BrowserUtils.sleep(2);
                 JavascriptExecutor Js1 = (JavascriptExecutor) driver;
                 Js1.executeScript("window.scrollBy(0,700)");
                 driver.findElement(By.xpath("//button[@class='toggle-attribute-values']")).click();
                 BrowserUtils.sleep(2);
                 String colorOnPage = driver.findElement(By.xpath("//div[@class='label'] /span[@class='selected-variant']")).getText();
-                String colorSelected = driver.findElement(By.xpath("//li[@class='selectable selected'] /a[@title='Select Color: "+eachColor+"']")).getText();
+                String colorSelected = driver.findElement(By.xpath("//li[@class='selectable selected'] /a[@title='Select Color: " + eachColor + "']")).getText();
                 Assert.assertTrue(colorOnPage.contains(colorSelected));
             }
         }

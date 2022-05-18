@@ -1,5 +1,5 @@
 
-@smoke
+@regression
 Feature: Broken links capture
   Check all available "links" and verify if all functional
 
