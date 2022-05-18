@@ -7,7 +7,7 @@ Feature: Verify State Recycling fee is displayed in Cart, Shipping and billing p
 
   Scenario: User adds Mattress to cart and validate recycling fee for CA store
     Then  User searches for SKU "M69511" and clicks on it
-    Then  User adds items to cart
+    Then  User clicks on Add Item to Cart
     Then User navigate to cart page
     Then User Verifies Recycle Fee is displayed
     Then User clicks on Secure Check out button

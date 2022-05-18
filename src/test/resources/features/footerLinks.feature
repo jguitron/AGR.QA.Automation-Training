@@ -2,7 +2,6 @@
 Feature: Footer sub-category links verification
   Verify if all clickable "sub-category links" in footer functioning as expected
 
-  @smoke
   Scenario Outline: Verifying "<subCategory>"
     Given User navigates to "url"
     When User scrolls down to footer

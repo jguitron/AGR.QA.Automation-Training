@@ -1,5 +1,5 @@
 Feature: Verification of Bed Size Switching on PDP
-  @glitterglamgarrett
+  @smoke
   Scenario: User Changes between different bed size verifying switching occurs
     Given User navigates to "url"
     When  User clicks on search bar
