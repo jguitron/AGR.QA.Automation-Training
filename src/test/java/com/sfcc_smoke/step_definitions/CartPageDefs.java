@@ -91,12 +91,6 @@ public class CartPageDefs {
         Assert.assertFalse(cartPage.ppckbx4.isSelected());
     }
 
-    @When("User Verifies Recycle Fee is displayed")
-    public void user_verifies_recycleFee_displayed() {
-        System.out.println(cartPage.recycleFee_cart.getText());
-        BrowserUtils.sleep(2);
-    }
-
     @When("User clicks on Secure Check out button")
     public void user_clicks_secure_checkout_button() {
         cartPage.secureckoutbtn.click();

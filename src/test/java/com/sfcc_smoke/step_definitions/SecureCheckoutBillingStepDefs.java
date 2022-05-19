@@ -2,8 +2,14 @@ package com.sfcc_smoke.step_definitions;
 
 import com.sfcc_smoke.pages.SecureCheckoutBilling;
 import com.sfcc_smoke.utilities.BrowserUtils;
+import com.sfcc_smoke.utilities.Driver;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class SecureCheckoutBillingStepDefs {
     SecureCheckoutBilling checkoutBilling = new SecureCheckoutBilling();
@@ -130,6 +136,25 @@ public class SecureCheckoutBillingStepDefs {
             Assert.assertTrue(finaltaxvalue == 0.00);
         } else {
             Assert.assertTrue(finaltaxvalue > 0);
+        }
+    }
+
+    @When("User Verifies Recycle Fee is displayed on SecureCheckOut Billing Page only for CA store")
+    public void user_verifies_recycleFee_displayed_BillingPage() {
+        BrowserUtils.sleep(1);
+        String zipcode = checkoutBilling.zipcodevalueBilling.getAttribute("value");
+        if (zipcode.startsWith("90")) {
+            BrowserUtils.scrollToElement(checkoutBilling.recycleFeeLabelBilling);
+            Assert.assertTrue(checkoutBilling.recycleFeeLabelBilling.isDisplayed());
+            String recyclefee = checkoutBilling.recycleFeeValueBilling.getText();
+            recyclefee = recyclefee.replace("$", "");
+            double recyclefeeamount = Double.parseDouble(recyclefee);
+            Assert.assertTrue(recyclefeeamount > 0);
+            BrowserUtils.sleep(1);
+        } else {
+            WebDriver driver = Driver.getDriver();
+            List<WebElement> elements = driver.findElements(By.xpath("//tr[@id='order-state-recycling-fee']/td[2]"));
+            Assert.assertTrue(elements.size() == 0);
         }
     }
 }
