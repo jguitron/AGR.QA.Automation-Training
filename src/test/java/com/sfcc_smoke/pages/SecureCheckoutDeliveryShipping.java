@@ -20,4 +20,14 @@ public class SecureCheckoutDeliveryShipping {
     public WebElement zipSecureCheckoutShipping;
     @FindBy(xpath = "//td[@class='order-sales-tax-value']")
     public WebElement taxValueSecureCheckoutShipping;
+    @FindBy(xpath = "//tr[@id='order-state-recycling-fee']/td[@class='font-bold']")
+    public WebElement recycleFeeLabelShipping;
+    @FindBy(xpath = "//tr[@id='order-state-recycling-fee']/td[2]")
+    public WebElement recycleFeeValueShipping;
+    @FindBy(xpath = "//div[@class='mattress-delivery-msg']")
+    public WebElement recycleTakeBackMsgShipping;
+    @FindBy(xpath = "//label[@for='is-YES']")
+    public WebElement takebackRadioBtnYES;
+    @FindBy(xpath = "//label[@for='is-NO']")
+    public WebElement takebackRadioBtnNO;
 }

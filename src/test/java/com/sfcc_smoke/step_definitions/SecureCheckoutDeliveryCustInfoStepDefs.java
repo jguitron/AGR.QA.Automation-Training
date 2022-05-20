@@ -5,7 +5,7 @@ import com.sfcc_smoke.utilities.BrowserUtils;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.WebElement;
+
 import java.util.List;
 
 public class SecureCheckoutDeliveryCustInfoStepDefs {
@@ -64,13 +64,12 @@ public class SecureCheckoutDeliveryCustInfoStepDefs {
         String zipcode = custInfo.zip.getAttribute("value");
         BrowserUtils.scrollToElement(custInfo.taxLableSecureChkoutCustInfo);
         String taxvalue = custInfo.taxValueSecureChkoutCustInfo.getText();
-        taxvalue = taxvalue.replace("$","");
+        taxvalue = taxvalue.replace("$", "");
         double finaltaxvalue = Double.parseDouble(taxvalue);
-         if (zipcode.startsWith("97") || zipcode.startsWith("99") || zipcode.startsWith("19") || zipcode.startsWith("59") || zipcode.startsWith("03")){
+        if (zipcode.startsWith("97") || zipcode.startsWith("99") || zipcode.startsWith("19") || zipcode.startsWith("59") || zipcode.startsWith("03")) {
             Assert.assertTrue(finaltaxvalue == 0.00);
-        }
-        else {
-            Assert.assertTrue(finaltaxvalue>0);
+        } else {
+            Assert.assertTrue(finaltaxvalue > 0);
         }
     }
 }

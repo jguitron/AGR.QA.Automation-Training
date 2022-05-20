@@ -63,6 +63,10 @@ public class SecureCheckoutBilling {
     public WebElement taxValueSecureCheckoutBilling;
     @FindBy(xpath = "//input[@name='warehouse-zip']")
     public WebElement zipcodevalueBilling;
+    @FindBy(xpath = "//tr[@id='order-state-recycling-fee']/td[@class='font-bold']")
+    public WebElement recycleFeeLabelBilling;
+    @FindBy(xpath = "//tr[@id='order-state-recycling-fee']/td[2]")
+    public WebElement recycleFeeValueBilling;
     @FindBy(xpath = "((//div[@class='button-wrap-modal'])[3]/button/div)[2]")
     public WebElement PrgsvPopupDiffPayMethodBtn;
     @FindBy(xpath = "//span[@class='ui-button-icon ui-icon ui-icon-closethick']")
