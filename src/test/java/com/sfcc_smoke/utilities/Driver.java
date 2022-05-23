@@ -34,7 +34,7 @@ public class Driver {
                         desiredCapabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
                         desiredCapabilities.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
                         driverPool.set(new ChromeDriver(chromeOptions));
-                        driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+                        driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
                         break;
                     case "chrome-remote":
                         DesiredCapabilities remoteCapabilities = new DesiredCapabilities();
