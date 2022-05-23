@@ -1,6 +1,7 @@
-@regression
+@regression  @footer
 Feature: Footer sub-category links verification
   Verify if all clickable "sub-category links" in footer functioning as expected
+
 
   Scenario Outline: Verifying "<subCategory>"
     Given User navigates to "url"
