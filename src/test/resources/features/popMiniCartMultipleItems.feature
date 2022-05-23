@@ -1,5 +1,5 @@
 Feature: Verify Popup on Mobile reflects multiple items added
-
+@smoke
   Scenario: User adds one item and asserts total in popup
     Given User navigates to "url"
     When  User clicks on search bar

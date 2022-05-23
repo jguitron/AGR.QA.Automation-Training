@@ -1,5 +1,5 @@
 Feature: Verification of Save for Later button in mini cart
-
+@smoke
   Scenario: User saves for later in Mini Cart
     Given User navigates to "url"
     And   User clicks on search bar
