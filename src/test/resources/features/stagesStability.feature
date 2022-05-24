@@ -3,6 +3,7 @@
 Feature: Stages stability verification
   Verify if apollo URLS are up and running
 
+
   Scenario Outline: verify all apollo stages up and running
     When User navigates to "<url>"
     When User scrolls down to footer
