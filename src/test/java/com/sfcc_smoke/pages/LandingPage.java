@@ -1,6 +1,7 @@
 package com.sfcc_smoke.pages;
 
 import com.sfcc_smoke.utilities.BrowserUtils;
+import com.sfcc_smoke.utilities.ConfigReader;
 import com.sfcc_smoke.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -39,21 +40,38 @@ public class LandingPage {
     public WebElement countryFlag;
 
     public void closeIframe() {
-        driver.switchTo().frame(iframe);
-        BrowserUtils.scrollToElement(closeFrame);
-        closeFrame.click();
-        driver.switchTo().defaultContent();
+        String platform = ConfigReader.getProperty("platform");
+        switch (platform) {
+            case "desktop":
+            case "tablet":
+                driver.switchTo().frame(iframe);
+                BrowserUtils.scrollToElement(closeFrame);
+                closeFrame.click();
+                driver.switchTo().defaultContent();
+                BrowserUtils.waitForPageToLoad(1);
+                break;
+            case "mobile":
+                BrowserUtils.sleep(5);
+                try {
+                    if (iframe.isDisplayed()) {
+                        driver.navigate().refresh();
+                    }
+                } catch (Throwable exc) {
+                    System.out.println("IFrame is not shown at headless mode!");
+                }
+                break;
+        }
     }
 
-    public void closeIframenew() {
-        BrowserUtils.sleep(1);
-        driver.navigate().refresh();
-        driver.switchTo().frame(iframe);
-        BrowserUtils.scrollToElement(closeFrame);
-        closeFrame.click();
-        driver.switchTo().defaultContent();
-        BrowserUtils.waitForPageToLoad(1);
-    }
+//    public void closeIframenew() {
+//        BrowserUtils.sleep(1);
+//        driver.navigate().refresh();
+//        driver.switchTo().frame(iframe);
+//        BrowserUtils.scrollToElement(closeFrame);
+//        closeFrame.click();
+//        driver.switchTo().defaultContent();
+//        BrowserUtils.waitForPageToLoad(1);
+//    }
 
     public void verifyBrokenLinks(String linkUrl) {
         try {

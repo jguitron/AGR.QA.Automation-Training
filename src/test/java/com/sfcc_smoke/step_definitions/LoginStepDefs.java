@@ -31,7 +31,7 @@ public class LoginStepDefs {
         }
         try {
             BrowserUtils.waitForVisibility(landingPage.iframe, Duration.ofSeconds(5));
-            landingPage.closeIframenew();
+            landingPage.closeIframe();
         }catch (Throwable error){
             error.printStackTrace();
             System.out.println("Iframe was not shown!");
