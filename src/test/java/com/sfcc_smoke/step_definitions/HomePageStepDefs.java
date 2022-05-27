@@ -62,4 +62,10 @@ public class HomePageStepDefs {
         JavascriptExecutor Js1 = (JavascriptExecutor) driver;
         Js1.executeScript("window.scrollBy(0,650)");
     }
+
+    @Then("User asserts in search bar for search suggestions returns top results for {string}")
+    public void user_asserts_in_search_bar_for_search_suggestions_returns_top_results_for(String Item) {
+      String searchResults = driver.findElement(By.xpath("//li[@class='unbxd-as-header unbxd-as-popular-product-header'] /strong")).getText();
+      Assert.assertTrue(searchResults.contains(Item));
+    }
 }

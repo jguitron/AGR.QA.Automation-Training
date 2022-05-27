@@ -1,5 +1,5 @@
 Feature: Verification of PLP through search results
-@garrett
+@smoke
   Scenario: User verifies PLP page components through search
     Given User navigates to "url"
     When  User clicks on search bar
