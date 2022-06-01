@@ -2,16 +2,19 @@ package com.sfcc_smoke.step_definitions;
 
 import com.sfcc_smoke.pages.ProductListPage;
 import com.sfcc_smoke.utilities.BrowserUtils;
+import com.sfcc_smoke.utilities.ConfigReader;
 import com.sfcc_smoke.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 public class PLPStepDefs {
     WebDriver driver = Driver.getDriver();
@@ -115,6 +118,67 @@ public class PLPStepDefs {
         BrowserUtils.sleep(2);
         if (driver.findElements(By.xpath("//a[@class='page-switcher page-last']")).isEmpty()) {
             System.out.println("Not present");
+        }
+    }
+    @Then("User clicks on quick view in PLP")
+    public void user_clicks_on_quick_view_in_plp() {
+        if (ConfigReader.getProperty("platform").equals("desktop")) {
+            BrowserUtils.scrollToElement(driver.findElement(By.xpath("//img[@class='primary-image']")));
+            BrowserUtils.hover(driver.findElement(By.xpath("//img[@class='primary-image']")));
+            driver.findElement(By.xpath("//a[@id='quickviewbutton']")).click();
+            driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
+        } else if (ConfigReader.getProperty("platform").equals("tablet")) {
+            JavascriptExecutor Js1 = (JavascriptExecutor) driver;
+            Js1.executeScript("window.scrollBy(0,800)");
+            BrowserUtils.hover(driver.findElement(By.xpath("//img[@class='primary-image']")));
+            driver.findElement(By.xpath("//a[@id='quickviewbutton']")).click();
+            driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
+        }
+    }
+    @Then("User clicks on arrows switching between products in PLP")
+    public void user_clicks_on_arrows_switching_between_products_in_plp() {
+        if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
+            String item1 = driver.findElement(By.xpath("//h1[@itemprop='name']")).getText();
+            driver.findElement(By.xpath("//i[@class='quickview-next']")).click();
+            driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
+            String item2 = driver.findElement(By.xpath("//h1[@itemprop='name']")).getText();
+            Assert.assertNotSame(item1, item2);
+        }
+    }
+    @Then("User clicks on learn more and closes")
+    public void user_clicks_on_learn_more_and_closes() {
+        if (ConfigReader.getProperty("platform").equals("desktop")) {
+            driver.findElement(By.xpath("//a[@class='pdp-threshold-modal']")).click();
+            driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
+            String LearnMorePopUp = driver.findElement(By.xpath("//span[@id='ui-id-3']")).getText();
+            String PopUpVerify = "Available Delivery Options";
+            Assert.assertEquals(LearnMorePopUp, PopUpVerify);
+            driver.findElement(By.xpath("(//button[@class='ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close'])[2]")).click();
+        } else if (ConfigReader.getProperty("platform").equals("tablet")) {
+            driver.findElement(By.xpath("//a[@class='pdp-threshold-modal']")).click();
+            driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
+            String LearnMorePopUp = driver.findElement(By.xpath("(//span[@class='delivery-msg'])[17]")).getText();
+            String PopUpVerify = "No-Hassle Delivery + Assembly";
+            Assert.assertEquals(LearnMorePopUp, PopUpVerify);
+        }
+    }
+    @Then("User change qty from {int} to {int} in PLP quick view")
+    public void user_change_qty_from_to_in_plp_quick_view(Integer int1, Integer int2) {
+        if (ConfigReader.getProperty("platform").equals("desktop")) {
+            driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
+            driver.findElement(By.xpath("//input[@name='plus']")).click();
+        } else if (ConfigReader.getProperty("platform").equals("tablet")) {
+//            BrowserUtils.scrollToElement(driver.findElement(By.xpath("//input[@name='plus']")));
+            JavascriptExecutor Js1 = (JavascriptExecutor) driver;
+            Js1.executeScript("window.scrollBy(0,400)");
+            driver.findElement(By.xpath("//input[@name='plus']")).click();
+            driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
+        }
+    }
+    @Then("User clicks x to exit quick view")
+    public void user_clicks_x_to_exit_quick_view() {
+        if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
+            driver.findElement(By.xpath("//button[@title='Close']")).click();
         }
     }
 }

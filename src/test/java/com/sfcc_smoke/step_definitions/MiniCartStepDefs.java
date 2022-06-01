@@ -34,10 +34,12 @@ public class MiniCartStepDefs {
     }
     @Then("User asserts items in mini cart is {string} qty")
     public void user_asserts_items_in_mini_cart_is_qty(String Item) {
-        BrowserUtils.sleep(2);
-        int CartQty = Integer.parseInt(driver.findElement(By.xpath("//span[@class='minicart-quantity']")).getText());
-        System.out.println(CartQty);
-        int ExpectedQty = Integer.parseInt(Item);
-        Assert.assertEquals(CartQty, ExpectedQty);
+        if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
+            BrowserUtils.sleep(5);
+            int CartQty = Integer.parseInt(driver.findElement(By.xpath("//span[@class='minicart-quantity']")).getText());
+            System.out.println(CartQty);
+            int ExpectedQty = Integer.parseInt(Item);
+            Assert.assertEquals(CartQty, ExpectedQty);
+        }
     }
 }

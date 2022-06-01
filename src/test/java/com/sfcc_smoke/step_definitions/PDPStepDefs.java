@@ -78,6 +78,14 @@ public class PDPStepDefs {
             productDetailPage.AddToCart_mob.click();
         }
     }
+    @Then("User clicks on Add Item to Cart mobile skip")
+    public void user_clicks_on_add_item_to_cart_mobile_skip() {
+        if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
+            BrowserUtils.scrollToElement(productDetailPage.addtocart);
+            productDetailPage.addtocart.isDisplayed();
+            BrowserUtils.clickWithJS(productDetailPage.addtocart);
+        }
+    }
 
     @Then("User asserts items in popup is {string} qty or item")
     public void user_asserts_items_in_popup_is_qty_item(String inputAssert) {
@@ -94,7 +102,6 @@ public class PDPStepDefs {
     public void user_change_qty_from_to_in_pdp(Integer qty1, Integer qty2) {
         driver.findElement(By.xpath("(//input[@name='plus'])[1]")).click();
     }
-
 
     @When("User asserts {string} bed size displayed on PDP")
     public void user_asserts_bed_size_displayed_on_pdp(String mattressSize) {
@@ -150,12 +157,11 @@ public class PDPStepDefs {
             String colorSelected = driver.findElement(By.xpath("//li[@class='selectable selected'] /a[@title='Select Color: " + color + "']")).getText();
             String colorOnPage = driver.findElement(By.xpath("(//img[@alt='Darcy Loveseat, " + color + ", large'])[2]")).getText();
             Assert.assertTrue(colorOnPage.contains(colorSelected));
-
         }
     }
 
     @Then("User changes color scheme in PDP to ones not currently displayed by colors different colors and asserts change")
-    public void user_changes_color_scheme_in_pdp_to_ones_not_currently_displayed_by_different_colors_and_asserts_change(List<String> colors) {
+    public void user_changes_color_scheme_in_pdp_to_ones_not_currently_displayed_by_different_colors_and_asserts_change(List <String> colors) {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
             for (String eachColor : colors) {
                 driver.findElement(By.xpath("//ul[@class='swatches clearfix color'] /li /a[@title='Select Color: " + eachColor + "']")).click();
@@ -166,8 +172,7 @@ public class PDPStepDefs {
                 driver.findElement(By.xpath("//button[@class='toggle-attribute-values']")).click();
                 BrowserUtils.sleep(2);
                 String colorOnPage = driver.findElement(By.xpath("//div[@class='label'] /span[@class='selected-variant']")).getText();
-                String colorSelected = driver.findElement(By.xpath("//li[@class='selectable selected'] /a[@title='Select Color: " + eachColor + "']")).getText();
-                Assert.assertTrue(colorOnPage.contains(colorSelected));
+                Assert.assertTrue(colorOnPage.contains(eachColor));
             }
         } else if (ConfigReader.getProperty("platform").equals("mobile")) {
             for (String eachColor : colors) {
@@ -180,6 +185,22 @@ public class PDPStepDefs {
                 String colorOnPage = driver.findElement(By.xpath("//div[@class='label'] /span[@class='selected-variant']")).getText();
                 String colorSelected = driver.findElement(By.xpath("//li[@class='selectable selected'] /a[@title='Select Color: " + eachColor + "']")).getText();
                 Assert.assertTrue(colorOnPage.contains(colorSelected));
+            }
+        }
+    }
+    @Then("User changes color scheme in quick view and asserts change mobile skip included")
+    public void user_changes_color_scheme_in_quick_view_and_asserts_change_mobile_skip_included(List <String> colors) {
+        if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
+            for (String eachColor : colors) {
+                driver.findElement(By.xpath("//ul[@class='swatches clearfix color'] /li /a[@title='Select Color: " + eachColor + "']")).click();
+                BrowserUtils.sleep(2);
+                JavascriptExecutor Js1 = (JavascriptExecutor) driver;
+                Js1.executeScript("window.scrollBy(0,400)");
+                BrowserUtils.sleep(2);
+                driver.findElement(By.xpath("//button[@class='toggle-attribute-values']")).click();
+                BrowserUtils.sleep(2);
+                String colorOnPage = driver.findElement(By.xpath("//div[@class='label'] /span[@class='selected-variant']")).getText();
+                Assert.assertTrue(colorOnPage.contains(eachColor));
             }
         }
     }
