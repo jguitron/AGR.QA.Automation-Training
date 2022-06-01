@@ -9,6 +9,8 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class HeaderStepDefs {
 
     WebDriver driver = Driver.getDriver();
@@ -29,12 +31,20 @@ public class HeaderStepDefs {
 
     @Then("User Hovers over header and clicks on {string} category")
     public void user_hovers_over_header_and_clicks_on_category(String Category) {
-        BrowserUtils.hover(driver.findElement(By.xpath("//a[@data-cgid='furniture']")));
-        driver.findElement(By.xpath("//li[@class='key-accessible'] /a")).click();
+        if (ConfigReader.getProperty("platform").equals("desktop")) {
+            BrowserUtils.hover(driver.findElement(By.xpath("//a[@data-cgid='furniture']")));
+            driver.findElement(By.xpath("//li[@class='key-accessible'] /a")).click();
+        } else if (ConfigReader.getProperty("platform").equals("tablet") || ConfigReader.getProperty("platform").equals("mobile")) {
+            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+            driver.findElement(By.xpath("//span[@class='hamburger-box']")).click();
+            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+            driver.findElement(By.xpath("//a[@data-cgid='furniture']")).click();
+            driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+            driver.findElement(By.xpath("//a[@class='has-sub-menu show-menu-item']")).click();
+            driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+            driver.findElement(By.xpath("//a[@class='show-menu-item']")).click();
+        }
     }
-
-
-
     @Then("Assert total number of items in mini cart is {string}")
     public void assert_total_number_of_items_in_mini_cart_is(String number) {
         BrowserUtils.sleep(1);
