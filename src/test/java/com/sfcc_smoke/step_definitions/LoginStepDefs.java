@@ -36,6 +36,7 @@ public class LoginStepDefs {
             error.printStackTrace();
             System.out.println("Iframe was not shown!");
         }
+        BrowserUtils.waitForPageToLoad(5);
     }
 
     @And("User clicks on login link on different viewports")

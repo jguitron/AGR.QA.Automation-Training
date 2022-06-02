@@ -1,10 +1,8 @@
 Feature: Verification of Save for Later button in cart page
-@smoke @wip3
+@smoke
   Scenario: User adds Honey-Can-Do 4 Piece Jar Storage Set to cart and clicks save for later
     Given User navigates to "url"
-    And   User clicks on search bar
     Then  User search's "Honey-Can-Do 4 Piece Jar Storage Set" in search bar
-    And   User clicks on search icon
     Then  User chooses "Honey-Can-Do 4-Piece Glass Jar Storage Set with Bamboo Lids, , large" in plp
     And   User clicks on Add Item to Cart
     And   User clicks on cart

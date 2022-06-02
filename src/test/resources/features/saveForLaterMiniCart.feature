@@ -1,11 +1,9 @@
-@smoke @wip2
+@smoke
 Feature: Verification of Save for Later button in mini cart
 
   Scenario: User saves for later in Mini Cart
     Given User navigates to "url"
-    And   User clicks on search bar
     And   User search's "Honey-Can-Do 4 Piece Jar Storage Set" in search bar
-    And   User clicks on search icon
     Then  User chooses "Honey-Can-Do 4-Piece Glass Jar Storage Set with Bamboo Lids, , large" in plp
     And   User clicks on Add Item to Cart
     And   User clicks on save for later mini cart

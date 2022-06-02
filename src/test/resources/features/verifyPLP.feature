@@ -2,9 +2,7 @@ Feature: Verification of PLP through search results
 @smoke
   Scenario: User verifies PLP page components through search
     Given User navigates to "url"
-    When  User clicks on search bar
     And   User search's "Sofas" in search bar
-    And   User clicks on search icon
     Then  User checks for "Learn More" button is present
     Then  User asserts "prequal" in learn how popup with "Prequalify Now"
     Then  User asserts "apply" in learn how popup with "Apply Now"

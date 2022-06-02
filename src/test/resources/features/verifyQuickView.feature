@@ -1,5 +1,5 @@
 Feature: Verification of quick view in PDP
-  @garrett
+  @smoke
   Scenario: Navigate to the PDP page and click on quick view and verify tab
     Given User navigates to "url"
     When  User Hovers over header and clicks on "Sofas" category
