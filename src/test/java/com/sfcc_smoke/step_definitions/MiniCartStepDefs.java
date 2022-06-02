@@ -21,17 +21,14 @@ public class MiniCartStepDefs {
         driver.findElement(By.xpath("//button[@class='remove']")).click();
     }
 
-    @Then("User clicks on save for later")
-    public void user_clicks_on_save_for_later() {
+    @Then("User clicks on save for later mini cart")
+    public void user_clicks_on_save_for_later_mini_cart() {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
             cartPage.saveItem.isDisplayed();
             cartPage.saveItem.click();
-        } else if (ConfigReader.getProperty("platform").equals("mobile")) {
-            cartPage.saveItem.isDisplayed();
-            cartPage.saveItem.click();
-            productDetailPage.continueShopping.click();
         }
     }
+
     @Then("User asserts items in mini cart is {string} qty")
     public void user_asserts_items_in_mini_cart_is_qty(String Item) {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {

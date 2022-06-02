@@ -159,15 +159,26 @@ public class CartPageDefs {
     @Then("User asserts {string} saved items in cart")
     public void user_asserts_saved_items_in_cart(String item) {
         String SavedItem = driver.findElement(By.cssSelector("h2 a[tabindex='0']")).getText();
-        String expectedItem = item;
-        Assert.assertEquals(expectedItem, SavedItem);
+        Assert.assertTrue(SavedItem.contains(item));
+    }
+    @Then("User asserts {string} saved items in cart mobile skip")
+    public void user_asserts_saved_items_in_cart_mobile_skip(String item) {
+        if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
+            String SavedItem = driver.findElement(By.cssSelector("h2 a[tabindex='0']")).getText();
+            String expectedItem = item;
+            Assert.assertEquals(expectedItem, SavedItem);
+        }
     }
 
     @Then("User clicks save for later button")
     public void user_clicks_save_for_later_button() {
+        if (ConfigReader.getProperty("platform").equals("mobile") || ConfigReader.getProperty("platform").equals("tablet"))  {
         JavascriptExecutor Js1 = (JavascriptExecutor) driver;
         Js1.executeScript("window.scrollBy(0,700)");
-        productDetailPage.SaveItem.click();
+        productDetailPage.SaveItemMobile.click();
+        } else if (ConfigReader.getProperty("platform").equals("desktop")) {
+            BrowserUtils.clickWithJS(productDetailPage.SaveItem);
+        }
     }
 
     @Then("User validates the tax amount on CartPage")
@@ -185,7 +196,6 @@ public class CartPageDefs {
                 Assert.assertTrue(finaltaxvalue > 0);
             }
         }
-
         if (platform.equals("mobile") || (platform.equals("tablet"))) {
             String zipcode = cartPage.cartzipcodelinkMob.getText();
             String taxvalue = cartPage.taxValueCart.getText();
@@ -198,12 +208,10 @@ public class CartPageDefs {
                 Assert.assertTrue(finaltaxvalue > 0);
             }
         }
-
     }
 
     @Then("User changes the delivery {string} by clicking on zipcode link from Cart Page")
     public void user_change_the_zipcode_in_cart(String zipcode) {
-
         if (platform.equals("desktop")) {
             BrowserUtils.scrollToElement(cartPage.cartzipcodelink);
             cartPage.cartzipcodelink.click();

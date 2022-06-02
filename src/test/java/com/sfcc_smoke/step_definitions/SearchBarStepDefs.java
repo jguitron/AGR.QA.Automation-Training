@@ -1,12 +1,15 @@
 package com.sfcc_smoke.step_definitions;
 
 import com.sfcc_smoke.pages.SearchPage;
+import com.sfcc_smoke.utilities.BrowserUtils;
 import com.sfcc_smoke.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
+
+import java.util.concurrent.TimeUnit;
 
 public class SearchBarStepDefs {
 
@@ -22,6 +25,7 @@ public class SearchBarStepDefs {
 
     @Given("User clicks on search icon")
     public void clickOnSearchIcon() {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         search.searchIcon.click();
     }
 
@@ -44,6 +48,7 @@ public class SearchBarStepDefs {
 
     @When("User clicks on search bar")
     public void user_clicks_on_search_bar() {
+        BrowserUtils.sleep(8);
         searchPage.searchBar.click();
     }
 }

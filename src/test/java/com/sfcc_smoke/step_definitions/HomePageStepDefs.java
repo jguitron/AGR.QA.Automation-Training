@@ -15,6 +15,7 @@ import org.openqa.selenium.WebElement;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class HomePageStepDefs {
 
@@ -54,10 +55,12 @@ public class HomePageStepDefs {
 
     @Then("User clicks on cart")
     public void user_clicks_on_cart() {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.findElement(By.xpath("//a[@class='mini-cart-link']")).click();
     }
     @Then("User clicks on cart icon")
     public void user_clicks_on_cart_icon() {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.findElement(By.xpath("//a[@class='mini-cart-link mini-cart-empty']")).click();
         JavascriptExecutor Js1 = (JavascriptExecutor) driver;
         Js1.executeScript("window.scrollBy(0,650)");

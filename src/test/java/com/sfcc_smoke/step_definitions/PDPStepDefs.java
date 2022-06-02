@@ -78,6 +78,14 @@ public class PDPStepDefs {
             productDetailPage.AddToCart_mob.click();
         }
     }
+
+    @Then("User clicks on Add Item to Cart tablet and desktop skip")
+    public void user_clicks_on_add_item_to_cart_tablet_and_desktop_skip() {
+        if (ConfigReader.getProperty("platform").equals("mobile")) {
+            BrowserUtils.scrollToElement(productDetailPage.AddToCart_mob);
+            productDetailPage.AddToCart_mob.click();
+        }
+    }
     @Then("User clicks on Add Item to Cart mobile skip")
     public void user_clicks_on_add_item_to_cart_mobile_skip() {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
@@ -92,15 +100,18 @@ public class PDPStepDefs {
         if (ConfigReader.getProperty("platform").equals("mobile")) {
             String ItemName = driver.findElement(By.xpath("(//a[@title='Go to Product: " + inputAssert + "'])[3]")).getText();
             Assert.assertEquals(inputAssert, ItemName);
-        } else if (cartPage.popUpQty.isDisplayed()) {
-            String Qty = cartPage.popUpQty.getText();
-            Assert.assertEquals(inputAssert, Qty);
-        } else System.out.println("Mobile Only");
+        }
     }
 
     @Then("User change qty from {int} to {int} in PDP")
     public void user_change_qty_from_to_in_pdp(Integer qty1, Integer qty2) {
         driver.findElement(By.xpath("(//input[@name='plus'])[1]")).click();
+    }
+    @Then("User change qty from {int} to {int} in PDP tablet and desktop skip")
+    public void user_change_qty_from_to_in_pdp_tablet_and_desktop_skip(Integer int1, Integer int2) {
+        if (ConfigReader.getProperty("platform").equals("mobile")) {
+            driver.findElement(By.xpath("(//input[@name='plus'])[1]")).click();
+        }
     }
 
     @When("User asserts {string} bed size displayed on PDP")
