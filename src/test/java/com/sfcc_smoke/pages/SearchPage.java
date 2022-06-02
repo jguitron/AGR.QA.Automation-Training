@@ -20,7 +20,7 @@ public class SearchPage {
     @FindBy(css = "a[class='page-switcher page-last']")
     public WebElement lastPageBtn;
 
-    @FindBy(xpath = "//div[@id='eabee0e68c4046aed0e0f142b3']//div/div")
+    @FindBy(xpath = "(//div[@class='alt-img-cont'])[16]")
     public WebElement lastTvStand;
 
     @FindBy(xpath = "(//input[@name='plus'])[2]")

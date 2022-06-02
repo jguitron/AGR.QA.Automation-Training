@@ -1,4 +1,4 @@
-@smoke  @regression @wip1
+@smoke  @regression
 Feature: Zero tax state validation
   As a customer in no sales tax state (Oregon), my order should not have any taxes.
 
