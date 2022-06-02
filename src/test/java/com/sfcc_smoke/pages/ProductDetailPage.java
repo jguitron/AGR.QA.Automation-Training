@@ -18,6 +18,9 @@ public class ProductDetailPage {
     public WebElement AddToCart_mob;
 
     @FindBy(css ="div[class='cart-product-option-mobile'] a[class='save-item']")
+    public WebElement SaveItemMobile;
+
+    @FindBy(css ="div[class='cart-product-option-mobile'] a[class='save-item']")
     public WebElement SaveItem;
 
     @FindBy(id = "dwfrm_login_username")

@@ -1,5 +1,5 @@
 Feature: Verification of Save for Later button in cart page
-@smoke
+@smoke @wip3
   Scenario: User adds Honey-Can-Do 4 Piece Jar Storage Set to cart and clicks save for later
     Given User navigates to "url"
     And   User clicks on search bar

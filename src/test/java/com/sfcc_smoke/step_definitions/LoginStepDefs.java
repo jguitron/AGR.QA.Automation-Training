@@ -58,6 +58,12 @@ public class LoginStepDefs {
     public void userLogin(String username, String password) {
         accountPage.login(username, password);
     }
+    @Then("User logs in with {string} and {string} mobile skip")
+    public void user_logs_in_with_and_mobile_skip(String username, String password) {
+        if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
+            accountPage.login(username, password);
+        }
+    }
 
     @Then("User should see user dashboard")
     public void verifyUserDashboard() {
