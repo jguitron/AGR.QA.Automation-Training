@@ -14,6 +14,9 @@ public class AccountPage {
     @FindBy(xpath = "(//button[@name='dwfrm_login_register'])[2]")
     public WebElement createAccount;
 
+    @FindBy(xpath = "//button[@class='mobile-register-btn hide-for-medium deliverypage-hide']")
+    public WebElement createAccountMobile;
+
     @FindBy(xpath = "//input[@id='dwfrm_profile_customer_firstname']")
     public WebElement firstName;
 
@@ -51,19 +54,22 @@ public class AccountPage {
     public WebElement loginBtn;
 
     @FindBy(xpath = "//input[@id='dwfrm_login_username']")
-    public WebElement emailCart;
+    public WebElement usernameLogin;
+
+    @FindBy(xpath = "//input[@id='dwfrm_profile_login_password']")
+    public WebElement passwordNew;
 
     @FindBy(xpath = "//input[@id='dwfrm_login_password']")
-    public WebElement passwordNew;
+    public WebElement passwordLogin;
 
 
     public void login(String username, String password) {
         if (!username.equalsIgnoreCase("username") && !password.equalsIgnoreCase("password")) {
-            this.emailCart.sendKeys(username);
-            this.passwordNew.sendKeys(password);
+            this.usernameLogin.sendKeys(username);
+            this.passwordLogin.sendKeys(password);
         } else {
-            this.emailCart.sendKeys(ConfigReader.getProperty("username"));
-            this.passwordNew.sendKeys(ConfigReader.getProperty("password"));
+            this.usernameLogin.sendKeys(ConfigReader.getProperty("username"));
+            this.passwordLogin.sendKeys(ConfigReader.getProperty("password"));
         }
         loginBtn.click();
     }

@@ -31,7 +31,7 @@ public class SearchBarStepDefs {
 
     @When("User should see url ending with {string}")
     public void verifyUrlEndpoint(String expectedHeader) {
-        Assert.assertTrue(driver.getCurrentUrl().endsWith(expectedHeader.toLowerCase()));
+        Assert.assertTrue(driver.getCurrentUrl().contains(expectedHeader.toLowerCase()));
     }
 
     @Then("User should see total amount is more than 0")
