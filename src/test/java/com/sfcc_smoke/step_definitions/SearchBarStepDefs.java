@@ -7,9 +7,10 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
 public class SearchBarStepDefs {
 
@@ -25,8 +26,7 @@ public class SearchBarStepDefs {
 
     @Given("User clicks on search icon")
     public void clickOnSearchIcon() {
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        search.searchIcon.click();
+        BrowserUtils.waitForClickability(search.searchIcon, Duration.ofSeconds(5)).click();
     }
 
     @When("User should see url ending with {string}")
@@ -43,12 +43,12 @@ public class SearchBarStepDefs {
 
     @When("User search's {string} in search bar")
     public void user_search_s_in_search_bar(String item) {
-        searchPage.searchBar.sendKeys(item);
+        searchPage.searchBar.sendKeys(item + Keys.ENTER);
     }
 
-    @When("User clicks on search bar")
-    public void user_clicks_on_search_bar() {
-        BrowserUtils.sleep(8);
-        searchPage.searchBar.click();
-    }
+//    @When("User clicks on search bar")
+//    public void user_clicks_on_search_bar() {
+//        BrowserUtils.waitForClickability(searchPage.searchBar, Duration.ofSeconds(7)).click();
+//
+//    }
 }
