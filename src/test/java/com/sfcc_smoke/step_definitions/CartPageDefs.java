@@ -225,5 +225,10 @@ public class CartPageDefs {
             BrowserUtils.sleep(1);
         }
     }
+
+    @Then("User clicks add to cart from Wish List")
+    public void user_clicks_add_to_cart_from_wish_list() {
+        driver.findElement(By.xpath("//button[@name='dwfrm_wishlist_items_i0_addToCart']")).click();
+    }
 }
 

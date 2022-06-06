@@ -46,9 +46,9 @@ public class SearchBarStepDefs {
         searchPage.searchBar.sendKeys(item + Keys.ENTER);
     }
 
-//    @When("User clicks on search bar")
-//    public void user_clicks_on_search_bar() {
-//        BrowserUtils.waitForClickability(searchPage.searchBar, Duration.ofSeconds(7)).click();
-//
-//    }
+    @Then("User types {string} in search bar")
+    public void user_types_in_search_bar(String searched) {
+        searchPage.searchBar.click();
+        searchPage.searchBar.sendKeys(searched);
+    }
 }

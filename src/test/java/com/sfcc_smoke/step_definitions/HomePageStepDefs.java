@@ -71,4 +71,9 @@ public class HomePageStepDefs {
       String searchResults = driver.findElement(By.xpath("//li[@class='unbxd-as-header unbxd-as-popular-product-header'] /strong")).getText();
       Assert.assertTrue(searchResults.contains(Item));
     }
+    @When("User clicks on {string} in account tab")
+    public void user_clicks_on_in_account_tab(String tabbedPage) {
+        driver.findElement(By.xpath("//a[@href='/wishlist/']")).click();
+        BrowserUtils.waitForPageToLoad(2);
+    }
 }
