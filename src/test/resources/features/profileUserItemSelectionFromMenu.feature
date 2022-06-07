@@ -26,9 +26,9 @@ Feature: Profile user Item search and add items to cart
 
     Examples:
       | searchValue | expectedHeader |
-      | table       | Table          |
-      | sofa        | Sofa           |
-      | mattress    | Mattress       |
-      | loveseat    | LoveSeat       |
-      | recliner    | Recliner       |
-      | bed         | Bed            |
+      | Table       | Table         |
+      | SOFA        | SOFA           |
+      | mattress    | mattress       |
+      | LoveSeat    | LoveSeat       |
+      | Recliner    | Recliner       |
+      | Bed         | Bed            |

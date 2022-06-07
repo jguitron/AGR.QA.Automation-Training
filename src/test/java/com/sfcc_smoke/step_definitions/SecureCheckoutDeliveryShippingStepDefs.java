@@ -40,7 +40,7 @@ public class SecureCheckoutDeliveryShippingStepDefs {
 
     @When("User Verifies Recycle Fee is displayed on SecureCheckOut Shipping Page only for CA store")
     public void user_verifies_recycleFee_displayed_ShippingPage() {
-        BrowserUtils.sleep(1);
+        BrowserUtils.waitForPageToLoad(10);
         String zipcode = deliveryShipping.zipcodevalue.getAttribute("value");
         if (zipcode.startsWith("90")) {
             BrowserUtils.scrollToElement(deliveryShipping.recycleFeeLabelShipping);

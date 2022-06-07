@@ -23,7 +23,7 @@ public class PDPStepDefs {
 
     @When("User Select King bed size")
     public void selectBedSize() {
-        productDetailPage.iconkingsize.click();
+        BrowserUtils.clickWithJS(productDetailPage.iconkingsize);
         BrowserUtils.sleep(3);
     }
 
@@ -76,6 +76,8 @@ public class PDPStepDefs {
         } else if (productDetailPage.AddToCart_mob.isDisplayed()) {
             BrowserUtils.scrollToElement(productDetailPage.AddToCart_mob);
             productDetailPage.AddToCart_mob.click();
+            BrowserUtils.sleep(1);
+            productDetailPage.contShoppingBtnAddItmPopUp.click();
         }
     }
 

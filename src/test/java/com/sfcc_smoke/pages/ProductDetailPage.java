@@ -17,6 +17,9 @@ public class ProductDetailPage {
     @FindBy(xpath ="//button[@id='add-to-cart-sticky']")
     public WebElement AddToCart_mob;
 
+    @FindBy(xpath = "(//a[@class='button continue-shopping'])[3]")
+    public WebElement contShoppingBtnAddItmPopUp;
+
     @FindBy(css ="div[class='cart-product-option-mobile'] a[class='save-item']")
     public WebElement SaveItemMobile;
 

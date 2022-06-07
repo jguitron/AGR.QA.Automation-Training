@@ -25,9 +25,9 @@ Feature: Verify Pop up messages (2) are displayed if Progressive payment is sele
     Then User clicks on Use Original button on PopUp window
     Then User clicks on continue to billing and payment button
     Then User clicks on Progressive leasing Payment option
-    Then User verifies that Progressive Popup for ProtectionPlan is displayed
-    Then User click on Continue with Progressive Leasing button in Progressive popup msg
     Then User verifies that Progressive Popup for Handy Item is displayed
+    Then User click on Continue with Progressive Leasing button in Progressive popup msg
+    Then User verifies that Progressive Popup for ProtectionPlan is displayed
     Then User click on Continue with Progressive Leasing button in Progressive popup msg
     Then User navigate back to cart page
     Then User Removes item from cart

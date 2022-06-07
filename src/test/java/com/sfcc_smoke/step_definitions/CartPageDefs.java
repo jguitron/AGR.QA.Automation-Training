@@ -212,15 +212,22 @@ public class CartPageDefs {
 
     @Then("User changes the delivery {string} by clicking on zipcode link from Cart Page")
     public void user_change_the_zipcode_in_cart(String zipcode) {
+        BrowserUtils.waitForPageToLoad(5);
         if (platform.equals("desktop")) {
+            BrowserUtils.sleep(2);
             BrowserUtils.scrollToElement(cartPage.cartzipcodelink);
-            cartPage.cartzipcodelink.click();
+            BrowserUtils.clickWithJS(cartPage.cartzipcodelink);
+            BrowserUtils.sleep(3);
+            BrowserUtils.clickWithJS(cartPage.changeLocationZipCodePopUpTextBox);
+            BrowserUtils.sleep(3);
             cartPage.changeLocationZipCodePopUpTextBox.sendKeys(zipcode + Keys.ENTER);
             BrowserUtils.sleep(1);
         }
         if (platform.equals("mobile") || (platform.equals("tablet"))) {
+            BrowserUtils.sleep(3);
             BrowserUtils.scrollToElement(cartPage.cartzipcodelinkMob);
             BrowserUtils.clickWithJS(cartPage.cartzipcodelinkMob);
+            BrowserUtils.sleep(3);
             cartPage.changeLocationZipCodePopUpTextBox.sendKeys(zipcode + Keys.ENTER);
             BrowserUtils.sleep(1);
         }

@@ -26,15 +26,22 @@ public class BaseStepDefs {
     @When("User finds closest store by {string}")
     public void user_set_the_closet_store_by(String zipcode) {
         String platform = ConfigReader.getProperty("platform");
+        BrowserUtils.waitForPageToLoad(10);
         if (platform.equals("desktop")) {
             BrowserUtils.waitForVisibility(basePage.chooseLocalStore, Duration.ofSeconds(5));
-            basePage.chooseLocalStore.click();
+            BrowserUtils.clickWithJS(basePage.chooseLocalStore);
+            BrowserUtils.waitForVisibility(basePage.zipCodeBox, Duration.ofSeconds(5));
             basePage.zipCodeBox.sendKeys(zipcode + Keys.ENTER);
+            BrowserUtils.sleep(2);
         }
         else if (platform.equals("mobile") || (platform.equals("tablet"))) {
-            landingPage.mobileMenu.click();
-            basePage.mobStoreLink.click();
+            BrowserUtils.waitForVisibility(landingPage.mobileMenu, Duration.ofSeconds(5));
+            BrowserUtils.clickWithJS(landingPage.mobileMenu);
+            BrowserUtils.waitForVisibility(basePage.mobStoreLink, Duration.ofSeconds(5));
+            BrowserUtils.clickWithJS(basePage.mobStoreLink);
+            BrowserUtils.waitForVisibility(basePage.zipCodeBox, Duration.ofSeconds(5));
             basePage.zipCodeBox.sendKeys(zipcode + Keys.ENTER);
+            BrowserUtils.sleep(2);
         }
     }
 

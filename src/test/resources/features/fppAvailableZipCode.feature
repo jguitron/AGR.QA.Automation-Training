@@ -24,6 +24,6 @@ Feature: Verification protection plan availability for Florida, Alaska, Hawaii
     Then User verifies that Protection Plan is not available
     Then User finds closest store by "96818"
     Then User verifies that Protection Plan is not available
-    Then User finds closest store by "33606"
+    Then User changes the delivery "33606" by clicking on zipcode link from Cart Page
     Then User verifies that protection plan is available on cart
     Then User verifies that protection plan is unselected
