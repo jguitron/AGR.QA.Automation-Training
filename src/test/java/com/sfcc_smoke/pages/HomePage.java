@@ -33,4 +33,13 @@ public class HomePage {
 
     @FindBy(xpath = "//div[@class='closeBtn']")
     public WebElement closeOffer;
+
+    @FindBy(xpath = "//li[@class='unbxd-as-header unbxd-as-popular-product-header'] /strong")
+    public WebElement searchSugesstions;
+
+
+    @FindBy(css = "div[class='account-text-container'] div")
+    public WebElement userNameDisplayed;
+
+
 }

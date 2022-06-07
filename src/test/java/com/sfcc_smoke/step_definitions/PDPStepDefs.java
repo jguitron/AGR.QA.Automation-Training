@@ -105,12 +105,12 @@ public class PDPStepDefs {
 
     @Then("User change qty from {int} to {int} in PDP")
     public void user_change_qty_from_to_in_pdp(Integer qty1, Integer qty2) {
-        driver.findElement(By.xpath("(//input[@name='plus'])[1]")).click();
+        productDetailPage.pdpQTYIncrease.click();
     }
     @Then("User change qty from {int} to {int} in PDP tablet and desktop skip")
     public void user_change_qty_from_to_in_pdp_tablet_and_desktop_skip(Integer int1, Integer int2) {
         if (ConfigReader.getProperty("platform").equals("mobile")) {
-            driver.findElement(By.xpath("(//input[@name='plus'])[1]")).click();
+            productDetailPage.pdpQTYIncrease.click();
         }
     }
 

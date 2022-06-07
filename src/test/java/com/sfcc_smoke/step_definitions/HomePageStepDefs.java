@@ -1,7 +1,7 @@
 package com.sfcc_smoke.step_definitions;
 
+import com.sfcc_smoke.pages.CartPage;
 import com.sfcc_smoke.pages.HomePage;
-import com.sfcc_smoke.pages.SearchPage;
 import com.sfcc_smoke.utilities.BrowserUtils;
 import com.sfcc_smoke.utilities.Driver;
 import io.cucumber.java.en.Then;
@@ -21,7 +21,7 @@ public class HomePageStepDefs {
 
     WebDriver driver = Driver.getDriver();
     HomePage homePage = new HomePage();
-    SearchPage searchPage = new SearchPage();
+    CartPage cartPage = new CartPage();
 
     @When("User gets each available link from main page")
     public void getAllUrls() {
@@ -68,12 +68,12 @@ public class HomePageStepDefs {
 
     @Then("User asserts in search bar for search suggestions returns top results for {string}")
     public void user_asserts_in_search_bar_for_search_suggestions_returns_top_results_for(String Item) {
-      String searchResults = driver.findElement(By.xpath("//li[@class='unbxd-as-header unbxd-as-popular-product-header'] /strong")).getText();
-      Assert.assertTrue(searchResults.contains(Item));
+        String searchResults = homePage.searchSugesstions.getText();
+        Assert.assertTrue(searchResults.contains(Item));
     }
     @When("User clicks on {string} in account tab")
     public void user_clicks_on_in_account_tab(String tabbedPage) {
-        driver.findElement(By.xpath("//a[@href='/wishlist/']")).click();
+        cartPage.wishListButton.click();
         BrowserUtils.waitForPageToLoad(2);
     }
 }

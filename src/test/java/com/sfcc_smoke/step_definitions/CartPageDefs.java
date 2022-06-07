@@ -100,16 +100,16 @@ public class CartPageDefs {
     @Then("User changes Qty from 1 to 2 in cart")
     public void user_changes_qty_from_to_in_cart() {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
-            driver.findElement(By.xpath("//select[@name='dwfrm_cart_shipments_i0_items_i0_quantity']")).click();
-            BrowserUtils.scrollToElement(driver.findElement(By.xpath("//option[@value='2']")));
-            driver.findElement(By.xpath("//option[@value='2']")).click();
+            cartPage.qtySelect.click();
+            BrowserUtils.scrollToElement(cartPage.qtySelect);
+            cartPage.qtySelect.click();
         } else if (ConfigReader.getProperty("platform").equals("mobile")) {
             JavascriptExecutor Js1 = (JavascriptExecutor) driver;
             Js1.executeScript("window.scrollBy(0,400)");
             BrowserUtils.sleep(3);
-            driver.findElement(By.xpath("//select[@name='dwfrm_cart_shipments_i0_items_i0_quantity']")).click();
-            BrowserUtils.scrollToElement(driver.findElement(By.xpath("//option[@value='2']")));
-            driver.findElement(By.xpath("//option[@value='2']")).click();
+            cartPage.qtySelect.click();
+            BrowserUtils.scrollToElement(cartPage.qtySelect);
+            cartPage.qtySelect.click();
         }
     }
 
@@ -158,13 +158,13 @@ public class CartPageDefs {
 
     @Then("User asserts {string} saved items in cart")
     public void user_asserts_saved_items_in_cart(String item) {
-        String SavedItem = driver.findElement(By.cssSelector("h2 a[tabindex='0']")).getText();
+        String SavedItem =  cartPage.savedInCart.getText();
         Assert.assertTrue(SavedItem.contains(item));
     }
     @Then("User asserts {string} saved items in cart mobile skip")
     public void user_asserts_saved_items_in_cart_mobile_skip(String item) {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
-            String SavedItem = driver.findElement(By.cssSelector("h2 a[tabindex='0']")).getText();
+            String SavedItem = cartPage.savedInCart.getText();
             String expectedItem = item;
             Assert.assertEquals(expectedItem, SavedItem);
         }
@@ -228,7 +228,7 @@ public class CartPageDefs {
 
     @Then("User clicks add to cart from Wish List")
     public void user_clicks_add_to_cart_from_wish_list() {
-        driver.findElement(By.xpath("//button[@name='dwfrm_wishlist_items_i0_addToCart']")).click();
+        cartPage.addToCartwishListButton.click();
     }
 }
 

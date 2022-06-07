@@ -1,5 +1,5 @@
 Feature: Verification of WishList Add to Cart from cart page
-@wip5
+@smoke
   Scenario: User adds item to cart from wish list
   Given User navigates to "url"
   And   User clicks on login link on different viewports

@@ -1,5 +1,5 @@
 Feature: Verification of PLP through search results
-@smoke
+@smoke @wip
   Scenario: User verifies PLP page components through search
     Given User navigates to "url"
     And   User search's "Sofas" in search bar

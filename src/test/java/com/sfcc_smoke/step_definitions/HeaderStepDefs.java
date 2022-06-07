@@ -9,6 +9,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class HeaderStepDefs {
@@ -20,7 +21,7 @@ public class HeaderStepDefs {
     public void assert_user_is_logged_in_via_name_displays_in_header() {
         if (ConfigReader.getProperty("platform").equals("desktop")) {
             BrowserUtils.sleep(3);
-            String account = driver.findElement(By.cssSelector("div[class='account-text-container'] div")).getText();
+            String account = homePage.userNameDisplayed.getText();
             System.out.println(account);
             String expectedName = "Hi, Jaime";
             Assert.assertEquals(expectedName, account);
@@ -47,7 +48,7 @@ public class HeaderStepDefs {
     }
     @Then("Assert total number of items in mini cart is {string}")
     public void assert_total_number_of_items_in_mini_cart_is(String number) {
-        BrowserUtils.sleep(1);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         String MiniCartQty = driver.findElement(By.xpath("//span[@class='minicart-quantity']")).getText();
         Assert.assertEquals(MiniCartQty, number);
     }
