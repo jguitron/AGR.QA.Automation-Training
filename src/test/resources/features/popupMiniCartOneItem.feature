@@ -1,4 +1,4 @@
-@smoke @fix
+@smoke
 Feature: Verify Popup on Mobile reflects one item added
 
   Scenario: User adds one item and asserts total in popup

@@ -52,4 +52,12 @@ public class ProductDetailPage {
     public  WebElement pp_KADJPRO;
     @FindBy(xpath = "//div[@class='protection-plan-input-wrapper']")
     public WebElement ppLableContainer;
+    @FindBy(xpath = "//a[@aria-label='Add to Wishlist']")
+    public WebElement addToWishList;
+
+    @FindBy(xpath = "//a[@aria-label='Add to Wishlist']")
+    public WebElement shopTheCollectionBundledCards;
+
+    @FindBy(xpath = "(//input[@name='plus'])[1]")
+    public WebElement pdpQTYIncrease;
 }

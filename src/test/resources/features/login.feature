@@ -6,6 +6,8 @@ Feature: Login verification
     And User clicks on login link on different viewports
     When User logs in with "username" and "password"
     Then User should see user dashboard
+    Then Assert user is logged in via name displays in header
+
 
 
 

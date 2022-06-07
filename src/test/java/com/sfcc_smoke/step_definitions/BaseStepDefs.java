@@ -2,6 +2,7 @@ package com.sfcc_smoke.step_definitions;
 
 import com.sfcc_smoke.pages.BasePage;
 import com.sfcc_smoke.pages.LandingPage;
+import com.sfcc_smoke.pages.ProductDetailPage;
 import com.sfcc_smoke.pages.SearchPage;
 import com.sfcc_smoke.utilities.BrowserUtils;
 import com.sfcc_smoke.utilities.ConfigReader;
@@ -9,7 +10,6 @@ import com.sfcc_smoke.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
@@ -21,6 +21,7 @@ public class BaseStepDefs {
     BasePage basePage = new BasePage();
     SearchPage searchPage = new SearchPage();
     LandingPage landingPage = new LandingPage();
+    ProductDetailPage productDetailPage = new ProductDetailPage();
 
     @When("User finds closest store by {string}")
     public void user_set_the_closet_store_by(String zipcode) {
@@ -76,7 +77,7 @@ public class BaseStepDefs {
 
     @Then("User clicks on Heart Icon in plp")
     public void user_clicks_on_heart_icon_in_plp() {
-        BrowserUtils.hover(driver.findElement(By.xpath("//a[@aria-label='Add to Wishlist']")));
-        driver.findElement(By.xpath("//a[@aria-label='Add to Wishlist']")).click();
+        BrowserUtils.hover(productDetailPage.addToWishList);
+        productDetailPage.addToWishList.click();
     }
 }

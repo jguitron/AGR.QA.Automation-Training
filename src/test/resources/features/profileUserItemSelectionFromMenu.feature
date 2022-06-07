@@ -1,4 +1,4 @@
-@smoke @wip
+@smoke
 Feature: Profile user Item search and add items to cart
 
   Scenario: User searches for Tv-stand and adds product to cart

@@ -90,4 +90,16 @@ public class CartPage {
 
     @FindBy(xpath = "//input[@class='input-text numbers-hypen-only postal required']")
     public WebElement changeLocationZipCodePopUpTextBox;
+
+    @FindBy(xpath = "//a[@href='/wishlist/']")
+    public WebElement wishListButton;
+
+    @FindBy(xpath = "//button[@name='dwfrm_wishlist_items_i0_addToCart']")
+    public WebElement addToCartwishListButton;
+
+    @FindBy(css = "h2 a[tabindex='0']")
+    public WebElement savedInCart;
+
+    @FindBy(xpath = "//select[@name='dwfrm_cart_shipments_i0_items_i0_quantity']")
+    public WebElement qtySelect;
 }
