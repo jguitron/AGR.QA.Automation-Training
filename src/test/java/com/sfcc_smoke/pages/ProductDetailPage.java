@@ -63,4 +63,10 @@ public class ProductDetailPage {
 
     @FindBy(xpath = "(//input[@name='plus'])[1]")
     public WebElement pdpQTYIncrease;
+
+    @FindBy(xpath = "(//a[@class='wishlist-save-cta '])[2]")
+    public WebElement heartIconPDPDeskTopTablet;
+
+    @FindBy(xpath = "//a[@class='wishlist-save-cta ']")
+    public WebElement heartIconPDPMobile;
 }
