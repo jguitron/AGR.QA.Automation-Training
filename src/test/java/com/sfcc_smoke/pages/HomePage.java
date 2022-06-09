@@ -41,5 +41,17 @@ public class HomePage {
     @FindBy(css = "div[class='account-text-container'] div")
     public WebElement userNameDisplayed;
 
+    @FindBy(xpath = "//span[@class='hamburger-box']")
+    public WebElement hamburgerBox;
+
+    @FindBy(xpath = "//a[@class='user-account user-account-registered']")
+    public WebElement accountTabMobileView;
+
+    @FindBy(xpath = "//a[@class='user-account-show']")
+    public WebElement accountTabOpenMobileView;
+
+    @FindBy(xpath = "//a[@href='/wishlist/']")
+    public WebElement accountWishListMobile;
+
 
 }

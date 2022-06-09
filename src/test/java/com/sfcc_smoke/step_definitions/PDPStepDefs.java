@@ -5,6 +5,7 @@ import com.sfcc_smoke.pages.ProductDetailPage;
 import com.sfcc_smoke.utilities.BrowserUtils;
 import com.sfcc_smoke.utilities.ConfigReader;
 import com.sfcc_smoke.utilities.Driver;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -213,6 +214,15 @@ public class PDPStepDefs {
                 String colorOnPage = driver.findElement(By.xpath("//div[@class='label'] /span[@class='selected-variant']")).getText();
                 Assert.assertTrue(colorOnPage.contains(eachColor));
             }
+        }
+    }
+
+    @Given("User clicks on Heart Icon in pdp")
+    public void user_clicks_on_heart_icon_in_pdp() {
+        if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
+            productDetailPage.heartIconPDPDeskTopTablet.click();
+        } else if (ConfigReader.getProperty("platform").equals("mobile")) {
+            productDetailPage.heartIconPDPMobile.click();
         }
     }
 }

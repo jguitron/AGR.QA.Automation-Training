@@ -15,7 +15,6 @@ import org.openqa.selenium.WebElement;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.Objects;
 
 public class PLPStepDefs {
     WebDriver driver = Driver.getDriver();
@@ -45,39 +44,6 @@ public class PLPStepDefs {
         productListPage.clearAllFilters.click();
     }
 
-    @Then("User clicks on item filters in plp and asserts change")
-    public void user_clicks_on_item_filters_in_plp_and_asserts_changes() {
-
-        driver.findElement(By.xpath("//div[@class='refinement price']")).click();
-        BrowserUtils.scrollToElement(driver.findElement(By.xpath("//div[@class='refinement price']")));
-        BrowserUtils.sleep(1);
-        driver.findElement(By.xpath("//li /a[@id='-0000000000']")).click();
-        String filteredQty = driver.findElement(By.xpath("//a[@id='-0000000000'] /span /span")).getText();
-
-        if (!Objects.equals(filteredQty, "(16)")) {
-            driver.findElement(By.xpath("//a[@class='page-2']")).click();
-            int Page1 = 16;
-            String Page2Click = driver.findElement(By.xpath("//a[@id='-0000000000'] /span /span")).getText();
-            int Page2Total = Integer.parseInt(Page2Click);
-            int Total = 0;
-            int Sum = 0;
-            System.out.println(Sum = Integer.parseInt(Page2Total + Page2Click));
-
-
-            List <WebElement> pLPFilteredQty = (driver.findElements(By.xpath("//div[@class='product-name']")));
-            int numberOfElements = pLPFilteredQty.size();
-
-            String number = String.valueOf(numberOfElements);
-            Assert.assertTrue(filteredQty.contains(number));
-        }
-//        else {
-//            driver.findElement(By.xpath("//a[@id='-0000000000'] /span /span")).getText();
-//            List <WebElement> pLPFilteredQty = (driver.findElements(By.xpath("//div[@class='product-name']")));
-//            int numberOfElements = pLPFilteredQty.size();
-//            String number = String.valueOf(numberOfElements);
-//            Assert.assertTrue(filteredQty.contains(number));
-//        }
-    }
     @Then("User checks for {string} button is present")
     public void user_checks_for_button_is_present(String Learn) {
         BrowserUtils.scrollToElement(productListPage.heartIcon);
@@ -106,7 +72,7 @@ public class PLPStepDefs {
     public void user_clicks_second_page_of_inventory_and_asserts_that_is(String pageDesired, String pageNumber) {
         driver.findElement(By.xpath("//a[@class='"+pageDesired+"']")).click();
         BrowserUtils.sleep(2);
-        String currentPage = driver.findElement(By.xpath("//li[@class='current-page']")).getText();
+        String currentPage = productListPage.currentPageListQty.getText();
         productListPage.currentPageListQty.getText();
         Assert.assertTrue(pageNumber.contains(currentPage));
     }

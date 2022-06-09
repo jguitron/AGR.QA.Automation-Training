@@ -3,6 +3,7 @@ package com.sfcc_smoke.step_definitions;
 import com.sfcc_smoke.pages.CartPage;
 import com.sfcc_smoke.pages.HomePage;
 import com.sfcc_smoke.utilities.BrowserUtils;
+import com.sfcc_smoke.utilities.ConfigReader;
 import com.sfcc_smoke.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -73,7 +74,44 @@ public class HomePageStepDefs {
     }
     @When("User clicks on {string} in account tab")
     public void user_clicks_on_in_account_tab(String tabbedPage) {
-        cartPage.wishListButton.click();
-        BrowserUtils.waitForPageToLoad(2);
+        if (ConfigReader.getProperty("platform").equals("desktop")) {
+            homePage.userNameDisplayed.click();
+            driver.findElement(By.xpath("//a[@href='https://www.ashleyfurniture.com/" + tabbedPage + "/']")).click();
+            BrowserUtils.waitForPageToLoad(2);
+        }
+        else if (ConfigReader.getProperty("platform").equals("mobile") || ConfigReader.getProperty("platform").equals("tablet")) {
+            homePage.hamburgerBox.click();
+            homePage.accountTabMobileView.click();
+            homePage.accountTabOpenMobileView.click();
+            homePage.accountWishListMobile.click();
+
+        }
+    }
+    @Then("User verifies that {string} in Wish List is clickable with url text {string}")
+    public void user_verifies_that_in_wish_list_is_clickable_with_url_text(String itemName, String urlName) {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        String wishListItem = driver.findElement(By.xpath("//div /h2 /*[contains(@href, '"+urlName+"')]")).getAttribute("href");
+        driver.findElement(By.xpath("//img[@alt='" + itemName + "']")).click();
+        String Url = driver.getCurrentUrl();
+        Assert.assertTrue(Url.contains(wishListItem));
+    }
+
+    @Then("User verify view details button for {string} in Wish list")
+    public void user_verify_view_details_button_for_in_wish_list(String itemSaved) {
+        String wishListViewDetails = driver.findElement(By.xpath("// h2 /*[contains(@title, 'Darcy Sofa')]")).getAttribute("href");
+        driver.findElement(By.xpath("//h2 /a[@title='"+itemSaved+"']")).click();
+        String Url = driver.getCurrentUrl();
+        Assert.assertTrue(Url.contains(wishListViewDetails));
+    }
+
+    @Then("User clicks on remove button in Wish List for {string}")
+    public void user_clicks_on_remove_button_in_wish_list_for(String removedItem) {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        driver.findElement(By.xpath("//button[@aria-label='Remove "+removedItem+"']")).click();
+    }
+    @Then("User Asserts {string} is not in wishlist")
+    public void user_asserts_is_not_in_wishlist(String AssertItemRemoved) {
+        List<WebElement> items = driver.findElements(By.xpath("//div /h2 /*[contains(@href, '"+AssertItemRemoved+"')]"));
+        Assert.assertTrue(items.isEmpty());
     }
 }
