@@ -111,10 +111,11 @@ public class PLPStepDefs {
     @Then("User clicks on arrows switching between products in PLP")
     public void user_clicks_on_arrows_switching_between_products_in_plp() {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
-            String item1 = cartPage.savedInCart.getText();
+            BrowserUtils.waitForPageToLoad(3);
+            String item1 = productListPage.quickViewItem.getText();
             productListPage.quickViewNext.click();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
-            String item2 = cartPage.savedInCart.getText();
+            String item2 = productListPage.quickViewItem.getText();
             Assert.assertNotSame(item1, item2);
         }
     }
@@ -150,7 +151,10 @@ public class PLPStepDefs {
     @Then("User clicks x to exit quick view")
     public void user_clicks_x_to_exit_quick_view() {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
-            productListPage.quickViewClose.click();
-        }
+            if (productListPage.quickViewClose.isDisplayed()); {
+                productListPage.quickViewClose.click();
+            }
+
+        } else System.out.println("Not in display");
     }
 }

@@ -13,6 +13,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
+import java.time.Duration;
 import java.util.List;
 
 public class PDPStepDefs {
@@ -71,14 +72,14 @@ public class PDPStepDefs {
     @When("User clicks on Add Item to Cart")
     public void user_clicks_on_add_item_to_cart() {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
-            BrowserUtils.scrollToElement(productDetailPage.addtocart);
-            productDetailPage.addtocart.isDisplayed();
             BrowserUtils.clickWithJS(productDetailPage.addtocart);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         } else if (productDetailPage.AddToCart_mob.isDisplayed()) {
             BrowserUtils.scrollToElement(productDetailPage.AddToCart_mob);
             productDetailPage.AddToCart_mob.click();
             BrowserUtils.sleep(1);
             productDetailPage.contShoppingBtnAddItmPopUp.click();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         }
     }
 
@@ -205,6 +206,9 @@ public class PDPStepDefs {
     @Then("User changes color scheme in quick view and asserts change mobile skip included")
     public void user_changes_color_scheme_in_quick_view_and_asserts_change_mobile_skip_included(List <String> colors) {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
+            if (driver.findElements(By.xpath("//ul[@class='swatches clearfix color']")).isEmpty()) {
+                System.out.println("no colors to change");
+            } else if (driver.findElement(By.xpath("//ul[@class='swatches clearfix color']")).isDisplayed()) {
             for (String eachColor : colors) {
                 driver.findElement(By.xpath("//ul[@class='swatches clearfix color'] /li /a[@title='Select Color: " + eachColor + "']")).click();
                 BrowserUtils.sleep(2);
@@ -215,6 +219,7 @@ public class PDPStepDefs {
                 BrowserUtils.sleep(2);
                 String colorOnPage = driver.findElement(By.xpath("//div[@class='label'] /span[@class='selected-variant']")).getText();
                 Assert.assertTrue(colorOnPage.contains(eachColor));
+            }
             }
         }
     }

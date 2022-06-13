@@ -10,6 +10,8 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import java.time.Duration;
+
 public class MiniCartStepDefs {
     WebDriver driver = Driver.getDriver();
     CartPage cartPage = new CartPage();
@@ -19,6 +21,7 @@ public class MiniCartStepDefs {
     public void user_removes_item_from_mini_cart() {
         driver.findElement(By.xpath("//button[@class='remove-cart-item']")).click();
         driver.findElement(By.xpath("//button[@class='remove']")).click();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
     }
 
     @Then("User clicks on save for later mini cart")
@@ -33,10 +36,8 @@ public class MiniCartStepDefs {
     public void user_asserts_items_in_mini_cart_is_qty(String Item) {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
             BrowserUtils.sleep(5);
-            int CartQty = Integer.parseInt(driver.findElement(By.xpath("//span[@class='minicart-quantity']")).getText());
-            System.out.println(CartQty);
-            int ExpectedQty = Integer.parseInt(Item);
-            Assert.assertEquals(CartQty, ExpectedQty);
+            String CartQty = driver.findElement(By.xpath("//span[@class='minicart-quantity']")).getText();
+            Assert.assertEquals(Item,CartQty);
         }
     }
 }

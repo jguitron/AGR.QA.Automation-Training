@@ -57,19 +57,15 @@ public class CartPage {
     public WebElement ppckbx3;
     @FindBy(xpath = "(//input[@class='pp-checkbox'])[4]")
     public WebElement ppckbx4;
-
     @FindBy(xpath = "//button[@class='secure-checkout-btn']")
     public WebElement secureckoutbtn;
-
     @FindBy(xpath = "//a[@class='remove-cart-item']")
     public WebElement removeitem;
 
     @FindBy(xpath = "//div[@id='cart-remove-product']/fieldset/h2")
     public WebElement removeitempopup_msg;
-
     @FindBy(xpath = "//button[@class='remove']")
     public WebElement removeitem_YesBtn;
-
     @FindBy(css = "div[class='cart-product-option-mobile'] a[class='remove-cart-item']")
     public WebElement removeItem_BtnMobileTablet;
 
@@ -102,4 +98,13 @@ public class CartPage {
 
     @FindBy(xpath = "//select[@name='dwfrm_cart_shipments_i0_items_i0_quantity']")
     public WebElement qtySelect;
+
+    @FindBy(xpath = "//div[@class='user-name']")
+    public WebElement userNameOnAccount;
+
+    @FindBy(xpath = "//span[@class='user-email']")
+    public WebElement emailOnAccount;
+
+    @FindBy(xpath = "//div[@class='user-no']")
+    public WebElement phoneNumberOnAccount;
 }

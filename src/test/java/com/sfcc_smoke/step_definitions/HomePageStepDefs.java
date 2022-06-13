@@ -56,7 +56,7 @@ public class HomePageStepDefs {
 
     @Then("User clicks on cart")
     public void user_clicks_on_cart() {
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
         driver.findElement(By.xpath("//a[@class='mini-cart-link']")).click();
     }
     @Then("User clicks on cart icon")
@@ -83,6 +83,7 @@ public class HomePageStepDefs {
             homePage.hamburgerBox.click();
             homePage.accountTabMobileView.click();
             homePage.accountTabOpenMobileView.click();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
             homePage.accountWishListMobile.click();
 
         }

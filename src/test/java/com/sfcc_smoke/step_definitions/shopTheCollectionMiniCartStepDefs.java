@@ -1,4 +1,5 @@
 package com.sfcc_smoke.step_definitions;
+
 import com.sfcc_smoke.pages.ProductDetailPage;
 import com.sfcc_smoke.pages.SearchPage;
 import com.sfcc_smoke.utilities.BrowserUtils;
@@ -6,7 +7,6 @@ import com.sfcc_smoke.utilities.ConfigReader;
 import com.sfcc_smoke.utilities.Driver;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 
@@ -28,11 +28,12 @@ public class shopTheCollectionMiniCartStepDefs {
     @Then("User clicks on Add Item to Cart PDP scroll")
     public void user_clicks_on_add_item_to_cart_pdp_scroll() {
         if (ConfigReader.getProperty("platform").equals("tablet") || ConfigReader.getProperty("platform").equals("desktop"))  {
-            JavascriptExecutor Js1 = (JavascriptExecutor) driver;
-            Js1.executeScript("window.scroll(500,0)");
-            BrowserUtils.scrollToElement(searchPage.searchBar);
-            productDetailPage.addtocart.click();
-            BrowserUtils.sleep(3);
+            BrowserUtils.clickWithJS(productDetailPage.addtocart);
+//            JavascriptExecutor Js1 = (JavascriptExecutor) driver;
+//            Js1.executeScript("window.scroll(500,0)");
+//            BrowserUtils.scrollToElement(searchPage.searchBar);
+//            productDetailPage.addtocart.click();
+//            BrowserUtils.sleep(3);
         }  else if (productDetailPage.AddToCart_mob.isDisplayed()) {
             BrowserUtils.scrollToElement(productDetailPage.AddToCart_mob);
             productDetailPage.AddToCart_mob.click();

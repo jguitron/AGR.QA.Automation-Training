@@ -71,6 +71,9 @@ public class ProductListPage {
     @FindBy(xpath = "//a[@id='quickviewbutton']")
     public WebElement quickViewButton;
 
+    @FindBy(xpath = "//a[@href] /h1")
+    public WebElement quickViewItem;
+
 
 
 
