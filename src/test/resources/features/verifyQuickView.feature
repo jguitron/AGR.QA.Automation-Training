@@ -8,8 +8,8 @@ Feature: Verification of quick view in PDP
     Then  User changes color scheme in quick view and asserts change mobile skip included
       | Slate       |
       | Coffee      |
+    Then  User clicks on learn more and closes
     And   User change qty from 1 to 2 in PLP quick view
     And   User clicks on Add Item to Cart mobile skip
-    Then  User clicks on learn more and closes
     And   User clicks x to exit quick view
     And   User asserts items in mini cart is "2" qty

@@ -15,6 +15,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import java.time.Duration;
+
 public class CartPageDefs {
 
     CartPage cartPage = new CartPage();
@@ -97,27 +99,26 @@ public class CartPageDefs {
         BrowserUtils.sleep(2);
     }
 
-    @Then("User changes Qty from 1 to 2 in cart")
-    public void user_changes_qty_from_to_in_cart() {
+    @Then("User changes Qty from {string} to {string} in cart")
+    public void user_changes_qty_from_to_in_cart(String qtyNumberStart, String qtyNumberChange) {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
             cartPage.qtySelect.click();
             BrowserUtils.scrollToElement(cartPage.qtySelect);
-            cartPage.qtySelect.click();
+            driver.findElement(By.xpath("//select[@name='dwfrm_cart_shipments_i0_items_i0_quantity'] /option[@value='"+qtyNumberChange+"']")).click();
         } else if (ConfigReader.getProperty("platform").equals("mobile")) {
             JavascriptExecutor Js1 = (JavascriptExecutor) driver;
             Js1.executeScript("window.scrollBy(0,400)");
             BrowserUtils.sleep(3);
             cartPage.qtySelect.click();
             BrowserUtils.scrollToElement(cartPage.qtySelect);
-            cartPage.qtySelect.click();
+            driver.findElement(By.xpath("//select[@name='dwfrm_cart_shipments_i0_items_i0_quantity'] /option[@value='"+qtyNumberChange+"']")).click();
         }
     }
 
-    @Then("Assert total number of items in cart is {int}")
-    public void assert_total_number_of_items_in_cart_is(Integer int1) {
+    @Then("Assert cart is reflecting {string} QTY change")
+    public void assert_cart_is_reflecting_qty_change(String expectedQty) {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
         String MyCart = driver.findElement(By.xpath("//h1[@class='cart-title']")).getText();
-        System.out.println(MyCart);
-        String expectedQty = "My Cart (2 items)";
         Assert.assertEquals(expectedQty, MyCart);
     }
 
@@ -156,10 +157,17 @@ public class CartPageDefs {
         driver.findElement(By.name("dwfrm_login_login")).click();
     }
 
+    @Then("User asserts {string} saved items with {string}")
+    public void user_asserts_saved_items_with(String SavedItem, String assertSaved) {
+        String savedItem = driver.findElement(By.xpath("//h2 /*[contains(@href,'"+assertSaved+"')]")).getText();
+        Assert.assertTrue(SavedItem.contains(savedItem));
+    }
+
     @Then("User asserts {string} saved items in cart")
-    public void user_asserts_saved_items_in_cart(String item) {
-        String SavedItem =  cartPage.savedInCart.getText();
-        Assert.assertTrue(SavedItem.contains(item));
+    public void user_asserts_saved_items_in_cart(String SavedItem) {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        String savedItem = driver.findElement(By.xpath("//div[@class='name'] /div /a[@title='Go to Product: "+SavedItem+"']")).getText();
+        Assert.assertTrue(SavedItem.contains(savedItem));
     }
     @Then("User asserts {string} saved items in cart mobile skip")
     public void user_asserts_saved_items_in_cart_mobile_skip(String item) {
@@ -236,6 +244,21 @@ public class CartPageDefs {
     @Then("User clicks add to cart from Wish List")
     public void user_clicks_add_to_cart_from_wish_list() {
         cartPage.addToCartwishListButton.click();
+    }
+    @Then("User asserts user name on account page reflects {string}")
+    public void user_asserts_user_name_on_account_page_reflects(String userName) {
+        String onPageUserName = cartPage.userNameOnAccount.getText().trim();
+        Assert.assertTrue(onPageUserName.contains(userName));
+    }
+    @Then("User asserts email-address on account page reflects {string}")
+    public void user_asserts_email_address_on_account_page_reflects(String email) {
+        String emailOnPage= cartPage.emailOnAccount.getText();
+        Assert.assertEquals(email,emailOnPage);
+    }
+    @Then("User asserts phone number on account page reflects {string}")
+    public void user_asserts_phone_number_on_account_page_reflects(String phoneNumber) {
+        String phoneNumberOnPage = cartPage.phoneNumberOnAccount.getText();
+        Assert.assertEquals(phoneNumber,phoneNumberOnPage);
     }
 }
 

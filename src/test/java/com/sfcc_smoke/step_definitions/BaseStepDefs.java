@@ -86,5 +86,6 @@ public class BaseStepDefs {
     public void user_clicks_on_heart_icon_in_plp() {
         BrowserUtils.hover(productDetailPage.addToWishList);
         productDetailPage.addToWishList.click();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
     }
 }

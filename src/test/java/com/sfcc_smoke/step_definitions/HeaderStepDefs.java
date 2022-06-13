@@ -48,8 +48,11 @@ public class HeaderStepDefs {
     }
     @Then("Assert total number of items in mini cart is {string}")
     public void assert_total_number_of_items_in_mini_cart_is(String number) {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        BrowserUtils.sleep(5);
+        BrowserUtils.waitForPageToLoad(20);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
         String MiniCartQty = driver.findElement(By.xpath("//span[@class='minicart-quantity']")).getText();
-        Assert.assertEquals(MiniCartQty, number);
+        Assert.assertEquals(number,MiniCartQty);
+
     }
 }

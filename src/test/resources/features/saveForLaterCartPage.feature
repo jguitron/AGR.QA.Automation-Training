@@ -8,5 +8,5 @@ Feature: Verification of Save for Later button in cart page
     And   User clicks on cart
     Then  User clicks save for later button
     And   User Logs in
-    Then  User asserts "Honey-Can-Do 4 Piece Jar Storage Set" saved items in cart
+    Then  User asserts "Honey-Can-Do 4 Piece Jar Storage Set" saved items with "honey"
 

@@ -102,4 +102,13 @@ public class CartPage {
 
     @FindBy(xpath = "//select[@name='dwfrm_cart_shipments_i0_items_i0_quantity']")
     public WebElement qtySelect;
+
+    @FindBy(xpath = "//div[@class='user-name']")
+    public WebElement userNameOnAccount;
+
+    @FindBy(xpath = "//span[@class='user-email']")
+    public WebElement emailOnAccount;
+
+    @FindBy(xpath = "//div[@class='user-no']")
+    public WebElement phoneNumberOnAccount;
 }
