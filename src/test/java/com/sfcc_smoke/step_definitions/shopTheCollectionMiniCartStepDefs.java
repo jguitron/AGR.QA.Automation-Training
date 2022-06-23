@@ -29,11 +29,6 @@ public class shopTheCollectionMiniCartStepDefs {
     public void user_clicks_on_add_item_to_cart_pdp_scroll() {
         if (ConfigReader.getProperty("platform").equals("tablet") || ConfigReader.getProperty("platform").equals("desktop"))  {
             BrowserUtils.clickWithJS(productDetailPage.addtocart);
-//            JavascriptExecutor Js1 = (JavascriptExecutor) driver;
-//            Js1.executeScript("window.scroll(500,0)");
-//            BrowserUtils.scrollToElement(searchPage.searchBar);
-//            productDetailPage.addtocart.click();
-//            BrowserUtils.sleep(3);
         }  else if (productDetailPage.AddToCart_mob.isDisplayed()) {
             BrowserUtils.scrollToElement(productDetailPage.AddToCart_mob);
             productDetailPage.AddToCart_mob.click();

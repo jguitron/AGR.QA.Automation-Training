@@ -62,6 +62,9 @@ public class CartPage {
     @FindBy(xpath = "//a[@class='remove-cart-item']")
     public WebElement removeitem;
 
+    @FindBy(xpath = "//button[@class='remove-cart-item']")
+    public WebElement removeItemMiniCart;
+
     @FindBy(xpath = "//div[@id='cart-remove-product']/fieldset/h2")
     public WebElement removeitempopup_msg;
     @FindBy(xpath = "//button[@class='remove']")
@@ -107,4 +110,5 @@ public class CartPage {
 
     @FindBy(xpath = "//div[@class='user-no']")
     public WebElement phoneNumberOnAccount;
+
 }

@@ -6,7 +6,7 @@ Feature: Verification of WishList Add to Cart from cart page
   When  User logs in with "username" and "password"
   And   User clicks on "wishlist" in account tab
   Then  User clicks add to cart from Wish List
-  Then  User clicks on cart
+  Then  User clicks on cart icon
   Then  User asserts "Honey-Can-Do 4 Piece Jar Storage Set" saved items in cart
 
 

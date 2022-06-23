@@ -73,4 +73,38 @@ public class AccountPage {
         }
         loginBtn.click();
     }
+
+    @FindBy(xpath = "//input[@id='dwfrm_profile_address_addressid']")
+    public WebElement addressNameAdd;
+
+    @FindBy(xpath = " //input[@class='input-text letters-hypen-only no-spaces  required']")
+    public WebElement firstNameAddressAdd;
+
+    @FindBy(xpath = "//input[@class='input-text last-name-valid  required']")
+    public WebElement lastNameAddressAdd;
+
+    @FindBy(xpath = "//input[@class='input-text address-valid po-box-invalid  required']")
+    public WebElement fullAddressAdd;
+
+    @FindBy(xpath = "//input[@id='dwfrm_profile_address_city']")
+    public WebElement cityAddressAdd;
+
+    @FindBy(xpath = "//option[@label='Florida']")
+    public WebElement stateAddressAdd;
+
+    @FindBy(xpath = "//select[@id='dwfrm_profile_address_states_state']")
+    public WebElement stateSelectionAddressAdd;
+
+    @FindBy(xpath = "//input[@class='input-text numbers-hypen-only  required']")
+    public WebElement zipCodeAddressAdd;
+
+    @FindBy(xpath = "//input[@class='input-text  check-phone phone required']")
+    public WebElement phoneNumberAddressAdd;
+
+    @FindBy(xpath = " //button[@class='apply-button quaternary']")
+    public WebElement applyButtonAddressAdd;
+
+    @FindBy(xpath = "//button[@class='submit-button']")
+    public WebElement submitButtonAddressAdd;
+
 }

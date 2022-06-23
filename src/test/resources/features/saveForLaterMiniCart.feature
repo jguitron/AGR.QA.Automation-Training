@@ -9,4 +9,4 @@ Feature: Verification of Save for Later button in mini cart
     And   User clicks on save for later mini cart
     And   User logs in with "username" and "password" mobile skip
     Then  User clicks on cart icon
-    Then  User asserts "Honey-Can-Do 4 Piece Jar Storage Set" saved items in cart mobile skip
+    Then  User asserts "Honey-Can-Do 4 Piece Jar Storage Set" saved items in cart with "honey" mobile skip
