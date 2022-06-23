@@ -1,10 +1,10 @@
 package com.sfcc_smoke.step_definitions;
 
-import com.sfcc_smoke.pages.CartPage;
 import com.sfcc_smoke.pages.ProductListPage;
 import com.sfcc_smoke.utilities.BrowserUtils;
 import com.sfcc_smoke.utilities.ConfigReader;
 import com.sfcc_smoke.utilities.Driver;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -19,11 +19,24 @@ import java.util.List;
 public class PLPStepDefs {
     WebDriver driver = Driver.getDriver();
     ProductListPage productListPage = new ProductListPage();
-    CartPage cartPage = new CartPage();
+
+    @Given("User clicks on PLP Show {string} per page button")
+    public void user_clicks_on_plp_show_per_page_button(String qtyShowPerPage) {
+        if (ConfigReader.getProperty("platform").equals("desktop")) {
+            driver.findElement(By.xpath("//select[@id='grid-paging-header'] /*[contains(@value,'"+qtyShowPerPage+"')]")).click();
+        BrowserUtils.waitForPageToLoad(5);
+        }
+    }
 
     @When("User chooses {string} in plp")
     public void user_chooses_on_in_pdp(String itemName) {
-        driver.findElement(By.xpath("//img[@alt='" + itemName + "']")).click();
+            BrowserUtils.waitForPageToLoad(10);
+            for (int i = 0; i < 100; i++) {
+                if (driver.findElements(By.xpath("//img[@alt='" + itemName + "']")).isEmpty()) {
+                    BrowserUtils.clickWithJS(productListPage.nextPageResults);
+                }
+            }
+            BrowserUtils.clickWithJS(driver.findElement(By.xpath("//img[@alt='" + itemName + "']")));
     }
 
 
@@ -111,9 +124,9 @@ public class PLPStepDefs {
     @Then("User clicks on arrows switching between products in PLP")
     public void user_clicks_on_arrows_switching_between_products_in_plp() {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
-            BrowserUtils.waitForPageToLoad(3);
+            BrowserUtils.waitForClickability(productListPage.quickViewItem,Duration.ofSeconds(5));
             String item1 = productListPage.quickViewItem.getText();
-            productListPage.quickViewNext.click();
+            BrowserUtils.clickWithJS(productListPage.quickViewNext);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
             String item2 = productListPage.quickViewItem.getText();
             Assert.assertNotSame(item1, item2);

@@ -73,8 +73,7 @@ public class ProductListPage {
 
     @FindBy(xpath = "//a[@href] /h1")
     public WebElement quickViewItem;
-
-
+    
 
 
 

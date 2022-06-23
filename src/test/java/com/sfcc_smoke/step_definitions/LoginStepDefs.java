@@ -9,7 +9,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.time.Duration;
@@ -41,12 +40,11 @@ public class LoginStepDefs {
 
     @And("User clicks on login link on different viewports")
     public void clickOnLogin() {
-           // driver.findElement(By.xpath("content-asset ca-online-only")).click();
         String platform = ConfigReader.getProperty("platform");
         if (platform.equals("desktop")) {
             BrowserUtils.waitForClickability(landingPage.mainLoginLink, Duration.ofSeconds(10));
-            landingPage.mainLoginLink.click();
-            landingPage.mainLoginBtn.click();
+            BrowserUtils.clickWithJS(landingPage.mainLoginLink);
+            BrowserUtils.clickWithJS(landingPage.mainLoginBtn);
         } else if (platform.equals("mobile") || (platform.equals("tablet"))) {
             landingPage.mobileMenu.click();
             landingPage.mobileLoginBtn.click();

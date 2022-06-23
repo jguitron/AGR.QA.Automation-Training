@@ -30,7 +30,6 @@ public class Driver {
                         ChromeOptions chromeOptions = new ChromeOptions();
                         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
                         chromeOptions.addArguments("--disable-notifications");
-//                        desiredCapabilities.setCapability("browser_version", "94");
                         desiredCapabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
                         desiredCapabilities.setCapability(CapabilityType.ACCEPT_INSECURE_CERTS, true);
                         driverPool.set(new ChromeDriver(chromeOptions));

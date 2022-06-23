@@ -1,6 +1,9 @@
 package com.sfcc_smoke.step_definitions;
 
+import com.github.javafaker.Faker;
+import com.sfcc_smoke.pages.AccountPage;
 import com.sfcc_smoke.pages.CartPage;
+import com.sfcc_smoke.pages.DataFieldPage;
 import com.sfcc_smoke.pages.ProductDetailPage;
 import com.sfcc_smoke.utilities.BrowserUtils;
 import com.sfcc_smoke.utilities.ConfigReader;
@@ -23,6 +26,10 @@ public class CartPageDefs {
     WebDriver driver = Driver.getDriver();
     ProductDetailPage productDetailPage = new ProductDetailPage();
     String platform = ConfigReader.getProperty("platform");
+
+    AccountPage accountPage = new AccountPage();
+
+    DataFieldPage dataFieldPage = new DataFieldPage();
 
     @When("User uncheck Protection Plan check box")
     public void user_uncheck_PP_checkbox() {
@@ -166,6 +173,7 @@ public class CartPageDefs {
     @Then("User asserts {string} saved items in cart")
     public void user_asserts_saved_items_in_cart(String SavedItem) {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        BrowserUtils.waitForPageToLoad(5);
         String savedItem = driver.findElement(By.xpath("//div[@class='name'] /div /a[@title='Go to Product: "+SavedItem+"']")).getText();
         Assert.assertTrue(SavedItem.contains(savedItem));
     }
@@ -240,7 +248,6 @@ public class CartPageDefs {
             BrowserUtils.sleep(1);
         }
     }
-
     @Then("User clicks add to cart from Wish List")
     public void user_clicks_add_to_cart_from_wish_list() {
         cartPage.addToCartwishListButton.click();
@@ -260,5 +267,38 @@ public class CartPageDefs {
         String phoneNumberOnPage = cartPage.phoneNumberOnAccount.getText();
         Assert.assertEquals(phoneNumber,phoneNumberOnPage);
     }
+    @When("User inputs generated new address data into fields")
+    public void user_inputs_generated_new_address_data_into_fields() {
+        Faker faker = new Faker();
+        dataFieldPage.setAddressName(faker.address().firstName());
+        dataFieldPage.setFirstName(faker.name().firstName());
+        dataFieldPage.setLastName(faker.name().lastName());
+        dataFieldPage.setAddress(faker.address().streetAddressNumber());
+        dataFieldPage.setCity(faker.address().city());
+        dataFieldPage.setZipCode(faker.address().zipCode());
+    }
+    @When("User enters personal information into create new address tab")
+    public void user_enters_personal_information_into_create_new_address_tab () {
+        accountPage.addressNameAdd.sendKeys(dataFieldPage.getAddressName());
+        accountPage.firstNameAddressAdd.sendKeys(dataFieldPage.getFirstName());
+        accountPage.lastNameAddressAdd.sendKeys(dataFieldPage.getLastName());
+        accountPage.fullAddressAdd.sendKeys(dataFieldPage.getAddress());
+        accountPage.cityAddressAdd.sendKeys(dataFieldPage.getCity());
+        accountPage.stateSelectionAddressAdd.click();
+        accountPage.stateAddressAdd.click();
+        accountPage.zipCodeAddressAdd.sendKeys(dataFieldPage.getZipCode());
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        accountPage.zipCodeAddressAdd.sendKeys(dataFieldPage.getZipCode());
+        accountPage.phoneNumberAddressAdd.sendKeys("(800) 275-8777");
+        accountPage.applyButtonAddressAdd.click();
+        accountPage.submitButtonAddressAdd.click();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        String nameValidation = driver.findElement(By.xpath("//*[contains(text(),'"+ dataFieldPage.getAddressName()+"')]")).getText();
+        Assert.assertEquals(nameValidation,dataFieldPage.getAddressName());
+    }
+        @When("User deletes saved address")
+        public void user_deletes_saved_address () {
+        driver.findElement(By.xpath("//a[contains(@href, 'Delete?AddressID="+dataFieldPage.getAddressName()+"')]")).click();
+        driver.switchTo().alert().accept();
+        }
 }
-

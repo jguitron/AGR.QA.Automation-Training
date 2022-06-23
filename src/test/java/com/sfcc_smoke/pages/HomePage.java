@@ -53,5 +53,23 @@ public class HomePage {
     @FindBy(xpath = "//a[@href='/wishlist/']")
     public WebElement accountWishListMobile;
 
+    @FindBy(xpath = "//div[@id='mini-cart'] /div /a")
+    public WebElement cartIconDeskTopNew;
+
+    @FindBy(xpath = "//a[@class='mini-cart-link']")
+    public WebElement cartIconItemAdded;
+
+    @FindBy(xpath = "//a[@class='mini-cart-link mini-cart-empty']")
+    public WebElement cartIconZeroItems;
+
+    @FindBy(xpath = "//span[@class='minicart-quantity']")
+    public WebElement miniCartQty;
+
+    @FindBy(xpath = "//a[@class='section-header-note address-create']")
+    public WebElement createAddressButton;
+
+
+
+
 
 }
