@@ -73,6 +73,9 @@ public class ProductListPage {
 
     @FindBy(xpath = "//a[@href] /h1")
     public WebElement quickViewItem;
+
+    @FindBy(xpath = "//div[@class='accordion-menu'] /*[contains(@class,'refinement')]")
+    public WebElement filtersPLP;
     
 
 

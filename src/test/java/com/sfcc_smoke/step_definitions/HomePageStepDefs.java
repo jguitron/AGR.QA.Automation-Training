@@ -126,8 +126,9 @@ public class HomePageStepDefs {
     }
 
     @Then("User edits First Name and Last Name in edit address to {string}, {string}")
-    public void user_edits_first_name_and_last_name_in_edit_address_to(String string, String string2) {
-
+    public void user_edits_first_name_and_last_name_in_edit_address_to(String firstName, String lastName) {
+        driver.findElement(By.xpath("//input[@name='dwfrm_profile_address_firstname']")).sendKeys(firstName);
+        driver.findElement(By.xpath("//input[@class='input-text last-name-valid  required']")).sendKeys(lastName);
     }
 
     @Then("User asserts field change in address tab")
