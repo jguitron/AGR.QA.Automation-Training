@@ -39,24 +39,23 @@ public class PLPStepDefs {
             BrowserUtils.clickWithJS(driver.findElement(By.xpath("//img[@alt='" + itemName + "']")));
     }
 
-
-    @Then("User clicks on item filters in PLP and asserts change")
-    public void user_clicks_on_item_filters_in_plp_and_asserts_change() {
-        driver.findElement(By.xpath("//div[@class='refinement lifestyle']")).click();
-        driver.findElement(By.xpath("//li /a[@id='lifestyle-cottage']")).click();
-        BrowserUtils.sleep(2);
-        String filteredQty = driver.findElement(By.xpath("//a[@id='lifestyle-cottage'] /span /span")).getText();
-        List <WebElement> pLPFilteredQty = (driver.findElements(By.xpath("//div[@class='product-name']")));
-        int numberOfElements = pLPFilteredQty.size();
-        String number = String.valueOf(numberOfElements);
-        Assert.assertTrue(filteredQty.contains(number));
+    @Then("User clicks on item filters in PLP and asserts change with filters")
+    public void user_clicks_on_item_filters_in_plp_and_asserts_change_with_filters(List<String> filters) {
+        for (String eachFilter:filters) {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+            BrowserUtils.clickWithJS(driver.findElement(By.xpath("//a[contains(@href, '"+eachFilter+"')]")));
+            BrowserUtils.sleep(4);
+            BrowserUtils.clickWithJS(driver.findElement(By.xpath("//div[@class='accordion-menu'] /div[@class='refinement "+eachFilter+"'] /span")));
+            String filterOnScreen = driver.findElement(By.xpath("//a[contains(@id,'"+eachFilter+"')] /span /span")).getText();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            List <WebElement> pLPFilteredQty = (driver.findElements(By.xpath("//div[@class='product-name']")));
+            int numberOfElements = pLPFilteredQty.size();
+            String fixedValue = String.valueOf(numberOfElements);
+            Assert.assertTrue(filterOnScreen.contains(fixedValue));
+            BrowserUtils.clickWithJS(productListPage.clearAllFilters);
+            BrowserUtils.waitForPageToLoad(5);
+        }
     }
-
-    @Then("User clears all from filters")
-    public void user_clears_all_from_filters() {
-        productListPage.clearAllFilters.click();
-    }
-
     @Then("User checks for {string} button is present")
     public void user_checks_for_button_is_present(String Learn) {
         BrowserUtils.scrollToElement(productListPage.heartIcon);
