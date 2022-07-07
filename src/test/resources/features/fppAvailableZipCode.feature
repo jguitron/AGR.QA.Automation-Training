@@ -19,10 +19,11 @@ Feature: Verification protection plan availability for Florida, Alaska, Hawaii
     Then User verifies that KingAdjustable available on PDP
     Then  User clicks on Add Item to Cart
     Then User navigate to cart page
+    Then User clicks on Confirm button to confirm the zip code
     When User verifies that "protection plan" is added to cart
-    Then User finds closest store by "99503"
+    Then User changes the delivery "99503" by clicking on zipcode link from Cart Page
     Then User verifies that Protection Plan is not available
-    Then User finds closest store by "96818"
+    Then User changes the delivery "96818" by clicking on zipcode link from Cart Page
     Then User verifies that Protection Plan is not available
     Then User changes the delivery "33606" by clicking on zipcode link from Cart Page
     Then User verifies that protection plan is available on cart

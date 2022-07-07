@@ -111,4 +111,10 @@ public class CartPage {
     @FindBy(xpath = "//div[@class='user-no']")
     public WebElement phoneNumberOnAccount;
 
+    @FindBy(xpath = "//div[@class='ui-dialog ui-corner-all ui-widget ui-widget-content ui-front different-address-dialog-cart ui-draggable']")
+    public WebElement confirmZipPopUp;
+
+    @FindBy(xpath = "//button[@class='button-fancy-large dialog-close']")
+    public WebElement btnConfirmZip;
+
 }
