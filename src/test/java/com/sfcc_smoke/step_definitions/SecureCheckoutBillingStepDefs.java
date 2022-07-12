@@ -56,8 +56,8 @@ public class SecureCheckoutBillingStepDefs {
     @Then("Ashley Advantage Payment option logos and fields are displayed")
     public void ashley_advantage_payment_option_logo_fields_are_displayed() {
         BrowserUtils.sleep(2);
-        Assert.assertTrue(checkoutBilling.aatitle.isDisplayed());
-        Assert.assertEquals("Ashley Advantage™", checkoutBilling.aatitle.getText());
+        //Assert.assertTrue(checkoutBilling.aatitle.isDisplayed());
+        //Assert.assertEquals("Ashley Advantage™", checkoutBilling.aatitle.getText());
         Assert.assertTrue(checkoutBilling.synchronylogo.isDisplayed());
         Assert.assertTrue(checkoutBilling.genesislogo.isDisplayed());
         Assert.assertTrue(checkoutBilling.gafcologo.isDisplayed());
@@ -106,6 +106,27 @@ public class SecureCheckoutBillingStepDefs {
                 "\n" +
                 "If you wish to keep the protection plan(s), choose another payment option.", checkoutBilling.PrgsvPopupMsg.getText());
     }
+
+
+    @Then("Caddipay Payment option is available")
+    public void Caddipay_payment_option_is_available() {
+        BrowserUtils.scrollToElement(checkoutBilling.caddipayLogo);
+        BrowserUtils.sleep(1);
+        Assert.assertTrue(checkoutBilling.caddipayLogo.isDisplayed());
+    }
+
+    @Then("User clicks on Caddipay Payment option")
+    public void user_clicks_on_Caddipay_Logo() {
+        BrowserUtils.clickWithJS(checkoutBilling.caddipayLogo);
+    }
+
+    @Then("Acima Payment option is available")
+    public void Acima_payment_option_is_available() {
+        BrowserUtils.scrollToElement(checkoutBilling.acimaLogo);
+        BrowserUtils.sleep(1);
+        Assert.assertTrue(checkoutBilling.acimaLogo.isDisplayed());
+    }
+
 
     @Then("User verifies that Progressive Popup for Handy Item is displayed")
     public void user_verifies_progressive_popup_Handy_is_displayed() {

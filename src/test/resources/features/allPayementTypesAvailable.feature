@@ -8,6 +8,7 @@ Feature: Verification of available payment types in cart page
     Then User searches for SKU "A600020437" and clicks on it
     Then User clicks on Add Item to Cart
     Then User navigate to cart page
+    Then User clicks on Confirm button to confirm the zip code
     Then User clicks on Secure Check out button
     Then User enters customer info on Secure Checkout Delivery Page
       | FName         |
@@ -32,6 +33,10 @@ Feature: Verification of available payment types in cart page
     Then Progressive leasing Payment option is available
     Then User clicks on Progressive leasing Payment option
     And Progressive leasing Payment option logos and fields are displayed
+    Then Acima Payment option is available
+    Then Caddipay Payment option is available
+    Then User clicks on Caddipay Payment option
+    Then User verifies that Caddipay page is launched
     Then Paypal Payment option is available
     Then User clicks on Paypal Payment option
     And User verifies that Paypal login page is launched

@@ -39,6 +39,10 @@ public class SecureCheckoutBilling {
     public WebElement gafcologo;
     @FindBy(xpath = "//label[@id='dwfrm_financeterms_cardnumber-label']")
     public WebElement label_aaNumber;
+    @FindBy(xpath = "//div[@class='caddi-pay-logo-wrapper']/img")
+    public WebElement caddipayLogo;
+    @FindBy(xpath = "//div[@class='ashley-finance-logo-wrapper']/img")
+    public WebElement acimaLogo;
     @FindBy(xpath = "//img[@alt='Progressive Leasing']")
     public WebElement pllogoimg;
     @FindBy(xpath = "//div[@class='progressive-title-container']/h1")
