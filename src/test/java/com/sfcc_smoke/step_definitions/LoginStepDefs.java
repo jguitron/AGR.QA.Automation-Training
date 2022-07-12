@@ -9,6 +9,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.time.Duration;
@@ -26,7 +27,18 @@ public class LoginStepDefs {
 
         } else {
             String url = System.getProperty("url", ConfigReader.getProperty("url"));
-            driver.get(url);
+            if (url.contains("staging")){
+                driver.get("https://storefront:afweb2017@staging.ashleyfurniture.com/");
+                driver.findElement(By.xpath("//button[@id='details-button']")).click();
+                driver.findElement(By.xpath("//a[@id='proceed-link']")).click();
+            }
+            if (url.contains("development")){
+                driver.get("https://storefront:afweb2017@development.ashleyfurniture.com/");
+                driver.findElement(By.xpath("//button[@id='details-button']")).click();
+                driver.findElement(By.xpath("//a[@id='proceed-link']")).click();
+            }
+            else{
+            driver.get(url);}
         }
         try {
             BrowserUtils.waitForVisibility(landingPage.iframe, Duration.ofSeconds(5));

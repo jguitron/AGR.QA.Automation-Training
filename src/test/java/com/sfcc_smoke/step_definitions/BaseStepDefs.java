@@ -76,6 +76,12 @@ public class BaseStepDefs {
 
     }
 
+    @When("User verifies that Caddipay page is launched")
+    public void getpagetitle_caddipay() {
+        Assert.assertEquals("Caddipay", driver.getTitle());
+
+    }
+
     @Then("User clicks search icon")
     public void user_clicks_search_icon() {
         searchPage.searchIcon.click();
