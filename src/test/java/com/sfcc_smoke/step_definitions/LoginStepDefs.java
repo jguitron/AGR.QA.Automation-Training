@@ -34,8 +34,6 @@ public class LoginStepDefs {
             }
             if (url.contains("development")){
                 driver.get("https://storefront:afweb2017@development.ashleyfurniture.com/");
-                driver.findElement(By.xpath("//button[@id='details-button']")).click();
-                driver.findElement(By.xpath("//a[@id='proceed-link']")).click();
             }
             else{
             driver.get(url);}

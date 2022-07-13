@@ -15,6 +15,10 @@ public class SecureCheckoutDeliveryCustInfo {
     public WebElement fname;
     @FindBy(xpath = "//input[@id='dwfrm_singleshipping_shippingAddress_addressFields_lastName']")
     public WebElement lname;
+    @FindBy(xpath = "//input[@class='input-text address-valid po-box-invalid  required']")
+    public WebElement addresstextbox;
+    @FindBy(xpath = "//a[@class='address-option ']")
+    public WebElement addressOptions;
     @FindBy(xpath = "//input[@id='dwfrm_singleshipping_shippingAddress_addressFields_address1']")
     public WebElement address1;
     @FindBy(xpath = "//input[@id='dwfrm_singleshipping_shippingAddress_addressFields_address2']")

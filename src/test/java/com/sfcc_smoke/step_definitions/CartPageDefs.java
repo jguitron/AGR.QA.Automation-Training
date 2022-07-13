@@ -77,10 +77,10 @@ public class CartPageDefs {
 
     @When("User verifies that {string} is added to cart")
     public void user_verifies_that_FPP_added_cart(String ProtectionPlan) {
-        Assert.assertEquals("Furniture $59.99", cartPage.pplink1.getText());
+        Assert.assertEquals("Furniture $49.99", cartPage.pplink1.getText());
         Assert.assertEquals("Outdoor $179.99", cartPage.pplink2.getText());
         Assert.assertEquals("Adjustable Base $149.99", cartPage.pplink3.getText());
-        Assert.assertEquals("King Adjustable Base $299.99", cartPage.pplink4.getText());
+        Assert.assertEquals("King Adjustable Base $199.99", cartPage.pplink4.getText());
     }
 
     @When("User verifies that Protection Plan is not available")

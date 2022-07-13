@@ -5,6 +5,8 @@ import com.sfcc_smoke.utilities.BrowserUtils;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 
@@ -46,6 +48,36 @@ public class SecureCheckoutDeliveryCustInfoStepDefs {
                 custInfo.customeremail.sendKeys(customerInfo);
             }
         }
+    }
+
+    @When("User fills in customer and shipping info using auto address selection")
+    public void Cust_info_auto_address_selection(List<String> info) {
+        String customerInfo = "";
+        List<String> mylist = info;
+        for (int i = 0; i < mylist.size(); i++) {
+            customerInfo = mylist.get(i);
+            if (i == 0) {
+                custInfo.fname.sendKeys(customerInfo);
+            }
+            if (i == 1) {
+                custInfo.lname.sendKeys(customerInfo);
+            }
+            if (i == 2) {
+                BrowserUtils.clickWithJS(custInfo.addresstextbox);
+                custInfo.addresstextbox.sendKeys(customerInfo);
+                BrowserUtils.sleep(2);
+            }
+            if (i == 3) {
+                BrowserUtils.clickWithJS(custInfo.addresstextbox);
+                custInfo.addresstextbox.sendKeys(customerInfo);
+                BrowserUtils.sleep(3);
+            }
+        }
+            BrowserUtils.clickWithJS(custInfo.addressOptions);
+            BrowserUtils.sleep(1);
+            custInfo.customerphone.sendKeys("6123542589");
+            custInfo.customeremail.sendKeys("test@test.com");
+
     }
 
     @When("User clicks on Continue as Guest button")

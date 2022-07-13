@@ -9,6 +9,7 @@ Feature: Verify Pop up messages (2) are displayed if Progressive payment is sele
     Then User verifies that FPP available on PDP
     Then  User clicks on Add Item to Cart
     Then User navigate to cart page
+    Then User clicks on Confirm button to confirm the zip code
     Then User check Handy Item check box
     Then User clicks on Secure Check out button
     Then User enters customer info on Secure Checkout Delivery Page
