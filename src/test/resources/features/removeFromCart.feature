@@ -7,6 +7,7 @@ Feature: Add Whitesburg Dining Table to cart and remove, validating cart reflect
     Then User chooses "Whitesburg Dining Table, , large" in plp
     And  User clicks on Add Item to Cart
     And  User clicks on cart icon
+    And User clicks on Confirm button to confirm the zip code
     And  User Removes item from cart
     Then User Validates cart is 0 qty
 

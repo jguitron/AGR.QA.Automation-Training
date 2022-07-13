@@ -73,9 +73,11 @@ public class HomePageStepDefs {
 
     @When("User clicks on {string} in account tab")
     public void user_clicks_on_in_account_tab(String tabbedPage) {
+        String url = System.getProperty("url", ConfigReader.getProperty("url"));
         if (ConfigReader.getProperty("platform").equals("desktop")) {
             homePage.userNameDisplayed.click();
-            driver.findElement(By.xpath("//a[@href='https://www.ashleyfurniture.com/" + tabbedPage + "/']")).click();
+            driver.findElement(By.xpath("//a[@href='" +url+  tabbedPage + "/']")).click();
+//            driver.findElement(By.xpath("//a[@href='https://www.ashleyfurniture.com/" + tabbedPage + "/']")).click();
             BrowserUtils.waitForPageToLoad(2);
         } else if (ConfigReader.getProperty("platform").equals("mobile") || ConfigReader.getProperty("platform").equals("tablet")) {
             homePage.hamburgerBox.click();

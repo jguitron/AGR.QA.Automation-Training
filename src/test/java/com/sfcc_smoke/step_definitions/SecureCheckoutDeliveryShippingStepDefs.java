@@ -44,12 +44,14 @@ public class SecureCheckoutDeliveryShippingStepDefs {
         String zipcode = deliveryShipping.zipcodevalue.getAttribute("value");
         if (zipcode.startsWith("90")) {
             BrowserUtils.scrollToElement(deliveryShipping.recycleFeeLabelShipping);
+            BrowserUtils.sleep(1);
             Assert.assertTrue(deliveryShipping.recycleFeeLabelShipping.isDisplayed());
+            BrowserUtils.sleep(1);
             String recyclefee = deliveryShipping.recycleFeeValueShipping.getText();
             recyclefee = recyclefee.replace("$", "");
             double recyclefeeamount = Double.parseDouble(recyclefee);
             Assert.assertTrue(recyclefeeamount > 0);
-            Assert.assertEquals("Would you like a FREE pickup of your used mattress and/or foundation to be recycled? (required) Learn More", deliveryShipping.recycleTakeBackMsgShipping.getText());
+            Assert.assertEquals("Would you like a pickup of your used mattress and/or foundation to be recycled, at no additional cost? (required) Learn More", deliveryShipping.recycleTakeBackMsgShipping.getText());
             BrowserUtils.scrollToElement(deliveryShipping.takebackRadioBtnYES);
             Assert.assertTrue(deliveryShipping.takebackRadioBtnYES.isDisplayed());
             Assert.assertTrue(deliveryShipping.takebackRadioBtnNO.isDisplayed());

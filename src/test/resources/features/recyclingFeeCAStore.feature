@@ -3,46 +3,36 @@ Feature: Verify State Recycling fee is displayed in Shipping and billing pages w
 
   Scenario: Verify recycle fee is available when CA store is selected.
     Given User navigates to "url"
-    Then User finds closest store by "90011"
+    Then User finds closest store by "90016"
     Then  User searches for SKU "M69511" and clicks on it
     Then  User clicks on Add Item to Cart
     Then User navigate to cart page
+    Then User clicks on Confirm button to confirm the zip code
     Then User clicks on Secure Check out button
-    Then User enters customer info on Secure Checkout Delivery Page
-      | FName       |
-      | LName       |
-      | 100 Main St |
-      | Apt 12      |
-      | Los Angeles |
-      | California  |
-      | 90011       |
-      | 6126543265  |
-      | qa@test.com |
+    Then User fills in customer and shipping info using auto address selection
+      | FName                   |
+      | LName                   |
+      | 3535 S la Cienega Blvd, |
+      | Los Angeles             |
     Then User clicks on Continue as Guest button
-    Then User clicks on Use Original button on PopUp window
     Then User Verifies Recycle Fee is displayed on SecureCheckOut Shipping Page only for CA store
     Then User clicks on continue to billing and payment button
     Then User Verifies Recycle Fee is displayed on SecureCheckOut Billing Page only for CA store
 
-  Scenario: Verify recycle fee is NOT available when non- CA store is selected.
+  Scenario: Verify recycle fee is NOT available when north carolina store (non- CA store) is selected.
     Given User navigates to "url"
-    Then User finds closest store by "28262"
+    Then User finds closest store by "28115"
     Then  User searches for SKU "M69511" and clicks on it
     Then  User clicks on Add Item to Cart
     Then User navigate to cart page
+    Then User clicks on Confirm button to confirm the zip code
     Then User clicks on Secure Check out button
-    Then User enters customer info on Secure Checkout Delivery Page
+    Then User fills in customer and shipping info using auto address selection
       | FName          |
       | LName          |
-      | 100 Main St    |
-      | Apt 12         |
-      | Charlotte      |
-      | North Carolina |
-      | 28262          |
-      | 6126543265     |
-      | qa@test.com    |
+      | 125 Alborn Dr, |
+      | Mooresville    |
     Then User clicks on Continue as Guest button
-    Then User clicks on Use Original button on PopUp window
     Then User Verifies Recycle Fee is displayed on SecureCheckOut Shipping Page only for CA store
     Then User clicks on continue to billing and payment button
     Then User Verifies Recycle Fee is displayed on SecureCheckOut Billing Page only for CA store

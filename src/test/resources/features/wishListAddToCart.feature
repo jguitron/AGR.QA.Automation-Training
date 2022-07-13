@@ -7,6 +7,7 @@ Feature: Verification of WishList Add to Cart from cart page
   And   User clicks on "wishlist" in account tab
   Then  User clicks add to cart from Wish List
   Then  User clicks on cart icon
+  Then  User clicks on Confirm button to confirm the zip code
   Then  User asserts "Honey-Can-Do 4 Piece Jar Storage Set" saved items in cart
 
 

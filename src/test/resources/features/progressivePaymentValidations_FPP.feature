@@ -8,6 +8,7 @@ Feature: Verify Pop up message is displayed if Progressive payment is selected w
     Then User verifies that FPP available on PDP
     Then  User clicks on Add Item to Cart
     Then User navigate to cart page
+    Then User clicks on Confirm button to confirm the zip code
     Then User clicks on Secure Check out button
     Then User enters customer info on Secure Checkout Delivery Page
       | FName       |
