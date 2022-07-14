@@ -5,10 +5,9 @@ Feature: Zero tax state validation
   Scenario: User sets store as Florida store, search for an item, add item to cart and navigate to Cart Page
     Given User navigates to "url"
     Then User finds closest store by "33606"
-    Then User searches for SKU "A600020437" and clicks on it
+    Then User searches for SKU "9510438" and clicks on it
     Then User clicks on Add Item to Cart
     Then User navigate to cart page
-    Then User clicks on Confirm button to confirm the zip code
     Then User validates the tax amount on CartPage
     Then User changes the delivery "97304" by clicking on zipcode link from Cart Page
     Then User validates the tax amount on CartPage

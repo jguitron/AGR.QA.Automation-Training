@@ -184,12 +184,9 @@ public class PDPStepDefs {
                 System.out.println("no colors to change");
             } else if (driver.findElement(By.xpath("//ul[@class='swatches clearfix color']")).isDisplayed()) {
             for (String eachColor : colors) {
-                driver.findElement(By.xpath("//ul[@class='swatches clearfix color'] /li /a[@title='Select Color: " + eachColor + "']")).click();
+                BrowserUtils.clickWithJS(driver.findElement(By.xpath("//ul[@class='swatches clearfix color'] /li /a[@title='Select Color: " + eachColor + "']")));
                 BrowserUtils.sleep(2);
-                JavascriptExecutor Js1 = (JavascriptExecutor) driver;
-                Js1.executeScript("window.scrollBy(0,400)");
-                BrowserUtils.sleep(2);
-                driver.findElement(By.xpath("//button[@class='toggle-attribute-values']")).click();
+                BrowserUtils.clickWithJS(driver.findElement(By.xpath("//button[@class='toggle-attribute-values']")));
                 BrowserUtils.sleep(2);
                 String colorOnPage = driver.findElement(By.xpath("//div[@class='label'] /span[@class='selected-variant']")).getText();
                 Assert.assertTrue(colorOnPage.contains(eachColor));

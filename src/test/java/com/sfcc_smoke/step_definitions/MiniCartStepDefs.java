@@ -31,7 +31,8 @@ public class MiniCartStepDefs {
     public void user_clicks_on_save_for_later_mini_cart() {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
             cartPage.saveItem.isDisplayed();
-            cartPage.saveItem.click();
+            BrowserUtils.clickWithJS(cartPage.saveItem);
+//            cartPage.saveItem.click();
         }
     }
 

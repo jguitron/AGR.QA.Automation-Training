@@ -1,6 +1,6 @@
 Feature: Verification of Mini Cart after adding 1 item and items from "shop the collection" to cart
 
-  @smoke
+  @smoke @fix
   Scenario: User Adds item to cart and adds items from shop the collection to cart
 
     Given User navigates to "url"

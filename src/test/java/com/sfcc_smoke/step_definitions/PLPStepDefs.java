@@ -1,5 +1,6 @@
 package com.sfcc_smoke.step_definitions;
 
+import com.sfcc_smoke.pages.LandingPage;
 import com.sfcc_smoke.pages.ProductListPage;
 import com.sfcc_smoke.utilities.BrowserUtils;
 import com.sfcc_smoke.utilities.ConfigReader;
@@ -19,6 +20,7 @@ import java.util.List;
 public class PLPStepDefs {
     WebDriver driver = Driver.getDriver();
     ProductListPage productListPage = new ProductListPage();
+    LandingPage landingPage = new LandingPage();
 
     @Given("User clicks on PLP Show {string} per page button")
     public void user_clicks_on_plp_show_per_page_button(String qtyShowPerPage) {
@@ -33,6 +35,7 @@ public class PLPStepDefs {
             BrowserUtils.waitForPageToLoad(10);
             for (int i = 0; i < 100; i++) {
                 if (driver.findElements(By.xpath("//img[@alt='" + itemName + "']")).isEmpty()) {
+                    BrowserUtils.waitForVisibility(productListPage.nextPageResults, Duration.ofSeconds(2));
                     BrowserUtils.clickWithJS(productListPage.nextPageResults);
                 }
             }

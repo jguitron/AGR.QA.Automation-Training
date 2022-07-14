@@ -1,6 +1,7 @@
 package com.sfcc_smoke.step_definitions;
 
 import com.sfcc_smoke.pages.HomePage;
+import com.sfcc_smoke.pages.LandingPage;
 import com.sfcc_smoke.utilities.BrowserUtils;
 import com.sfcc_smoke.utilities.ConfigReader;
 import com.sfcc_smoke.utilities.Driver;
@@ -10,12 +11,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 public class HeaderStepDefs {
 
     WebDriver driver = Driver.getDriver();
     HomePage homePage = new HomePage();
+    LandingPage landingPage = new LandingPage();
 
     @Then("Assert user is logged in via name displays in header")
     public void assert_user_is_logged_in_via_name_displays_in_header() {
@@ -36,14 +37,12 @@ public class HeaderStepDefs {
             BrowserUtils.hover(driver.findElement(By.xpath("//a[@data-cgid='furniture']")));
             driver.findElement(By.xpath("//li[@class='key-accessible'] /a")).click();
         } else if (ConfigReader.getProperty("platform").equals("tablet") || ConfigReader.getProperty("platform").equals("mobile")) {
-            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-            driver.findElement(By.xpath("//span[@class='hamburger-box']")).click();
-            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-            driver.findElement(By.xpath("//a[@data-cgid='furniture']")).click();
-            driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-            driver.findElement(By.xpath("//a[@class='has-sub-menu show-menu-item']")).click();
-            driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-            driver.findElement(By.xpath("//a[@class='show-menu-item']")).click();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
+            if (landingPage.iframe.isDisplayed()) {
+                landingPage.closeIframe();
+            } else {
+            BrowserUtils.clickWithJS(driver.findElement(By.xpath("//li /ul /li /*[contains(@href, '"+Category+"')]")));
+            }
         }
     }
     @Then("Assert total number of items in mini cart is {string}")

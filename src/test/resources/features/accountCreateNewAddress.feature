@@ -1,5 +1,5 @@
 Feature: Verification of creating new address in account tab
-@smoke
+@smokee
   Scenario: User adds new address to existing account in account tab
     Given User navigates to "url"
     And   User clicks on login link on different viewports
