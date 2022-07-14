@@ -46,8 +46,8 @@ public class LoginStepDefs {
             BrowserUtils.clickWithJS(landingPage.mainLoginLink);
             BrowserUtils.clickWithJS(landingPage.mainLoginBtn);
         } else if (platform.equals("mobile") || (platform.equals("tablet"))) {
-            landingPage.mobileMenu.click();
-            landingPage.mobileLoginBtn.click();
+            BrowserUtils.clickWithJS(landingPage.mobileMenu);
+            BrowserUtils.clickWithJS(landingPage.mobileLoginBtn);
         } else {
             landingPage.mainLoginLink.click();
             landingPage.mainLoginBtn.click();

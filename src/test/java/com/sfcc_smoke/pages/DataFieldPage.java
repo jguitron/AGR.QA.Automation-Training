@@ -1,5 +1,8 @@
 package com.sfcc_smoke.pages;
 
+import com.sfcc_smoke.utilities.Driver;
+import org.openqa.selenium.WebDriver;
+
 public class DataFieldPage {
     private String addressName;
     private String firstName;
@@ -8,7 +11,7 @@ public class DataFieldPage {
     private String city;
     private String zipCode;
 
-
+    WebDriver driver = Driver.getDriver();
     public String getAddressName() {
         return addressName;
     }
@@ -56,4 +59,5 @@ public class DataFieldPage {
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
+
 }
