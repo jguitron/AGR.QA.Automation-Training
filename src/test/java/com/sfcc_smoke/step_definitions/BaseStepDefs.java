@@ -7,13 +7,17 @@ import com.sfcc_smoke.pages.SearchPage;
 import com.sfcc_smoke.utilities.BrowserUtils;
 import com.sfcc_smoke.utilities.ConfigReader;
 import com.sfcc_smoke.utilities.Driver;
+import com.sun.java.swing.plaf.windows.resources.windows;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
+import javax.sound.midi.Soundbank;
 import java.time.Duration;
+import java.util.List;
+import java.util.Set;
 
 public class BaseStepDefs {
 
@@ -33,8 +37,7 @@ public class BaseStepDefs {
             BrowserUtils.waitForVisibility(basePage.zipCodeBox, Duration.ofSeconds(5));
             basePage.zipCodeBox.sendKeys(zipcode + Keys.ENTER);
             BrowserUtils.sleep(2);
-        }
-        else if (platform.equals("mobile") || (platform.equals("tablet"))) {
+        } else if (platform.equals("mobile") || (platform.equals("tablet"))) {
             BrowserUtils.waitForVisibility(landingPage.mobileMenu, Duration.ofSeconds(5));
             BrowserUtils.clickWithJS(landingPage.mobileMenu);
             BrowserUtils.waitForVisibility(basePage.mobStoreLink, Duration.ofSeconds(5));
@@ -78,8 +81,41 @@ public class BaseStepDefs {
 
     @When("User verifies that Caddipay page is launched")
     public void getpagetitle_caddipay() {
-        Assert.assertEquals("Caddipay", driver.getTitle());
+        BrowserUtils.waitForPageToLoad(5);
+        Set<String> windows = driver.getWindowHandles();
+        System.out.println("All windows: " +windows);
+        BrowserUtils.sleep(3);
+        String currentwindow = driver.getWindowHandle();
+        System.out.println("current window is: "+currentwindow);
+        System.out.println("current window title is: "+driver.getTitle());
+        System.out.println("------------------Test1-----------------");
+        BrowserUtils.sleep(3);
 
+
+        for(String each : windows){
+            driver.switchTo().window(each);
+        }
+
+        System.out.println("current window after switching: "+driver.getWindowHandle());
+        Assert.assertEquals("Caddipay", driver.getTitle());
+    }
+
+    @When("User closes Caddipay window by clicking on X")
+    public void close_caddipay() {
+
+        BrowserUtils.sleep(2);
+        System.out.println("Current active window: " +driver.getTitle());
+        basePage.caddipayPhonenbr.sendKeys("6123513393");
+        BrowserUtils.sleep(2);
+        System.out.println("Phone number entered!");
+        System.out.println(basePage.closeCaddipayX.isDisplayed());
+        basePage.closeCaddipayX.click();
+        BrowserUtils.sleep(2);
+
+
+
+        System.out.println(driver.getTitle());
+        System.out.println("Test3");
     }
 
     @Then("User clicks search icon")

@@ -16,7 +16,7 @@ public class SecureCheckoutBillingStepDefs {
 
     @Given("User is on Billing and Payment Page")
     public void user_is_on_billing_and_payment_page() {
-        Assert.assertEquals("2 Billing & Payment", checkoutBilling.BP_subtitle.getText());
+        Assert.assertEquals("Payment Info", checkoutBilling.BP_subtitle.getText());
     }
 
     @Then("Credit card Payment option is available")
@@ -118,6 +118,7 @@ public class SecureCheckoutBillingStepDefs {
     @Then("User clicks on Caddipay Payment option")
     public void user_clicks_on_Caddipay_Logo() {
         BrowserUtils.clickWithJS(checkoutBilling.caddipayLogo);
+        BrowserUtils.sleep(3);
     }
 
     @Then("Acima Payment option is available")

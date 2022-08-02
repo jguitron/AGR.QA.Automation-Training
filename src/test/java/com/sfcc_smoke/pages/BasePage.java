@@ -32,6 +32,12 @@ public class BasePage {
     @FindBy(xpath = "//h1[@id='headerText']")
     public WebElement paypalHeader;
 
+    @FindBy(xpath = "//div[@class='navbar-icon']")
+    public WebElement closeCaddipayX;
+
+    @FindBy(xpath = "//div[@class='c-lesPJm c-bSMcqW']/input")
+    public WebElement caddipayPhonenbr;
+
     @FindBy(xpath = "//a[@class='back-to-cart']")
     public WebElement backToCartIcon;
 }
