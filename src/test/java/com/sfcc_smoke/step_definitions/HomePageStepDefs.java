@@ -77,7 +77,6 @@ public class HomePageStepDefs {
         if (ConfigReader.getProperty("platform").equals("desktop")) {
             homePage.userNameDisplayed.click();
             driver.findElement(By.xpath("//a[@href='" +url+  tabbedPage + "/']")).click();
-//            driver.findElement(By.xpath("//a[@href='https://www.ashleyfurniture.com/" + tabbedPage + "/']")).click();
             BrowserUtils.waitForPageToLoad(2);
         } else if (ConfigReader.getProperty("platform").equals("mobile") || ConfigReader.getProperty("platform").equals("tablet")) {
             homePage.hamburgerBox.click();
