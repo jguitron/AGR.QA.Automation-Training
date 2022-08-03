@@ -1,6 +1,8 @@
 package com.sfcc_smoke.step_definitions;
 
 import com.sfcc_smoke.pages.SecureCheckoutBilling;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import com.sfcc_smoke.utilities.BrowserUtils;
 import com.sfcc_smoke.utilities.Driver;
 import io.cucumber.java.en.*;
@@ -8,11 +10,11 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import java.util.List;
 
 public class SecureCheckoutBillingStepDefs {
     SecureCheckoutBilling checkoutBilling = new SecureCheckoutBilling();
+    WebDriver driver = Driver.getDriver();
 
     @Given("User is on Billing and Payment Page")
     public void user_is_on_billing_and_payment_page() {
@@ -85,16 +87,24 @@ public class SecureCheckoutBillingStepDefs {
         Assert.assertTrue(checkoutBilling.btn_pl_view_dtls.isDisplayed());
     }
 
-    @Then("Paypal Payment option is available")
-    public void Paypal_payment_option_is_available() {
+@Then("User clicks on Paypal Payment option")
+    public void user_clicks_on_Paypal_Logo() {
+        BrowserUtils.clickWithJS(checkoutBilling.pplogoimg);
+    }
+
+    @Then("User verifies Paypal Payment option is available")
+    public void verifyPayPalOption() {
+        String mainWindow = driver.getWindowHandle();
+        driver.switchTo().window(mainWindow);
         BrowserUtils.scrollToElement(checkoutBilling.pplogoimg);
         BrowserUtils.sleep(1);
         Assert.assertTrue(checkoutBilling.pplogoimg.isDisplayed());
     }
 
-    @Then("User clicks on Paypal Payment option")
-    public void user_clicks_on_Paypal_Logo() {
-        BrowserUtils.clickWithJS(checkoutBilling.pplogoimg);
+    @Then("User clicks on Caddipay Payment option")
+    public void user_clicks_on_Caddipay_Logo() {
+        BrowserUtils.clickWithJS(checkoutBilling.caddipayLogo);
+        BrowserUtils.sleep(3);
     }
 
     @Then("User verifies that Progressive Popup for ProtectionPlan is displayed")
@@ -115,11 +125,6 @@ public class SecureCheckoutBillingStepDefs {
         Assert.assertTrue(checkoutBilling.caddipayLogo.isDisplayed());
     }
 
-    @Then("User clicks on Caddipay Payment option")
-    public void user_clicks_on_Caddipay_Logo() {
-        BrowserUtils.clickWithJS(checkoutBilling.caddipayLogo);
-        BrowserUtils.sleep(3);
-    }
 
     @Then("Acima Payment option is available")
     public void Acima_payment_option_is_available() {

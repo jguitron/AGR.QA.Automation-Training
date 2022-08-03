@@ -32,7 +32,7 @@ Feature: Verification of available payment types in cart page
     Then User clicks on Caddipay Payment option
     Then User verifies that Caddipay page is launched
     Then User closes Caddipay window by clicking on X
-    Then Paypal Payment option is available
+    Then User verifies Paypal Payment option is available
     Then User clicks on Paypal Payment option
     And User verifies that Paypal login page is launched
 

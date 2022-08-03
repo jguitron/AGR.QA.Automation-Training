@@ -7,16 +7,13 @@ import com.sfcc_smoke.pages.SearchPage;
 import com.sfcc_smoke.utilities.BrowserUtils;
 import com.sfcc_smoke.utilities.ConfigReader;
 import com.sfcc_smoke.utilities.Driver;
-import com.sun.java.swing.plaf.windows.resources.windows;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-import javax.sound.midi.Soundbank;
 import java.time.Duration;
-import java.util.List;
 import java.util.Set;
 
 public class BaseStepDefs {
@@ -26,9 +23,10 @@ public class BaseStepDefs {
     SearchPage searchPage = new SearchPage();
     LandingPage landingPage = new LandingPage();
     ProductDetailPage productDetailPage = new ProductDetailPage();
+    String mainWindowHandle;
 
     @When("User finds closest store by {string}")
-    public void user_set_the_closet_store_by(String zipcode) {
+    public void findClosestStore(String zipcode) {
         String platform = ConfigReader.getProperty("platform");
         BrowserUtils.waitForPageToLoad(10);
         if (platform.equals("desktop")) {
@@ -49,83 +47,75 @@ public class BaseStepDefs {
     }
 
     @When("User searches for SKU {string} and clicks on it")
-    public void serachitem(String Item) {
+    public void searchAnItem(String Item) {
         BrowserUtils.sleep(3);
         basePage.searchBar.sendKeys(Item + Keys.ENTER);
     }
 
     @When("User search for a SKU {string} and clicks on item 1 in result set")
-    public void serachitem_result1(String Item) {
+    public void SearchItemResult1(String Item) {
         BrowserUtils.waitForVisibility(basePage.searchBar, Duration.ofSeconds(5));
         basePage.searchBar.sendKeys(Item);
         basePage.searchBarResultOne.click();
     }
 
     @When("User navigate to cart page")
-    public void clickonminicart() {
+    public void clickOnMiniCart() {
         BrowserUtils.waitForVisibility(basePage.miniCartIcon, Duration.ofSeconds(5));
         basePage.miniCartIcon.click();
     }
 
     @When("User navigate back to cart page")
-    public void clickonbacktocart() {
+    public void clickOnBackToCart() {
         BrowserUtils.waitForVisibility(basePage.backToCartIcon, Duration.ofSeconds(5));
         basePage.backToCartIcon.click();
     }
 
-    @When("User verifies that Paypal login page is launched")
-    public void getpagetitle() {
-        Assert.assertEquals("Log in to your PayPal account", driver.getTitle());
-
-    }
-
     @When("User verifies that Caddipay page is launched")
-    public void getpagetitle_caddipay() {
-        BrowserUtils.waitForPageToLoad(5);
-        Set<String> windows = driver.getWindowHandles();
-        System.out.println("All windows: " +windows);
-        BrowserUtils.sleep(3);
-        String currentwindow = driver.getWindowHandle();
-        System.out.println("current window is: "+currentwindow);
-        System.out.println("current window title is: "+driver.getTitle());
-        System.out.println("------------------Test1-----------------");
-        BrowserUtils.sleep(3);
-
-
-        for(String each : windows){
-            driver.switchTo().window(each);
+    public void verifyCaddipayWindow() {
+        mainWindowHandle = driver.getWindowHandle();
+        Set<String> allWindows = driver.getWindowHandles();
+        for (String eachWindow : allWindows) {
+            if (driver.getTitle().equals("Checkout")) {
+                driver.switchTo().window(eachWindow);
+                if (driver.getTitle().equals("Caddipay")) {
+                  Assert.assertEquals("Caddipay", driver.getTitle());
+                }
+            } else {
+                  Assert.assertEquals("Caddipay", driver.getTitle());
+            }
         }
-
-        System.out.println("current window after switching: "+driver.getWindowHandle());
-        Assert.assertEquals("Caddipay", driver.getTitle());
     }
 
     @When("User closes Caddipay window by clicking on X")
-    public void close_caddipay() {
-
-        BrowserUtils.sleep(2);
-        System.out.println("Current active window: " +driver.getTitle());
-        basePage.caddipayPhonenbr.sendKeys("6123513393");
-        BrowserUtils.sleep(2);
-        System.out.println("Phone number entered!");
-        System.out.println(basePage.closeCaddipayX.isDisplayed());
+    public void closeCaddipayWindow() {
         basePage.closeCaddipayX.click();
+        driver.switchTo().window(mainWindowHandle);
         BrowserUtils.sleep(2);
-
-
-
-        System.out.println(driver.getTitle());
-        System.out.println("Test3");
     }
 
     @Then("User clicks search icon")
-    public void user_clicks_search_icon() {
+    public void clickOnSearchIcon() {
         searchPage.searchIcon.click();
     }
 
+    @When("User verifies that Paypal login page is launched")
+    public void verifyPayPalWindow() {
+        Set<String> allWindows = driver.getWindowHandles();
+        for (String eachWindow : allWindows) {
+            if (driver.getTitle().equals("Checkout")) {
+                driver.switchTo().window(eachWindow);
+                if (driver.getTitle().equals("Log in to your PayPal account")) {
+                    Assert.assertEquals("Log in to your PayPal account", driver.getTitle());
+                }
+            } else {
+                Assert.assertEquals("Log in to your PayPal account", driver.getTitle());
+            }
+        }
+    }
 
     @Then("User clicks on Heart Icon in plp")
-    public void user_clicks_on_heart_icon_in_plp() {
+    public void clickOnHeartIconInPLP() {
         BrowserUtils.hover(productDetailPage.addToWishList);
         productDetailPage.addToWishList.click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
