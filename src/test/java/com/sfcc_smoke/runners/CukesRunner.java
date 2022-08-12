@@ -7,7 +7,8 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         stepNotifications = true,
-        plugin = {"html:target/cucumber-report.html",
+        plugin = {"pretty",
+                "html:target/cucumber-report.html",
                 "json:target/cucumber.json",
                 "junit:target/junit-report.xml",
                 "rerun:target/rerun.txt"
@@ -15,7 +16,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/sfcc_smoke/step_definitions",
         dryRun = false,
-        tags = "@wip9"
+        tags = "@smoke"
 )
 
 public class CukesRunner {
