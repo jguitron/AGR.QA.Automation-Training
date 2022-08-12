@@ -1,4 +1,4 @@
-@smoke @maxk
+@smoke @regression
 Feature: Verification of 3 Items added to cart is reflected in "mini cart logo" as 3 total items
 
   Scenario: User adds items to cart

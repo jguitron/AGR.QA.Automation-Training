@@ -13,7 +13,9 @@ import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
+import javax.sound.midi.Soundbank;
 import java.time.Duration;
+import java.util.Iterator;
 import java.util.Set;
 
 public class BaseStepDefs {
@@ -71,27 +73,30 @@ public class BaseStepDefs {
         basePage.backToCartIcon.click();
     }
 
-    @When("User verifies that Caddipay page is launched")
+    @When("User verifies that Caddipay page is launched then close the window")
     public void verifyCaddipayWindow() {
-        mainWindowHandle = driver.getWindowHandle();
+        BrowserUtils.sleep(3);
+        String mainWindowHandle = driver.getWindowHandle();
         Set<String> allWindows = driver.getWindowHandles();
-        for (String eachWindow : allWindows) {
-            if (driver.getTitle().equals("Checkout")) {
-                driver.switchTo().window(eachWindow);
-                if (driver.getTitle().equals("Caddipay")) {
-                  Assert.assertEquals("Caddipay", driver.getTitle());
-                }
-            } else {
-                  Assert.assertEquals("Caddipay", driver.getTitle());
+        Iterator<String> iterator = allWindows.iterator();
+
+        while (iterator.hasNext()) {
+            String ChildWindow = iterator.next();
+            if (!mainWindowHandle.equalsIgnoreCase(ChildWindow)) {
+                driver.switchTo().window(ChildWindow);
+                Assert.assertEquals("Caddipay", driver.getTitle());
             }
         }
+        basePage.closeCaddipayX.click();
+        BrowserUtils.sleep(1);
+        driver.switchTo().window(mainWindowHandle);
     }
 
     @When("User closes Caddipay window by clicking on X")
     public void closeCaddipayWindow() {
         basePage.closeCaddipayX.click();
-        driver.switchTo().window(mainWindowHandle);
         BrowserUtils.sleep(2);
+        System.out.println(mainWindowHandle);
     }
 
     @Then("User clicks search icon")
@@ -105,10 +110,8 @@ public class BaseStepDefs {
         for (String eachWindow : allWindows) {
             if (driver.getTitle().equals("Checkout")) {
                 driver.switchTo().window(eachWindow);
-                if (driver.getTitle().equals("Log in to your PayPal account")) {
-                    Assert.assertEquals("Log in to your PayPal account", driver.getTitle());
-                }
-            } else {
+                Assert.assertEquals("Log in to your PayPal account", driver.getTitle());
+            } else if (driver.getTitle().contains("PayPal")) {
                 Assert.assertEquals("Log in to your PayPal account", driver.getTitle());
             }
         }

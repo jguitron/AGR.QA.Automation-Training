@@ -1,6 +1,6 @@
+@smoke @regression
 Feature: Verification of Color Switching on PDP
 
-  @smoke
   Scenario: User Changes between different colors schemes verifying switching occurs
     Given User navigates to "url"
     And   User search's "Darcy Loveseat" in search bar
