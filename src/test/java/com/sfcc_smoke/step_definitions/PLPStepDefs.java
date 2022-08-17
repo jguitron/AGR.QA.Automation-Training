@@ -23,35 +23,35 @@ public class PLPStepDefs {
     LandingPage landingPage = new LandingPage();
 
     @Given("User clicks on PLP Show {string} per page button")
-    public void user_clicks_on_plp_show_per_page_button(String qtyShowPerPage) {
+    public void userClicksOnPlpShowPerPageButton(String qtyShowPerPage) {
         if (ConfigReader.getProperty("platform").equals("desktop")) {
-            driver.findElement(By.xpath("//select[@id='grid-paging-header'] /*[contains(@value,'"+qtyShowPerPage+"')]")).click();
-        BrowserUtils.waitForPageToLoad(5);
+            driver.findElement(By.xpath("//select[@id='grid-paging-header'] /*[contains(@value,'" + qtyShowPerPage + "')]")).click();
+            BrowserUtils.waitForPageToLoad(5);
         }
     }
 
     @When("User chooses {string} in plp")
-    public void user_chooses_on_in_pdp(String itemName) {
-            BrowserUtils.waitForPageToLoad(10);
-            for (int i = 0; i < 100; i++) {
-                if (driver.findElements(By.xpath("//img[@alt='" + itemName + "']")).isEmpty()) {
-                    BrowserUtils.waitForVisibility(productListPage.nextPageResults, Duration.ofSeconds(2));
-                    BrowserUtils.clickWithJS(productListPage.nextPageResults);
-                }
+    public void userChoosesOnInPdp(String itemName) {
+        BrowserUtils.waitForPageToLoad(10);
+        for (int i = 0; i < 100; i++) {
+            if (driver.findElements(By.xpath("//img[@alt='" + itemName + "']")).isEmpty()) {
+                BrowserUtils.waitForVisibility(productListPage.nextPageResults, Duration.ofSeconds(2));
+                BrowserUtils.clickWithJS(productListPage.nextPageResults);
             }
-            BrowserUtils.clickWithJS(driver.findElement(By.xpath("//img[@alt='" + itemName + "']")));
+        }
+        BrowserUtils.clickWithJS(driver.findElement(By.xpath("//img[@alt='" + itemName + "']")));
     }
 
     @Then("User clicks on item filters in PLP and asserts change with filters")
-    public void user_clicks_on_item_filters_in_plp_and_asserts_change_with_filters(List<String> filters) {
-        for (String eachFilter:filters) {
+    public void userClicksOnItemFiltersInPlpAndAssertsChangeWithFilters(List<String> filters) {
+        for (String eachFilter : filters) {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-            BrowserUtils.clickWithJS(driver.findElement(By.xpath("//a[contains(@href, '"+eachFilter+"')]")));
+            BrowserUtils.clickWithJS(driver.findElement(By.xpath("//a[contains(@href, '" + eachFilter + "')]")));
             BrowserUtils.sleep(4);
-            BrowserUtils.clickWithJS(driver.findElement(By.xpath("//div[@class='accordion-menu'] /div[@class='refinement "+eachFilter+"'] /span")));
-            String filterOnScreen = driver.findElement(By.xpath("//a[contains(@id,'"+eachFilter+"')] /span /span")).getText();
+            BrowserUtils.clickWithJS(driver.findElement(By.xpath("//div[@class='accordion-menu'] /div[@class='refinement " + eachFilter + "'] /span")));
+            String filterOnScreen = driver.findElement(By.xpath("//a[contains(@id,'" + eachFilter + "')] /span /span")).getText();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-            List <WebElement> pLPFilteredQty = (driver.findElements(By.xpath("//div[@class='product-name']")));
+            List<WebElement> pLPFilteredQty = (driver.findElements(By.xpath("//div[@class='product-name']")));
             int numberOfElements = pLPFilteredQty.size();
             String fixedValue = String.valueOf(numberOfElements);
             Assert.assertTrue(filterOnScreen.contains(fixedValue));
@@ -59,8 +59,9 @@ public class PLPStepDefs {
             BrowserUtils.waitForPageToLoad(5);
         }
     }
+
     @Then("User checks for {string} button is present")
-    public void user_checks_for_button_is_present(String Learn) {
+    public void userChecksForButtonIsPresent(String Learn) {
         BrowserUtils.scrollToElement(productListPage.heartIcon);
         BrowserUtils.clickWithJS(productListPage.learnHowButton);
         BrowserUtils.sleep(2);
@@ -69,47 +70,48 @@ public class PLPStepDefs {
     }
 
     @Then("User asserts {string} in learn how popup with {string}")
-    public void user_asserts_in_learn_how_popup_with(String button, String Asserted) {
-        String textOnScreen = driver.findElement(By.xpath("//a[@class='as-low-as-"+button+"-now as-low-as-learn-more ss-synch-set']")).getText();
+    public void userAssertsInLearnHowPopupWith(String button, String Asserted) {
+        String textOnScreen = driver.findElement(By.xpath("//a[@class='as-low-as-" + button + "-now as-low-as-learn-more ss-synch-set']")).getText();
         Assert.assertTrue(textOnScreen.contains(Asserted));
         BrowserUtils.clickWithJS(productListPage.learnHowButtonClose);
     }
 
     @Then("User asserts next button to {string} is {string}")
-    public void user_asserts_next_button_to_is(String pageDesired, String pageNumber) {
-        driver.findElement(By.xpath("//a[@class='"+pageDesired+"']")).click();
+    public void userAssertsNextButtonToIs(String pageDesired, String pageNumber) {
+        driver.findElement(By.xpath("//a[@class='" + pageDesired + "']")).click();
         BrowserUtils.sleep(2);
         String currentPage = productListPage.currentPageListQty.getText();
         Assert.assertTrue(pageNumber.contains(currentPage));
     }
 
     @Then("User clicks second page of inventory and asserts that {string} is {string}")
-    public void user_clicks_second_page_of_inventory_and_asserts_that_is(String pageDesired, String pageNumber) {
-        driver.findElement(By.xpath("//a[@class='"+pageDesired+"']")).click();
-        BrowserUtils.sleep(2);
+    public void userClicksSecondPageOfInventoryAndAssertsThatIs(String pageDesired, String pageNumber) {
+        driver.findElement(By.xpath("//a[@class='" + pageDesired + "']")).click();
+        BrowserUtils.sleep(5);
         String currentPage = productListPage.currentPageListQty.getText();
-        productListPage.currentPageListQty.getText();
-        Assert.assertTrue(pageNumber.contains(currentPage));
+        Assert.assertTrue(pageNumber.equals(currentPage));
+
     }
 
     @Then("User clicks next button icon and lands user on page {string}")
-    public void user_clicks_next_button_icon_and_lands_user_on_page(String pageDesired) {
+    public void userClicksNextButtonIconAndLandsUserOnPage(String pageDesired) {
         productListPage.nextPageResults.click();
-        BrowserUtils.sleep(2);
+        BrowserUtils.sleep(5);
         String currentPage = productListPage.currentPageListQty.getText();
         Assert.assertTrue(pageDesired.contains(currentPage));
     }
 
     @Then("User clicks on last page of inventory and asserts page")
-    public void user_clicks_on_last_page_of_inventory_and_asserts_page() {
+    public void userClicksOnLastPageOfInventoryAndAssertsPage() {
         productListPage.lastPageResults.click();
-        BrowserUtils.sleep(2);
+        BrowserUtils.sleep(5);
         if (driver.findElements(By.xpath("//a[@class='page-switcher page-last']")).isEmpty()) {
             System.out.println("Not present");
         }
     }
+
     @Then("User clicks on quick view in PLP")
-    public void user_clicks_on_quick_view_in_plp() {
+    public void userClicksOnQuickViewInPlp() {
         if (ConfigReader.getProperty("platform").equals("desktop")) {
             BrowserUtils.scrollToElement(productListPage.quickViewHover);
             BrowserUtils.hover(productListPage.quickViewHover);
@@ -123,10 +125,11 @@ public class PLPStepDefs {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
         }
     }
+
     @Then("User clicks on arrows switching between products in PLP")
-    public void user_clicks_on_arrows_switching_between_products_in_plp() {
+    public void userClicksOnArrowsSwitchingBetweenProductsInPlp() {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
-            BrowserUtils.waitForClickability(productListPage.quickViewItem,Duration.ofSeconds(5));
+            BrowserUtils.waitForClickability(productListPage.quickViewItem, Duration.ofSeconds(5));
             String item1 = productListPage.quickViewItem.getText();
             BrowserUtils.clickWithJS(productListPage.quickViewNext);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
@@ -134,12 +137,13 @@ public class PLPStepDefs {
             Assert.assertNotSame(item1, item2);
         }
     }
+
     @Then("User clicks on learn more and closes")
-    public void user_clicks_on_learn_more_and_closes() {
+    public void userClicksOnLearnMoreAndCloses() {
         if (ConfigReader.getProperty("platform").equals("desktop")) {
             productListPage.learnMoreOpen.click();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
-            String LearnMorePopUp =  productListPage.learnMorePopUpDeskTop.getText();
+            String LearnMorePopUp = productListPage.learnMorePopUpDeskTop.getText();
             String PopUpVerify = "Available Delivery Options";
             Assert.assertEquals(LearnMorePopUp, PopUpVerify);
             productListPage.learnMoreClose.click();
@@ -151,8 +155,9 @@ public class PLPStepDefs {
             Assert.assertEquals(LearnMorePopUp, PopUpVerify);
         }
     }
+
     @Then("User change qty from {int} to {int} in PLP quick view")
-    public void user_change_qty_from_to_in_plp_quick_view(Integer int1, Integer int2) {
+    public void userChangeQtyFromToInPlpQuickView(Integer int1, Integer int2) {
         if (ConfigReader.getProperty("platform").equals("desktop")) {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
             productListPage.quickViewIncreaseQty.click();
@@ -163,13 +168,14 @@ public class PLPStepDefs {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
         }
     }
+
     @Then("User clicks x to exit quick view")
-    public void user_clicks_x_to_exit_quick_view() {
+    public void userClicksXToExitQuickView() {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
-            if (productListPage.quickViewClose.isDisplayed()); {
+            if (productListPage.quickViewClose.isDisplayed()) ;
+            {
                 productListPage.quickViewClose.click();
             }
-
         } else System.out.println("Not in display");
     }
 }

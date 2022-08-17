@@ -22,26 +22,26 @@ public class LoginStepDefs {
 
     @Given("User navigates to {string}")
     public void navigateToURL(String urlValue) {
-        if (!urlValue.equals("url")){
+        if (!urlValue.equals("url")) {
             driver.get(urlValue);
 
         } else {
             String url = System.getProperty("url", ConfigReader.getProperty("url"));
-            if (url.contains("staging")){
+            if (url.contains("staging")) {
                 driver.get("https://storefront:afweb2017@staging.ashleyfurniture.com/");
                 driver.findElement(By.xpath("//button[@id='details-button']")).click();
                 driver.findElement(By.xpath("//a[@id='proceed-link']")).click();
             }
-            if (url.contains("development")){
+            if (url.contains("development")) {
                 driver.get("https://storefront:afweb2017@development.ashleyfurniture.com/");
+            } else {
+                driver.get(url);
             }
-            else{
-            driver.get(url);}
         }
         try {
             BrowserUtils.waitForVisibility(landingPage.iframe, Duration.ofSeconds(5));
             landingPage.closeIframe();
-        }catch (Throwable error){
+        } catch (Throwable error) {
             error.printStackTrace();
             System.out.println("Iframe was not shown!");
         }
@@ -68,8 +68,9 @@ public class LoginStepDefs {
     public void userLogin(String username, String password) {
         accountPage.login(username, password);
     }
+
     @Then("User logs in with {string} and {string} mobile skip")
-    public void user_logs_in_with_and_mobile_skip(String username, String password) {
+    public void userLogsInWithAndMobileSkip(String username, String password) {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
             accountPage.login(username, password);
         }

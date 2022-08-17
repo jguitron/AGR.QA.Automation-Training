@@ -8,4 +8,5 @@ Feature: New user signup/create new account
     And   User clicks Create account link
     Then  User enters personal information
     Then User confirms age
-#    And  User clicks on Submit button
+    And  User clicks on Submit button if the Environment is non-production
+

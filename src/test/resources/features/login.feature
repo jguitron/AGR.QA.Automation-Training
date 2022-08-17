@@ -1,5 +1,5 @@
 @smoke
-Feature: Login verification
+Feature: Login verification with an existing user credentials
 
   Scenario: Login functionality verification
     Given User navigates to "url"

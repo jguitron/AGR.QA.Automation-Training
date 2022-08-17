@@ -3,17 +3,17 @@ Feature: Verify State Recycling fee is displayed in Shipping and billing pages w
 
   Scenario: Verify recycle fee is available when CA store is selected.
     Given User navigates to "url"
-    Then User finds closest store by "90016"
+    Then User finds closest store by "90015"
     Then  User searches for SKU "M69511" and clicks on it
     Then  User clicks on Add Item to Cart
     Then User navigate to cart page
     Then User clicks on Confirm button to confirm the zip code
     Then User clicks on Secure Check out button
     Then User fills in customer and shipping info using auto address selection
-      | FName                   |
-      | LName                   |
-      | 3535 S la Cienega Blvd, |
-      | Los Angeles             |
+      | FName             |
+      | LName             |
+      | 1810 S Broadway, |
+      | Los Angeles       |
     Then User clicks on Continue as Guest button
     Then User Verifies Recycle Fee is displayed on SecureCheckOut Shipping Page only for CA store
     Then User clicks on continue to billing and payment button

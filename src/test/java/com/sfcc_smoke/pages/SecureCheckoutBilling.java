@@ -53,14 +53,20 @@ public class SecureCheckoutBilling {
     public WebElement lable_pl_SSN4;
     @FindBy(xpath = "//button[@id='view-progressive-offers']/span")
     public WebElement btn_pl_view_dtls;
-    @FindBy(xpath = "//div[@class='payment-method-options paypal-billing']")
+    @FindBy(xpath = "(//iframe[@class='zoid-component-frame zoid-visible'])[1]")
     public WebElement pplogoimg;
     @FindBy(xpath = "(//div[@class='progressive-modal-box'])[2]/div[@class='content-asset ca-online-only']")
     public WebElement PrgsvPopupMsg;
     @FindBy(xpath = "(//div[@class='progressive-handy-box'])[2]/div[1]")
     public WebElement PrgsvPopupMsg_handy;
-    @FindBy(xpath = "((//div[@class='button-wrap-modal'])[3]/button/div)[1]")
+    @FindBy(xpath = "(//div[@class='progressive-handy-FPP-box'])[2]/div[1]")
+    public WebElement PrgsvPopupMsg_FppHandy;
+    @FindBy(xpath = "(//button[@class='primary-alt progressive-acceptance'])[2]")
     public WebElement PrgsvPopupContinueBtn;
+    @FindBy(xpath = "(//button[@class='primary-alt progressive-FPP-handy-acceptance'])[2]")
+    public WebElement PrgsvPopupContinueBtnFPPHandy;
+    @FindBy(xpath = "(//button[@class='primary-alt progressive-handy-acceptance'])[2]")
+    public WebElement PrgsvPopupContinueBtnHandy;
     @FindBy(xpath = "//div[@class='font-bold']")
     public WebElement TaxLabelSecureCheckOutBilling;
     @FindBy(xpath = "//td[@class='order-sales-tax-value']")

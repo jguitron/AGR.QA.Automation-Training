@@ -10,10 +10,10 @@ Feature: Profile user Item search and add items to cart
     Then User should see user dashboard
     Then User clicks on Start Shopping link
     When  User hovers over to "Furniture" and clicks on "TV Stands"
-    And User navigates to last page
-#    Then User chooses last available product and clicks on it
-#    And User adds 2 products to his cart
-#    Then User checks his cart with total amount
+#    And User navigates to last page
+    Then User chooses last available product and clicks on it
+    And User adds 2 products to his cart
+    Then User checks his cart with total amount
 
 
   Scenario Outline: User randomly searches for available products and clicks on them.
@@ -26,9 +26,9 @@ Feature: Profile user Item search and add items to cart
 
     Examples:
       | searchValue | expectedHeader |
-      | Table       | Table         |
+#      | mattress    | mattress       |
+      | Table       | Table          |
       | SOFA        | SOFA           |
-      | mattress    | mattress       |
       | LoveSeat    | LoveSeat       |
       | Recliner    | Recliner       |
       | Bed         | Bed            |

@@ -47,7 +47,8 @@ public class AccountPage {
     @FindBy(xpath = "//div[.='Hi, Kalla']")
     public WebElement userName;
 
-    @FindBy(xpath = "//div[@class='start-shopping']")
+//    @FindBy(xpath = "//div[@class='start-shopping']")
+    @FindBy(xpath = " //font[@class='sticky-top-bar-disclaimer']")
     public WebElement startShop;
 
     @FindBy(name = "dwfrm_login_login")
@@ -80,7 +81,7 @@ public class AccountPage {
     @FindBy(xpath = " //input[@class='input-text letters-hypen-only no-spaces  required']")
     public WebElement firstNameAddressAdd;
 
-    @FindBy(xpath = "//input[@class='input-text last-name-valid  required']")
+    @FindBy(xpath = "//input[@class='input-text last-name-valid letters-hypen-only no-spaces  required']")
     public WebElement lastNameAddressAdd;
 
     @FindBy(xpath = "//input[@class='input-text address-valid po-box-invalid  required']")

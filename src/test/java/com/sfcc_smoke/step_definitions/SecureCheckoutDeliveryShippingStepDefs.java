@@ -3,7 +3,6 @@ package com.sfcc_smoke.step_definitions;
 import com.sfcc_smoke.pages.SecureCheckoutDeliveryShipping;
 import com.sfcc_smoke.utilities.BrowserUtils;
 import com.sfcc_smoke.utilities.Driver;
-import io.cucumber.java.bs.A;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -18,12 +17,13 @@ public class SecureCheckoutDeliveryShippingStepDefs {
     SecureCheckoutDeliveryShipping deliveryShipping = new SecureCheckoutDeliveryShipping();
 
     @When("User clicks on continue to billing and payment button")
-    public void click_on_Cont_to_Billing() {
+    public void clickOnContToBilling() {
         deliveryShipping.ContinueBilling.click();
+        BrowserUtils.sleep(2);
     }
 
     @Then("User validates the tax amount on SecureCheckout Shipping Page")
-    public void user_validate_tax_on_SecureCheckout_Shipping() {
+    public void userValidateTaxOnSecureCheckoutShipping() {
         BrowserUtils.scrollToElement(deliveryShipping.TaxLabelSecureCheckOutShipping);
         Assert.assertTrue(deliveryShipping.zipSecureCheckoutShipping.isDisplayed());
         String zipcode = deliveryShipping.zipcodevalue.getAttribute("value");
@@ -39,7 +39,7 @@ public class SecureCheckoutDeliveryShippingStepDefs {
     }
 
     @When("User Verifies Recycle Fee is displayed on SecureCheckOut Shipping Page only for CA store")
-    public void user_verifies_recycleFee_displayed_ShippingPage() {
+    public void userVerifiesRecycleFeeDisplayedShippingPage() {
         BrowserUtils.waitForPageToLoad(10);
         String zipcode = deliveryShipping.zipcodevalue.getAttribute("value");
         if (zipcode.startsWith("90")) {
