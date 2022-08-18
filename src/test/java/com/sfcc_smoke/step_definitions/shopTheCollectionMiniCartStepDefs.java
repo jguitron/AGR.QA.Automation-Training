@@ -18,7 +18,7 @@ public class shopTheCollectionMiniCartStepDefs {
     SearchPage searchPage = new SearchPage();
 
     @Then("User Clicks plus button for {string} in shop the collection")
-    public void user_clicks_plus_button_for_in_shop_the_collection(String sku) {
+    public void userClicksPlusButtonForInShopTheCollection(String sku) {
         if (ConfigReader.getProperty("platform").equals("tablet") || ConfigReader.getProperty("platform").equals("desktop")) {
             driver.findElement(By.cssSelector("div[data-itemid='" + sku + "']  [class='plus']")).click();
         } else if (ConfigReader.getProperty("platform").equals("mobile")) {
@@ -28,7 +28,7 @@ public class shopTheCollectionMiniCartStepDefs {
     }
 
     @Then("User clicks on Add Item to Cart PDP scroll")
-    public void user_clicks_on_add_item_to_cart_pdp_scroll() {
+    public void userClicksOnAddItemToCartPdpScroll() {
         if (ConfigReader.getProperty("platform").equals("tablet") || ConfigReader.getProperty("platform").equals("desktop"))  {
             BrowserUtils.clickWithJS(productDetailPage.addtocart);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
@@ -40,7 +40,7 @@ public class shopTheCollectionMiniCartStepDefs {
     }
 
     @Then("User Clicks Add to Cart in Shop the Collection for {string}")
-    public void user_clicks_add_to_cart_in_shop_the_collection_for(String sku) {
+    public void userClicksAddToCartInShopTheCollectionFor(String sku) {
         if (ConfigReader.getProperty("platform").equals("tablet") || ConfigReader.getProperty("platform").equals("desktop")) {
             BrowserUtils.clickWithJS(driver.findElement(By.xpath("//label[@for='bundle-anchor-atc-" + sku + "']")));
 

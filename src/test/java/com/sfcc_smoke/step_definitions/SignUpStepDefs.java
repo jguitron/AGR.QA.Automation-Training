@@ -11,9 +11,9 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.SourceType;
 
 public class SignUpStepDefs {
     WebDriver driver = Driver.getDriver();
@@ -54,7 +54,7 @@ public class SignUpStepDefs {
     }
 
     @Then("User enters personal information")
-    public void user_enter_personal_information_with_following_data() {
+    public void userEnterPersonalInformationWithFollowingData() {
         Faker faker = new Faker();
         String firstName = faker.name().firstName();
         String lastName = faker.name().lastName();
@@ -74,15 +74,19 @@ public class SignUpStepDefs {
     }
 
     @Then("User confirms age")
-    public void user_confirms_age() {
+    public void userConfirmsAge() {
         signUp.verifyAge.click();
         BrowserUtils.sleep(2);
     }
 
-    @Then("User clicks on Submit button")
-    public void user_clicks_on_submit_button() {
-        signUp.submitForm.click();
-        BrowserUtils.waitForPageToLoad(5);
-        Assert.assertTrue(driver.getCurrentUrl().toLowerCase().equals("https://www.ashleyfurniture.com/account/"));
+    @Then("User clicks on Submit button if the Environment is non-production")
+    public void userClicksOnSubmitButton() {
+        String url = System.getProperty("url", ConfigReader.getProperty("url"));
+        if (url.contains("staging") || url.contains("development")) {
+            signUp.submitForm.click();
+            BrowserUtils.waitForPageToLoad(5);
+            Assert.assertTrue(driver.getCurrentUrl().toLowerCase().contains("ashleyfurniture.com/account/"));
+        }
+
     }
 }

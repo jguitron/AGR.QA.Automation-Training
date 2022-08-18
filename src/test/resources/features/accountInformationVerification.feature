@@ -6,4 +6,4 @@ Feature: Verification of registered user information in account page
     When  User logs in with "username" and "password"
     Then  User asserts user name on account page reflects "Jaime Guitron"
     Then  User asserts email-address on account page reflects "jguitron@ashleyfurniture.com"
-    Then  User asserts phone number on account page reflects "813-817-1997"
+    Then  User asserts phone number on account page reflects "887-766-5547"

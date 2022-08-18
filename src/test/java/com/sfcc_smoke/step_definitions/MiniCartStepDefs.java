@@ -20,7 +20,7 @@ public class MiniCartStepDefs {
     HomePage homePage = new HomePage();
 
     @Then("User Removes item from mini cart")
-    public void user_removes_item_from_mini_cart() {
+    public void userRemovesItemFromMiniCart() {
         BrowserUtils.hover(homePage.cartIconDeskTopNew);
         BrowserUtils.clickWithJS(cartPage.removeItemMiniCart);
         BrowserUtils.clickWithJS(cartPage.removeitem_YesBtn);
@@ -28,7 +28,7 @@ public class MiniCartStepDefs {
     }
 
     @Then("User clicks on save for later mini cart")
-    public void user_clicks_on_save_for_later_mini_cart() {
+    public void userClicksOnSaveForLaterMiniCart() {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
             cartPage.saveItem.isDisplayed();
             BrowserUtils.clickWithJS(cartPage.saveItem);
@@ -37,17 +37,17 @@ public class MiniCartStepDefs {
     }
 
     @Then("User asserts items in mini cart is {string} qty")
-    public void user_asserts_items_in_mini_cart_is_qty(String Item) {
+    public void userAssertsItemsInMiniCartIsQty(String Item) {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
             BrowserUtils.sleep(5);
-            BrowserUtils.waitForVisibility(homePage.miniCartQty,Duration.ofSeconds(4));
+            BrowserUtils.waitForVisibility(homePage.miniCartQty, Duration.ofSeconds(4));
             String CartQty = homePage.miniCartQty.getText();
-            Assert.assertEquals(Item,CartQty);
+            Assert.assertEquals(Item, CartQty);
         }
     }
 
     @Then("User asserts {string} saved items in cart with {string} mobile skip")
-    public void user_asserts_saved_items_in_cart_with_mobile_skip(String SavedItem, String assertSaved) {
+    public void userAssertsSavedItemsInCartWithMobileSkip(String SavedItem, String assertSaved) {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
             BrowserUtils.waitForPageToLoad(4);
             String savedItem = driver.findElement(By.xpath("//h2 /*[contains(@href,'" + assertSaved + "')]")).getText();

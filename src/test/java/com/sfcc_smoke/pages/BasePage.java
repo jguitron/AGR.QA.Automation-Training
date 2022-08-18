@@ -38,6 +38,6 @@ public class BasePage {
     @FindBy(xpath = "//div[@class='c-lesPJm c-bSMcqW']/input")
     public WebElement caddipayPhonenbr;
 
-    @FindBy(xpath = "//a[@class='back-to-cart']")
+    @FindBy(xpath = "//a[@class='mini-cart-link']")
     public WebElement backToCartIcon;
 }

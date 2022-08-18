@@ -5,8 +5,6 @@ import com.sfcc_smoke.utilities.BrowserUtils;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 
@@ -51,7 +49,7 @@ public class SecureCheckoutDeliveryCustInfoStepDefs {
     }
 
     @When("User fills in customer and shipping info using auto address selection")
-    public void Cust_info_auto_address_selection(List<String> info) {
+    public void custInfoAutoAddressSelection(List<String> info) {
         String customerInfo = "";
         List<String> mylist = info;
         for (int i = 0; i < mylist.size(); i++) {
@@ -73,25 +71,25 @@ public class SecureCheckoutDeliveryCustInfoStepDefs {
                 BrowserUtils.sleep(3);
             }
         }
-            BrowserUtils.clickWithJS(custInfo.addressOptions);
-            BrowserUtils.sleep(1);
-            custInfo.customerphone.sendKeys("6123542589");
-            custInfo.customeremail.sendKeys("test@test.com");
+        BrowserUtils.clickWithJS(custInfo.addressOptions);
+        BrowserUtils.sleep(1);
+        custInfo.customerphone.sendKeys("6123542589");
+        custInfo.customeremail.sendKeys("test@test.com");
 
     }
 
     @When("User clicks on Continue as Guest button")
-    public void click_on_Cont_as_guest() {
+    public void clickOnContAsGuest() {
         custInfo.contAsGuest.click();
     }
 
     @When("User clicks on Use Original button on PopUp window")
-    public void click_on_useoriginal() {
+    public void clickOnUseoriginal() {
         custInfo.useoriginal.click();
     }
 
     @Then("User validates the tax amount on SecureCheckout CustomerInfo Page")
-    public void user_validate_tax_on_SecureCheckout_CustInfo() {
+    public void userValidateTaxOnSecureCheckoutCustInfo() {
         BrowserUtils.sleep(2);
         String zipcode = custInfo.zip.getAttribute("value");
         BrowserUtils.scrollToElement(custInfo.taxLableSecureChkoutCustInfo);
