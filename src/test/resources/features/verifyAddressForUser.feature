@@ -1,6 +1,6 @@
 
+@smoke
 Feature: User Verifies Address Functionality for Registered User
-
 
   Scenario: User edits address in account page and creates new address
     Given User navigates to "url"
