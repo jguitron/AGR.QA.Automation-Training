@@ -1,4 +1,4 @@
-@smoke
+@smoke @wip9
 
 Feature: Verify PLP filters changes results of products in PLP
 
