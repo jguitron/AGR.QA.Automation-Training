@@ -126,7 +126,7 @@ public class PLPStepDefs {
         }
     }
 
-    @Then("User clicks on arrows switching between products in PLP")
+    @Then("User clicks on arrows switching between products in PLP on QuickView")
     public void userClicksOnArrowsSwitchingBetweenProductsInPlp() {
         if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
             BrowserUtils.waitForClickability(productListPage.quickViewItem, Duration.ofSeconds(5));

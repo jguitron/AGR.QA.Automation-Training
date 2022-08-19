@@ -259,9 +259,9 @@ public class CartPageDefs {
         }
     }
 
-    @Then("User clicks add to cart from Wish List")
-    public void userClicksAddToCartFromWishList() {
-        cartPage.addToCartwishListButton.click();
+    @Then("User clicks {string} add to cart from Wish List")
+    public void userClicksAddToCartFromWishList(String itemname) {
+        driver.findElement(By.xpath("//button[@aria-label='add "+ itemname + " to cart']")).click();
     }
 
     @Then("User asserts user name on account page reflects {string}")

@@ -1,5 +1,6 @@
+@smoke
 Feature: Verification of WishList Add to Cart from cart page
-  @smoke
+
   Scenario: User adds item to cart from wish list
     Given User navigates to "url"
     And   User search's "Darcy Sofa" in search bar

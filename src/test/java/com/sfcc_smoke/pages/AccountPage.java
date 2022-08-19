@@ -47,7 +47,6 @@ public class AccountPage {
     @FindBy(xpath = "//div[.='Hi, Kalla']")
     public WebElement userName;
 
-//    @FindBy(xpath = "//div[@class='start-shopping']")
     @FindBy(xpath = " //font[@class='sticky-top-bar-disclaimer']")
     public WebElement startShop;
 

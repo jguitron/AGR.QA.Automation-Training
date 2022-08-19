@@ -27,7 +27,7 @@ public class SecureCheckoutDeliveryCustInfo {
     public WebElement city;
     @FindBy(xpath = "//select[@id='dwfrm_singleshipping_shippingAddress_addressFields_states_state']")
     public WebElement state;
-    @FindBy(xpath = "//input[@id='dwfrm_singleshipping_shippingAddress_addressFields_postal']")
+    @FindBy(xpath = "//div[@class='label-sales-tax']/input[@name='warehouse-zip']")
     public WebElement zip;
     @FindBy(xpath = "//input[@id='dwfrm_singleshipping_shippingAddress_addressFields_phone']")
     public WebElement customerphone;
