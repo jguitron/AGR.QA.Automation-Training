@@ -92,6 +92,7 @@ public class SecureCheckoutDeliveryCustInfoStepDefs {
     public void userValidateTaxOnSecureCheckoutCustInfo() {
         BrowserUtils.sleep(2);
         String zipcode = custInfo.zip.getAttribute("value");
+        System.out.println(zipcode);
         BrowserUtils.scrollToElement(custInfo.taxLableSecureChkoutCustInfo);
         String taxvalue = custInfo.taxValueSecureChkoutCustInfo.getText();
         taxvalue = taxvalue.replace("$", "");
