@@ -3,13 +3,13 @@ package com.sfcc_smoke.step_definitions;
 import com.sfcc_smoke.pages.AccountPage;
 import com.sfcc_smoke.pages.LandingPage;
 import com.sfcc_smoke.utilities.BrowserUtils;
+import com.sfcc_smoke.utilities.BstackUtils;
 import com.sfcc_smoke.utilities.ConfigReader;
 import com.sfcc_smoke.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.time.Duration;
@@ -29,15 +29,16 @@ public class LoginStepDefs {
             String url = System.getProperty("url", ConfigReader.getProperty("url"));
             if (url.contains("staging")) {
                 driver.get("https://storefront:afweb2017@staging.ashleyfurniture.com/");
-                driver.findElement(By.xpath("//button[@id='details-button']")).click();
-                driver.findElement(By.xpath("//a[@id='proceed-link']")).click();
-            }
-            if (url.contains("development")) {
+//                driver.findElement(By.xpath("//button[@id='details-button']")).click();
+//                driver.findElement(By.xpath("//a[@id='proceed-link']")).click();
+            } else if (url.contains("development")) {
                 driver.get("https://storefront:afweb2017@development.ashleyfurniture.com/");
             } else {
                 driver.get(url);
             }
         }
+        BrowserUtils.waitForPageToLoad(5);
+        BstackUtils.initialLocationHandler();
         try {
             BrowserUtils.waitForVisibility(landingPage.iframe, Duration.ofSeconds(5));
             landingPage.closeIframe();
@@ -45,7 +46,6 @@ public class LoginStepDefs {
             error.printStackTrace();
             System.out.println("Iframe was not shown!");
         }
-        BrowserUtils.waitForPageToLoad(5);
     }
 
     @And("User clicks on login link on different viewports")

@@ -113,22 +113,24 @@ public class Driver {
                         break;
                     case "chrome-bstack":
                         try {
+                            chromeOptions = new ChromeOptions();
                             DesiredCapabilities bsChromeCaps = new DesiredCapabilities();
                             bsChromeCaps.setCapability("browserName", "Chrome");
                             bsChromeCaps.setCapability("browserVersion", "latest");
-                            bsChromeCaps.setAcceptInsecureCerts(true);
-                            bsChromeCaps.acceptInsecureCerts();
+                            bsChromeCaps.setCapability("acceptSslCerts","true");
+
                             HashMap<String, Object> chromeOptionsMap = new HashMap<>();
                             chromeOptionsMap.put("os", "Windows");
                             chromeOptionsMap.put("osVersion", "10");
                             chromeOptionsMap.put("local", ConfigReader.getProperty("BS_LOCAL"));
                             chromeOptionsMap.put("seleniumVersion", ConfigReader.getProperty("BS_SELENIUM_VERSION"));
                             chromeOptionsMap.put("video", "true");
+//                            chromeOptionsMap.put("geoLocation", "US");
+
                             bsChromeCaps.setCapability("bstack:options", chromeOptionsMap);
                             bsChromeCaps.setCapability("BS_SESSION_NAME", ConfigReader.getProperty("BS_SESSION_NAME"));
                             bsChromeCaps.setCapability("buildName", ConfigReader.getProperty("CHROME_BS_BUILD_NAME"));
-//                            bsChromeCaps.setCapability("acceptSslCert", "true");
-                            driverPool.set(new RemoteWebDriver(new URL(REMOTE_URL), bsChromeCaps));
+                            driverPool.set(new RemoteWebDriver(new URL(REMOTE_URL), bsChromeCaps.merge(chromeOptions.addArguments("--disable-notifications"))));
                             driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
                         } catch (Exception e) {
                             e.printStackTrace();
