@@ -58,9 +58,9 @@ public class CartPage {
     @FindBy(xpath = "(//input[@class='pp-checkbox'])[4]")
     public WebElement ppckbx4;
     @FindBy(xpath = "//button[@class='secure-checkout-btn']")
-    public WebElement secureckoutbtn;
+    public WebElement secureCkoutBtn;
     @FindBy(xpath = "//a[@class='remove-cart-item']")
-    public WebElement removeitem;
+    public WebElement removeItem;
 
     @FindBy(xpath = "//button[@class='remove-cart-item']")
     public WebElement removeItemMiniCart;
@@ -68,7 +68,7 @@ public class CartPage {
     @FindBy(xpath = "//div[@id='cart-remove-product']/fieldset/h2")
     public WebElement removeitempopup_msg;
     @FindBy(xpath = "//button[@class='remove']")
-    public WebElement removeitem_YesBtn;
+    public WebElement removeItem_YesBtn;
     @FindBy(css = "div[class='cart-product-option-mobile'] a[class='remove-cart-item']")
     public WebElement removeItem_BtnMobileTablet;
 
@@ -111,7 +111,7 @@ public class CartPage {
     @FindBy(xpath = "//div[@class='user-no']")
     public WebElement phoneNumberOnAccount;
 
-    @FindBy(xpath = "//div[@class='ui-dialog ui-corner-all ui-widget ui-widget-content ui-front different-address-dialog-cart ui-draggable']")
+    @FindBy(css = "div[class^='ui-dialog ui-corner-all']")
     public WebElement confirmZipPopUp;
 
     @FindBy(xpath = "//button[@class='button-fancy-large dialog-close']")

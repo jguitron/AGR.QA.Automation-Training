@@ -20,6 +20,9 @@ public class BasePage {
     @FindBy(xpath = "//a[@class='mini-cart-link']")
     public WebElement miniCartIcon;
 
+    @FindBy(css = "span[class='minicart-quantity']")
+    public WebElement miniCartValue;
+
     @FindBy(xpath = "(//div[@id='header-closest-store'])[1]")
     public WebElement chooseLocalStore;
 

@@ -4,9 +4,9 @@ Feature: Verify State Recycling fee is displayed in Shipping and billing pages w
   Scenario: Verify recycle fee is available when CA store is selected.
     Given User navigates to "url"
     Then User finds closest store by "90015"
-    Then  User searches for SKU "M69511" and clicks on it
+    Then  User searches for SKU "M69511"
     Then  User clicks on Add Item to Cart
-    Then User navigate to cart page
+    Then User navigates to cart page
     Then User clicks on Confirm button to confirm the zip code
     Then User clicks on Secure Check out button
     Then User fills in customer and shipping info using auto address selection
@@ -22,9 +22,9 @@ Feature: Verify State Recycling fee is displayed in Shipping and billing pages w
   Scenario: Verify recycle fee is NOT available when north carolina store (non- CA store) is selected.
     Given User navigates to "url"
     Then User finds closest store by "28115"
-    Then  User searches for SKU "M69511" and clicks on it
+    Then  User searches for SKU "M69511"
     Then  User clicks on Add Item to Cart
-    Then User navigate to cart page
+    Then User navigates to cart page
     Then User clicks on Confirm button to confirm the zip code
     Then User clicks on Secure Check out button
     Then User fills in customer and shipping info using auto address selection

@@ -97,9 +97,9 @@ public class SecureCheckoutBillingStepDefs {
     public void verifyPayPalOption() {
         String mainWindow = driver.getWindowHandle();
         driver.switchTo().window(mainWindow);
-        BrowserUtils.scrollToElement(checkoutBilling.pplogoimg);
-        BrowserUtils.sleep(1);
-        Assert.assertTrue(checkoutBilling.pplogoimg.isDisplayed());
+//        BrowserUtils.scrollToElement(checkoutBilling.pplogoimg);
+//        BrowserUtils.sleep(1);
+        Assert.assertTrue(checkoutBilling.pplogoimg.isEnabled());
     }
 
     @Then("User clicks on Caddipay Payment option")

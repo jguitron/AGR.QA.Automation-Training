@@ -17,6 +17,7 @@ public class HeaderStepDefs {
     WebDriver driver = Driver.getDriver();
     HomePage homePage = new HomePage();
     LandingPage landingPage = new LandingPage();
+    BaseStepDefs baseStepDefs = new BaseStepDefs();
 
     @Then("Assert user is logged in via name displays in header")
     public void assertUserIsLoggedInViaNameDisplaysInHeader() {
@@ -46,13 +47,8 @@ public class HeaderStepDefs {
         }
     }
 
-    @Then("Assert total number of items in mini cart is {string}")
-    public void assertTotalNumberOfItemsInMiniCartIs(String number) {
-        BrowserUtils.sleep(5);
-        BrowserUtils.waitForPageToLoad(20);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(7));
-        String MiniCartQty = driver.findElement(By.xpath("//span[@class='minicart-quantity']")).getText();
-        Assert.assertEquals(number, MiniCartQty);
-
+    @Then("Assert total number of items in mini cart is {int}")
+    public void assertTotalNumberOfItemsInMiniCartIs(int expectedCartQty) {
+        baseStepDefs.CartPageSize(expectedCartQty);
     }
 }

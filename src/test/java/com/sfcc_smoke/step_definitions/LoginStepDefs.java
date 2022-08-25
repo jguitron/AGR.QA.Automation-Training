@@ -21,26 +21,27 @@ public class LoginStepDefs {
     LandingPage landingPage = new LandingPage();
 
     @Given("User navigates to {string}")
-    public void navigateToURL(String urlValue) {
-        if (!urlValue.equals("url")) {
-            driver.get(urlValue);
-
-        } else {
-            String url = System.getProperty("url", ConfigReader.getProperty("url"));
-            if (url.contains("staging")) {
+    public void navigateToURL(String url) {
+        if (!url.equals("url")) {
+            driver.get(url);
+        } else if (url.equals("url")) {
+            if (ConfigReader.getProperty("url").contains("staging")) {
                 driver.get("https://storefront:afweb2017@staging.ashleyfurniture.com/");
 //                driver.findElement(By.xpath("//button[@id='details-button']")).click();
 //                driver.findElement(By.xpath("//a[@id='proceed-link']")).click();
-            } else if (url.contains("development")) {
+            } else if (ConfigReader.getProperty("url").contains("development")) {
                 driver.get("https://storefront:afweb2017@development.ashleyfurniture.com/");
             } else {
-                driver.get(url);
+                String actualUrl = System.getProperty("url", ConfigReader.getProperty("url"));
+                driver.get(actualUrl);
             }
         }
         BrowserUtils.waitForPageToLoad(5);
-        BstackUtils.initialLocationHandler();
+        if (ConfigReader.getProperty("browser").contains("bstack")) {
+            BstackUtils.initialLocationHandler();
+        }
         try {
-            BrowserUtils.waitForVisibility(landingPage.iframe, Duration.ofSeconds(5));
+            BrowserUtils.waitForVisibility(landingPage.iframe, Duration.ofSeconds(10));
             landingPage.closeIframe();
         } catch (Throwable error) {
             error.printStackTrace();

@@ -1,5 +1,4 @@
 @smoke
-
 Feature: Verification of Save for Later button in cart page
 
   Scenario: User adds Honey-Can-Do 4 Piece Jar Storage Set to cart and clicks save for later

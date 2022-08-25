@@ -33,10 +33,8 @@ public class CartPageDefs {
 
     @When("User clicks on Confirm button to confirm the zip code")
     public void userClicksConfirmZipcodeButton() {
-        BrowserUtils.waitForPageToLoad(5);
         if (cartPage.confirmZipPopUp.isDisplayed()) {
-            BrowserUtils.clickWithJS(cartPage.btnConfirmZip);
-            BrowserUtils.sleep(3);
+            cartPage.btnConfirmZip.click();
         }
     }
 
@@ -111,8 +109,7 @@ public class CartPageDefs {
 
     @When("User clicks on Secure Check out button")
     public void userClicksSecureCheckoutButton() {
-        cartPage.secureckoutbtn.click();
-        BrowserUtils.sleep(2);
+        cartPage.secureCkoutBtn.click();
     }
 
     @Then("User changes Qty from {string} to {string} in cart")
@@ -141,15 +138,15 @@ public class CartPageDefs {
     @When("User Removes item from cart")
     public void userRemovesItemFromCart() {
         if (ConfigReader.getProperty("platform").equals("desktop")) {
-            cartPage.removeitem.click();
-            cartPage.removeitem_YesBtn.click();
+            cartPage.removeItem.click();
+            cartPage.removeItem_YesBtn.click();
         } else if (ConfigReader.getProperty("platform").equals("tablet")) {
             cartPage.removeItem_BtnMobileTablet.click();
-            cartPage.removeitem_YesBtn.click();
+            cartPage.removeItem_YesBtn.click();
         } else if (ConfigReader.getProperty("platform").equals("mobile")) {
             BrowserUtils.scrollToElement(cartPage.removeItem_BtnMobileTablet);
             BrowserUtils.clickWithJS(cartPage.removeItem_BtnMobileTablet);
-            cartPage.removeitem_YesBtn.click();
+            cartPage.removeItem_YesBtn.click();
         }
     }
 

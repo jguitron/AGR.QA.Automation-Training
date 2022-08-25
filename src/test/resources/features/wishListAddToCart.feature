@@ -1,5 +1,4 @@
 @smoke
-
 Feature: Verification of WishList Add to Cart from cart page
 
   Scenario: User adds item to cart from wish list

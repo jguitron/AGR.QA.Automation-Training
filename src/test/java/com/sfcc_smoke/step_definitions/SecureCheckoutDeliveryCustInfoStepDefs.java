@@ -2,14 +2,17 @@ package com.sfcc_smoke.step_definitions;
 
 import com.sfcc_smoke.pages.SecureCheckoutDeliveryCustInfo;
 import com.sfcc_smoke.utilities.BrowserUtils;
+import com.sfcc_smoke.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
 
 import java.util.List;
 
 public class SecureCheckoutDeliveryCustInfoStepDefs {
     SecureCheckoutDeliveryCustInfo custInfo = new SecureCheckoutDeliveryCustInfo();
+    WebDriver driver = Driver.getDriver();
 
     @When("User enters customer info on Secure Checkout Delivery Page")
     public void enterCustomerInfoOnSecureCheckoutDeliveryPage(List<String> info) {
@@ -50,12 +53,10 @@ public class SecureCheckoutDeliveryCustInfoStepDefs {
 
     @When("User fills in customer and shipping info using auto address selection")
     public void custInfoAutoAddressSelection(List<String> info) {
-        String customerInfo = "";
-        List<String> mylist = info;
-        for (int i = 0; i < mylist.size(); i++) {
-            customerInfo = mylist.get(i);
-            if (i == 0) {
-                custInfo.fname.sendKeys(customerInfo);
+        String customerInfo;
+        for (int i = 0; i < info.size(); i++) {
+            customerInfo = info.get(i);
+            if (i == 0) {//                custInfo.fname.sendKeys(customerInfo);
             }
             if (i == 1) {
                 custInfo.lname.sendKeys(customerInfo);
@@ -72,10 +73,8 @@ public class SecureCheckoutDeliveryCustInfoStepDefs {
             }
         }
         BrowserUtils.clickWithJS(custInfo.addressOptions);
-        BrowserUtils.sleep(1);
         custInfo.customerphone.sendKeys("6123542589");
         custInfo.customeremail.sendKeys("test@test.com");
-
     }
 
     @When("User clicks on Continue as Guest button")

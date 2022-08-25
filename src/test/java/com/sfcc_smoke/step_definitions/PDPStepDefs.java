@@ -68,10 +68,12 @@ public class PDPStepDefs {
 
     @When("User clicks on Add Item to Cart")
     public void userClicksOnAddItemToCart() {
-        if (ConfigReader.getProperty("platform").equals("desktop") || ConfigReader.getProperty("platform").equals("tablet")) {
-            BrowserUtils.waitForClickability(productDetailPage.addtocart, Duration.ofSeconds(4));
-            BrowserUtils.clickWithJS(productDetailPage.addtocart);
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        if (platform.equals("desktop") || platform.equals("tablet")) {
+            BrowserUtils.waitForClickability(productDetailPage.addtocart, Duration.ofSeconds(4)).click();
+//            BrowserUtils.clickWithJS(productDetailPage.addtocart);
+            BrowserUtils.sleep(1);
+            int cartSize = Integer.parseInt(driver.findElement(By.cssSelector("span[class='minicart-quantity']")).getText());
+            Assert.assertTrue(cartSize > 0);
         } else if (productDetailPage.AddToCart_mob.isDisplayed()) {
             BrowserUtils.scrollToElement(productDetailPage.AddToCart_mob);
             productDetailPage.AddToCart_mob.click();

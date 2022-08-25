@@ -23,7 +23,7 @@ public class MiniCartStepDefs {
     public void userRemovesItemFromMiniCart() {
         BrowserUtils.hover(homePage.cartIconDeskTopNew);
         BrowserUtils.clickWithJS(cartPage.removeItemMiniCart);
-        BrowserUtils.clickWithJS(cartPage.removeitem_YesBtn);
+        BrowserUtils.clickWithJS(cartPage.removeItem_YesBtn);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(4));
     }
 

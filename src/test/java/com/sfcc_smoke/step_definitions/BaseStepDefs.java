@@ -13,14 +13,13 @@ import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-import javax.sound.midi.Soundbank;
 import java.time.Duration;
 import java.util.Iterator;
 import java.util.Set;
 
 public class BaseStepDefs {
 
-    WebDriver driver = Driver.getDriver();
+    static WebDriver driver = Driver.getDriver();
     BasePage basePage = new BasePage();
     SearchPage searchPage = new SearchPage();
     LandingPage landingPage = new LandingPage();
@@ -30,28 +29,23 @@ public class BaseStepDefs {
     @When("User finds closest store by {string}")
     public void findClosestStore(String zipcode) {
         String platform = ConfigReader.getProperty("platform");
-        BrowserUtils.waitForPageToLoad(10);
+        BrowserUtils.waitForPageToLoad(5);
         if (platform.equals("desktop")) {
-            BrowserUtils.waitForVisibility(basePage.chooseLocalStore, Duration.ofSeconds(5));
-            BrowserUtils.clickWithJS(basePage.chooseLocalStore);
-            BrowserUtils.waitForVisibility(basePage.zipCodeBox, Duration.ofSeconds(5));
+            BrowserUtils.waitForVisibility(basePage.chooseLocalStore, Duration.ofSeconds(5)).click();
             basePage.zipCodeBox.sendKeys(zipcode + Keys.ENTER);
-            BrowserUtils.sleep(2);
         } else if (platform.equals("mobile") || (platform.equals("tablet"))) {
-            BrowserUtils.waitForVisibility(landingPage.mobileMenu, Duration.ofSeconds(5));
-            BrowserUtils.clickWithJS(landingPage.mobileMenu);
-            BrowserUtils.waitForVisibility(basePage.mobStoreLink, Duration.ofSeconds(5));
-            BrowserUtils.clickWithJS(basePage.mobStoreLink);
+            BrowserUtils.waitForVisibility(landingPage.mobileMenu, Duration.ofSeconds(5)).click();
+            BrowserUtils.waitForVisibility(basePage.mobStoreLink, Duration.ofSeconds(5)).click();
             BrowserUtils.waitForVisibility(basePage.zipCodeBox, Duration.ofSeconds(5));
             basePage.zipCodeBox.sendKeys(zipcode + Keys.ENTER);
-            BrowserUtils.sleep(2);
         }
     }
 
-    @When("User searches for SKU {string} and clicks on it")
-    public void searchAnItem(String Item) {
-        BrowserUtils.sleep(3);
-        basePage.searchBar.sendKeys(Item + Keys.ENTER);
+    @When("User searches for SKU {string}")
+    public void searchAnItem(String item) {
+        BrowserUtils.sleep(1);
+        basePage.searchBar.sendKeys(item + Keys.ENTER);
+        Assert.assertTrue(driver.getCurrentUrl().contains(item));
     }
 
     @When("User search for a SKU {string} and clicks on item 1 in result set")
@@ -61,10 +55,9 @@ public class BaseStepDefs {
         basePage.searchBarResultOne.click();
     }
 
-    @When("User navigate to cart page")
+    @When("User navigates to cart page")
     public void clickOnMiniCart() {
-        BrowserUtils.waitForVisibility(basePage.miniCartIcon, Duration.ofSeconds(5));
-        basePage.miniCartIcon.click();
+        BrowserUtils.waitForVisibility(basePage.miniCartIcon, Duration.ofSeconds(5)).click();
     }
 
     @When("User navigate back to cart page")
@@ -122,5 +115,10 @@ public class BaseStepDefs {
         BrowserUtils.hover(productDetailPage.addToWishList);
         productDetailPage.addToWishList.click();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+    }
+
+    public void CartPageSize(int expectedNum) {
+        int actualCartQty = Integer.parseInt(basePage.miniCartValue.getText());
+        Assert.assertEquals(expectedNum, actualCartQty);
     }
 }

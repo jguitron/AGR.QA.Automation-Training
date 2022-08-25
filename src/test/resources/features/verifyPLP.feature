@@ -1,5 +1,4 @@
 @smoke
-
 Feature: Verification of PLP through search results
 
   Scenario: User verifies PLP page components through search
