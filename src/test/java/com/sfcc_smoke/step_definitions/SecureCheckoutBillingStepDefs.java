@@ -1,17 +1,19 @@
 package com.sfcc_smoke.step_definitions;
 
 import com.sfcc_smoke.pages.SecureCheckoutBilling;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import com.sfcc_smoke.utilities.BrowserUtils;
 import com.sfcc_smoke.utilities.Driver;
-import io.cucumber.java.en.*;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class SecureCheckoutBillingStepDefs {
     SecureCheckoutBilling checkoutBilling = new SecureCheckoutBilling();
@@ -59,8 +61,8 @@ public class SecureCheckoutBillingStepDefs {
     @Then("Ashley Advantage Payment option logos and fields are displayed")
     public void ashleyAdvantagePaymentOptionLogoFieldsAreDisplayed() {
         BrowserUtils.sleep(2);
-        //Assert.assertTrue(checkoutBilling.aatitle.isDisplayed());
-        //Assert.assertEquals("Ashley Advantage™", checkoutBilling.aatitle.getText());
+        Assert.assertTrue(checkoutBilling.aatitle.isDisplayed());
+        Assert.assertEquals("Ashley Advantage™", checkoutBilling.aatitle.getText());
         Assert.assertTrue(checkoutBilling.synchronylogo.isDisplayed());
         Assert.assertTrue(checkoutBilling.genesislogo.isDisplayed());
         Assert.assertTrue(checkoutBilling.gafcologo.isDisplayed());
@@ -88,9 +90,23 @@ public class SecureCheckoutBillingStepDefs {
         Assert.assertTrue(checkoutBilling.btn_pl_view_dtls.isDisplayed());
     }
 
-    @Then("User clicks on Paypal Payment option")
+    @Then("User clicks on Paypal Payment option and verifies paypal window is launched")
     public void userClicksOnPaypalLogo() {
+
+        String mainWindowHandle = driver.getWindowHandle();
         BrowserUtils.clickWithJS(checkoutBilling.pplogoimg);
+        checkoutBilling.pplogoimg.click();
+        BrowserUtils.sleep(3);
+        Set<String> allWindows = driver.getWindowHandles();
+        Iterator<String> iterator = allWindows.iterator();
+        while (iterator.hasNext()) {
+            String ChildWindow = iterator.next();
+            if (!mainWindowHandle.equalsIgnoreCase(ChildWindow)) {
+                driver.switchTo().window(ChildWindow);
+                Assert.assertEquals("Log in to your PayPal account", driver.getTitle());
+            }
+        }
+
     }
 
     @Then("User verifies Paypal Payment option is available")
@@ -99,7 +115,7 @@ public class SecureCheckoutBillingStepDefs {
         driver.switchTo().window(mainWindow);
         BrowserUtils.scrollToElement(checkoutBilling.pplogoimg);
         BrowserUtils.sleep(1);
-        Assert.assertTrue(checkoutBilling.pplogoimg.isDisplayed());
+        Assert.assertTrue(checkoutBilling.pplogoimg.isEnabled());
     }
 
     @Then("User clicks on Caddipay Payment option")

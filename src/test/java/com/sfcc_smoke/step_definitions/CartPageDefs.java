@@ -78,7 +78,7 @@ public class CartPageDefs {
     @When("User verifies that {string} is added to cart")
     public void userVerifiesThatFPPAddedCart(String ProtectionPlan) {
         Assert.assertEquals("Furniture $59.99", cartPage.pplink1.getText());
-        Assert.assertEquals("Outdoor $179.99", cartPage.pplink2.getText());
+        Assert.assertEquals("Outdoor $239.99", cartPage.pplink2.getText());
         Assert.assertEquals("Adjustable Base $149.99", cartPage.pplink3.getText());
         Assert.assertEquals("King Adjustable Base $299.99", cartPage.pplink4.getText());
     }
