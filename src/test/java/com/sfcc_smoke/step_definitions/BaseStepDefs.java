@@ -13,7 +13,6 @@ import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-import javax.sound.midi.Soundbank;
 import java.time.Duration;
 import java.util.Iterator;
 import java.util.Set;
@@ -104,18 +103,6 @@ public class BaseStepDefs {
         searchPage.searchIcon.click();
     }
 
-    @When("User verifies that Paypal login page is launched")
-    public void verifyPayPalWindow() {
-        Set<String> allWindows = driver.getWindowHandles();
-        for (String eachWindow : allWindows) {
-            if (driver.getTitle().equals("Checkout")) {
-                driver.switchTo().window(eachWindow);
-                Assert.assertEquals("Log in to your PayPal account", driver.getTitle());
-            } else if (driver.getTitle().contains("PayPal")) {
-                Assert.assertEquals("Log in to your PayPal account", driver.getTitle());
-            }
-        }
-    }
 
     @Then("User clicks on Heart Icon in plp")
     public void clickOnHeartIconInPLP() {

@@ -129,7 +129,7 @@
                 <version>3.0.0-M6</version>
                 <configuration>
                     <parallel>both</parallel>
-                    <threadCount>3</threadCount>
+                    <threadCount>4</threadCount>
                     <perCoreThreadCount>false</perCoreThreadCount>
                     <testFailureIgnore>true</testFailureIgnore>
 <!--                    <rerunFailingTestsCount>2</rerunFailingTestsCount>-->
