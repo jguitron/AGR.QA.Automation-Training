@@ -10,10 +10,10 @@ Feature: Verify State Recycling fee is displayed in Shipping and billing pages w
     Then User clicks on Confirm button to confirm the zip code
     Then User clicks on Secure Check out button
     Then User fills in customer and shipping info using auto address selection
-      | FName             |
-      | LName             |
+      | FName            |
+      | LName            |
       | 1810 S Broadway, |
-      | Los Angeles       |
+      | Los Angeles      |
     Then User clicks on Continue as Guest button
     Then User Verifies Recycle Fee is displayed on SecureCheckOut Shipping Page only for CA store
     Then User clicks on continue to billing and payment button
@@ -36,4 +36,3 @@ Feature: Verify State Recycling fee is displayed in Shipping and billing pages w
     Then User Verifies Recycle Fee is displayed on SecureCheckOut Shipping Page only for CA store
     Then User clicks on continue to billing and payment button
     Then User Verifies Recycle Fee is displayed on SecureCheckOut Billing Page only for CA store
-
