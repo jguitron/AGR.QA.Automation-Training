@@ -1,4 +1,4 @@
-@smoke @regression  @bstack
+@smoke @wip
 Feature: Verification of available payment types in cart page
   As a user, I should be able to choose desired payment method; CC, AA, PL, Caddipay, Acima or PP
 
