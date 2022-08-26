@@ -15,101 +15,77 @@
     </properties>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>4.3.0</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
-            <scope>test</scope>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>5.2.3</version>
+            <version>5.2.2</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>7.6.0</version>
+            <version>7.5.0</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version>7.6.0</version>
-            <scope>test</scope>
+            <version>7.5.0</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-gherkin -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-gherkin</artifactId>
-            <version>7.6.0</version>
+            <version>7.5.0</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-core -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-core</artifactId>
-            <version>7.6.0</version>
+            <version>7.5.0</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-picocontainer -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-picocontainer</artifactId>
-            <version>7.6.0</version>
-            <type>pom</type>
-            <scope>test</scope>
+            <version>7.5.0</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
         <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
             <version>1.0.2</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.twdata.maven/mojo-executor -->
         <dependency>
             <groupId>org.twdata.maven</groupId>
             <artifactId>mojo-executor</artifactId>
             <version>2.4.0</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>5.2.2</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.11.0</version>
+        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.36</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>com.browserstack</groupId>
             <artifactId>browserstack-local-java</artifactId>
             <version>1.0.6</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -117,10 +93,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.0</version>
+                <version>3.10.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>8</source>
+                    <target>8</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -129,10 +105,10 @@
                 <version>3.0.0-M6</version>
                 <configuration>
                     <parallel>both</parallel>
-                    <threadCount>4</threadCount>
+                    <threadCount>3</threadCount>
                     <perCoreThreadCount>false</perCoreThreadCount>
                     <testFailureIgnore>true</testFailureIgnore>
-<!--                    <rerunFailingTestsCount>2</rerunFailingTestsCount>-->
+<!--                    <rerunFailingTestsCount>1</rerunFailingTestsCount>-->
                     <includes>
                         <include>**/CukesRunner*.java</include>
                     </includes>
@@ -150,7 +126,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>AGR.QA.Automation</projectName>
+                            <projectName>agr-qa-automation</projectName>
                             <outputDirectory>${project.build.directory}</outputDirectory>
                             <jsonFiles>
                                 <param>**/cucumber*.json</param>
