@@ -10,7 +10,7 @@ Feature: Profile user Item search and add items to cart
     Then User should see user dashboard
     Then User clicks on Start Shopping link
     When  User hovers over to "Furniture" and clicks on "TV Stands"
-#    And User navigates to last page
+    And User navigates to last page
     Then User chooses last available product and clicks on it
     And User adds 2 products to his cart
     Then User checks his cart with total amount
@@ -26,7 +26,7 @@ Feature: Profile user Item search and add items to cart
 
     Examples:
       | searchValue | expectedHeader |
-#      | mattress    | mattress       |
+      | mattress    | mattress       |
       | Table       | Table          |
       | SOFA        | SOFA           |
       | LoveSeat    | LoveSeat       |

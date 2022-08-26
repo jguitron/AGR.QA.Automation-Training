@@ -48,19 +48,35 @@ public class Driver {
                             chromeOptions.addArguments("--disable-notifications");
                             chromeOptions.setAcceptInsecureCerts(true);
                             driverPool.set(new RemoteWebDriver(urlPage, chromeOptions));
-                            driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+                            driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
                         break;
                     case "chrome-headless":
                         WebDriverManager.chromedriver().setup();
-                        chromeOptions = new ChromeOptions();
-                        DesiredCapabilities headlessCapabilities = new DesiredCapabilities();
-                        chromeOptions.addArguments("--disable-notifications");
-                        chromeOptions.setAcceptInsecureCerts(true);
-                        driverPool.set(new ChromeDriver(chromeOptions.setHeadless(true)));
-                        driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+                        ChromeOptions headlessOptions = new ChromeOptions();
+                        try {
+                            headlessOptions.addArguments("--disable-notifications");
+                            headlessOptions.setAcceptInsecureCerts(true);
+                            driverPool.set(new ChromeDriver(headlessOptions.setHeadless(true)));
+                            driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                    case "chrome-remote-headless":
+                        ChromeOptions remoteHeadlessOptions = new ChromeOptions();
+                        try {
+                            String ipAddress = "172.26.3.230";
+                            URL urlPage = new URL("http://" + ipAddress + ":4444/");
+                            remoteHeadlessOptions.addArguments("--disable-notifications");
+                            remoteHeadlessOptions.setAcceptInsecureCerts(true);
+                            driverPool.set(new RemoteWebDriver(urlPage, remoteHeadlessOptions.setHeadless(true)));
+                            driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                         break;
                     case "firefox":
                         WebDriverManager.firefoxdriver().setup();

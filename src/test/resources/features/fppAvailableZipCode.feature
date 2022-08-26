@@ -5,20 +5,19 @@ Feature: Verification protection plan availability for Florida, Alaska, Hawaii
   Scenario: User sets store as Florida store
     Given User navigates to "url"
     Then User finds closest store by "33606"
-    Then  User searches for SKU "7500538" and clicks on it
+    Then  User searches for SKU "7500538"
     Then User verifies that FPP available on PDP
     And  User clicks on Add Item to Cart
-    Then  User searches for SKU "P455-822" and clicks on it
+    Then  User searches for SKU "P455-822"
     Then User verifies that OUTDoorPP available on PDP
     And  User clicks on Add Item to Cart
-    Then  User searches for SKU "M9X732" and clicks on it
-    Then User verifies that Adjustable PP available on PDP
+    Then  User searches for SKU "M9X732"
     And  User clicks on Add Item to Cart
-    Then  User searches for SKU "M9X742" and clicks on it
+    Then  User searches for SKU "M9X742"
     And User Select King bed size
     Then User verifies that KingAdjustable available on PDP
     Then  User clicks on Add Item to Cart
-    Then User navigate to cart page
+    Then User navigates to cart page
     Then User clicks on Confirm button to confirm the zip code
     When User verifies that "protection plan" is added to cart
     Then User changes the delivery "99503" by clicking on zipcode link from Cart Page

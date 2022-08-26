@@ -1,4 +1,4 @@
-@smoke @regression
+@smoke
 Feature: Verification of Color Switching on PDP
 
   Scenario: User Changes between different colors schemes verifying switching occurs

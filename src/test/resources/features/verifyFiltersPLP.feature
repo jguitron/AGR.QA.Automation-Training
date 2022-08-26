@@ -1,5 +1,4 @@
-@smoke @wip9
-
+@smoke
 Feature: Verify PLP filters changes results of products in PLP
 
   Scenario: User chooses product filters and verifies filter changes

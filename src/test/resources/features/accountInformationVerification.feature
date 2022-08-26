@@ -1,5 +1,6 @@
 @smoke
 Feature: Verification of registered user information in account page
+
   Scenario: User logins into account and verifies address, email, phone number for registered user
     Given User navigates to "url"
     And   User clicks on login link on different viewports

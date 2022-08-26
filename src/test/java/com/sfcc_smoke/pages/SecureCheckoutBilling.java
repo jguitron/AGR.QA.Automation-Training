@@ -53,7 +53,7 @@ public class SecureCheckoutBilling {
     public WebElement lable_pl_SSN4;
     @FindBy(xpath = "//button[@id='view-progressive-offers']/span")
     public WebElement btn_pl_view_dtls;
-    @FindBy(xpath = "(//iframe[@class='zoid-component-frame zoid-visible'])[1]")
+    @FindBy(xpath = "//div[@class='paypal-express-button']")
     public WebElement pplogoimg;
     @FindBy(xpath = "(//div[@class='progressive-modal-box'])[2]/div[@class='content-asset ca-online-only']")
     public WebElement PrgsvPopupMsg;

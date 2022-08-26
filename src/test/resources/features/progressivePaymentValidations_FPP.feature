@@ -4,10 +4,10 @@ Feature: Verify Pop up message is displayed if Progressive payment is selected w
   Scenario: User sets store as Florida store
     Given User navigates to "url"
     Then User finds closest store by "33606"
-    Then  User searches for SKU "APK-12020-3R" and clicks on it
+    Then  User searches for SKU "APK-12020-3R"
     Then User verifies that FPP available on PDP
     Then  User clicks on Add Item to Cart
-    Then User navigate to cart page
+    Then User navigates to cart page
     Then User clicks on Confirm button to confirm the zip code
     Then User clicks on Secure Check out button
     Then User fills in customer and shipping info using auto address selection

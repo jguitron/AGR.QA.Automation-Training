@@ -1,4 +1,4 @@
-@smoke @regression
+@smoke
 Feature: Verification of 3 Items added to cart is reflected in "mini cart logo" as 3 total items
 
   Scenario: User adds items to cart
@@ -11,7 +11,7 @@ Feature: Verification of 3 Items added to cart is reflected in "mini cart logo" 
     And   User clicks on PLP Show "80" per page button
     And   User chooses "Soletren Sofa, Stone, large" in plp
     Then  User clicks on Add Item to Cart
-    Then  Assert total number of items in mini cart is "2"
+    Then  Assert total number of items in mini cart is 2
 
 
 
