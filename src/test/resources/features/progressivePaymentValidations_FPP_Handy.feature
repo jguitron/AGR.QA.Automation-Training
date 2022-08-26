@@ -2,9 +2,9 @@
 Feature: Verify that Pop up combined popup message is displayed if Progressive payment is selected with a Handy Item + FPP
 
   Scenario: User sets store as Florida store
-    Given User navigates to "url"
-    Then User finds closest store by "33606"
-    Then  User searches for SKU "D631-01" and clicks on it
+    Given User navigates to 'url'
+    Then User finds closest store by '33606'
+    Then  User searches for SKU 'D631-01' and clicks on it
     Then User verifies that FPP available on PDP
     Then  User clicks on Add Item to Cart
     Then User navigate to cart page

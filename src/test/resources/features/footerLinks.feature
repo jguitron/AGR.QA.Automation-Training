@@ -4,14 +4,14 @@ Feature: Footer sub-category links verification
 
 
   Scenario Outline: Verifying "<subCategory>"
-    Given User navigates to "url"
+    Given User navigates to 'url'
     When User scrolls down to footer
     And  If platform is mobile user clicks on category
       | Get To Know Us   |
       | Customer Care    |
       | Get Inspired     |
       | Terms & Policies |
-    Then User verifies "<subCategory>" opens "<expected>" page
+    Then User verifies '<subCategory>' opens '<expected>' page
     Examples:
       | subCategory                       | expected                            |
       | About Ashley Homestore            | com/about-us/                       |

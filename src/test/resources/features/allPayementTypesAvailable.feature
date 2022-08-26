@@ -3,9 +3,9 @@ Feature: Verification of available payment types in cart page
   As a user, I should be able to choose desired payment method; CC, AA, PL, Caddipay, Acima or PP
 
   Scenario: User sets store as Florida store, search for an item, add item to cart and navigate to Cart Page
-    Given User navigates to "url"
-    Then User finds closest store by "33544"
-    Then User searches for SKU "A2000223" and clicks on it
+    Given User navigates to 'url'
+    Then User finds closest store by '33544'
+    Then User searches for SKU 'A2000223' and clicks on it
     Then User clicks on Add Item to Cart
     Then User navigate to cart page
     Then User clicks on Confirm button to confirm the zip code
