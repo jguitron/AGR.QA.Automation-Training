@@ -40,7 +40,7 @@ public class Driver {
                         driverPool.set(new ChromeDriver(chromeOptions));
                         driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
                         break;
-                    case "chrome-remote":
+                     case "chrome-remote":
                         chromeOptions = new ChromeOptions();
                         try {
                             String ipAddress = "172.26.3.230";
@@ -65,7 +65,7 @@ public class Driver {
                             e.printStackTrace();
                         }
                         break;
-                    case "chrome-remote-headless":
+                   case "chrome-remote-headless":
                         ChromeOptions remoteHeadlessOptions = new ChromeOptions();
                         try {
                             String ipAddress = "172.26.3.230";
