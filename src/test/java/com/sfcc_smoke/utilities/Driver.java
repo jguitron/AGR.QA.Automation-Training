@@ -144,7 +144,7 @@ public class Driver {
 //                            chromeOptionsMap.put("geoLocation", "US");
                             bsChromeCaps.setCapability("bstack:options", chromeOptionsMap);
                             bsChromeCaps.setCapability("BS_SESSION_NAME", ConfigReader.getProperty("BS_SESSION_NAME"));
-                            bsChromeCaps.setCapability("build", ConfigReader.getProperty("BS_BUILD_NAME"));
+                            bsChromeCaps.setCapability("BS_BUILD_NAME", ConfigReader.getProperty("BS_BUILD_NAME"));
                             driverPool.set(new RemoteWebDriver(new URL(REMOTE_URL), bsChromeCaps.merge(chromeOptions.addArguments("--disable-notifications"))));
                             driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
                         } catch (Exception e) {
